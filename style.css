@@ -50,6 +50,10 @@
     width: 30%;
   } 
   
+  .link {
+    color: white;
+  }
+  
   .icon {
     width: auto;
     height: 22px;

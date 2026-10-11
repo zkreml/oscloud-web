@@ -1,0 +1,4 @@
+Options -Indexes
+<FilesMatch "^(config(\.sample)?\.php|DEPLOY\.md)$">
+  Require all denied
+</FilesMatch>

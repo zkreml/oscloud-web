@@ -12,4 +12,16 @@
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://oscloud.cz/ente.html</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://oscloud.cz/mxchat.html</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset>

@@ -14,6 +14,7 @@
     ['Proč OSCloud', SITE + '/#proc'],
     ['Ceník', SITE + '/#cenik'],
     ['Komunita', SITE + '/#komunita'],
+    ['O nás', SITE + '/o-nas.html'],
     ['Dokumentace', 'https://docs.oscloud.cz', 'docs.oscloud.cz'],
     ['Blog', 'https://blog.oscloud.cz', 'blog.oscloud.cz']
   ];

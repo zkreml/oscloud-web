@@ -565,7 +565,7 @@
     .price-table tbody th { font-weight: 600; color: var(--dark); }
     .price-table tbody td { font-variant-numeric: tabular-nums; }
     .price-table tbody tr:hover { background: var(--bg); }
-    .price-note { text-align: center; font-size: 0.85rem; color: var(--text-light); margin-top: 14px; }
+    .price-footnote { text-align: center; font-size: 0.85rem; color: var(--text-light); margin-top: 14px; }
 
     /* FORM + misc additions */
     .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
@@ -588,6 +588,7 @@
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .pricing-extras { grid-template-columns: 1fr; }
       .join-form { padding: 24px 20px; }
+      .cost-box .price { font-size: 1.6rem; }
       .price-table caption { padding: 16px 14px 10px; }
       .price-table th, .price-table td { padding: 10px 8px; font-size: 0.82rem; }
       .price-table th:first-child, .price-table td:first-child { padding-left: 14px; }
@@ -611,6 +612,7 @@
       <a href="#proc">Proč OSCloud</a>
       <a href="#cenik">Ceník</a>
       <a href="#komunita">Komunita</a>
+      <a href="o-nas.html">O nás</a>
       <a href="https://docs.oscloud.cz" target="_blank" rel="noopener">Dokumentace</a>
       <a href="https://blog.oscloud.cz" target="_blank" rel="noopener">Blog</a>
       <a class="os-cta" href="#pripojit">Chci se připojit</a>
@@ -656,9 +658,9 @@
         <h3>Chceš sociální sítě bez reklam?</h3>
         <p>Fediverse — decentralizované sítě, kde neexistuje algoritmus, který ti říká, co máš číst.</p>
         <div class="card-apps">
-          <span>Mastodon</span>
-          <span>PeerTube</span>
-          <span>Pixelfed</span>
+          <span><a href="https://mamutovo.cz" target="_blank" rel="noopener">Mastodon</a></span>
+          <span><a href="https://peertube.arch-linux.cz" target="_blank" rel="noopener">PeerTube</a></span>
+          <span><a href="https://pixelfed.cz" target="_blank" rel="noopener">Pixelfed</a></span>
         </div>
       </div>
 
@@ -669,7 +671,6 @@
         <div class="card-apps">
           <span>Nextcloud</span>
           <span><a href="https://oscloud.photos" target="_blank" rel="noopener">Ente Photos</a></span>
-          <span>Lychee</span>
         </div>
       </div>
 
@@ -757,8 +758,8 @@
     <p>Nechceme se tvářit, že je to zadarmo. Server stojí peníze. Tady je, jak to funguje.</p>
     <div class="cost-box">
       <h3>Měsíční náklady serveru</h3>
-      <div class="price">~350 Kč/měsíc</div>
-      <div class="price-note">Hetzner CAX11 · ARM · 4 GB RAM · 40 GB disk</div>
+      <div class="price">~8 500 Kč/měsíc</div>
+      <div class="price-note">Dedikovaný server Hetzner · Intel Core i9-13900 · 64 GB RAM · zálohy na samostatném úložišti</div>
       <p>Provoz platíme sami. Pokud chceš pomoct, můžeš přispět — ale není to podmínka. Služby jsou pro všechny.</p>
     </div>
   </div>
@@ -838,7 +839,7 @@
         </tbody>
       </table>
     </div>
-    <p class="price-note">OSCloud, z. s. není plátce DPH, všechny ceny jsou konečné.</p>
+    <p class="price-footnote">OSCloud, z. s. není plátce DPH, všechny ceny jsou konečné.</p>
 
     <div class="pricing-extras">
       <div class="pricing-extra">
@@ -855,7 +856,7 @@
       </div>
       <div class="pricing-extra">
         <h3>🤝 Sponzoring</h3>
-        <p>Logo na webu, v dokumentaci, v newsletteru. Větší sponzoři i na přednáškách a Mastodon postech. Podrobnosti domluvíme individuálně.</p>
+        <p>Logo na webu, v dokumentaci a v newsletteru. Podrobnosti domluvíme individuálně.</p>
         <ul class="tiers">
           <li><strong>Bronz</strong> 500 Kč/měs</li>
           <li><strong>Stříbro</strong> 1 000 Kč/měs</li>
@@ -940,6 +941,7 @@
       <div class="footer-col">
         <h4>Projekt</h4>
         <a href="https://git.oscloud.cz/OSCloud">Git</a>
+        <a href="o-nas.html">O nás a kontakt</a>
         <a href="https://helpdesk.oscloud.cz">Helpdesk</a>
         <a href="mailto:info@oscloud.cz">info@oscloud.cz</a>
         <a href="https://docs.oscloud.cz/privacy_policy/">Ochrana osobních údajů</a>

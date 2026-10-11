@@ -513,6 +513,8 @@
       accent-color: var(--primary);
     }
     .join-form .btn { width: 100%; text-align: center; }
+    .consent label { display: flex; align-items: flex-start; gap: 8px; font-size: 0.85rem; font-weight: 400; color: var(--text); cursor: pointer; }
+    .consent input[type="checkbox"] { width: 16px; height: 16px; margin-top: 3px; flex-shrink: 0; accent-color: var(--primary); }
 
     /* FOOTER */
     footer {
@@ -961,7 +963,10 @@
         <label>Web (nevyplňovat)<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
       </div>
       <input type="hidden" name="token" value="">
-      <p class="form-note">Údaje použijeme jen k odpovědi na tvou žádost. Víc v <a href="https://docs.oscloud.cz/privacy_policy/" target="_blank" rel="noopener">zásadách ochrany osobních údajů</a>.</p>
+      <div class="form-group consent">
+        <label><input type="checkbox" name="consent" value="1" required> <span>Přečetl/a jsem si <a href="https://docs.oscloud.cz/podm%C3%ADnky%20Oscloud%20CZ/" target="_blank" rel="noopener">podmínky používání</a> a <a href="https://docs.oscloud.cz/privacy_policy/" target="_blank" rel="noopener">zásady ochrany osobních údajů</a> a beru je na vědomí.</span></label>
+      </div>
+      <p class="form-note">Údaje použijeme jen k odpovědi na tvou žádost.</p>
       <button type="submit" class="btn btn-primary">Odeslat žádost</button>
       <div class="form-status" role="status" aria-live="polite"></div>
       <noscript><p class="form-note" style="margin-top:14px">Formulář potřebuje JavaScript. Napiš nám na <a href="mailto:info@oscloud.cz">info@oscloud.cz</a>.</p></noscript>

@@ -224,7 +224,8 @@ function send_mail(array $cfg, string $name, string $email, array $interests, st
     $body .= "E-mail: {$email}\n";
     $body .= 'Zájmy: ' . ($labels ? implode(', ', $labels) : '(nevybráno)') . "\n";
     $body .= 'Odesláno: ' . date('Y-m-d H:i:s T') . "\n";
-    $body .= 'Z webu: ' . ($origin !== '' ? $origin : '-') . "\n\n";
+    $body .= 'Z webu: ' . ($origin !== '' ? $origin : '-') . "\n";
+    $body .= "Souhlas s podmínkami a zásadami OÚ: ano\n\n";
     $body .= "Zpráva:\n";
     $body .= ($message !== '' ? $message : '(bez zprávy)') . "\n";
 
@@ -405,6 +406,9 @@ if ($name === '' || mb_strlen($name) > 80) {
 }
 if ($email === '' || mb_strlen($email) > 120 || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     fail(422, 'Zkontroluj prosím e-mailovou adresu.');
+}
+if (($_POST['consent'] ?? '') !== '1') {
+    fail(422, 'Potvrď prosím, že sis přečetl/a podmínky a zásady ochrany osobních údajů.');
 }
 if (mb_strlen($message) > 2000) {
     fail(422, 'Zpráva je moc dlouhá (max. 2000 znaků).');

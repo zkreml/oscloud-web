@@ -39,6 +39,7 @@ function load_config(): array
         'limit_attempts'  => [3600 => 30],             // všechny POSTy po ověření tokenu / IP
         'limit_ip'        => [3600 => 3, 86400 => 10], // odeslané žádosti / IP
         'limit_global'    => [86400 => 60],            // odeslané žádosti celkem
+        'limit_email'     => [3600 => 1, 86400 => 3],  // odeslané žádosti / e-mailová adresa
     ];
 
     $file = __DIR__ . '/config.php';
@@ -425,6 +426,12 @@ if (
     fail(429, 'Dnes už od tebe (nebo z tvé sítě) přišlo hodně žádostí. Zkus to prosím později, nebo napiš na info@oscloud.cz.');
 }
 
+// 6b) opakovaná žádost ze stejné e-mailové adresy (v souboru je jen hash, ne adresa)
+$emailKey = 'mail:' . mb_strtolower($email) . $cfg['secret'];
+if (!rate_limit($dir, $emailKey, $cfg['limit_email'], false)) {
+    fail(429, 'Žádost z této e-mailové adresy už byla odeslána. Odpověď přijde e-mailem. Pokud ne, kontakt je info@oscloud.cz.');
+}
+
 // 7) odeslání
 if (!send_mail($cfg, $name, $email, $interests, $message, $origin)) {
     error_log('oscloud-form: odeslání e-mailu selhalo');
@@ -432,5 +439,6 @@ if (!send_mail($cfg, $name, $email, $interests, $message, $origin)) {
 }
 rate_limit($dir, 'ip:' . $ip . $cfg['secret'], $cfg['limit_ip'], true);
 rate_limit($dir, 'global', $cfg['limit_global'], true);
+rate_limit($dir, $emailKey, $cfg['limit_email'], true);
 
 respond(200, ['ok' => true, 'message' => 'Díky! Ozveme se ti na zadaný e-mail.']);

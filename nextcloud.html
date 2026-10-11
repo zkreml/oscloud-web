@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nextcloud — OSCloud</title>
+  <meta name="description" content="Nextcloud na OSCloud: soubory, kalendář a kontakty v EU. 2 GB zdarma, tarify od 39 Kč měsíčně, pro spolky a firmy s fakturou na IČO.">
+  <meta name="theme-color" content="#2563EB">
+  <link rel="canonical" href="https://oscloud.cz/nextcloud.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OSCloud">
+  <meta property="og:locale" content="cs_CZ">
+  <meta property="og:url" content="https://oscloud.cz/nextcloud.html">
+  <meta property="og:title" content="Nextcloud — OSCloud">
+  <meta property="og:description" content="Nextcloud na OSCloud: soubory, kalendář a kontakty v EU. 2 GB zdarma, tarify od 39 Kč měsíčně, pro spolky a firmy s fakturou na IČO.">
+  <meta property="og:image" content="https://oscloud.cz/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/space-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/nav.css">
+  <style>
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap;
+      src: url(assets/fonts/inter-latin-ext-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap;
+      src: url(assets/fonts/inter-latin-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+    @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap;
+      src: url(assets/fonts/space-grotesk-latin-ext-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+    @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap;
+      src: url(assets/fonts/space-grotesk-latin-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+    :root {
+      --primary: #2563EB;
+      --primary-hover: #1D4ED8;
+      --accent: #3B82F6;
+      --bg: #F0F4F8;
+      --dark: #0F172A;
+      --dark-light: #1E293B;
+      --text: #334155;
+      --text-light: #526074;
+      --white: #FFFFFF;
+      --border: #E2E8F0;
+      --radius: 12px;
+      --os-display: 'Space Grotesk', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 72px; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .skip-link { position: absolute; left: 8px; top: -48px; background: var(--dark); color: #fff; padding: 8px 14px; border-radius: 8px; z-index: 200; font-weight: 600; }
+    .skip-link:focus { top: 8px; color: #fff; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.2;
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { color: var(--primary-hover); }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: #94A3B8;
+      padding: 60px 16px 30px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+    .footer-col a {
+      display: block;
+      color: #94A3B8;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid var(--dark-light);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    /* PAGE */
+    .page { padding: 64px 16px 88px; }
+    .narrow { max-width: 760px; }
+    .page h1 { font-size: clamp(2rem, 5vw, 2.6rem); color: var(--dark); margin-bottom: 20px; }
+    .page h2 { font-size: 1.4rem; color: var(--dark); margin: 48px 0 16px; }
+    .page p { margin-bottom: 16px; }
+    .page .lead { font-size: 1.15rem; color: var(--text-light); }
+    .facts { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 8px 24px; }
+    .facts > div { display: grid; grid-template-columns: 200px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--border); }
+    .facts > div:first-child { border-top: 0; }
+    .facts dt { font-weight: 600; color: var(--dark); }
+    .facts dd { margin: 0; overflow-wrap: anywhere; }
+    .facts .acct { font-weight: 600; color: var(--dark); font-variant-numeric: tabular-nums; }
+    .facts .sub { display: block; margin-top: 4px; font-size: 0.88rem; color: var(--text-light); }
+    @media (max-width: 768px) {
+      .page { padding: 48px 16px 64px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .facts { padding: 4px 18px; }
+      .facts > div { grid-template-columns: 1fr; gap: 2px; }
+    }
+    /* PRICE TABLE */
+    .price-table-wrap {
+      margin-top: 32px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow-x: auto;
+    }
+    .price-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .price-table caption {
+      text-align: left;
+      font-family: var(--os-display);
+      font-weight: 600;
+      color: var(--dark);
+      padding: 20px 24px 12px;
+    }
+    .price-table th, .price-table td { padding: 12px 24px; text-align: right; border-top: 1px solid var(--border); }
+    .price-table thead th { font-size: 0.8rem; color: var(--text-light); font-weight: 600; }
+    .price-table th:first-child, .price-table td:first-child { text-align: left; }
+    .price-table tbody th { font-weight: 600; color: var(--dark); }
+    .price-table tbody td { font-variant-numeric: tabular-nums; }
+    .price-table tbody tr:hover { background: var(--bg); }
+    .price-footnote { text-align: center; font-size: 0.85rem; color: var(--text-light); margin-top: 14px; }
+    /* BUTTONS */
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary { background: var(--primary); color: var(--white); }
+    .btn-primary:hover { background: var(--primary-hover); color: var(--white); }
+    .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: var(--white); }
+    /* SUBPAGE */
+    .page h3 { font-size: 1.1rem; color: var(--dark); margin: 28px 0 10px; }
+    .page ol, .page ul.plain { margin: 0 0 16px 22px; }
+    .page li { margin-bottom: 8px; }
+    .page code { background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 1px 7px; font-size: 0.92em; overflow-wrap: anywhere; }
+    .callout { background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 16px 20px; margin: 20px 0; }
+    .callout.warn { border-left-color: #d97706; }
+    .callout p { margin: 0; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
+    .page .price-table-wrap { margin: 16px 0 24px; }
+    .faq dt { font-weight: 600; color: var(--dark); margin-top: 18px; }
+    .faq dd { margin: 4px 0 0; }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Přeskočit na obsah</a>
+
+<header class="os-nav" data-os-nav>
+  <div class="os-nav__inner">
+    <a class="os-logo" href="/"><img src="assets/logo-horizontal.png" alt="OSCloud" width="176" height="24"></a>
+    <button class="os-toggle" type="button" aria-expanded="false" aria-controls="os-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav class="os-links" id="os-links" aria-label="Hlavní navigace">
+      <a href="/#sluzby">Služby</a>
+      <a href="/#proc">Proč OSCloud</a>
+      <a href="/#cenik">Ceník</a>
+      <a href="/#komunita">Komunita</a>
+      <a href="o-nas.html">O nás</a>
+      <a href="https://docs.oscloud.cz" target="_blank" rel="noopener">Dokumentace</a>
+      <a href="https://blog.oscloud.cz" target="_blank" rel="noopener">Blog</a>
+      <a class="os-cta" href="/#pripojit">Chci se připojit</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="page">
+  <div class="container narrow">
+
+    <p><a href="/#cenik">&larr; Zpět na ceník</a></p>
+    <h1>Nextcloud</h1>
+    <p class="lead">Tvoje soubory, kalendář a kontakty na jednom místě, na serverech v Německu. Open source alternativa k Google Drive, iCloudu nebo Dropboxu, bez reklam a sledování.</p>
+
+    <div class="btn-row">
+      <a href="/#pripojit" class="btn btn-primary">Chci se připojit</a>
+      <a href="https://docs.oscloud.cz/apps/nextcloud/" target="_blank" rel="noopener" class="btn btn-outline">Návod v dokumentaci</a>
+    </div>
+
+    <ul class="plain">
+      <li>soubory dostupné z webu, mobilu i počítače a synchronizované mezi zařízeními,</li>
+      <li>sdílení souborů a složek odkazem, volitelně s heslem a platností,</li>
+      <li>kalendář a kontakty synchronizovatelné s mobilem,</li>
+      <li>data zůstávají v EU, zálohy máme na samostatném úložišti.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>2&nbsp;GB zdarma pro každého.</strong> Nextcloud si můžeš vyzkoušet zdarma. Když ti místo nestačí, přidáš si větší úložiště podle ceníku níže.</p>
+    </div>
+
+    <h2 id="cenik">Ceník</h2>
+    <p>Cena za měsíc podle velikosti úložiště. Spolky platí k ceně úložiště +99&nbsp;Kč, firmy +299&nbsp;Kč.</p>
+    <div class="price-table-wrap">
+      <table class="price-table">
+        <caption>Cena Nextcloudu za měsíc podle úložiště</caption>
+        <thead>
+          <tr><th scope="col">Úložiště</th><th scope="col">Jednotlivec</th><th scope="col">Spolek</th><th scope="col">Firma</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">50 GB</th><td>39 Kč</td><td>138 Kč</td><td>338 Kč</td></tr>
+          <tr><th scope="row">100 GB</th><td>59 Kč</td><td>158 Kč</td><td>358 Kč</td></tr>
+          <tr><th scope="row">200 GB</th><td>89 Kč</td><td>188 Kč</td><td>388 Kč</td></tr>
+          <tr><th scope="row">500 GB</th><td>149 Kč</td><td>248 Kč</td><td>448 Kč</td></tr>
+          <tr><th scope="row">1 TB</th><td>219 Kč</td><td>318 Kč</td><td>518 Kč</td></tr>
+          <tr><th scope="row">2 TB</th><td>399 Kč</td><td>498 Kč</td><td>698 Kč</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="plain">
+      <li><strong>Jednotlivec:</strong> jeden účet, úložiště podle tabulky.</li>
+      <li><strong>Pro spolky (+99&nbsp;Kč):</strong> 5 uživatelů Nextcloudu se společným úložištěm, fakturace s IČO, podpora e-mailem a přes Matrix.</li>
+      <li><strong>Firemní (+299&nbsp;Kč):</strong> 10 uživatelů se společným úložištěm, fakturace s IČO, podpora e-mailem a přes Matrix, reakce do 24 hodin.</li>
+    </ul>
+    <p>Nejsme plátci DPH, všechny ceny jsou konečné.</p>
+
+    <h2 id="zacit">Jak začít</h2>
+    <ol>
+      <li>Vyplň <a href="/#pripojit">formulář Chci se připojit</a> a napiš, co potřebuješ (zdarma, nebo větší úložiště).</li>
+      <li>Ozveme se ti e-mailem s pozvánkou a údaji k přihlášení.</li>
+      <li>Přihlas se, nastav si silné heslo a zapni <strong>dvoufázové ověření</strong> (Nastavení &rarr; Zabezpečení).</li>
+    </ol>
+
+    <h2 id="aplikace">Aplikace a synchronizace</h2>
+    <p>Pro pohodlnou synchronizaci si nainstaluj oficiální aplikaci Nextcloud. Při přihlášení zadej adresu našeho serveru a svůj účet.</p>
+    <ul class="plain">
+      <li><strong>Počítač (Linux, Windows, macOS):</strong> <a href="https://nextcloud.com/install/#install-clients" target="_blank" rel="noopener">desktopový klient</a> synchronizuje vybrané složky.</li>
+      <li><strong>Android a iOS:</strong> aplikace Nextcloud, volitelně s automatickým nahráváním fotek.</li>
+      <li><strong>Kalendář a kontakty:</strong> přes CalDAV a CardDAV, na Androidu například přes DAVx5.</li>
+    </ul>
+    <p>Podrobné kroky a screenshoty najdeš v <a href="https://docs.oscloud.cz/apps/nextcloud/" target="_blank" rel="noopener">dokumentaci</a>.</p>
+
+    <div class="callout warn">
+      <p><strong>Synchronizace není záloha.</strong> Smažeš-li soubor na jednom zařízení, zmizí i jinde. Důležité věci si proto zálohuj ještě samostatně.</p>
+    </div>
+
+    <h2 id="faq">Časté dotazy</h2>
+    <dl class="faq">
+      <dt>Kolik je zdarma?</dt>
+      <dd>Každý má 2&nbsp;GB. Větší úložiště je od 39&nbsp;Kč měsíčně.</dd>
+      <dt>Můžu to použít pro spolek nebo firmu?</dt>
+      <dd>Ano. Spolkový a firemní tarif zahrnuje více uživatelů a fakturu s IČO.</dd>
+      <dt>Kde jsou data?</dt>
+      <dd>Na serverech Hetzner v Německu, tedy v EU.</dd>
+      <dt>Můžu tarif změnit?</dt>
+      <dd>Napiš nám a úložiště upravíme.</dd>
+    </dl>
+
+    <h2 id="podpora">Podpora</h2>
+    <p>Napiš na <a href="mailto:info@oscloud.cz">info@oscloud.cz</a>, přes <a href="https://helpdesk.oscloud.cz" target="_blank" rel="noopener">helpdesk</a> nebo na <a href="https://chat.mxchat.cz/" target="_blank" rel="noopener">Matrixu</a>.</p>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Služby</h4>
+        <a href="nextcloud.html">Nextcloud</a>
+        <a href="https://cryptpad.arch-linux.cz/">CryptPad</a>
+        <a href="https://docs.oscloud.cz/apps/vaultwarden/">Vaultwarden</a>
+        <a href="https://docs.oscloud.cz/apps/searxng/">SearXNG</a>
+        <a href="https://oscloud.photos">Ente Photos</a>
+        <a href="https://docs.oscloud.cz/apps/freshrss/">FreshRSS</a>
+      </div>
+      <div class="footer-col">
+        <h4>Fediverse</h4>
+        <a href="https://mamutovo.cz/@oscloud">Mastodon</a>
+        <a href="https://peertube.arch-linux.cz">PeerTube</a>
+        <a href="https://pixelfed.cz">Pixelfed</a>
+      </div>
+      <div class="footer-col">
+        <h4>Komunita</h4>
+        <a href="https://chat.mxchat.cz/">Matrix chat</a>
+        <a href="https://blog.oscloud.cz">Blog</a>
+        <a href="https://docs.oscloud.cz">Dokumentace</a>
+      </div>
+      <div class="footer-col">
+        <h4>Projekt</h4>
+        <a href="https://git.oscloud.cz/OSCloud">Git</a>
+        <a href="o-nas.html">O nás a kontakt</a>
+        <a href="https://helpdesk.oscloud.cz">Helpdesk</a>
+        <a href="mailto:info@oscloud.cz">info@oscloud.cz</a>
+        <a href="https://docs.oscloud.cz/privacy_policy/">Ochrana osobních údajů</a>
+        <a href="https://docs.oscloud.cz/podm%C3%ADnky%20Oscloud%20CZ/">Podmínky</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2024–2026 OSCloud, z. s. · IČO 29991145 · DIČ CZ29991145 · Pionýrů 1332, 356 01 Sokolov<br>
+      Spolek zapsaný u Krajského soudu v Plzni, oddíl L, vložka 11449<br>
+      Komunita pro digitální svobodu · Provozováno na open source
+    </div>
+  </div>
+</footer>
+
+<script src="assets/nav.js" defer></script>
+
+</body>
+</html>

@@ -566,6 +566,13 @@
     .price-table tbody td { font-variant-numeric: tabular-nums; }
     .price-table tbody tr:hover { background: var(--bg); }
     .price-footnote { text-align: center; font-size: 0.85rem; color: var(--text-light); margin-top: 14px; }
+    .ente-pricing { margin-top: 56px; }
+    .ente-pricing h3 { font-size: 1.3rem; color: var(--dark); text-align: center; margin-bottom: 8px; }
+    .ente-pricing .ente-lead { text-align: center; color: var(--text-light); max-width: 620px; margin: 0 auto; }
+    .ente-notes { list-style: none; max-width: 660px; margin: 20px auto 0; padding: 0; }
+    .ente-notes li { position: relative; padding: 5px 0 5px 22px; font-size: 0.9rem; color: var(--text); }
+    .ente-notes li::before { content: "✓"; position: absolute; left: 0; color: var(--primary); font-weight: 600; }
+    .pricing-extra.wide { grid-column: 1 / -1; }
 
     /* FORM + misc additions */
     .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
@@ -842,6 +849,33 @@
     </div>
     <p class="price-footnote">OSCloud, z. s. není plátce DPH, všechny ceny jsou konečné. Čísla účtů najdeš na stránce <a href="o-nas.html#ucty">O nás</a>.</p>
 
+    <div class="ente-pricing" id="ente">
+      <h3>📷 Ente Photos — šifrované fotky</h3>
+      <p class="ente-lead">Samostatný produkt na <a href="https://oscloud.photos" target="_blank" rel="noopener">oscloud.photos</a>, alternativa ke Google Photos. Fotky se šifrují přímo v tvém zařízení, takže do nich nevidíme ani my. Každý účet má 10&nbsp;GB zdarma navždy.</p>
+
+      <div class="price-table-wrap">
+        <table class="price-table">
+          <caption>Cena Ente Photos podle úložiště</caption>
+          <thead>
+            <tr><th scope="col">Úložiště</th><th scope="col">Měsíčně</th><th scope="col">Ročně</th></tr>
+          </thead>
+          <tbody>
+          <tr><th scope="row">50 GB</th><td>49 Kč</td><td>490 Kč</td></tr>
+          <tr><th scope="row">200 GB</th><td>99 Kč</td><td>990 Kč</td></tr>
+          <tr><th scope="row">1 TB</th><td>239 Kč</td><td>2 629 Kč</td></tr>
+          <tr><th scope="row">2 TB</th><td>469 Kč</td><td>5 159 Kč</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ul class="ente-notes">
+        <li>Při ročním předplatném platíš až o dva měsíce méně.</li>
+        <li>Úložiště můžeš sdílet až s 5 členy rodiny bez příplatku, každý má vlastní účet a vlastní šifrování.</li>
+        <li>Předplatné se kupuje na webu oscloud.photos (i z mobilu v prohlížeči), v aplikaci to nejde. Platí se kartou přes Stripe.</li>
+        <li>Registrace a nastavení aplikací krok za krokem: <a href="https://docs.oscloud.cz/apps/ente-photos/" target="_blank" rel="noopener">návod v dokumentaci</a>.</li>
+      </ul>
+    </div>
+
     <div class="pricing-extras">
       <div class="pricing-extra">
         <h3>🐘 Mastodon pro komunity — od 299 Kč/měs</h3>
@@ -851,11 +885,7 @@
         <h3>💬 Fórum pro komunity — od 199 Kč/měs</h3>
         <p>Vlastní diskuzní fórum (Discourse nebo NodeBB) pro váš spolek, projekt nebo komunitu. Správa a zálohy na nás.</p>
       </div>
-      <div class="pricing-extra">
-        <h3>📷 Ente Photos — samostatný produkt</h3>
-        <p>Šifrované fotky a zálohy z mobilu na <a href="https://oscloud.photos" target="_blank" rel="noopener">oscloud.photos</a>. Má vlastní ceník mimo tarify výše.</p>
-      </div>
-      <div class="pricing-extra">
+      <div class="pricing-extra wide">
         <h3>🤝 Sponzoring</h3>
         <p>Logo na webu, v dokumentaci a v newsletteru. Podrobnosti domluvíme individuálně.</p>
         <ul class="tiers">

@@ -1,0 +1,102 @@
+/* OSCloud sdílená navigace — oscloud.cz, blog.oscloud.cz, docs.oscloud.cz
+   Jeden zdroj pravdy: https://oscloud.cz/assets/nav.css (+ nav.js) */
+
+.os-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #E2E8F0;
+  font-family: var(--os-body, 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif);
+  line-height: 1.4;
+  text-align: left;
+}
+.os-nav, .os-nav *, .os-nav *::before, .os-nav *::after { box-sizing: border-box; }
+
+/* na blogu a v docs je lišta nad stránkou a nelepí se (jejich vlastní hlavička je sticky) */
+.os-nav--static { position: relative; }
+
+.os-nav__inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 16px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.os-nav--static .os-nav__inner { height: 52px; }
+
+.os-nav .os-logo { display: inline-flex; align-items: center; text-decoration: none; }
+.os-nav .os-logo img { display: block; height: 24px; width: auto; max-width: none; margin: 0; }
+
+.os-nav .os-links { display: flex; gap: 24px; align-items: center; margin: 0; padding: 0; }
+.os-nav .os-links a {
+  color: #334155;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: none;
+  border: 0;
+  background: none;
+  padding: 0;
+}
+.os-nav .os-links a:hover,
+.os-nav .os-links a[aria-current] { color: #2563EB; }
+
+.os-nav .os-links a.os-cta {
+  background: #2563EB;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+.os-nav .os-links a.os-cta:hover { background: #1D4ED8; color: #fff; }
+
+.os-nav .os-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 8px;
+  margin: 0;
+}
+.os-nav .os-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #0F172A;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+.os-nav .os-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.os-nav .os-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.os-nav .os-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.os-nav a:focus-visible, .os-nav button:focus-visible { outline: 3px solid #3B82F6; outline-offset: 2px; }
+
+@media (max-width: 768px) {
+  .os-nav .os-links { display: none; }
+  .os-nav .os-links.open {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    padding: 20px 16px;
+    border-bottom: 1px solid #E2E8F0;
+    gap: 16px;
+  }
+  .os-nav .os-toggle { display: block; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .os-nav .os-toggle span, .os-nav .os-links a.os-cta { transition: none; }
+}

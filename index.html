@@ -543,6 +543,30 @@
       font-size: 0.8rem;
     }
 
+    /* PRICE TABLE */
+    .price-table-wrap {
+      margin-top: 32px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow-x: auto;
+    }
+    .price-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .price-table caption {
+      text-align: left;
+      font-family: var(--os-display);
+      font-weight: 600;
+      color: var(--dark);
+      padding: 20px 24px 12px;
+    }
+    .price-table th, .price-table td { padding: 12px 24px; text-align: right; border-top: 1px solid var(--border); }
+    .price-table thead th { font-size: 0.8rem; color: var(--text-light); font-weight: 600; }
+    .price-table th:first-child, .price-table td:first-child { text-align: left; }
+    .price-table tbody th { font-weight: 600; color: var(--dark); }
+    .price-table tbody td { font-variant-numeric: tabular-nums; }
+    .price-table tbody tr:hover { background: var(--bg); }
+    .price-note { text-align: center; font-size: 0.85rem; color: var(--text-light); margin-top: 14px; }
+
     /* FORM + misc additions */
     .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
     .form-note { font-size: 0.8rem; color: var(--text-light); margin: 0 0 16px; }
@@ -564,6 +588,11 @@
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .pricing-extras { grid-template-columns: 1fr; }
       .join-form { padding: 24px 20px; }
+      .price-table caption { padding: 16px 14px 10px; }
+      .price-table th, .price-table td { padding: 10px 8px; font-size: 0.82rem; }
+      .price-table th:first-child, .price-table td:first-child { padding-left: 14px; }
+      .price-table th:last-child, .price-table td:last-child { padding-right: 14px; }
+      .price-table thead th { font-size: 0.7rem; }
       .join, .pricing, .community, .why, .support { padding-top: 56px; padding-bottom: 56px; }
     }
   </style>
@@ -739,7 +768,7 @@
 <section class="pricing" id="cenik">
   <div class="container">
     <h2>Ceník</h2>
-    <p>Základní služby jsou zdarma. Placené tarify pomáhají pokrýt provoz a nabízí víc prostoru.</p>
+    <p>Základní služby jsou zdarma. Nextcloud si vybereš podle velikosti úložiště, spolky a firmy platí navíc za fakturu s IČO, podporu a víc uživatelů.</p>
 
     <div class="pricing-grid">
 
@@ -757,24 +786,23 @@
       </div>
 
       <div class="price-card featured">
-        <h3>Podpůrce</h3>
-        <div class="price-tag">99 Kč <small>/měsíc</small></div>
-        <div class="price-desc">Pro ty, kdo chtějí podpořit provoz a dostat víc</div>
+        <h3>Jednotlivec</h3>
+        <div class="price-tag">od 39 Kč <small>/měsíc</small></div>
+        <div class="price-desc">Nextcloud podle toho, kolik potřebuješ</div>
         <ul>
           <li>Všechno z komunity</li>
-          <li>Nextcloud 20 GB</li>
-          <li>Přednostní podpora</li>
-          <li>Jméno na webu</li>
+          <li>Nextcloud 50 GB až 2 TB</li>
+          <li>Podpora přes Matrix</li>
+          <li>Cena podle tabulky níže</li>
         </ul>
       </div>
 
       <div class="price-card">
         <h3>Pro spolky</h3>
-        <div class="price-tag">199 Kč <small>/měsíc</small></div>
-        <div class="price-desc">Pro neziskovky a malé organizace</div>
+        <div class="price-tag">+ 99 Kč <small>/měsíc</small></div>
+        <div class="price-desc">K ceně vybraného úložiště</div>
         <ul>
-          <li>Nextcloud 50 GB</li>
-          <li>CryptPad pro tým</li>
+          <li>5 uživatelů Nextcloudu, úložiště společně</li>
           <li>Fakturace s IČO</li>
           <li>Podpora e-mail + Matrix</li>
         </ul>
@@ -782,10 +810,10 @@
 
       <div class="price-card">
         <h3>Firemní</h3>
-        <div class="price-tag">499 Kč <small>/měsíc</small></div>
-        <div class="price-desc">Pro firmy, které chtějí open source infrastrukturu</div>
+        <div class="price-tag">+ 299 Kč <small>/měsíc</small></div>
+        <div class="price-desc">K ceně vybraného úložiště</div>
         <ul>
-          <li>Nextcloud 100 GB</li>
+          <li>10 uživatelů Nextcloudu, úložiště společně</li>
           <li>Fakturace s IČO</li>
           <li>Podpora e-mail + Matrix</li>
           <li>SLA — reakce do 24 hodin</li>
@@ -793,6 +821,24 @@
       </div>
 
     </div>
+
+    <div class="price-table-wrap">
+      <table class="price-table">
+        <caption>Cena Nextcloudu za měsíc podle úložiště</caption>
+        <thead>
+          <tr><th scope="col">Úložiště</th><th scope="col">Jednotlivec</th><th scope="col">Spolek</th><th scope="col">Firma</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">50 GB</th><td>39 Kč</td><td>138 Kč</td><td>338 Kč</td></tr>
+          <tr><th scope="row">100 GB</th><td>59 Kč</td><td>158 Kč</td><td>358 Kč</td></tr>
+          <tr><th scope="row">200 GB</th><td>89 Kč</td><td>188 Kč</td><td>388 Kč</td></tr>
+          <tr><th scope="row">500 GB</th><td>149 Kč</td><td>248 Kč</td><td>448 Kč</td></tr>
+          <tr><th scope="row">1 TB</th><td>219 Kč</td><td>318 Kč</td><td>518 Kč</td></tr>
+          <tr><th scope="row">2 TB</th><td>399 Kč</td><td>498 Kč</td><td>698 Kč</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="price-note">OSCloud, z. s. není plátce DPH, všechny ceny jsou konečné.</p>
 
     <div class="pricing-extras">
       <div class="pricing-extra">

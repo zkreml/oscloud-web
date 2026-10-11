@@ -566,6 +566,15 @@
     .price-table tbody td { font-variant-numeric: tabular-nums; }
     .price-table tbody tr:hover { background: var(--bg); }
     .price-footnote { text-align: center; font-size: 0.85rem; color: var(--text-light); margin-top: 14px; }
+    /* PODPORA */
+    .support-box { margin-top: 48px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; }
+    .support-box h3 { font-size: 1.2rem; color: var(--dark); margin-bottom: 8px; }
+    .support-box p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 12px; }
+    .support-accts { list-style: none; margin: 0; padding: 0; font-size: 0.92rem; }
+    .support-accts li { padding: 4px 0; }
+    .support-accts strong { color: var(--dark); font-variant-numeric: tabular-nums; }
+    .support-qr { text-align: center; font-size: 0.8rem; color: var(--text-light); }
+    .support-qr img { display: block; width: 168px; height: 168px; margin: 0 auto 6px; image-rendering: pixelated; border: 1px solid var(--border); border-radius: 8px; }
     .ente-pricing { margin-top: 56px; }
     .ente-pricing h3 { font-size: 1.3rem; color: var(--dark); text-align: center; margin-bottom: 8px; }
     .ente-pricing .ente-lead { text-align: center; color: var(--text-light); max-width: 620px; margin: 0 auto; }
@@ -594,6 +603,7 @@
       .why-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .pricing-extras { grid-template-columns: 1fr; }
+      .support-box { grid-template-columns: 1fr; padding: 22px 20px; text-align: center; }
       .join-form { padding: 24px 20px; }
       .cost-box .price { font-size: 1.6rem; }
       .price-table caption { padding: 16px 14px 10px; }
@@ -893,6 +903,22 @@
           <li><strong>Stříbro</strong> 1 000 Kč/měs</li>
           <li><strong>Zlato</strong> 2 500 Kč/měs</li>
         </ul>
+      </div>
+    </div>
+
+    <div class="support-box" id="podpora">
+      <div>
+        <h3>💙 Chceš jen podpořit OSCloud?</h3>
+        <p>Služby nepotřebuješ, ale líbí se ti, co děláme? Můžeš nám poslat libovolný dar. Pomůže pokrýt server, zálohy a naši práci. Nejsme ziskoví, všechno jde do provozu.</p>
+        <ul class="support-accts">
+          <li>Transparentní účet: <strong>284833433/0600</strong></li>
+          <li>Netransparentní účet: <strong>284833660/0600</strong></li>
+        </ul>
+        <p style="margin:12px 0 0;font-size:0.85rem;">Do zprávy napiš „dar“. Čísla účtů a IBAN najdeš na stránce <a href="o-nas.html#ucty">O nás</a>.</p>
+      </div>
+      <div class="support-qr">
+        <img src="assets/qr-platba.png" width="168" height="168" alt="QR platba na transparentní účet OSCloud" loading="lazy">
+        QR platba<br>transparentní účet
       </div>
     </div>
 

@@ -1,14 +1,30 @@
 # Oscloud Web
 
-Oscloud je váš bezpečný cloud. Naším cílem je ukázat lidem výhody bezpečného internetu a Open Source technologií. Tento repozitář obsahuje zdrojový kód pro statickou webovou stránku projektu Oscloud.
+Oscloud je váš bezpečný cloud. Naším cílem je ukázat lidem výhody bezpečného internetu a Open Source technologií. Tento repozitář obsahuje zdrojový kód hlavního webu projektu Oscloud (oscloud.cz).
 
 ## Obsah
 
-- `index.html` - Hlavní stránka Oscloud.
-- `about.html` - Stránka o projektu Oscloud.
-- `contact.html` - Kontaktní stránka.
-- `css/` - Složka obsahující CSS soubory pro stylování webu.
-- `img/` - Složka pro obrázky a loga.
+- `index.html` - jednostránkový web (služby, proč Oscloud, komunita, ceník, formulář „Chci se připojit“).
+- `submit.php` - zpracování formuláře: validace, honeypot, CSRF token, rate limit, odeslání e-mailu na `fediverse@oscloud.cz` (schránka FreeScoutu).
+- `config.sample.php` - vzor konfigurace. Skutečný `config.php` s tajným klíčem je v `.gitignore` a nikdy se necommituje.
+- `assets/` - logo, OG obrázek, fonty (hostované u nás, licence OFL), sdílená navigace `nav.js` a `nav.css`.
+- `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png` - ikony webu.
+- `robots.txt`, `sitemap.xml`, `.htaccess`.
+- `DEPLOY.md` - postup nasazení.
+
+## Sdílená navigace
+
+Stejná lišta je na oscloud.cz, blog.oscloud.cz a docs.oscloud.cz. Na blogu a v dokumentaci stačí do `<head>` vložit `<script src="https://oscloud.cz/assets/nav.js" defer></script>`, skript si lištu vloží sám a dotáhne `nav.css`.
+
+## Lokální vývoj
+
+V kořeni repozitáře spusťte `php -S 127.0.0.1:8080` a otevřete http://127.0.0.1:8080.
+
+Aby fungoval formulář, zkopírujte `config.sample.php` na `config.php` a nastavte `secret` (min. 32 znaků), `allowed_origins` na `http://127.0.0.1:8080` a `dry_run_dir` na libovolnou složku. E-maily se pak jen ukládají do souborů a neodesílají se.
+
+## Nasazení
+
+Web je určený pro aplikaci Cloudron LAMP na oscloud.cz. Postup je v `DEPLOY.md`.
 
 ## Jak přispět
 
@@ -27,4 +43,3 @@ Tento projekt je licencován pod licencí MIT - podrobnosti naleznete v souboru 
 ## Kontakt
 
 Pro více informací nás můžete kontaktovat na [info@oscloud.cz](mailto:info@oscloud.cz).
-

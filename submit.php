@@ -250,7 +250,79 @@ function send_mail(array $cfg, string $name, string $email, array $interests, st
         return file_put_contents($cfg['dry_run_dir'] . '/mail_' . date('Ymd_His') . '_' . bin2hex(random_bytes(3)) . '.txt', $out) !== false;
     }
 
+    // Cloudron: odesílání přes SMTP mail addon (v LAMP appce není sendmail)
+    $smtpHost = getenv('CLOUDRON_MAIL_SMTP_SERVER');
+    if ($smtpHost) {
+        return smtp_send(
+            $smtpHost,
+            (int) (getenv('CLOUDRON_MAIL_SMTP_PORT') ?: 2525),
+            (string) getenv('CLOUDRON_MAIL_SMTP_USERNAME'),
+            (string) getenv('CLOUDRON_MAIL_SMTP_PASSWORD'),
+            $cfg['mail_from'],
+            $cfg['mail_to'],
+            $encodedSubject,
+            $headers,
+            $encodedBody
+        );
+    }
+
     return mail($cfg['mail_to'], $encodedSubject, $encodedBody, implode("\r\n", $headers));
+}
+
+/** Minimální SMTP klient (AUTH PLAIN, bez TLS — interní síť Cloudronu). */
+function smtp_send(string $host, int $port, string $user, string $pass, string $from, string $to, string $subject, array $headers, string $body): bool
+{
+    $fp = @stream_socket_client("tcp://{$host}:{$port}", $errno, $errstr, 10);
+    if (!$fp) {
+        error_log("oscloud-form: SMTP spojení selhalo: {$errstr}");
+        return false;
+    }
+    stream_set_timeout($fp, 15);
+
+    $read = function () use ($fp): string {
+        $out = '';
+        while (($line = fgets($fp, 515)) !== false) {
+            $out .= $line;
+            if (strlen($line) < 4 || $line[3] === ' ') {
+                break;
+            }
+        }
+        return $out;
+    };
+    $cmd = function (string $c, string $expect) use ($fp, $read): bool {
+        fwrite($fp, $c . "\r\n");
+        $r = $read();
+        if (strpos($r, $expect) !== 0) {
+            error_log('oscloud-form: SMTP ' . (strpos($c, 'AUTH') === 0 ? 'AUTH' : $c) . ' -> ' . trim($r));
+            return false;
+        }
+        return true;
+    };
+
+    $ok = strpos($read(), '220') === 0
+        && $cmd('EHLO oscloud.cz', '250')
+        && ($user === '' || $cmd('AUTH PLAIN ' . base64_encode("\0{$user}\0{$pass}"), '235'))
+        && $cmd("MAIL FROM:<{$from}>", '250')
+        && $cmd("RCPT TO:<{$to}>", '250')
+        && $cmd('DATA', '354');
+
+    if ($ok) {
+        $msg = 'To: ' . $to . "\r\n"
+            . 'Subject: ' . $subject . "\r\n"
+            . 'Date: ' . date('r') . "\r\n"
+            . implode("\r\n", $headers) . "\r\n\r\n"
+            . $body;
+        $msg = preg_replace('/^\./m', '..', $msg); // dot-stuffing
+        fwrite($fp, $msg . "\r\n.\r\n");
+        $r = $read();
+        $ok = strpos($r, '250') === 0;
+        if (!$ok) {
+            error_log('oscloud-form: SMTP DATA -> ' . trim($r));
+        }
+    }
+    @fwrite($fp, "QUIT\r\n");
+    fclose($fp);
+    return $ok;
 }
 
 // ---------------------------------------------------------------- main

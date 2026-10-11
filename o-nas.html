@@ -127,6 +127,8 @@
     .facts > div:first-child { border-top: 0; }
     .facts dt { font-weight: 600; color: var(--dark); }
     .facts dd { margin: 0; overflow-wrap: anywhere; }
+    .facts .acct { font-weight: 600; color: var(--dark); font-variant-numeric: tabular-nums; }
+    .facts .sub { display: block; margin-top: 4px; font-size: 0.88rem; color: var(--text-light); }
     @media (max-width: 768px) {
       .page { padding: 48px 16px 64px; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -173,6 +175,13 @@
       <div><dt>Sídlo</dt><dd>Pionýrů 1332, 356 01 Sokolov</dd></div>
       <div><dt>Zápis ve spolkovém rejstříku</dt><dd>Krajský soud v Plzni, oddíl L, vložka 11449</dd></div>
       <div><dt>DPH</dt><dd>Nejsme plátci DPH, všechny ceny jsou konečné.</dd></div>
+    </dl>
+
+    <h2 id="ucty">Bankovní spojení</h2>
+    <dl class="facts">
+      <div><dt>Banka</dt><dd>MONETA Money Bank (kód 0600)</dd></div>
+      <div><dt>Transparentní účet</dt><dd><span class="acct">284833433/0600</span><span class="sub">IBAN CZ27 0600 0000 0002 8483 3433</span></dd></div>
+      <div><dt>Netransparentní účet</dt><dd><span class="acct">284833660/0600</span><span class="sub">IBAN CZ09 0600 0000 0002 8483 3660</span><span class="sub">Pro ty, kdo nechtějí být veřejně vidět, a pro firmy a spolky. Platby z něj přeposíláme na transparentní účet pod aliasem.</span></dd></div>
     </dl>
 
     <h2 id="kontakt">Kontakt</h2>

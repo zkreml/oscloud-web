@@ -16,7 +16,6 @@ mb_internal_encoding('UTF-8');
 const SERVICES = [
     'free'      => 'Zdarma: komunitní služby a Nextcloud 2 GB',
     'nextcloud' => 'Nextcloud, větší úložiště (placené)',
-    'ente'      => 'Ente Photos',
     'matrix'    => 'Matrix chat (mxchat.cz)',
     'other'     => 'Něco jiného',
 ];

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zásady ochrany osobních údajů — OSCloud</title>
+  <meta name="description" content="Jaké osobní údaje OSCloud, z. s. zpracovává, proč, jak dlouho a jaká práva mají dotčené osoby.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#2563EB">
+  <link rel="canonical" href="https://oscloud.cz/ochrana-udaju.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OSCloud">
+  <meta property="og:locale" content="cs_CZ">
+  <meta property="og:url" content="https://oscloud.cz/ochrana-udaju.html">
+  <meta property="og:title" content="Zásady ochrany osobních údajů — OSCloud">
+  <meta property="og:description" content="Jaké osobní údaje OSCloud, z. s. zpracovává, proč, jak dlouho a jaká práva mají dotčené osoby.">
+  <meta property="og:image" content="https://oscloud.cz/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/space-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/nav.css">
+  <style>
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap;
+      src: url(assets/fonts/inter-latin-ext-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap;
+      src: url(assets/fonts/inter-latin-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+    @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap;
+      src: url(assets/fonts/space-grotesk-latin-ext-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+    @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap;
+      src: url(assets/fonts/space-grotesk-latin-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+    :root {
+      --primary: #2563EB;
+      --primary-hover: #1D4ED8;
+      --accent: #3B82F6;
+      --bg: #F0F4F8;
+      --dark: #0F172A;
+      --dark-light: #1E293B;
+      --text: #334155;
+      --text-light: #526074;
+      --white: #FFFFFF;
+      --border: #E2E8F0;
+      --radius: 12px;
+      --os-display: 'Space Grotesk', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 72px; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .skip-link { position: absolute; left: 8px; top: -48px; background: var(--dark); color: #fff; padding: 8px 14px; border-radius: 8px; z-index: 200; font-weight: 600; }
+    .skip-link:focus { top: 8px; color: #fff; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.2;
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { color: var(--primary-hover); }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: #94A3B8;
+      padding: 60px 16px 30px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+    .footer-col a {
+      display: block;
+      color: #94A3B8;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid var(--dark-light);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    /* PAGE */
+    .page { padding: 64px 16px 88px; }
+    .narrow { max-width: 760px; }
+    .page h1 { font-size: clamp(2rem, 5vw, 2.6rem); color: var(--dark); margin-bottom: 20px; }
+    .page h2 { font-size: 1.4rem; color: var(--dark); margin: 48px 0 16px; }
+    .page p { margin-bottom: 16px; }
+    .page .lead { font-size: 1.15rem; color: var(--text-light); }
+    .facts { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 8px 24px; }
+    .facts > div { display: grid; grid-template-columns: 200px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--border); }
+    .facts > div:first-child { border-top: 0; }
+    .facts dt { font-weight: 600; color: var(--dark); }
+    .facts dd { margin: 0; overflow-wrap: anywhere; }
+    .facts .acct { font-weight: 600; color: var(--dark); font-variant-numeric: tabular-nums; }
+    .facts .sub { display: block; margin-top: 4px; font-size: 0.88rem; color: var(--text-light); }
+    @media (max-width: 768px) {
+      .page { padding: 48px 16px 64px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .facts { padding: 4px 18px; }
+      .facts > div { grid-template-columns: 1fr; gap: 2px; }
+    }
+    /* PRICE TABLE */
+    .price-table-wrap {
+      margin-top: 32px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow-x: auto;
+    }
+    .price-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .price-table caption {
+      text-align: left;
+      font-family: var(--os-display);
+      font-weight: 600;
+      color: var(--dark);
+      padding: 20px 24px 12px;
+    }
+    .price-table th, .price-table td { padding: 12px 24px; text-align: right; border-top: 1px solid var(--border); }
+    .price-table thead th { font-size: 0.8rem; color: var(--text-light); font-weight: 600; }
+    .price-table th:first-child, .price-table td:first-child { text-align: left; }
+    .price-table tbody th { font-weight: 600; color: var(--dark); }
+    .price-table tbody td { font-variant-numeric: tabular-nums; }
+    .price-table tbody tr:hover { background: var(--bg); }
+    .price-footnote { text-align: center; font-size: 0.85rem; color: var(--text-light); margin-top: 14px; }
+    /* BUTTONS */
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary { background: var(--primary); color: var(--white); }
+    .btn-primary:hover { background: var(--primary-hover); color: var(--white); }
+    .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: var(--white); }
+    /* SUBPAGE */
+    .page h3 { font-size: 1.1rem; color: var(--dark); margin: 28px 0 10px; }
+    .page ol, .page ul.plain { margin: 0 0 16px 22px; }
+    .page li { margin-bottom: 8px; }
+    .page code { background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 1px 7px; font-size: 0.92em; overflow-wrap: anywhere; }
+    .callout { background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 16px 20px; margin: 20px 0; }
+    .callout.warn { border-left-color: #d97706; }
+    .callout p { margin: 0; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
+    .page .price-table-wrap { margin: 16px 0 24px; }
+    .faq dt { font-weight: 600; color: var(--dark); margin-top: 18px; }
+    .faq dd { margin: 4px 0 0; }
+  
+    .page .facts { margin-bottom: 20px; }
+    .toc { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 24px 16px 44px; margin: 0 0 32px; columns: 2; column-gap: 32px; font-size: 0.92rem; }
+    .toc li { margin-bottom: 4px; break-inside: avoid; }
+    .page h3 { font-size: 1.05rem; color: var(--dark); margin: 28px 0 10px; }
+    .page ul, .page ol { margin: 0 0 16px; padding-left: 24px; }
+    .page li { margin-bottom: 8px; }
+    .doc-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); margin: 0 0 24px; }
+    .doc-table th, .doc-table td { text-align: left; vertical-align: top; padding: 10px 14px; border-top: 1px solid var(--border); }
+    .doc-table thead th { font-size: 0.8rem; color: var(--text-light); border-top: 0; }
+    .table-scroll { overflow-x: auto; }
+    mark.todo { background: #FEF3C7; color: #78350F; padding: 0 4px; border-radius: 4px; }
+    .draft-note { background: #FFFBEB; border: 1px solid #FCD34D; border-radius: var(--radius); padding: 14px 18px; margin: 0 0 28px; font-size: 0.92rem; color: #78350F; }
+    @media (max-width: 640px) { .toc { columns: 1; } }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Přeskočit na obsah</a>
+
+<header class="os-nav" data-os-nav>
+  <div class="os-nav__inner">
+    <a class="os-logo" href="/"><img src="assets/logo-horizontal.png" alt="OSCloud" width="176" height="24"></a>
+    <button class="os-toggle" type="button" aria-expanded="false" aria-controls="os-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav class="os-links" id="os-links" aria-label="Hlavní navigace">
+      <a href="/#sluzby">Služby</a>
+      <a href="/#proc">Proč OSCloud</a>
+      <a href="/#cenik">Ceník</a>
+      <a href="/#komunita">Komunita</a>
+      <a href="o-nas.html">O nás</a>
+      <a href="https://docs.oscloud.cz" target="_blank" rel="noopener">Dokumentace</a>
+      <a href="https://blog.oscloud.cz" target="_blank" rel="noopener">Blog</a>
+      <a class="os-cta" href="/#pripojit">Chci se připojit</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="page">
+  <div class="container narrow">
+    <p><a href="/">&larr; Zpět na úvodní stránku</a></p>
+    <h1>Zásady ochrany osobních údajů</h1>
+    <p class="lead">Jaké osobní údaje OSCloud zpracovává, proč, jak dlouho a jaká práva mají dotčené osoby.</p>
+    <div class="draft-note"><strong>Návrh k revizi.</strong> Žlutě označená místa je třeba potvrdit nebo doplnit. Stránka je skrytá před vyhledávači a zatím na ni nic neodkazuje. Před zveřejněním je vhodná právní kontrola.</div>
+    <h2 id="spravce">1. Správce údajů</h2>
+    <dl class="facts">
+      <div><dt>Správce</dt><dd>OSCloud, z. s., IČO 29991145, Pionýrů 1332, 356 01 Sokolov</dd></div>
+      <div><dt>Kontakt ve věci osobních údajů</dt><dd><a href="mailto:info@oscloud.cz">info@oscloud.cz</a> <mark class="todo">potvrdit adresu</mark></dd></div>
+    </dl>
+    <p>Pokud zákazník ukládá do služeb osobní údaje třetích osob (členy, zaměstnance, klienty), je jejich správcem zákazník a OSCloud je zpracovatelem. Vztah upravuje <a href="zpracovatelska-smlouva.html">zpracovatelská smlouva</a>.</p>
+
+    <h2 id="ucely">2. Účely, údaje a doba uložení</h2>
+    <div class="table-scroll">
+    <table class="doc-table">
+      <thead><tr><th>Účel</th><th>Údaje</th><th>Právní základ</th><th>Doba uložení</th></tr></thead>
+      <tbody>
+        <tr><td>Vyřízení žádosti z formuláře</td><td>jméno nebo přezdívka, e-mail, zvolená služba a tarif, zpráva, záznam o souhlasu s podmínkami; u spolků a firem název, IČO, adresa, kontaktní osoba</td><td>jednání o uzavření smlouvy (čl. 6 odst. 1 písm. b GDPR)</td><td>do vyřízení žádosti, nejdéle <mark class="todo">12 měsíců</mark> pokud nedojde k uzavření smlouvy</td></tr>
+        <tr><td>Poskytování služeb (účet, e-mail, obsah uložený uživatelem)</td><td>přihlašovací a kontaktní údaje, obsah, který uživatel do služby vloží</td><td>plnění smlouvy (čl. 6 odst. 1 písm. b)</td><td>po dobu trvání smlouvy; po jejím skončení podle článku 5 podmínek</td></tr>
+        <tr><td>Fakturace a účetnictví</td><td>fakturační údaje, údaje o platbách</td><td>zákonná povinnost (čl. 6 odst. 1 písm. c)</td><td>po dobu stanovenou právními předpisy (zpravidla několik let)</td></tr>
+        <tr><td>Podpora a komunikace</td><td>zprávy, e-maily a tikety v helpdesku</td><td>plnění smlouvy, oprávněný zájem na řádné podpoře a obhajobě nároků (čl. 6 odst. 1 písm. b, f)</td><td>po dobu smlouvy a nejdéle 3 roky po jejím skončení (promlčecí doba)</td></tr>
+        <tr><td>Bezpečnost a provoz</td><td>IP adresa, typ prohlížeče a zařízení, čas přístupu (serverové logy)</td><td>oprávněný zájem na bezpečnosti a stabilitě (čl. 6 odst. 1 písm. f)</td><td><mark class="todo">doplnit podle skutečného nastavení logů</mark></td></tr>
+        <tr><td>Statistika návštěvnosti webu</td><td>anonymní počty návštěv bez cookies a bez osobních identifikátorů</td><td>oprávněný zájem na zlepšování webu (čl. 6 odst. 1 písm. f)</td><td><mark class="todo">platí po nasazení Umami, doplnit dobu</mark></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>Údaje se nepoužívají k automatizovanému rozhodování, profilování ani k reklamě. Telefonní číslo se nesbírá.</p>
+
+    <h2 id="prijemci">3. Příjemci údajů</h2>
+    <ul>
+      <li><strong>Hetzner Online GmbH</strong> (Německo): hosting serverů a záloh, zpracovatel.</li>
+      <li><strong>Stripe</strong>: zpracování plateb kartou u Ente Photos. Poskytovatel čísla karet nevidí ani neukládá. <mark class="todo">ověřit přenosy mimo EU a doplnit odkaz na podmínky Stripe</mark></li>
+      <li><strong>Banka</strong>: platby převodem, účetní evidence <mark class="todo">doplnit, pokud je využita externí účetní</mark>.</li>
+      <li>Orgány veřejné moci, pokud to ukládá zákon.</li>
+    </ul>
+    <p>Poskytovatel provozuje helpdesk, e-mail a další nástroje na vlastním serveru. Údaje se nepředávají dalším společnostem pro marketing.</p>
+
+    <h2 id="mimo-eu">4. Předávání mimo EU</h2>
+    <p>Servery se nacházejí v Německu. Osobní údaje se do třetích zemí nepředávají, s výhradou zpracování plateb zprostředkovatelem uvedeným v článku 3.</p>
+
+    <h2 id="fediverse">5. Fediverse a chat</h2>
+    <p>Veřejné příspěvky a zprávy ve federovaných službách (Mastodon, PeerTube, Pixelfed, Matrix) se přenášejí na servery jiných provozovatelů. Po smazání na serveru OSCloud nemusí být smazány u třetích stran, které OSCloud neovládá.</p>
+
+    <h2 id="zabezpeceni">6. Zabezpečení</h2>
+    <p>Přenos dat je chráněn HTTPS, přístup k serverům mají jen oprávněné osoby a zálohy jsou ukládány na samostatné úložiště. Fotografie v Ente Photos jsou šifrovány end-to-end, poskytovatel k nim nemá přístup.</p>
+
+    <h2 id="cookies">7. Cookies</h2>
+    <p>Web oscloud.cz nepoužívá cookies ani nástroje třetích stran, proto nevyžaduje souhlas s cookies. Případné cookies přihlašovacích relací v jednotlivých službách slouží výhradně k jejich provozu.</p>
+
+    <h2 id="prava">8. Práva dotčených osob</h2>
+    <p>Dotčená osoba má právo na přístup k údajům, na opravu, výmaz, omezení zpracování, přenositelnost údajů a právo vznést námitku proti zpracování založenému na oprávněném zájmu. Souhlas, byl-li udělen, lze kdykoli odvolat. Žádosti se podávají e-mailem na <a href="mailto:info@oscloud.cz">info@oscloud.cz</a> a vyřizují se do jednoho měsíce.</p>
+    <p>Dotčená osoba má také právo podat stížnost u dozorového úřadu: Úřad pro ochranu osobních údajů, Pplk. Sochora 27, 170 00 Praha 7, <a href="https://www.uoou.gov.cz" target="_blank" rel="noopener">www.uoou.gov.cz</a>.</p>
+
+    <h2 id="ente">9. Ente Photos</h2>
+    <p>Fotografie a soubory v Ente Photos jsou šifrovány v zařízení uživatele ještě před nahráním. Poskytovatel vidí pouze množství využitého úložiště a šifrovaná metadata nezbytná pro provoz a nemůže tedy zajistit přístup k obsahu ani jeho přenos. Data si uživatel stahuje sám v aplikaci pomocí hesla a obnovovacího klíče. Poskytovatel může na žádost smazat účet a všechna zašifrovaná data. Servery jsou v Německu (Hetzner, Falkenstein).</p>
+
+    <h2 id="zmeny">10. Změny zásad</h2>
+    <p>Zásady se mohou měnit. Aktuální znění je vždy na této stránce, podstatné změny se oznamují na webu. Účinnost od: <mark class="todo">doplnit datum</mark>.</p>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Služby</h4>
+        <a href="nextcloud.html">Nextcloud</a>
+        <a href="https://cryptpad.arch-linux.cz/">CryptPad</a>
+        <a href="https://docs.oscloud.cz/apps/vaultwarden/">Vaultwarden</a>
+        <a href="https://docs.oscloud.cz/apps/searxng/">SearXNG</a>
+        <a href="https://oscloud.photos">Ente Photos</a>
+        <a href="https://docs.oscloud.cz/apps/freshrss/">FreshRSS</a>
+      </div>
+      <div class="footer-col">
+        <h4>Fediverse</h4>
+        <a href="https://mamutovo.cz/@oscloud">Mastodon</a>
+        <a href="https://vhsky.cz">PeerTube</a>
+        <a href="https://pixelfed.cz">Pixelfed</a>
+      </div>
+      <div class="footer-col">
+        <h4>Komunita</h4>
+        <a href="https://chat.mxchat.cz/">Matrix chat</a>
+        <a href="https://blog.oscloud.cz">Blog</a>
+        <a href="https://docs.oscloud.cz">Dokumentace</a>
+      </div>
+      <div class="footer-col">
+        <h4>Projekt</h4>
+        <a href="https://git.oscloud.cz/OSCloud">Git</a>
+        <a href="o-nas.html">O nás a kontakt</a>
+        <a href="https://helpdesk.oscloud.cz">Helpdesk</a>
+        <a href="mailto:info@oscloud.cz">info@oscloud.cz</a>
+        <a href="https://docs.oscloud.cz/privacy_policy/">Ochrana osobních údajů</a>
+        <a href="https://docs.oscloud.cz/podm%C3%ADnky%20Oscloud%20CZ/">Podmínky</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2024–2026 OSCloud, z. s. · IČO 29991145 · DIČ CZ29991145 · Pionýrů 1332, 356 01 Sokolov<br>
+      Spolek zapsaný u Krajského soudu v Plzni, oddíl L, vložka 11449<br>
+      Komunita pro digitální svobodu · Provozováno na open source
+    </div>
+  </div>
+</footer>
+
+<script src="assets/nav.js" defer></script>
+
+</body>
+</html>

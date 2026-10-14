@@ -513,6 +513,16 @@
       accent-color: var(--primary);
     }
     .join-form .btn { width: 100%; text-align: center; }
+    .join-tabs { display: flex; gap: 8px; max-width: 520px; margin: 0 auto 16px; }
+    .join-tabs button { flex: 1; padding: 11px 12px; border: 1px solid var(--border); background: var(--white); color: var(--dark); border-radius: 10px; font: 600 0.9rem 'Inter', sans-serif; cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+    .join-tabs button:hover { border-color: var(--primary); }
+    .join-tabs button[aria-selected="true"] { background: var(--primary); border-color: var(--primary); color: var(--white); }
+    .join-form[hidden], .cond[hidden] { display: none; }
+    .form-group select { width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.9rem; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
+    .form-group select:focus { outline: none; border-color: var(--primary); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-hint { font-size: 0.82rem; color: var(--text-light); margin: 0 0 20px; background: var(--bg); border-radius: 8px; padding: 10px 14px; }
+    @media (max-width: 520px) { .form-row { grid-template-columns: 1fr; gap: 0; } }
     .consent label { display: flex; align-items: flex-start; gap: 8px; font-size: 0.85rem; font-weight: 400; color: var(--text); cursor: pointer; }
     .consent input[type="checkbox"] { width: 16px; height: 16px; margin-top: 3px; flex-shrink: 0; accent-color: var(--primary); }
 
@@ -569,6 +579,11 @@
     .price-table tbody th { font-weight: 600; color: var(--dark); }
     .price-table tbody td { font-variant-numeric: tabular-nums; }
     .price-table tbody tr:hover { background: var(--bg); }
+    .order-link { position: relative; display: inline-block; color: var(--primary); font-weight: 600; text-decoration: none; padding: 2px 6px; margin: -2px -6px; border-radius: 6px; border-bottom: 1px dotted var(--primary); border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+    .order-link .o-cta { position: absolute; top: 0; bottom: 0; right: 0; min-width: 100%; width: max-content; display: flex; align-items: center; justify-content: center; padding: 0 10px; background: var(--primary); color: var(--white); border-radius: 6px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.15s; }
+    .order-link:hover, .order-link:focus-visible { color: var(--primary); }
+    .order-link:hover .o-cta, .order-link:focus-visible .o-cta { opacity: 1; }
+    .table-hint { font-size: 0.82rem; color: var(--text-light); margin: 8px 0 0; text-align: center; }
     .price-footnote { text-align: center; font-size: 0.85rem; color: var(--text-light); margin-top: 14px; }
     /* PODPORA */
     .support-box { margin-top: 48px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; }
@@ -703,6 +718,7 @@
         <div class="card-apps">
           <span><a href="https://cryptpad.arch-linux.cz/" target="_blank" rel="noopener">CryptPad</a></span>
           <span><a href="https://docs.oscloud.cz/apps/hedgedoc/" target="_blank" rel="noopener">HedgeDoc</a></span>
+          <span><a href="https://docs.oscloud.cz/apps/triliumnext/" target="_blank" rel="noopener">Trilium</a></span>
           <span>BookStack</span>
         </div>
       </div>
@@ -852,14 +868,15 @@
           <tr><th scope="col">Úložiště</th><th scope="col">Jednotlivec</th><th scope="col">Spolek</th><th scope="col">Firma</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">50 GB</th><td>49 Kč</td><td>148 Kč</td><td>348 Kč</td></tr>
-          <tr><th scope="row">100 GB</th><td>69 Kč</td><td>168 Kč</td><td>368 Kč</td></tr>
-          <tr><th scope="row">200 GB</th><td>99 Kč</td><td>198 Kč</td><td>398 Kč</td></tr>
-          <tr><th scope="row">500 GB</th><td>169 Kč</td><td>268 Kč</td><td>468 Kč</td></tr>
-          <tr><th scope="row">1 TB</th><td>239 Kč</td><td>338 Kč</td><td>538 Kč</td></tr>
+          <tr><th scope="row">50 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=50#pripojit" aria-label="Objednat Nextcloud 50 GB, jednotlivec, cena 49 Kč"><span class="o-price">49 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=50#pripojit" aria-label="Objednat Nextcloud 50 GB, tarif spolek, cena 148 Kč"><span class="o-price">148 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=50#pripojit" aria-label="Objednat Nextcloud 50 GB, tarif firma, cena 348 Kč"><span class="o-price">348 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
+          <tr><th scope="row">100 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=100#pripojit" aria-label="Objednat Nextcloud 100 GB, jednotlivec, cena 69 Kč"><span class="o-price">69 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=100#pripojit" aria-label="Objednat Nextcloud 100 GB, tarif spolek, cena 168 Kč"><span class="o-price">168 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=100#pripojit" aria-label="Objednat Nextcloud 100 GB, tarif firma, cena 368 Kč"><span class="o-price">368 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
+          <tr><th scope="row">200 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=200#pripojit" aria-label="Objednat Nextcloud 200 GB, jednotlivec, cena 99 Kč"><span class="o-price">99 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=200#pripojit" aria-label="Objednat Nextcloud 200 GB, tarif spolek, cena 198 Kč"><span class="o-price">198 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=200#pripojit" aria-label="Objednat Nextcloud 200 GB, tarif firma, cena 398 Kč"><span class="o-price">398 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
+          <tr><th scope="row">500 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=500#pripojit" aria-label="Objednat Nextcloud 500 GB, jednotlivec, cena 169 Kč"><span class="o-price">169 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=500#pripojit" aria-label="Objednat Nextcloud 500 GB, tarif spolek, cena 268 Kč"><span class="o-price">268 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=500#pripojit" aria-label="Objednat Nextcloud 500 GB, tarif firma, cena 468 Kč"><span class="o-price">468 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
+          <tr><th scope="row">1 TB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=1000#pripojit" aria-label="Objednat Nextcloud 1 TB, jednotlivec, cena 239 Kč"><span class="o-price">239 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=1000#pripojit" aria-label="Objednat Nextcloud 1 TB, tarif spolek, cena 338 Kč"><span class="o-price">338 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=1000#pripojit" aria-label="Objednat Nextcloud 1 TB, tarif firma, cena 538 Kč"><span class="o-price">538 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
         </tbody>
       </table>
     </div>
+    <p class="table-hint">Kliknutím na cenu se předvyplní formulář žádosti.</p>
     <p class="price-footnote">OSCloud, z. s. není plátce DPH, všechny ceny jsou konečné. Čísla účtů najdeš na stránce <a href="o-nas.html#ucty">O nás</a>. Podrobně o <a href="nextcloud.html">Nextcloudu</a>.<br>Větší úložiště než 1 TB je možné po domluvě jako externí úložiště. Počet uživatelů v tarifu spolek a firma je orientační. Při větším týmu se ozvi na <a href="mailto:info@oscloud.cz">info@oscloud.cz</a> a domluvíme se.</p>
 
     <div class="ente-pricing" id="ente">
@@ -925,7 +942,7 @@
       </div>
     </div>
 
-    <p style="text-align:center; color: var(--text-light); font-size: 0.88rem; margin-top: 32px;">Připravujeme i další služby, třeba Trilium Notes. <a href="#pripojit">Ozvi se nám</a>, pokud máš zájem.</p>
+    <p style="text-align:center; color: var(--text-light); font-size: 0.88rem; margin-top: 32px;">Další služby se připravují. Nápady a zájem jsou vítané přes <a href="#pripojit">formulář</a>.</p>
 
   </div>
 </section>
@@ -934,30 +951,41 @@
 <section class="join" id="pripojit">
   <div class="container">
     <h2>Chci se připojit</h2>
-    <p>Napiš nám a my ti pošleme pozvánku. Žádné formuláře na 20 polí, žádné ověřování telefonem.</p>
-    <form class="join-form" id="joinForm" method="post" action="/submit.php" data-endpoint="/submit.php">
+    <p>Krátký formulář, odpověď přijde e-mailem. Žádných 20 polí, žádné ověřování telefonem.</p>
+    <div class="join-tabs" role="tablist" aria-label="Typ žádosti">
+      <button type="button" role="tab" id="tab-form-jednotlivec" aria-controls="form-jednotlivec" aria-selected="true" data-form="form-jednotlivec">Jednotlivec</button>
+      <button type="button" role="tab" id="tab-form-org" aria-controls="form-org" aria-selected="false" data-form="form-org">Spolek nebo firma</button>
+    </div>
+    <form class="join-form" id="form-jednotlivec" role="tabpanel" aria-labelledby="tab-form-jednotlivec" method="post" action="/submit.php">
+      <input type="hidden" name="type" value="individual">
       <div class="form-group">
-        <label for="name">Jméno nebo přezdívka</label>
-        <input type="text" id="name" name="name" placeholder="Jak ti máme říkat?" maxlength="80" autocomplete="nickname" required>
+        <label for="i-name">Jméno nebo přezdívka</label>
+        <input type="text" id="i-name" name="name" placeholder="Jméno, kterým se bude oslovovat" maxlength="80" autocomplete="nickname" required>
       </div>
       <div class="form-group">
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" placeholder="Na kam ti pošleme pozvánku" maxlength="120" autocomplete="email" required>
+        <label for="i-email">E-mail</label>
+        <input type="email" id="i-email" name="email" placeholder="Sem přijde odpověď" maxlength="120" autocomplete="email" required>
       </div>
-      <fieldset class="form-group" style="border:0;padding:0;min-width:0">
-        <legend style="display:block;font-size:0.85rem;font-weight:600;color:var(--dark);margin-bottom:6px">Co tě zajímá?</legend>
-        <div class="checkboxes">
-          <label><input type="checkbox" name="interests[]" value="cloud"> Cloud a soubory</label>
-          <label><input type="checkbox" name="interests[]" value="chat"> Komunikace</label>
-          <label><input type="checkbox" name="interests[]" value="fediverse"> Fediverse</label>
-          <label><input type="checkbox" name="interests[]" value="hesla"> Správa hesel</label>
-          <label><input type="checkbox" name="interests[]" value="spoluprace"> Spolupráce</label>
-          <label><input type="checkbox" name="interests[]" value="rss"> Čtení a RSS</label>
+      <div class="form-group">
+        <label for="i-service">Služba</label>
+        <select id="i-service" name="service" required><option value="" selected disabled>– vybrat –</option><option value="free">Zdarma: komunitní služby a Nextcloud 2 GB</option><option value="nextcloud">Nextcloud, větší úložiště (placené)</option><option value="ente">Ente Photos</option><option value="matrix">Matrix chat (mxchat.cz)</option><option value="other">Něco jiného</option></select>
+      </div>
+      <div class="cond" data-show-if="service=nextcloud" hidden>
+        <div class="form-row">
+      <div class="form-group">
+        <label for="i-storage">Úložiště</label>
+        <select id="i-storage" name="storage" required><option value="" selected disabled>– vybrat –</option><option value="50">50 GB · od 49 Kč</option><option value="100">100 GB</option><option value="200">200 GB</option><option value="500">500 GB</option><option value="1000">1 TB</option></select>
+      </div>
+      <div class="form-group">
+        <label for="i-period">Platba</label>
+        <select id="i-period" name="period" required><option value="" selected disabled>– vybrat –</option><option value="monthly">Měsíčně</option><option value="yearly">Ročně</option></select>
+      </div>
         </div>
-      </fieldset>
+      </div>
+      <p class="form-hint cond" data-show-if="service=ente" hidden>Ente Photos má otevřenou registraci na <a href="https://oscloud.photos" target="_blank" rel="noopener">oscloud.photos</a>. Formulář je potřeba jen v případě problémů, popis je na stránce <a href="ente.html">Ente Photos</a>.</p>
       <div class="form-group">
-        <label for="message">Chceš něco dodat?</label>
-        <textarea id="message" name="message" placeholder="Něco o sobě, co hledáš, nebo prostě ahoj..." maxlength="2000"></textarea>
+        <label for="i-message">Poznámka (nepovinné)</label>
+        <textarea id="i-message" name="message" placeholder="Cokoli, co je dobré vědět předem" maxlength="2000"></textarea>
       </div>
       <div class="hp" aria-hidden="true">
         <label>Web (nevyplňovat)<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
@@ -966,10 +994,70 @@
       <div class="form-group consent">
         <label><input type="checkbox" name="consent" value="1" required> <span>Přečetl/a jsem si <a href="https://docs.oscloud.cz/podm%C3%ADnky%20Oscloud%20CZ/" target="_blank" rel="noopener">podmínky používání</a> a <a href="https://docs.oscloud.cz/privacy_policy/" target="_blank" rel="noopener">zásady ochrany osobních údajů</a> a beru je na vědomí.</span></label>
       </div>
-      <p class="form-note">Údaje použijeme jen k odpovědi na tvou žádost.</p>
+      <p class="form-note">Údaje se použijí jen k vyřízení žádosti.</p>
       <button type="submit" class="btn btn-primary">Odeslat žádost</button>
       <div class="form-status" role="status" aria-live="polite"></div>
-      <noscript><p class="form-note" style="margin-top:14px">Formulář potřebuje JavaScript. Napiš nám na <a href="mailto:info@oscloud.cz">info@oscloud.cz</a>.</p></noscript>
+      <noscript><p class="form-note" style="margin-top:14px">Formulář potřebuje JavaScript. Kontakt: <a href="mailto:info@oscloud.cz">info@oscloud.cz</a>.</p></noscript>
+    </form>
+    <form class="join-form" id="form-org" role="tabpanel" aria-labelledby="tab-form-org" method="post" action="/submit.php" hidden>
+      <input type="hidden" name="type" value="org">
+      <div class="form-group">
+        <label for="o-org">Název spolku nebo firmy</label>
+        <input type="text" id="o-org" name="org_name" maxlength="120" autocomplete="organization" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="o-ico">IČO</label>
+          <input type="text" id="o-ico" name="ico" inputmode="numeric" pattern="[0-9 ]{8,10}" maxlength="10" required>
+        </div>
+        <div class="form-group">
+          <label for="o-users">Počet uživatelů (orientačně)</label>
+          <input type="number" id="o-users" name="users" min="1" max="999" placeholder="např. 5">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="o-address">Fakturační adresa</label>
+        <input type="text" id="o-address" name="address" maxlength="200" autocomplete="street-address" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="o-name">Kontaktní osoba</label>
+          <input type="text" id="o-name" name="name" maxlength="80" autocomplete="name" required>
+        </div>
+        <div class="form-group">
+          <label for="o-email">E-mail pro kontakt a faktury</label>
+          <input type="email" id="o-email" name="email" maxlength="120" autocomplete="email" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="o-plan">Tarif</label>
+        <select id="o-plan" name="plan" required><option value="" selected disabled>– vybrat –</option><option value="spolek">Spolek (+99 Kč měsíčně)</option><option value="firma">Firma (+299 Kč měsíčně)</option></select>
+      </div>
+      <div class="form-row">
+      <div class="form-group">
+        <label for="o-storage">Úložiště</label>
+        <select id="o-storage" name="storage" required><option value="" selected disabled>– vybrat –</option><option value="50">50 GB · od 49 Kč</option><option value="100">100 GB</option><option value="200">200 GB</option><option value="500">500 GB</option><option value="1000">1 TB</option></select>
+      </div>
+      <div class="form-group">
+        <label for="o-period">Platba</label>
+        <select id="o-period" name="period" required><option value="" selected disabled>– vybrat –</option><option value="monthly">Měsíčně</option><option value="yearly">Ročně</option></select>
+      </div>
+      </div>
+      <div class="form-group">
+        <label for="o-message">Poznámka (nepovinné)</label>
+        <textarea id="o-message" name="message" placeholder="Cokoli, co je dobré vědět předem" maxlength="2000"></textarea>
+      </div>
+      <div class="hp" aria-hidden="true">
+        <label>Web (nevyplňovat)<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+      <input type="hidden" name="token" value="">
+      <div class="form-group consent">
+        <label><input type="checkbox" name="consent" value="1" required> <span>Přečetl/a jsem si <a href="https://docs.oscloud.cz/podm%C3%ADnky%20Oscloud%20CZ/" target="_blank" rel="noopener">podmínky používání</a> a <a href="https://docs.oscloud.cz/privacy_policy/" target="_blank" rel="noopener">zásady ochrany osobních údajů</a> a beru je na vědomí.</span></label>
+      </div>
+      <p class="form-note">Údaje se použijí jen k vyřízení žádosti.</p>
+      <button type="submit" class="btn btn-primary">Odeslat žádost</button>
+      <div class="form-status" role="status" aria-live="polite"></div>
+      <noscript><p class="form-note" style="margin-top:14px">Formulář potřebuje JavaScript. Kontakt: <a href="mailto:info@oscloud.cz">info@oscloud.cz</a>.</p></noscript>
     </form>
   </div>
 </section>
@@ -1023,47 +1111,104 @@
 <script src="assets/nav.js" defer></script>
 <script>
 (function () {
-  var form = document.getElementById('joinForm');
-  if (!form) return;
-  var endpoint = form.dataset.endpoint;
-  var status = form.querySelector('.form-status');
-  var btn = form.querySelector('button[type=submit]');
-  var token = form.elements.token;
+  var forms = document.querySelectorAll('form.join-form');
+  var tabs = document.querySelectorAll('.join-tabs [role=tab]');
+  if (!forms.length) return;
+  var endpoint = '/submit.php';
+  var GB = ['50', '100', '200', '500', '1000'];
 
-  function say(msg, ok) {
-    status.textContent = msg;
-    status.className = 'form-status ' + (ok ? 'is-ok' : 'is-err');
+  function say(form, msg, ok) {
+    var el = form.querySelector('.form-status');
+    el.textContent = msg;
+    el.className = 'form-status ' + (ok ? 'is-ok' : 'is-err');
   }
-  function loadToken() {
+  function loadToken(form) {
     return fetch(endpoint + '?token=1', { credentials: 'omit', cache: 'no-store' })
       .then(function (r) { return r.json(); })
-      .then(function (j) { token.value = j.token || ''; });
+      .then(function (j) { form.elements.token.value = j.token || ''; });
   }
-  loadToken().catch(function () {});
+  function updateCond(form) {
+    form.querySelectorAll('[data-show-if]').forEach(function (el) {
+      var spec = el.getAttribute('data-show-if').split('=');
+      var f = form.elements[spec[0]];
+      var on = !!f && f.value === spec[1];
+      el.hidden = !on;
+      el.querySelectorAll('input,select,textarea').forEach(function (i) { i.disabled = !on; });
+    });
+  }
+  function showTab(id) {
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.dataset.form === id ? 'true' : 'false'); });
+    forms.forEach(function (f) {
+      f.hidden = f.id !== id;
+      if (f.id === id && !f.elements.token.value) loadToken(f).catch(function () {});
+    });
+  }
+  function applySelection(typ, gb) {
+    if (GB.indexOf(gb) < 0) gb = '';
+    var f;
+    if (typ === 'jednotlivec') {
+      f = document.getElementById('form-jednotlivec');
+      showTab(f.id);
+      f.elements.service.value = 'nextcloud';
+    } else if (typ === 'spolek' || typ === 'firma') {
+      f = document.getElementById('form-org');
+      showTab(f.id);
+      f.elements.plan.value = typ;
+    } else {
+      return false;
+    }
+    if (gb) f.elements.storage.value = gb;
+    updateCond(f);
+    return true;
+  }
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    btn.disabled = true;
-    say('Odesílám…', true);
-    var send = function () {
-      return fetch(endpoint, { method: 'POST', body: new FormData(form), credentials: 'omit' })
-        .then(function (r) { return r.json(); });
-    };
-    (token.value ? Promise.resolve() : loadToken()).then(send).then(function (res) {
-      if (res && res.ok) {
-        form.reset();
-        say(res.message || 'Díky! Ozveme se ti na zadaný e-mail.', true);
-        setTimeout(function () { btn.disabled = false; }, 8000);
-      } else {
-        say((res && res.error) || 'Něco se nepovedlo. Zkus to prosím znovu.', false);
+  forms.forEach(function (form) {
+    updateCond(form);
+    form.addEventListener('change', function () { updateCond(form); });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type=submit]');
+      btn.disabled = true;
+      say(form, 'Odesílám…', true);
+      var send = function () {
+        return fetch(endpoint, { method: 'POST', body: new FormData(form), credentials: 'omit' })
+          .then(function (r) { return r.json(); });
+      };
+      (form.elements.token.value ? Promise.resolve() : loadToken(form)).then(send).then(function (res) {
+        if (res && res.ok) {
+          form.reset();
+          updateCond(form);
+          say(form, res.message || 'Díky! Ozveme se na zadaný e-mail.', true);
+          setTimeout(function () { btn.disabled = false; }, 8000);
+        } else {
+          say(form, (res && res.error) || 'Něco se nepovedlo. Odeslání je potřeba zopakovat.', false);
+          btn.disabled = false;
+        }
+        loadToken(form).catch(function () {});
+      }).catch(function () {
+        say(form, 'Spojení se nepovedlo. Kontakt: info@oscloud.cz.', false);
         btn.disabled = false;
-      }
-      loadToken().catch(function () {});
-    }).catch(function () {
-      say('Spojení se nepovedlo. Napiš nám prosím na info@oscloud.cz.', false);
-      btn.disabled = false;
+      });
     });
   });
+
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () { showTab(t.dataset.form); });
+  });
+  showTab('form-jednotlivec');
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a.order-link');
+    if (!a) return;
+    var u = new URL(a.href, location.href);
+    if (!applySelection(u.searchParams.get('typ'), u.searchParams.get('gb'))) return;
+    e.preventDefault();
+    history.replaceState(null, '', '#pripojit');
+    document.getElementById('pripojit').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  var q = new URLSearchParams(location.search);
+  if (q.get('typ')) applySelection(q.get('typ'), q.get('gb'));
 })();
 </script>
 

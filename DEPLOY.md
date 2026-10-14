@@ -53,7 +53,7 @@ Test z libovolného stroje:
 ```bash
 O='Origin: https://oscloud.cz'; U=https://oscloud.cz/submit.php
 TOK=$(curl -s -H "$O" "$U?token=1" | jq -r .token); sleep 4
-curl -s -H "$O" -d name=Test -d email=ty@example.cz -d 'interests[]=cloud' -d message=ahoj -d token="$TOK" "$U"
+curl -s -H "$O" -d name=Test -d email=ty@example.cz -d type=individual -d service=free -d consent=1 -d message=ahoj -d token="$TOK" "$U"
 # → {"ok":true,...}   a ticket ve FreeScoutu (schránka fediverse@oscloud.cz)
 ```
 

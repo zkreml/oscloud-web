@@ -13,14 +13,16 @@ declare(strict_types=1);
 ini_set('display_errors', '0');
 mb_internal_encoding('UTF-8');
 
-const INTERESTS = [
-    'cloud'      => 'Cloud a soubory',
-    'chat'       => 'Komunikace',
-    'fediverse'  => 'Fediverse',
-    'hesla'      => 'Správa hesel',
-    'spoluprace' => 'Spolupráce',
-    'rss'        => 'Čtení a RSS',
+const SERVICES = [
+    'free'      => 'Zdarma: komunitní služby a Nextcloud 2 GB',
+    'nextcloud' => 'Nextcloud, větší úložiště (placené)',
+    'ente'      => 'Ente Photos',
+    'matrix'    => 'Matrix chat (mxchat.cz)',
+    'other'     => 'Něco jiného',
 ];
+const STORAGE = ['50' => '50 GB', '100' => '100 GB', '200' => '200 GB', '500' => '500 GB', '1000' => '1 TB'];
+const PLANS = ['spolek' => 'Spolek', 'firma' => 'Firma'];
+const PERIODS = ['monthly' => 'měsíčně', 'yearly' => 'ročně'];
 
 // ---------------------------------------------------------------- config
 
@@ -212,25 +214,37 @@ function header_phrase(string $name): string
     return mb_encode_mimeheader($name, 'UTF-8', 'B', "\r\n");
 }
 
+/** Kontrola IČO (8 číslic + kontrolní číslice, modulo 11). */
+function valid_ico(string $ico): bool
+{
+    if (!preg_match('/^\d{8}$/', $ico)) {
+        return false;
+    }
+    $sum = 0;
+    for ($i = 0; $i < 7; $i++) {
+        $sum += (int) $ico[$i] * (8 - $i);
+    }
+    $r = $sum % 11;
+    $c = $r === 0 ? 1 : ($r === 1 ? 0 : 11 - $r);
+    return $c === (int) $ico[7];
+}
+
 // ---------------------------------------------------------------- mail
 
-function send_mail(array $cfg, string $name, string $email, array $interests, string $message, string $origin): bool
+function send_mail(array $cfg, string $subject, string $replyName, string $email, array $fields, string $message, string $origin): bool
 {
-    $subject = 'Žádost o připojení — ' . $name;
-    $labels = array_map(fn ($k) => INTERESTS[$k], $interests);
-
     $body  = "Nová žádost z webu oscloud.cz\n";
     $body .= "================================\n\n";
-    $body .= "Jméno / přezdívka: {$name}\n";
-    $body .= "E-mail: {$email}\n";
-    $body .= 'Zájmy: ' . ($labels ? implode(', ', $labels) : '(nevybráno)') . "\n";
+    foreach ($fields as $label => $value) {
+        $body .= "{$label}: {$value}\n";
+    }
     $body .= 'Odesláno: ' . date('Y-m-d H:i:s T') . "\n";
     $body .= 'Z webu: ' . ($origin !== '' ? $origin : '-') . "\n";
     $body .= "Souhlas s podmínkami a zásadami OÚ: ano\n\n";
     $body .= "Zpráva:\n";
     $body .= ($message !== '' ? $message : '(bez zprávy)') . "\n";
 
-    $replyName = header_phrase($name);
+    $replyName = header_phrase($replyName);
     $replyTo = ($replyName !== '' ? $replyName . ' ' : '') . '<' . $email . '>';
     $fromName = mb_encode_mimeheader('OSCloud web', 'UTF-8', 'B', "\r\n");
 
@@ -392,23 +406,87 @@ if (!rate_limit($dir, 'attempt:' . $ip . $cfg['secret'], $cfg['limit_attempts'])
 }
 
 // 5) validace
+$type = (($_POST['type'] ?? 'individual') === 'org') ? 'org' : 'individual';
 $name = clean_line((string) ($_POST['name'] ?? ''));
 $email = clean_line((string) ($_POST['email'] ?? ''));
 $message = clean_text((string) ($_POST['message'] ?? ''));
-$rawInterests = $_POST['interests'] ?? [];
-$rawInterests = is_array($rawInterests) ? $rawInterests : [];
-$interests = array_values(array_unique(array_filter(
-    array_map('strval', $rawInterests),
-    fn ($v) => array_key_exists($v, INTERESTS)
-)));
+$post = fn (string $k): string => (string) ($_POST[$k] ?? '');
 
 if ($name === '' || mb_strlen($name) > 80) {
-    fail(422, 'Vyplň prosím jméno nebo přezdívku (max. 80 znaků).');
+    fail(422, $type === 'org'
+        ? 'Vyplň prosím kontaktní osobu (max. 80 znaků).'
+        : 'Vyplň prosím jméno nebo přezdívku (max. 80 znaků).');
 }
 if ($email === '' || mb_strlen($email) > 120 || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     fail(422, 'Zkontroluj prosím e-mailovou adresu.');
 }
-if (($_POST['consent'] ?? '') !== '1') {
+
+$fields = [];
+if ($type === 'individual') {
+    $service = $post('service');
+    if (!array_key_exists($service, SERVICES)) {
+        fail(422, 'Vyber prosím službu.');
+    }
+    $fields['Typ žádosti'] = 'Jednotlivec';
+    $fields['Jméno / přezdívka'] = $name;
+    $fields['E-mail'] = $email;
+    $fields['Služba'] = SERVICES[$service];
+    if ($service === 'nextcloud') {
+        $storage = $post('storage');
+        $period = $post('period');
+        if (!array_key_exists($storage, STORAGE)) {
+            fail(422, 'Vyber prosím velikost úložiště.');
+        }
+        if (!array_key_exists($period, PERIODS)) {
+            fail(422, 'Vyber prosím měsíční nebo roční platbu.');
+        }
+        $fields['Úložiště'] = STORAGE[$storage];
+        $fields['Platba'] = PERIODS[$period];
+    }
+    $subject = 'Žádost (jednotlivec) — ' . $name;
+} else {
+    $orgName = clean_line($post('org_name'));
+    $ico = preg_replace('/\s+/', '', clean_line($post('ico'))) ?? '';
+    $address = clean_line($post('address'));
+    $users = clean_line($post('users'));
+    $plan = $post('plan');
+    $storage = $post('storage');
+    $period = $post('period');
+    if ($orgName === '' || mb_strlen($orgName) > 120) {
+        fail(422, 'Vyplň prosím název spolku nebo firmy (max. 120 znaků).');
+    }
+    if (!valid_ico($ico)) {
+        fail(422, 'Zkontroluj prosím IČO (8 číslic).');
+    }
+    if ($address === '' || mb_strlen($address) > 200) {
+        fail(422, 'Vyplň prosím fakturační adresu (max. 200 znaků).');
+    }
+    if ($users !== '' && !preg_match('/^\d{1,3}$/', $users)) {
+        fail(422, 'Počet uživatelů má být číslo.');
+    }
+    if (!array_key_exists($plan, PLANS)) {
+        fail(422, 'Vyber prosím tarif.');
+    }
+    if (!array_key_exists($storage, STORAGE)) {
+        fail(422, 'Vyber prosím velikost úložiště.');
+    }
+    if (!array_key_exists($period, PERIODS)) {
+        fail(422, 'Vyber prosím měsíční nebo roční platbu.');
+    }
+    $fields['Typ žádosti'] = 'Spolek nebo firma';
+    $fields['Název'] = $orgName;
+    $fields['IČO'] = $ico;
+    $fields['Fakturační adresa'] = $address;
+    $fields['Kontaktní osoba'] = $name;
+    $fields['E-mail'] = $email;
+    $fields['Tarif'] = PLANS[$plan];
+    $fields['Úložiště'] = STORAGE[$storage];
+    $fields['Platba'] = PERIODS[$period];
+    $fields['Počet uživatelů'] = $users !== '' ? $users : '(neuvedeno)';
+    $subject = 'Žádost (spolek/firma) — ' . $orgName;
+}
+
+if ($post('consent') !== '1') {
     fail(422, 'Potvrď prosím, že sis přečetl/a podmínky a zásady ochrany osobních údajů.');
 }
 if (mb_strlen($message) > 2000) {
@@ -433,7 +511,7 @@ if (!rate_limit($dir, $emailKey, $cfg['limit_email'], false)) {
 }
 
 // 7) odeslání
-if (!send_mail($cfg, $name, $email, $interests, $message, $origin)) {
+if (!send_mail($cfg, $subject, $name, $email, $fields, $message, $origin)) {
     error_log('oscloud-form: odeslání e-mailu selhalo');
     fail(500, 'Žádost se nepodařilo odeslat. Napiš nám prosím na info@oscloud.cz.');
 }

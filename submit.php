@@ -254,7 +254,6 @@ function send_mail(array $cfg, string $subject, string $replyName, string $email
         'Content-Type: text/plain; charset=UTF-8',
         'Content-Transfer-Encoding: base64',
         'X-OSCloud-Form: join',
-        'Auto-Submitted: auto-generated',
     ];
     $encodedSubject = mb_encode_mimeheader($subject, 'UTF-8', 'B', "\r\n");
     $encodedBody = chunk_split(base64_encode($body));

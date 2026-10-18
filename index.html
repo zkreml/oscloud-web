@@ -610,7 +610,10 @@
     .form-status.is-err { color: #B91C1C; }
     .join-form .btn:disabled { opacity: 0.6; cursor: wait; }
     .tiers { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-    .tiers li { background: var(--bg); border-radius: 6px; padding: 4px 10px; font-size: 0.82rem; color: var(--text); }
+    .tiers li { font-size: 0.82rem; color: var(--text); }
+    .tiers li:not(:has(a)) { background: var(--bg); border-radius: 6px; padding: 4px 10px; }
+    .tiers a { display: block; color: inherit; text-decoration: none; background: var(--bg); border-radius: 6px; padding: 4px 10px; font-size: 0.82rem; border: 1px solid transparent; transition: border-color 0.2s, color 0.2s; }
+    .tiers a:hover, .tiers a:focus-visible { border-color: var(--primary); color: var(--primary); }
     .footer-bottom { line-height: 1.8; }
     .footer-bottom a { color: #CBD5E1; text-decoration: underline; }
     .footer-bottom a:hover { color: var(--white); }
@@ -917,11 +920,11 @@
       </div>
       <div class="pricing-extra wide">
         <h3>🤝 Sponzoring</h3>
-        <p>Logo na webu, v dokumentaci a v newsletteru. Podrobnosti domluvíme individuálně.</p>
+        <p>Logo na webu, v dokumentaci a v newsletteru. Podrobnosti domluvíme individuálně. Klikni na úroveň, otevře se e-mail, nebo nám napiš přes <a href="https://helpdesk.oscloud.cz/help/3271740098" target="_blank" rel="noopener">helpdesk</a>.</p>
         <ul class="tiers">
-          <li><strong>Bronz</strong> 500 Kč/měs</li>
-          <li><strong>Stříbro</strong> 1 000 Kč/měs</li>
-          <li><strong>Zlato</strong> 2 500 Kč/měs</li>
+          <li><a href="mailto:info@oscloud.cz?subject=Sponzoring%20OSCloud%20-%20Bronz"><strong>Bronz</strong> 500 Kč/měs</a></li>
+          <li><a href="mailto:info@oscloud.cz?subject=Sponzoring%20OSCloud%20-%20Stribro"><strong>Stříbro</strong> 1 000 Kč/měs</a></li>
+          <li><a href="mailto:info@oscloud.cz?subject=Sponzoring%20OSCloud%20-%20Zlato"><strong>Zlato</strong> 2 500 Kč/měs</a></li>
         </ul>
       </div>
     </div>

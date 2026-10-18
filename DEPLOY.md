@@ -59,7 +59,7 @@ curl -s -H "$O" -d name=Test -d email=ty@example.cz -d type=individual -d servic
 
 ## 5. FreeScout
 
-Formulář posílá na `fediverse@oscloud.cz` (`mail_to` v `config.php`), což je schránka FreeScoutu. Pošli testovací žádost a podívej se, kdo je v ticketu zákazník. Mail jde `From: OSCloud web <noreply@…>` s `Reply-To` na adresu zájemce. Jestli FreeScout vytvoří zákazníka z `noreply@`, odpovídání půjde správně (Reply-To), ale zákazník v kartě bude špatně. Údaje zájemce jsou vždy i v těle zprávy. Tohle jde ověřit jen naživo.
+Formulář posílá na `registrace@oscloud.cz` (`mail_to` v `config.php`), což je schránka „OSCloud – registrace" ve FreeScoutu. Pošli testovací žádost a podívej se, kdo je v ticketu zákazník. Mail jde `From: OSCloud web <noreply@…>` s `Reply-To` na adresu zájemce. Jestli FreeScout vytvoří zákazníka z `noreply@`, odpovídání půjde správně (Reply-To), ale zákazník v kartě bude špatně. Údaje zájemce jsou vždy i v těle zprávy. Tohle jde ověřit jen naživo.
 
 ## 6. Sdílená navigace
 
@@ -92,6 +92,17 @@ curl -sI https://oscloud.cz/config.php | head -1        # musí být 403
 ```
 
 Náhled odkazu zkus poslat do Matrixu a na Mastodon.
+
+## Ceny
+
+Ceny Nextcloudu, tarifů, hostingu, wiki, fóra a sponzoringu jsou na jednom místě v `prices.json`. Po úpravě:
+
+```bash
+python3 sync-prices.py          # přepíše ceny v index.html a nextcloud.html
+python3 sync-prices.py --check  # jen zkontroluje, jestli sedí
+```
+
+Pak commit a push jako obvykle. Meta popisky (`<meta ... description>`) skript nepřepisuje, jen upozorní, když v nich nesedí cena „od". Ceny Ente Photos jsou v `ente.html` zvlášť.
 
 ## Rollback
 

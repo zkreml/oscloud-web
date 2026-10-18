@@ -1,4 +1,4 @@
 Options -Indexes
-<FilesMatch "^(config(\.sample)?\.php|DEPLOY\.md)$">
+<FilesMatch "^(config(\.sample)?\.php|DEPLOY\.md|prices\.json|sync-prices\.py)$">
   Require all denied
 </FilesMatch>

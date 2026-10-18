@@ -1,0 +1,13 @@
+{
+  "_note": "Jediné místo pro ceny webu. Po úpravě spusť: python3 sync-prices.py  (přepíše ceny v index.html a nextcloud.html). Ceny Ente Photos jsou mimo.",
+  "nc": { "50": 49, "100": 69, "200": 99, "500": 169, "1000": 239 },
+  "nc_labels": { "50": "50 GB", "100": "100 GB", "200": "200 GB", "500": "500 GB", "1000": "1 TB" },
+  "plan": { "spolek": 99, "firma": 299 },
+  "plan_labels": { "spolek": "Spolek", "firma": "Firma" },
+  "mastodon": 225,
+  "forum": 199,
+  "wiki": 129,
+  "hosting": { "static": 49, "lamp": 89, "wordpress": 99 },
+  "mail": { "1": 19, "5": 39, "10": 59 },
+  "sponsor": { "bronz": 500, "stribro": 1000, "zlato": 2500 }
+}

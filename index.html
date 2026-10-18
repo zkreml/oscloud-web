@@ -833,7 +833,7 @@
 
       <div class="price-card">
         <h3>Jednotlivec</h3>
-        <div class="price-tag">od 49 Kč <small>/měsíc</small></div>
+        <div class="price-tag"><!--p "od {nc.min} Kč <small>/měsíc</small>"-->od 49 Kč <small>/měsíc</small><!--/p--></div>
         <div class="price-desc">Nextcloud podle toho, kolik potřebuješ</div>
         <ul>
           <li>Všechno z komunity</li>
@@ -845,7 +845,7 @@
 
       <div class="price-card">
         <h3>Pro spolky</h3>
-        <div class="price-tag">+ 99 Kč <small>/měsíc</small></div>
+        <div class="price-tag"><!--p "+ {plan.spolek} Kč <small>/měsíc</small>"-->+ 99 Kč <small>/měsíc</small><!--/p--></div>
         <div class="price-desc">K ceně vybraného úložiště</div>
         <ul>
           <li>5 uživatelů Nextcloudu, úložiště společně</li>
@@ -856,7 +856,7 @@
 
       <div class="price-card">
         <h3>Firemní</h3>
-        <div class="price-tag">+ 299 Kč <small>/měsíc</small></div>
+        <div class="price-tag"><!--p "+ {plan.firma} Kč <small>/měsíc</small>"-->+ 299 Kč <small>/měsíc</small><!--/p--></div>
         <div class="price-desc">K ceně vybraného úložiště</div>
         <ul>
           <li>10 uživatelů Nextcloudu, úložiště společně</li>
@@ -875,11 +875,13 @@
           <tr><th scope="col">Úložiště</th><th scope="col">Jednotlivec</th><th scope="col">Spolek</th><th scope="col">Firma</th></tr>
         </thead>
         <tbody>
+        <!--prices:rows-->
           <tr><th scope="row">50 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=50#pripojit" aria-label="Objednat Nextcloud 50 GB, jednotlivec, cena 49 Kč"><span class="o-price">49 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=50#pripojit" aria-label="Objednat Nextcloud 50 GB, tarif spolek, cena 148 Kč"><span class="o-price">148 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=50#pripojit" aria-label="Objednat Nextcloud 50 GB, tarif firma, cena 348 Kč"><span class="o-price">348 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
           <tr><th scope="row">100 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=100#pripojit" aria-label="Objednat Nextcloud 100 GB, jednotlivec, cena 69 Kč"><span class="o-price">69 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=100#pripojit" aria-label="Objednat Nextcloud 100 GB, tarif spolek, cena 168 Kč"><span class="o-price">168 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=100#pripojit" aria-label="Objednat Nextcloud 100 GB, tarif firma, cena 368 Kč"><span class="o-price">368 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
           <tr><th scope="row">200 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=200#pripojit" aria-label="Objednat Nextcloud 200 GB, jednotlivec, cena 99 Kč"><span class="o-price">99 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=200#pripojit" aria-label="Objednat Nextcloud 200 GB, tarif spolek, cena 198 Kč"><span class="o-price">198 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=200#pripojit" aria-label="Objednat Nextcloud 200 GB, tarif firma, cena 398 Kč"><span class="o-price">398 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
           <tr><th scope="row">500 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=500#pripojit" aria-label="Objednat Nextcloud 500 GB, jednotlivec, cena 169 Kč"><span class="o-price">169 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=500#pripojit" aria-label="Objednat Nextcloud 500 GB, tarif spolek, cena 268 Kč"><span class="o-price">268 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=500#pripojit" aria-label="Objednat Nextcloud 500 GB, tarif firma, cena 468 Kč"><span class="o-price">468 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
           <tr><th scope="row">1 TB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=1000#pripojit" aria-label="Objednat Nextcloud 1 TB, jednotlivec, cena 239 Kč"><span class="o-price">239 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=1000#pripojit" aria-label="Objednat Nextcloud 1 TB, tarif spolek, cena 338 Kč"><span class="o-price">338 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=1000#pripojit" aria-label="Objednat Nextcloud 1 TB, tarif firma, cena 538 Kč"><span class="o-price">538 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
+        <!--/prices-->
         </tbody>
       </table>
     </div>
@@ -915,34 +917,34 @@
 
     <div class="pricing-extras">
       <div class="pricing-extra">
-        <h3>🐘 Mastodon pro malé komunity — od 225 Kč/měs</h3>
+        <h3>🐘 Mastodon pro malé komunity — <!--p "od {mastodon} Kč/měs"-->od 225 Kč/měs<!--/p--></h3>
         <p>Vlastní Mastodon instance pro menší spolek nebo komunitu, počítej s desítkami aktivních uživatelů, ne stovkami. Správa, aktualizace a zálohy na nás. Možnost vlastní domény. Větší instanci na samostatném serveru domluvíme individuálně.</p>
       </div>
       <div class="pricing-extra">
-        <h3>💬 Fórum pro komunity — od 199 Kč/měs</h3>
+        <h3>💬 Fórum pro komunity — <!--p "od {forum} Kč/měs"-->od 199 Kč/měs<!--/p--></h3>
         <p>Vlastní diskuzní fórum (Discourse nebo NodeBB) pro váš spolek, projekt nebo komunitu. Správa a zálohy na nás.</p>
       </div>
       <div class="pricing-extra">
-        <h3>📚 Wiki pro komunity — od 129 Kč/měs</h3>
+        <h3>📚 Wiki pro komunity — <!--p "od {wiki} Kč/měs"-->od 129 Kč/měs<!--/p--></h3>
         <p>Vlastní wiki pro spolek, projekt nebo komunitu. Vybereš si z BookStack, DokuWiki, MediaWiki, Wiki.js nebo Docmost. Správa, aktualizace a zálohy na nás.</p>
       </div>
       <div class="pricing-extra">
         <h3>🌐 Webhosting a e-mail</h3>
         <p>Na vlastní doméně, správa a zálohy na nás. E-mailová schránka se objednává jen k webhostingu.</p>
         <ul class="host-list">
-          <li><a href="https://docs.oscloud.cz/apps/surfer/" target="_blank" rel="noopener">Statický web (Surfer), 1 GB</a><span>od 49 Kč/měs</span></li>
-          <li><a href="https://docs.oscloud.cz/apps/lamp/" target="_blank" rel="noopener">LAMP (PHP + MySQL), 5 GB</a><span>od 89 Kč/měs</span></li>
-          <li><a href="https://docs.oscloud.cz/apps/wordpress-managed/" target="_blank" rel="noopener">WordPress spravovaný, 5 GB</a><span>od 99 Kč/měs</span></li>
-          <li>E-mailová schránka 1 GB / 5 GB / 10 GB<span>19 / 39 / 59 Kč/měs</span></li>
+          <li><a href="https://docs.oscloud.cz/apps/surfer/" target="_blank" rel="noopener">Statický web (Surfer), 1 GB</a><span><!--p "od {hosting.static} Kč/měs"-->od 49 Kč/měs<!--/p--></span></li>
+          <li><a href="https://docs.oscloud.cz/apps/lamp/" target="_blank" rel="noopener">LAMP (PHP + MySQL), 5 GB</a><span><!--p "od {hosting.lamp} Kč/měs"-->od 89 Kč/měs<!--/p--></span></li>
+          <li><a href="https://docs.oscloud.cz/apps/wordpress-managed/" target="_blank" rel="noopener">WordPress spravovaný, 5 GB</a><span><!--p "od {hosting.wordpress} Kč/měs"-->od 99 Kč/měs<!--/p--></span></li>
+          <li>E-mailová schránka 1 GB / 5 GB / 10 GB<span><!--p "{mail.1} / {mail.5} / {mail.10} Kč/měs"-->19 / 39 / 59 Kč/měs<!--/p--></span></li>
         </ul>
       </div>
       <div class="pricing-extra wide">
         <h3>🤝 Sponzoring</h3>
         <p>Logo na webu oscloud.cz. Podrobnosti domluvíme individuálně. Klikni na úroveň, otevře se e-mail, nebo nám napiš přes <a href="https://helpdesk.oscloud.cz/help/3271740098" target="_blank" rel="noopener">helpdesk</a>.</p>
         <ul class="tiers">
-          <li><a href="mailto:info@oscloud.cz?subject=Sponzoring%20OSCloud%20-%20Bronz"><strong>Bronz</strong> 500 Kč/měs</a></li>
-          <li><a href="mailto:info@oscloud.cz?subject=Sponzoring%20OSCloud%20-%20Stribro"><strong>Stříbro</strong> 1 000 Kč/měs</a></li>
-          <li><a href="mailto:info@oscloud.cz?subject=Sponzoring%20OSCloud%20-%20Zlato"><strong>Zlato</strong> 2 500 Kč/měs</a></li>
+          <li><a href="mailto:info@oscloud.cz?subject=Sponzoring%20OSCloud%20-%20Bronz"><strong>Bronz</strong> <!--p "{sponsor.bronz} Kč/měs"-->500 Kč/měs<!--/p--></a></li>
+          <li><a href="mailto:info@oscloud.cz?subject=Sponzoring%20OSCloud%20-%20Stribro"><strong>Stříbro</strong> <!--p "{sponsor.stribro} Kč/měs"-->1 000 Kč/měs<!--/p--></a></li>
+          <li><a href="mailto:info@oscloud.cz?subject=Sponzoring%20OSCloud%20-%20Zlato"><strong>Zlato</strong> <!--p "{sponsor.zlato} Kč/měs"-->2 500 Kč/měs<!--/p--></a></li>
         </ul>
       </div>
     </div>
@@ -995,7 +997,7 @@
         <div class="form-row">
       <div class="form-group">
         <label for="i-storage">Úložiště</label>
-        <select id="i-storage" name="storage" required><option value="" selected disabled>– vybrat –</option><option value="50">50 GB · od 49 Kč</option><option value="100">100 GB</option><option value="200">200 GB</option><option value="500">500 GB</option><option value="1000">1 TB</option></select>
+        <select id="i-storage" name="storage" required><option value="" selected disabled>– vybrat –</option><!--prices:opt-ind--><option value="50">50 GB · 49 Kč/měs</option><option value="100">100 GB · 69 Kč/měs</option><option value="200">200 GB · 99 Kč/měs</option><option value="500">500 GB · 169 Kč/měs</option><option value="1000">1 TB · 239 Kč/měs</option><!--/prices--></select>
       </div>
       <div class="form-group">
         <label for="i-period">Platba</label>
@@ -1051,12 +1053,12 @@
       </div>
       <div class="form-group">
         <label for="o-plan">Tarif</label>
-        <select id="o-plan" name="plan" required><option value="" selected disabled>– vybrat –</option><option value="spolek">Spolek (+99 Kč měsíčně)</option><option value="firma">Firma (+299 Kč měsíčně)</option></select>
+        <select id="o-plan" name="plan" required><option value="" selected disabled>– vybrat –</option><!--prices:opt-plan--><option value="spolek">Spolek (+99 Kč měsíčně)</option><option value="firma">Firma (+299 Kč měsíčně)</option><!--/prices--></select>
       </div>
       <div class="form-row">
       <div class="form-group">
         <label for="o-storage">Úložiště</label>
-        <select id="o-storage" name="storage" required><option value="" selected disabled>– vybrat –</option><option value="50">50 GB · od 49 Kč</option><option value="100">100 GB</option><option value="200">200 GB</option><option value="500">500 GB</option><option value="1000">1 TB</option></select>
+        <select id="o-storage" name="storage" required><option value="" selected disabled>– vybrat –</option><!--prices:opt-org--><option value="50">50 GB · od 148 Kč/měs</option><option value="100">100 GB · od 168 Kč/měs</option><option value="200">200 GB · od 198 Kč/měs</option><option value="500">500 GB · od 268 Kč/měs</option><option value="1000">1 TB · od 338 Kč/měs</option><!--/prices--></select>
       </div>
       <div class="form-group">
         <label for="o-period">Platba</label>
@@ -1148,7 +1150,18 @@
       .then(function (r) { return r.json(); })
       .then(function (j) { form.elements.token.value = j.token || ''; });
   }
+  /*prices:js*/ var NC_PRICES = {"50": 49, "100": 69, "200": 99, "500": 169, "1000": 239}, NC_LABELS = {"50": "50 GB", "100": "100 GB", "200": "200 GB", "500": "500 GB", "1000": "1 TB"}, PLAN_EXTRA = {"spolek": 99, "firma": 299}; /*/prices*/
+  function refreshOrgPrices(form) {
+    var plan = form.elements.plan && form.elements.plan.value;
+    var extra = plan && PLAN_EXTRA[plan] != null ? PLAN_EXTRA[plan] : Math.min(PLAN_EXTRA.spolek, PLAN_EXTRA.firma);
+    var prefix = plan ? '' : 'od ';
+    Array.prototype.forEach.call(form.elements.storage.options, function (o) {
+      if (NC_PRICES[o.value] == null) return;
+      o.textContent = NC_LABELS[o.value] + ' · ' + prefix + (NC_PRICES[o.value] + extra) + ' Kč/měs';
+    });
+  }
   function updateCond(form) {
+    if (form.id === 'form-org') refreshOrgPrices(form);
     form.querySelectorAll('[data-show-if]').forEach(function (el) {
       var spec = el.getAttribute('data-show-if').split('=');
       var f = form.elements[spec[0]];

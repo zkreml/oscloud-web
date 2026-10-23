@@ -583,7 +583,6 @@
     .order-link .o-cta { position: absolute; top: 0; bottom: 0; right: 0; min-width: 100%; width: max-content; display: flex; align-items: center; justify-content: center; padding: 0 10px; background: var(--primary); color: var(--white); border-radius: 6px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.15s; }
     .order-link:hover, .order-link:focus-visible { color: var(--primary); }
     .order-link:hover .o-cta, .order-link:focus-visible .o-cta { opacity: 1; }
-    .price-table .o-na { color: var(--text-light); }
     .table-hint { font-size: 0.82rem; color: var(--text-light); margin: 8px 0 0; text-align: center; }
     .price-footnote { text-align: center; font-size: 0.85rem; color: var(--text-light); margin-top: 14px; }
     /* PODPORA */
@@ -836,25 +835,13 @@
 
       <div class="price-card">
         <h3>Jednotlivec</h3>
-        <div class="price-tag"><!--p "od {nc.min} Kč <small>/měsíc</small>"-->od 15 Kč <small>/měsíc</small><!--/p--></div>
+        <div class="price-tag"><!--p "od {nc.min} Kč <small>/měsíc</small>"-->od 49 Kč <small>/měsíc</small><!--/p--></div>
         <div class="price-desc">Nextcloud podle toho, kolik potřebuješ</div>
         <ul>
           <li>Všechno z komunity</li>
-          <li>Nextcloud 5 GB až 1 TB</li>
+          <li>Nextcloud 50 GB až 1 TB</li>
           <li>Podpora přes Matrix</li>
           <li>Cena podle tabulky níže</li>
-        </ul>
-      </div>
-
-      <div class="price-card">
-        <h3>Rodina</h3>
-        <div class="price-tag"><!--p "{rodina} Kč <small>/měsíc</small>"-->99 Kč <small>/měsíc</small><!--/p--></div>
-        <div class="price-desc">Pro domácnost se sdíleným kalendářem</div>
-        <ul>
-          <li>4 uživatelé Nextcloudu</li>
-          <li>50 GB sdíleně</li>
-          <li>Sdílené kalendáře a kontakty</li>
-          <li>Podpora přes Matrix</li>
         </ul>
       </div>
 
@@ -891,8 +878,6 @@
         </thead>
         <tbody>
         <!--prices:rows-->
-          <tr><th scope="row">5 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=5#pripojit" aria-label="Objednat Nextcloud 5 GB, jednotlivec, cena 15 Kč"><span class="o-price">15 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td class="o-na">–</td><td class="o-na">–</td></tr>
-          <tr><th scope="row">10 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=10#pripojit" aria-label="Objednat Nextcloud 10 GB, jednotlivec, cena 25 Kč"><span class="o-price">25 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td class="o-na">–</td><td class="o-na">–</td></tr>
           <tr><th scope="row">50 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=50#pripojit" aria-label="Objednat Nextcloud 50 GB, jednotlivec, cena 49 Kč"><span class="o-price">49 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=50#pripojit" aria-label="Objednat Nextcloud 50 GB, tarif spolek, cena 148 Kč"><span class="o-price">148 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=50#pripojit" aria-label="Objednat Nextcloud 50 GB, tarif firma, cena 348 Kč"><span class="o-price">348 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
           <tr><th scope="row">100 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=100#pripojit" aria-label="Objednat Nextcloud 100 GB, jednotlivec, cena 69 Kč"><span class="o-price">69 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=100#pripojit" aria-label="Objednat Nextcloud 100 GB, tarif spolek, cena 168 Kč"><span class="o-price">168 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=100#pripojit" aria-label="Objednat Nextcloud 100 GB, tarif firma, cena 368 Kč"><span class="o-price">368 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
           <tr><th scope="row">200 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=200#pripojit" aria-label="Objednat Nextcloud 200 GB, jednotlivec, cena 99 Kč"><span class="o-price">99 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=200#pripojit" aria-label="Objednat Nextcloud 200 GB, tarif spolek, cena 198 Kč"><span class="o-price">198 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=200#pripojit" aria-label="Objednat Nextcloud 200 GB, tarif firma, cena 398 Kč"><span class="o-price">398 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
@@ -1012,13 +997,13 @@
       </div>
       <div class="form-group">
         <label for="i-service">Služba</label>
-        <select id="i-service" name="service" required><option value="" selected disabled>– vybrat –</option><option value="free">Zdarma: komunitní služby a Nextcloud 2 GB</option><option value="nextcloud">Nextcloud, větší úložiště (placené)</option><option value="family">Rodina: 4 lidé, 50 GB sdíleně (99 Kč/měs)</option><option value="matrix">Matrix chat (mxchat.cz)</option><option value="other">Něco jiného</option></select>
+        <select id="i-service" name="service" required><option value="" selected disabled>– vybrat –</option><option value="free">Zdarma: komunitní služby a Nextcloud 2 GB</option><option value="nextcloud">Nextcloud, větší úložiště (placené)</option><option value="matrix">Matrix chat (mxchat.cz)</option><option value="other">Něco jiného</option></select>
       </div>
       <div class="cond" data-show-if="service=nextcloud" hidden>
         <div class="form-row">
       <div class="form-group">
         <label for="i-storage">Úložiště</label>
-        <select id="i-storage" name="storage" required><option value="" selected disabled>– vybrat –</option><!--prices:opt-ind--><option value="5">5 GB · 15 Kč/měs</option><option value="10">10 GB · 25 Kč/měs</option><option value="50">50 GB · 49 Kč/měs</option><option value="100">100 GB · 69 Kč/měs</option><option value="200">200 GB · 99 Kč/měs</option><option value="500">500 GB · 169 Kč/měs</option><option value="1000">1 TB · 239 Kč/měs</option><!--/prices--></select>
+        <select id="i-storage" name="storage" required><option value="" selected disabled>– vybrat –</option><!--prices:opt-ind--><option value="50">50 GB · 49 Kč/měs</option><option value="100">100 GB · 69 Kč/měs</option><option value="200">200 GB · 99 Kč/měs</option><option value="500">500 GB · 169 Kč/měs</option><option value="1000">1 TB · 239 Kč/měs</option><!--/prices--></select>
       </div>
       <div class="form-group">
         <label for="i-period">Platba</label>
@@ -1159,7 +1144,7 @@
   var tabs = document.querySelectorAll('.join-tabs [role=tab]');
   if (!forms.length) return;
   var endpoint = '/submit.php';
-  var GB = ['5', '10', '50', '100', '200', '500', '1000'];
+  var GB = ['50', '100', '200', '500', '1000'];
 
   function say(form, msg, ok) {
     var el = form.querySelector('.form-status');
@@ -1171,7 +1156,7 @@
       .then(function (r) { return r.json(); })
       .then(function (j) { form.elements.token.value = j.token || ''; });
   }
-  /*prices:js*/ var NC_PRICES = {"5": 15, "10": 25, "50": 49, "100": 69, "200": 99, "500": 169, "1000": 239}, NC_LABELS = {"5": "5 GB", "10": "10 GB", "50": "50 GB", "100": "100 GB", "200": "200 GB", "500": "500 GB", "1000": "1 TB"}, PLAN_EXTRA = {"spolek": 99, "firma": 299}; /*/prices*/
+  /*prices:js*/ var NC_PRICES = {"50": 49, "100": 69, "200": 99, "500": 169, "1000": 239}, NC_LABELS = {"50": "50 GB", "100": "100 GB", "200": "200 GB", "500": "500 GB", "1000": "1 TB"}, PLAN_EXTRA = {"spolek": 99, "firma": 299}; /*/prices*/
   function refreshOrgPrices(form) {
     var plan = form.elements.plan && form.elements.plan.value;
     var extra = plan && PLAN_EXTRA[plan] != null ? PLAN_EXTRA[plan] : Math.min(PLAN_EXTRA.spolek, PLAN_EXTRA.firma);

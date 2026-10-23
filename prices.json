@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "_note": "Jediné místo pro ceny webu. Po úpravě spusť: python3 sync-prices.py  (přepíše ceny v index.html a nextcloud.html). Ceny Ente Photos jsou mimo. nc_org_min = nejmenší úložiště pro spolky a firmy, nc_family_min = nejmenší úložiště pro rodinu (menší tarify jsou jen pro jednotlivce). family_extra = příplatek tarifu Rodina k ceně úložiště.",
   "nc": { "5": 15, "10": 25, "50": 49, "100": 69, "200": 99, "500": 169, "1000": 239 },
   "nc_labels": { "5": "5 GB", "10": "10 GB", "50": "50 GB", "100": "100 GB", "200": "200 GB", "500": "500 GB", "1000": "1 TB" },
@@ -7,6 +8,13 @@
   "plan": { "spolek": 99, "firma": 299 },
   "plan_labels": { "spolek": "Spolek", "firma": "Firma" },
   "family_extra": 50,
+=======
+  "_note": "Jediné místo pro ceny webu. Po úpravě spusť: python3 sync-prices.py  (přepíše ceny v index.html a nextcloud.html). Ceny Ente Photos jsou mimo.",
+  "nc": { "50": 49, "100": 69, "200": 99, "500": 169, "1000": 239 },
+  "nc_labels": { "50": "50 GB", "100": "100 GB", "200": "200 GB", "500": "500 GB", "1000": "1 TB" },
+  "plan": { "spolek": 99, "firma": 299 },
+  "plan_labels": { "spolek": "Spolek", "firma": "Firma" },
+>>>>>>> parent of c8a309a (Rodinný tarif a malé tarify 5/10 GB)
   "mastodon": 225,
   "forum": 199,
   "wiki": 129,

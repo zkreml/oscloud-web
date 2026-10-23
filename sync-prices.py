@@ -50,7 +50,6 @@ def cell(typ, gb, label, who, price):
             f'<span class="o-cta" aria-hidden="true">Objednat →</span></a></td>')
 
 def rows(indent):
-<<<<<<< HEAD
     omin = P.get("nc_org_min", 0)
     fmin = P.get("nc_family_min", 0)
     fam = P["family_extra"]
@@ -69,16 +68,6 @@ def rows(indent):
         else:
             r += '<td class="o-na">–</td><td class="o-na">–</td>'
         out.append(r + "</tr>")
-=======
-    out = []
-    for gb, base in P["nc"].items():
-        label = P["nc_labels"][gb]
-        out.append(f'{indent}<tr><th scope="row">{label}</th>'
-                   + cell("jednotlivec", gb, label, "jednotlivec", base)
-                   + cell("spolek", gb, label, "tarif spolek", base + P["plan"]["spolek"])
-                   + cell("firma", gb, label, "tarif firma", base + P["plan"]["firma"])
-                   + "</tr>")
->>>>>>> parent of c8a309a (Rodinný tarif a malé tarify 5/10 GB)
     return "\n".join(out)
 
 def opt_ind():
@@ -87,8 +76,9 @@ def opt_ind():
 
 def opt_org():
     extra = min(P["plan"].values())
+    omin = P.get("nc_org_min", 0)
     return "".join(f'<option value="{gb}">{P["nc_labels"][gb]} · od {base + extra} Kč/měs</option>'
-                   for gb, base in P["nc"].items())
+                   for gb, base in P["nc"].items() if int(gb) >= omin)
 
 def opt_fam():
     fmin = P.get("nc_family_min", 0)

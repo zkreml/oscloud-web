@@ -10,6 +10,7 @@ V HTML se hledají tyto značky:
   <!--prices:rows-->…<!--/prices-->                      řádky tabulky Nextcloudu
   <!--prices:opt-ind-->…<!--/prices-->                   volby úložiště (jednotlivec)
   <!--prices:opt-org-->…<!--/prices-->                   volby úložiště (spolek/firma)
+  <!--prices:opt-fam-->…<!--/prices-->                   volby úložiště (rodina)
   <!--prices:opt-plan-->…<!--/prices-->                  volby tarifu
   /*prices:js*/…/*/prices*/                             data pro skript ve formuláři
 V šabloně {nc.min} je nejnižší cena úložiště a {nc.SIZE} cena dané velikosti.
@@ -49,14 +50,24 @@ def cell(typ, gb, label, who, price):
             f'<span class="o-cta" aria-hidden="true">Objednat →</span></a></td>')
 
 def rows(indent):
+    omin = P.get("nc_org_min", 0)
+    fmin = P.get("nc_family_min", 0)
+    fam = P["family_extra"]
     out = []
     for gb, base in P["nc"].items():
         label = P["nc_labels"][gb]
-        out.append(f'{indent}<tr><th scope="row">{label}</th>'
-                   + cell("jednotlivec", gb, label, "jednotlivec", base)
-                   + cell("spolek", gb, label, "tarif spolek", base + P["plan"]["spolek"])
-                   + cell("firma", gb, label, "tarif firma", base + P["plan"]["firma"])
-                   + "</tr>")
+        r = (f'{indent}<tr><th scope="row">{label}</th>'
+             + cell("jednotlivec", gb, label, "jednotlivec", base))
+        if int(gb) >= fmin:
+            r += cell("rodina", gb, label, "tarif rodina", base + fam)
+        else:
+            r += '<td class="o-na">–</td>'
+        if int(gb) >= omin:
+            r += (cell("spolek", gb, label, "tarif spolek", base + P["plan"]["spolek"])
+                  + cell("firma", gb, label, "tarif firma", base + P["plan"]["firma"]))
+        else:
+            r += '<td class="o-na">–</td><td class="o-na">–</td>'
+        out.append(r + "</tr>")
     return "\n".join(out)
 
 def opt_ind():
@@ -65,8 +76,15 @@ def opt_ind():
 
 def opt_org():
     extra = min(P["plan"].values())
+    omin = P.get("nc_org_min", 0)
     return "".join(f'<option value="{gb}">{P["nc_labels"][gb]} · od {base + extra} Kč/měs</option>'
-                   for gb, base in P["nc"].items())
+                   for gb, base in P["nc"].items() if int(gb) >= omin)
+
+def opt_fam():
+    fmin = P.get("nc_family_min", 0)
+    fam = P["family_extra"]
+    return "".join(f'<option value="{gb}">{P["nc_labels"][gb]} · {base + fam} Kč/měs</option>'
+                   for gb, base in P["nc"].items() if int(gb) >= fmin)
 
 def opt_plan():
     return "".join(f'<option value="{k}">{P["plan_labels"][k]} (+{v} Kč měsíčně)</option>'
@@ -94,6 +112,8 @@ def process(text):
             return m.group(1) + opt_ind() + m.group(4)
         if name == "opt-org":
             return m.group(1) + opt_org() + m.group(4)
+        if name == "opt-fam":
+            return m.group(1) + opt_fam() + m.group(4)
         if name == "opt-plan":
             return m.group(1) + opt_plan() + m.group(4)
         sys.exit(f"Neznámý blok: {name}")

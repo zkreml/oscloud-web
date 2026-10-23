@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nextcloud — OSCloud</title>
-  <meta name="description" content="Nextcloud na OSCloud: soubory, kalendář a kontakty v EU. 2 GB zdarma, tarify od 49 Kč měsíčně, pro spolky a firmy s fakturou na IČO.">
+  <meta name="description" content="Nextcloud na OSCloud: soubory, kalendář a kontakty v EU. 2 GB zdarma, tarify od 15 Kč měsíčně, pro rodiny, spolky a firmy.">
   <meta name="theme-color" content="#2563EB">
   <link rel="canonical" href="https://oscloud.cz/nextcloud.html">
 
@@ -13,7 +13,7 @@
   <meta property="og:locale" content="cs_CZ">
   <meta property="og:url" content="https://oscloud.cz/nextcloud.html">
   <meta property="og:title" content="Nextcloud — OSCloud">
-  <meta property="og:description" content="Nextcloud na OSCloud: soubory, kalendář a kontakty v EU. 2 GB zdarma, tarify od 49 Kč měsíčně, pro spolky a firmy s fakturou na IČO.">
+  <meta property="og:description" content="Nextcloud na OSCloud: soubory, kalendář a kontakty v EU. 2 GB zdarma, tarify od 15 Kč měsíčně, pro rodiny, spolky a firmy.">
   <meta property="og:image" content="https://oscloud.cz/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -234,6 +234,7 @@
       <li>soubory dostupné z webu, mobilu i počítače a synchronizované mezi zařízeními,</li>
       <li>sdílení souborů a složek odkazem, volitelně s heslem a platností,</li>
       <li>kalendář a kontakty synchronizovatelné s mobilem,</li>
+      <li id="collabora">dokumenty, tabulky a prezentace přímo v prohlížeči přes <strong>Collabora Online</strong>, i několik lidí najednou. Ne každý poskytovatel Nextcloudu ho nabízí, u nás je v ceně,</li>
       <li>data zůstávají v EU, zálohy máme na samostatném úložišti.</li>
     </ul>
 
@@ -242,20 +243,22 @@
     </div>
 
     <h2 id="cenik">Ceník</h2>
-    <p>Cena za měsíc podle velikosti úložiště. Spolky platí k ceně úložiště <!--p "+{plan.spolek}&nbsp;Kč"-->+99&nbsp;Kč<!--/p-->, firmy <!--p "+{plan.firma}&nbsp;Kč"-->+299&nbsp;Kč<!--/p-->.</p>
+    <p>Cena za měsíc podle velikosti úložiště. Rodiny platí k ceně úložiště <!--p "+{family_extra}&nbsp;Kč"-->+50&nbsp;Kč<!--/p-->, spolky <!--p "+{plan.spolek}&nbsp;Kč"-->+99&nbsp;Kč<!--/p-->, firmy <!--p "+{plan.firma}&nbsp;Kč"-->+299&nbsp;Kč<!--/p-->.</p>
     <div class="price-table-wrap">
       <table class="price-table">
         <caption>Cena Nextcloudu za měsíc podle úložiště</caption>
         <thead>
-          <tr><th scope="col">Úložiště</th><th scope="col">Jednotlivec</th><th scope="col">Spolek</th><th scope="col">Firma</th></tr>
+          <tr><th scope="col">Úložiště</th><th scope="col">Jednotlivec</th><th scope="col">Rodina</th><th scope="col">Spolek</th><th scope="col">Firma</th></tr>
         </thead>
         <tbody>
         <!--prices:rows-->
-          <tr><th scope="row">50 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=50#pripojit" aria-label="Objednat Nextcloud 50 GB, jednotlivec, cena 49 Kč"><span class="o-price">49 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=50#pripojit" aria-label="Objednat Nextcloud 50 GB, tarif spolek, cena 148 Kč"><span class="o-price">148 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=50#pripojit" aria-label="Objednat Nextcloud 50 GB, tarif firma, cena 348 Kč"><span class="o-price">348 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
-          <tr><th scope="row">100 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=100#pripojit" aria-label="Objednat Nextcloud 100 GB, jednotlivec, cena 69 Kč"><span class="o-price">69 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=100#pripojit" aria-label="Objednat Nextcloud 100 GB, tarif spolek, cena 168 Kč"><span class="o-price">168 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=100#pripojit" aria-label="Objednat Nextcloud 100 GB, tarif firma, cena 368 Kč"><span class="o-price">368 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
-          <tr><th scope="row">200 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=200#pripojit" aria-label="Objednat Nextcloud 200 GB, jednotlivec, cena 99 Kč"><span class="o-price">99 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=200#pripojit" aria-label="Objednat Nextcloud 200 GB, tarif spolek, cena 198 Kč"><span class="o-price">198 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=200#pripojit" aria-label="Objednat Nextcloud 200 GB, tarif firma, cena 398 Kč"><span class="o-price">398 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
-          <tr><th scope="row">500 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=500#pripojit" aria-label="Objednat Nextcloud 500 GB, jednotlivec, cena 169 Kč"><span class="o-price">169 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=500#pripojit" aria-label="Objednat Nextcloud 500 GB, tarif spolek, cena 268 Kč"><span class="o-price">268 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=500#pripojit" aria-label="Objednat Nextcloud 500 GB, tarif firma, cena 468 Kč"><span class="o-price">468 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
-          <tr><th scope="row">1 TB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=1000#pripojit" aria-label="Objednat Nextcloud 1 TB, jednotlivec, cena 239 Kč"><span class="o-price">239 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=1000#pripojit" aria-label="Objednat Nextcloud 1 TB, tarif spolek, cena 338 Kč"><span class="o-price">338 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=1000#pripojit" aria-label="Objednat Nextcloud 1 TB, tarif firma, cena 538 Kč"><span class="o-price">538 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
+          <tr><th scope="row">5 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=5#pripojit" aria-label="Objednat Nextcloud 5 GB, jednotlivec, cena 15 Kč"><span class="o-price">15 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td class="o-na">–</td><td class="o-na">–</td><td class="o-na">–</td></tr>
+          <tr><th scope="row">10 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=10#pripojit" aria-label="Objednat Nextcloud 10 GB, jednotlivec, cena 25 Kč"><span class="o-price">25 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td class="o-na">–</td><td class="o-na">–</td><td class="o-na">–</td></tr>
+          <tr><th scope="row">50 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=50#pripojit" aria-label="Objednat Nextcloud 50 GB, jednotlivec, cena 49 Kč"><span class="o-price">49 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=rodina&amp;gb=50#pripojit" aria-label="Objednat Nextcloud 50 GB, tarif rodina, cena 99 Kč"><span class="o-price">99 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=50#pripojit" aria-label="Objednat Nextcloud 50 GB, tarif spolek, cena 148 Kč"><span class="o-price">148 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=50#pripojit" aria-label="Objednat Nextcloud 50 GB, tarif firma, cena 348 Kč"><span class="o-price">348 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
+          <tr><th scope="row">100 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=100#pripojit" aria-label="Objednat Nextcloud 100 GB, jednotlivec, cena 69 Kč"><span class="o-price">69 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=rodina&amp;gb=100#pripojit" aria-label="Objednat Nextcloud 100 GB, tarif rodina, cena 119 Kč"><span class="o-price">119 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=100#pripojit" aria-label="Objednat Nextcloud 100 GB, tarif spolek, cena 168 Kč"><span class="o-price">168 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=100#pripojit" aria-label="Objednat Nextcloud 100 GB, tarif firma, cena 368 Kč"><span class="o-price">368 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
+          <tr><th scope="row">200 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=200#pripojit" aria-label="Objednat Nextcloud 200 GB, jednotlivec, cena 99 Kč"><span class="o-price">99 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=rodina&amp;gb=200#pripojit" aria-label="Objednat Nextcloud 200 GB, tarif rodina, cena 149 Kč"><span class="o-price">149 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=200#pripojit" aria-label="Objednat Nextcloud 200 GB, tarif spolek, cena 198 Kč"><span class="o-price">198 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=200#pripojit" aria-label="Objednat Nextcloud 200 GB, tarif firma, cena 398 Kč"><span class="o-price">398 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
+          <tr><th scope="row">500 GB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=500#pripojit" aria-label="Objednat Nextcloud 500 GB, jednotlivec, cena 169 Kč"><span class="o-price">169 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=rodina&amp;gb=500#pripojit" aria-label="Objednat Nextcloud 500 GB, tarif rodina, cena 219 Kč"><span class="o-price">219 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=500#pripojit" aria-label="Objednat Nextcloud 500 GB, tarif spolek, cena 268 Kč"><span class="o-price">268 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=500#pripojit" aria-label="Objednat Nextcloud 500 GB, tarif firma, cena 468 Kč"><span class="o-price">468 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
+          <tr><th scope="row">1 TB</th><td><a class="order-link" href="/?typ=jednotlivec&amp;gb=1000#pripojit" aria-label="Objednat Nextcloud 1 TB, jednotlivec, cena 239 Kč"><span class="o-price">239 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=rodina&amp;gb=1000#pripojit" aria-label="Objednat Nextcloud 1 TB, tarif rodina, cena 289 Kč"><span class="o-price">289 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=spolek&amp;gb=1000#pripojit" aria-label="Objednat Nextcloud 1 TB, tarif spolek, cena 338 Kč"><span class="o-price">338 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td><td><a class="order-link" href="/?typ=firma&amp;gb=1000#pripojit" aria-label="Objednat Nextcloud 1 TB, tarif firma, cena 538 Kč"><span class="o-price">538 Kč</span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
         <!--/prices-->
         </tbody>
       </table>
@@ -263,6 +266,7 @@
     <p class="table-hint">Kliknutím na cenu se předvyplní formulář žádosti.</p>
     <ul class="plain">
       <li><strong>Jednotlivec:</strong> jeden účet, úložiště podle tabulky.</li>
+      <li><strong>Rodina (<!--p "+{family_extra}&nbsp;Kč"-->+50&nbsp;Kč<!--/p-->):</strong> 4 uživatelé Nextcloudu se společným úložištěm (od 50&nbsp;GB), sdílené kalendáře a kontakty, podpora přes Matrix.</li>
       <li><strong>Pro spolky (<!--p "+{plan.spolek}&nbsp;Kč"-->+99&nbsp;Kč<!--/p-->):</strong> 5 uživatelů Nextcloudu se společným úložištěm, fakturace s IČO, podpora e-mailem a přes Matrix.</li>
       <li><strong>Firemní (<!--p "+{plan.firma}&nbsp;Kč"-->+299&nbsp;Kč<!--/p-->):</strong> 10 uživatelů se společným úložištěm, fakturace s IČO, podpora e-mailem a přes Matrix, reakce do 24 hodin.</li>
     </ul>
@@ -303,7 +307,9 @@
     <h2 id="faq">Časté dotazy</h2>
     <dl class="faq">
       <dt>Kolik je zdarma?</dt>
-      <dd>Každý má 2&nbsp;GB. Větší úložiště je od <!--p "{nc.min}&nbsp;Kč"-->49&nbsp;Kč<!--/p--> měsíčně, až do 1&nbsp;TB.</dd>
+      <dd>Každý má 2&nbsp;GB. Větší úložiště je od <!--p "{nc.min}&nbsp;Kč"-->15&nbsp;Kč<!--/p--> měsíčně, až do 1&nbsp;TB.</dd>
+      <dt>Můžu to použít pro rodinu?</dt>
+      <dd>Ano. Tarif Rodina je pro čtyři lidi ve stejné domácnosti. Mají společné úložiště, sdílené kalendáře a kontakty.</dd>
       <dt>Můžu to použít pro spolek nebo firmu?</dt>
       <dd>Ano. Spolkový a firemní tarif zahrnuje více uživatelů a fakturu s IČO.</dd>
       <dt>Kde jsou data?</dt>

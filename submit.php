@@ -16,11 +16,14 @@ mb_internal_encoding('UTF-8');
 const SERVICES = [
     'free'      => 'Zdarma: komunitní služby a Nextcloud 2 GB',
     'nextcloud' => 'Nextcloud, větší úložiště (placené)',
+    'family'    => 'Rodina: Nextcloud pro 4 lidi, sdílené úložiště',
     'matrix'    => 'Matrix chat (mxchat.cz)',
     'other'     => 'Něco jiného',
 ];
-const STORAGE = ['50' => '50 GB', '100' => '100 GB', '200' => '200 GB', '500' => '500 GB', '1000' => '1 TB'];
+const STORAGE = ['5' => '5 GB', '10' => '10 GB', '50' => '50 GB', '100' => '100 GB', '200' => '200 GB', '500' => '500 GB', '1000' => '1 TB'];
 const PLANS = ['spolek' => 'Spolek', 'firma' => 'Firma'];
+const FAMILY_MIN_GB = 50; // menší úložiště je jen pro jednotlivce
+const ORG_MIN_GB = 50;
 const PERIODS = ['monthly' => 'měsíčně', 'yearly' => 'ročně'];
 
 // ---------------------------------------------------------------- config
@@ -429,17 +432,23 @@ if ($type === 'individual') {
     $fields['Jméno / přezdívka'] = $name;
     $fields['E-mail'] = $email;
     $fields['Služba'] = SERVICES[$service];
-    if ($service === 'nextcloud') {
+    if ($service === 'nextcloud' || $service === 'family') {
         $storage = $post('storage');
         $period = $post('period');
         if (!array_key_exists($storage, STORAGE)) {
             fail(422, 'Vyber prosím velikost úložiště.');
+        }
+        if ($service === 'family' && (int) $storage < FAMILY_MIN_GB) {
+            fail(422, 'Tarif Rodina začíná od ' . FAMILY_MIN_GB . ' GB.');
         }
         if (!array_key_exists($period, PERIODS)) {
             fail(422, 'Vyber prosím měsíční nebo roční platbu.');
         }
         $fields['Úložiště'] = STORAGE[$storage];
         $fields['Platba'] = PERIODS[$period];
+        if ($service === 'family') {
+            $fields['Počet uživatelů'] = '4 (rodina)';
+        }
     }
     $subject = 'Žádost (jednotlivec) — ' . $name;
 } else {
@@ -465,8 +474,8 @@ if ($type === 'individual') {
     if (!array_key_exists($plan, PLANS)) {
         fail(422, 'Vyber prosím tarif.');
     }
-    if (!array_key_exists($storage, STORAGE)) {
-        fail(422, 'Vyber prosím velikost úložiště.');
+    if (!array_key_exists($storage, STORAGE) || (int) $storage < ORG_MIN_GB) {
+        fail(422, 'Vyber prosím velikost úložiště (od ' . ORG_MIN_GB . ' GB).');
     }
     if (!array_key_exists($period, PERIODS)) {
         fail(422, 'Vyber prosím měsíční nebo roční platbu.');

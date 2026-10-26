@@ -52,7 +52,7 @@ def cell(typ, gb, label, who, price):
 def rows(indent):
     omin = P.get("nc_org_min", 0)
     fmin = P.get("nc_family_min", 0)
-    fam = P["family_extra"]
+    fam = P["family_base"] - P["nc"][str(fmin)]
     out = []
     for gb, base in P["nc"].items():
         label = P["nc_labels"][gb]
@@ -82,7 +82,7 @@ def opt_org():
 
 def opt_fam():
     fmin = P.get("nc_family_min", 0)
-    fam = P["family_extra"]
+    fam = P["family_base"] - P["nc"][str(fmin)]
     return "".join(f'<option value="{gb}">{P["nc_labels"][gb]} · {base + fam} Kč/měs</option>'
                    for gb, base in P["nc"].items() if int(gb) >= fmin)
 

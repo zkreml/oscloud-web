@@ -222,6 +222,15 @@
     }
 
     /* WHY SECTION */
+
+    .dg-teaser { background-color: #1e1e2e; background-image: radial-gradient(#313244 1.5px, transparent 1.5px); background-size: 28px 28px; color: #cdd6f4; padding: 48px 0; font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace; }
+    .dg-t-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; text-align: left; }
+    .dg-teaser .dg-t-prompt { color: #a6adc8; font-size: .95rem; margin: 0 0 8px; }
+    .dg-teaser h2 { font-family: inherit; font-size: clamp(1.9rem, 5vw, 2.6rem); font-weight: 800; color: #cdd6f4; margin: 0 0 8px; text-align: left; }
+    .dg-teaser p { color: #bac2de; margin: 0; max-width: 620px; line-height: 1.5; text-align: left; }
+    .dg-teaser .dg-t-link { display: inline-block; padding: 12px 22px; border: 1px solid #cba6f7; border-radius: 12px; background: #2a2540; color: #cba6f7; font-weight: 700; text-decoration: none; }
+    .dg-teaser .dg-t-link:hover, .dg-teaser .dg-t-link:focus-visible { background: #cba6f7; color: #1e1e2e; outline: none; }
+    .dg-teaser .dg-t-link:focus-visible { box-shadow: 0 0 0 3px #89b4fa; }
     .why {
       background: var(--dark);
       padding: 80px 16px;
@@ -794,6 +803,20 @@
   </div>
 </section>
 
+<!-- DEGOOGLIZACE -->
+<section class="dg-teaser" aria-labelledby="dg-t-h">
+  <div class="container">
+    <div class="dg-t-inner">
+      <div>
+        <p class="dg-t-prompt" aria-hidden="true">$ oscloud --degoogle --postupně</p>
+        <h2 id="dg-t-h">Degooglizace</h2>
+        <p>Co čím nahradit: fotky, soubory, e-mail, chat, hesla i sociální sítě. Postupně a bez stresu, a je tu i plakát ke stažení.</p>
+      </div>
+      <a class="dg-t-link" href="degooglizace.html">Podívej se →</a>
+    </div>
+  </div>
+</section>
+
 <!-- COMMUNITY -->
 <section class="community" id="komunita">
   <div class="container">
@@ -989,6 +1012,7 @@
           <li>Netransparentní účet: <strong>284833660/0600</strong></li>
         </ul>
         <p style="margin:12px 0 0;font-size:0.85rem;">Do zprávy napiš „dar“. Čísla účtů a IBAN najdeš na stránce <a href="o-nas.html#ucty">O nás</a>.</p>
+        <p style="margin:8px 0 0;font-size:0.85rem;">Potřebuješ doklad o daru? Napiš na <a href="mailto:info@oscloud.cz?subject=Potvrzen%C3%AD%20o%20dar%C5%AF">info@oscloud.cz</a> jméno nebo název, částku a datum platby a vystavíme ti potvrzení o přijetí daru. Je to doklad o platbě, nárok na daňový odpočet nezaručuje.</p>
       </div>
       <div class="support-qr">
         <img src="assets/qr-platba.png" width="168" height="168" alt="QR platba na transparentní účet OSCloud" loading="lazy">
@@ -1154,6 +1178,7 @@
         <a href="mxchat.html">Matrix chat</a>
         <a href="https://blog.oscloud.cz">Blog</a>
         <a href="https://docs.oscloud.cz">Dokumentace</a>
+        <a href="degooglizace.html">Degooglizace</a>
       </div>
       <div class="footer-col">
         <h4>Projekt</h4>

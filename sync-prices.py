@@ -18,7 +18,7 @@ V šabloně {nc.min} je nejnižší cena úložiště a {nc.SIZE} cena dané vel
 import json, re, sys, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent
-FILES = ["index.html", "nextcloud.html"]
+FILES = ["index.html", "nextcloud.html", "degooglizace.html"]
 P = json.loads((ROOT / "prices.json").read_text(encoding="utf-8"))
 
 def fmt(n):

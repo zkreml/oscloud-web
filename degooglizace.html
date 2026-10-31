@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Degooglizace — OSCloud</title>
+  <meta name="description" content="Co čím nahradit: fotky, soubory, e-mail, chat, hesla, vyhledávání i sociální sítě. Všechno provozujeme my, neziskový spolek. Začni třeba fotkami.">
+  <meta name="theme-color" content="#2563EB">
+  <link rel="canonical" href="https://oscloud.cz/degooglizace.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OSCloud">
+  <meta property="og:locale" content="cs_CZ">
+  <meta property="og:url" content="https://oscloud.cz/degooglizace.html">
+  <meta property="og:title" content="Degooglizace — OSCloud">
+  <meta property="og:description" content="Co čím nahradit: fotky, soubory, e-mail, chat, hesla, vyhledávání i sociální sítě. Všechno provozujeme my, neziskový spolek. Začni třeba fotkami.">
+  <meta property="og:image" content="https://oscloud.cz/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/space-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/nav.css">
+  <style>
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap;
+      src: url(assets/fonts/inter-latin-ext-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap;
+      src: url(assets/fonts/inter-latin-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+    @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap;
+      src: url(assets/fonts/space-grotesk-latin-ext-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+    @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap;
+      src: url(assets/fonts/space-grotesk-latin-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+    :root {
+      --primary: #2563EB;
+      --primary-hover: #1D4ED8;
+      --accent: #3B82F6;
+      --bg: #F0F4F8;
+      --dark: #0F172A;
+      --dark-light: #1E293B;
+      --text: #334155;
+      --text-light: #526074;
+      --white: #FFFFFF;
+      --border: #E2E8F0;
+      --radius: 12px;
+      --os-display: 'Space Grotesk', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 72px; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .skip-link { position: absolute; left: 8px; top: -48px; background: var(--dark); color: #fff; padding: 8px 14px; border-radius: 8px; z-index: 200; font-weight: 600; }
+    .skip-link:focus { top: 8px; color: #fff; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.2;
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { color: var(--primary-hover); }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: #94A3B8;
+      padding: 60px 16px 30px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+    .footer-col a {
+      display: block;
+      color: #94A3B8;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid var(--dark-light);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    /* PAGE */
+    .page { padding: 64px 16px 88px; }
+    .narrow { max-width: 760px; }
+    .page h1 { font-size: clamp(2rem, 5vw, 2.6rem); color: var(--dark); margin-bottom: 20px; }
+    .page h2 { font-size: 1.4rem; color: var(--dark); margin: 48px 0 16px; }
+    .page p { margin-bottom: 16px; }
+    .page .lead { font-size: 1.15rem; color: var(--text-light); }
+    .facts { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 8px 24px; }
+    .facts > div { display: grid; grid-template-columns: 200px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--border); }
+    .facts > div:first-child { border-top: 0; }
+    .facts dt { font-weight: 600; color: var(--dark); }
+    .facts dd { margin: 0; overflow-wrap: anywhere; }
+    .facts .acct { font-weight: 600; color: var(--dark); font-variant-numeric: tabular-nums; }
+    .facts .sub { display: block; margin-top: 4px; font-size: 0.88rem; color: var(--text-light); }
+    @media (max-width: 768px) {
+      .page { padding: 48px 16px 64px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .facts { padding: 4px 18px; }
+      .facts > div { grid-template-columns: 1fr; gap: 2px; }
+    }
+    /* PRICE TABLE */
+    .price-table-wrap {
+      margin-top: 32px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow-x: auto;
+    }
+    .price-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .price-table caption {
+      text-align: left;
+      font-family: var(--os-display);
+      font-weight: 600;
+      color: var(--dark);
+      padding: 20px 24px 12px;
+    }
+    .price-table th, .price-table td { padding: 12px 24px; text-align: right; border-top: 1px solid var(--border); }
+    .price-table thead th { font-size: 0.8rem; color: var(--text-light); font-weight: 600; }
+    .price-table th:first-child, .price-table td:first-child { text-align: left; }
+    .price-table tbody th { font-weight: 600; color: var(--dark); }
+    .price-table tbody td { font-variant-numeric: tabular-nums; }
+    .price-table tbody tr:hover { background: var(--bg); }
+    .order-link { position: relative; display: inline-block; color: var(--primary); font-weight: 600; text-decoration: none; padding: 2px 6px; margin: -2px -6px; border-radius: 6px; border-bottom: 1px dotted var(--primary); border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+    .order-link .o-cta { position: absolute; top: 0; bottom: 0; right: 0; min-width: 100%; width: max-content; display: flex; align-items: center; justify-content: center; padding: 0 10px; background: var(--primary); color: var(--white); border-radius: 6px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.15s; }
+    .order-link:hover, .order-link:focus-visible { color: var(--primary); }
+    .order-link:hover .o-cta, .order-link:focus-visible .o-cta { opacity: 1; }
+    .table-hint { font-size: 0.82rem; color: var(--text-light); margin: 8px 0 0; text-align: center; }
+    .price-footnote { text-align: center; font-size: 0.85rem; color: var(--text-light); margin-top: 14px; }
+    /* BUTTONS */
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary { background: var(--primary); color: var(--white); }
+    .btn-primary:hover { background: var(--primary-hover); color: var(--white); }
+    .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: var(--white); }
+    /* SUBPAGE */
+    .page h3 { font-size: 1.1rem; color: var(--dark); margin: 28px 0 10px; }
+    .page ol, .page ul.plain { margin: 0 0 16px 22px; }
+    .page li { margin-bottom: 8px; }
+    .page code { background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 1px 7px; font-size: 0.92em; overflow-wrap: anywhere; }
+    .callout { background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 16px 20px; margin: 20px 0; }
+    .callout.warn { border-left-color: #d97706; }
+    .callout p { margin: 0; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
+    .page .price-table-wrap { margin: 16px 0 24px; }
+    .faq dt { font-weight: 600; color: var(--dark); margin-top: 18px; }
+    .faq dd { margin: 4px 0 0; }
+  
+    @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 100 800; font-display: swap;
+      src: url(assets/fonts/jetbrains-mono-latin-ext-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+    @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 100 800; font-display: swap;
+      src: url(assets/fonts/jetbrains-mono-latin-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+    .dg { --dg-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+      background-color: #1e1e2e; background-image: radial-gradient(#313244 1.5px, transparent 1.5px); background-size: 28px 28px;
+      color: #cdd6f4; font-family: var(--dg-mono); padding: 56px 0 64px; }
+    .dg .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .dg a { color: #89b4fa; }
+    .dg a:focus-visible { outline: 2px solid #89b4fa; outline-offset: 2px; border-radius: 4px; }
+    .dg-prompt { font-size: 1.05rem; color: #a6adc8; margin: 0 0 14px; }
+    .dg h1 { font-family: var(--dg-mono); font-size: clamp(2.4rem, 9vw, 5.75rem); line-height: 1; font-weight: 800; color: #cdd6f4; margin: 0 0 14px; overflow-wrap: anywhere; }
+    .dg-sub { font-size: clamp(1.25rem, 3.4vw, 2.4rem); font-weight: 700; color: #cba6f7; margin: 0 0 18px; }
+    .dg-perex { font-size: 1.1rem; line-height: 1.55; color: #bac2de; max-width: 820px; margin: 0 0 40px; }
+    .dg-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+    @media (max-width: 980px) { .dg-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 620px) { .dg-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; } .dg { padding: 40px 0 48px; } }
+    .dg-card { display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; background: #181825; border: 1px solid #313244; }
+    .dg-old { display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: #3a2530; color: #f38ba8; font-size: 1.125rem; font-weight: 700; }
+    .dg-old s { text-decoration-thickness: 2px; }
+    .dg-x { flex: none; width: 24px; height: 24px; border-radius: 50%; background: #f38ba8; color: #11111b; font-weight: 800; font-size: 1rem; line-height: 24px; text-align: center; }
+    .dg-new { display: flex; flex-direction: column; gap: 8px; padding: 18px 20px 20px; background: #1f2d27; flex: 1; }
+    .dg-new h3 { font-family: var(--dg-mono); font-size: 1.75rem; line-height: 1.15; font-weight: 800; color: #a6e3a1; margin: 0; overflow-wrap: anywhere; }
+    .dg-dom { font-size: .94rem; font-weight: 700; color: #a6adc8; margin: 0; overflow-wrap: anywhere; }
+    .dg-dom a { color: #a6adc8; }
+    .dg-desc { font-size: .94rem; line-height: 1.45; color: #bac2de; margin: 0; }
+    .dg-tag { align-self: flex-start; margin: auto 0 0; padding: 4px 12px; border: 1px solid #4b7a5c; border-radius: 999px; font-size: .8rem; font-weight: 700; color: #a6e3a1; }
+    .dg-new .dg-desc + .dg-tag, .dg-new .dg-dom + .dg-desc { }
+    .dg-final { grid-column: span 2; display: flex; flex-direction: column; justify-content: center; gap: 12px; border-radius: 20px; padding: 26px 30px; background: #2a2540; border: 1px solid #cba6f7; }
+    @media (max-width: 620px) { .dg-final { grid-column: auto; padding: 22px; } }
+    .dg-final h2 { font-family: var(--dg-mono); font-size: 1.9rem; font-weight: 800; color: #cba6f7; margin: 0; }
+    .dg-final p { font-size: 1rem; line-height: 1.5; color: #cdd6f4; margin: 0; }
+    .dg-final .dg-go { font-size: 1.125rem; font-weight: 700; }
+    .dg-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; margin-top: 48px; padding-top: 24px; border-top: 1px solid #45475a; font-size: .94rem; line-height: 1.5; color: #a6adc8; }
+    .dg-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .dg-dl { padding: 48px 0 8px; }
+    .dg-dl h2 { margin-bottom: 8px; }
+    .dg-dl-row { display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start; margin-top: 20px; }
+    .dg-dl-row img { width: 220px; height: auto; border-radius: 12px; border: 1px solid var(--border); }
+    .dg-dl-row ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+    @media (prefers-reduced-motion: reduce) { .dg * { transition: none !important; } }
+  </style>
+  <script defer src="https://analytics.oscloud.cz/script.js" data-website-id="92b865bd-f0d2-4d73-a974-14f428a1b7f5"></script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Přeskočit na obsah</a>
+
+<header class="os-nav" data-os-nav>
+  <div class="os-nav__inner">
+    <a class="os-logo" href="/"><img src="assets/logo-horizontal.png" alt="OSCloud" width="176" height="24"></a>
+    <button class="os-toggle" type="button" aria-expanded="false" aria-controls="os-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav class="os-links" id="os-links" aria-label="Hlavní navigace">
+      <a href="/#sluzby">Služby</a>
+      <a href="/#proc">Proč OSCloud</a>
+      <a href="/#cenik">Ceník</a>
+      <a href="/#komunita">Komunita</a>
+      <a href="o-nas.html">O nás</a>
+      <a href="https://docs.oscloud.cz" target="_blank" rel="noopener">Dokumentace</a>
+      <a href="https://blog.oscloud.cz" target="_blank" rel="noopener">Blog</a>
+      <a href="https://my.oscloud.cz" target="_blank" rel="noopener">Přihlášení</a>
+      <a class="os-cta" href="/#pripojit">Chci se připojit</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="page" style="padding:0">
+<section class="dg" aria-labelledby="dg-h1">
+  <div class="container">
+    <p class="dg-prompt" aria-hidden="true">$ oscloud --degoogle --postupně</p>
+    <h1 id="dg-h1">Degooglizace</h1>
+    <p class="dg-sub">postupně a bez stresu</p>
+    <p class="dg-perex">Co čím nahradit. Všechno, co tu vidíš, provozujeme my, neziskový spolek. Nemusíš přejít na všechno najednou, začni třeba fotkami.</p>
+
+    <ul class="dg-grid">
+      <li class="dg-card">
+        <div class="dg-old"><span class="dg-x" aria-hidden="true">×</span><span class="dg-sr">Místo </span><s>Google Photos</s><span class="dg-sr"> použij:</span></div>
+        <div class="dg-new">
+          <h3>Ente Photos</h3>
+          <p class="dg-dom"><a href="https://oscloud.photos">oscloud.photos</a></p>
+          <p class="dg-desc">Fotky se šifrují přímo ve tvém zařízení, nevidíme do nich ani my.</p>
+          <p class="dg-tag">10 GB zdarma navždy</p>
+        </div>
+      </li>
+      <li class="dg-card">
+        <div class="dg-old"><span class="dg-x" aria-hidden="true">×</span><span class="dg-sr">Místo </span><s>Google Drive, Kalendář</s><span class="dg-sr"> použij:</span></div>
+        <div class="dg-new">
+          <h3>Nextcloud</h3>
+          <p class="dg-desc">Soubory, sdílení, kalendáře a kontakty na jednom místě.</p>
+          <p class="dg-tag"><!--p "2 GB zdarma · od {nc.min} Kč/měs"-->2 GB zdarma · od 15 Kč/měs<!--/p--></p>
+        </div>
+      </li>
+      <li class="dg-card">
+        <div class="dg-old"><span class="dg-x" aria-hidden="true">×</span><span class="dg-sr">Místo </span><s>Gmail</s><span class="dg-sr"> použij:</span></div>
+        <div class="dg-new">
+          <h3>E-mail k webhostingu</h3>
+          <p class="dg-desc">Schránka na tvé vlastní doméně. Správu a zálohy máme na starosti my.</p>
+          <p class="dg-tag"><!--p "od {mail.1} Kč/měs"-->od 19 Kč/měs<!--/p--></p>
+        </div>
+      </li>
+      <li class="dg-card">
+        <div class="dg-old"><span class="dg-x" aria-hidden="true">×</span><span class="dg-sr">Místo </span><s>Google Chat, WhatsApp</s><span class="dg-sr"> použij:</span></div>
+        <div class="dg-new">
+          <h3>Matrix</h3>
+          <p class="dg-dom"><a href="https://mxchat.cz">mxchat.cz</a></p>
+          <p class="dg-desc">Federace: píšeš i lidem z jiných serverů. Přes Matrix funguje i podpora OSCloud.</p>
+        </div>
+      </li>
+      <li class="dg-card">
+        <div class="dg-old"><span class="dg-x" aria-hidden="true">×</span><span class="dg-sr">Místo </span><s>Správce hesel</s><span class="dg-sr"> použij:</span></div>
+        <div class="dg-new">
+          <h3>Vaultwarden</h3>
+          <p class="dg-desc">Kompatibilní s klienty Bitwarden: web, desktop, mobil i rozšíření do prohlížeče.</p>
+          <p class="dg-tag">zdarma v tarifu Komunita</p>
+        </div>
+      </li>
+      <li class="dg-card">
+        <div class="dg-old"><span class="dg-x" aria-hidden="true">×</span><span class="dg-sr">Místo </span><s>Google vyhledávání</s><span class="dg-sr"> použij:</span></div>
+        <div class="dg-new">
+          <h3>SearXNG</h3>
+          <p class="dg-desc">Vyhledávač, který dotazy posílá více zdrojům.</p>
+          <p class="dg-tag">zdarma v tarifu Komunita</p>
+        </div>
+      </li>
+      <li class="dg-card">
+        <div class="dg-old"><span class="dg-x" aria-hidden="true">×</span><span class="dg-sr">Místo </span><s>Google Docs</s><span class="dg-sr"> použij:</span></div>
+        <div class="dg-new">
+          <h3>CryptPad, HedgeDoc</h3>
+          <p class="dg-desc">Společné dokumenty se soukromím a společné poznámky v Markdownu.</p>
+          <p class="dg-tag">zdarma v tarifu Komunita</p>
+        </div>
+      </li>
+      <li class="dg-card">
+        <div class="dg-old"><span class="dg-x" aria-hidden="true">×</span><span class="dg-sr">Místo </span><s>YouTube</s><span class="dg-sr"> použij:</span></div>
+        <div class="dg-new">
+          <h3>PeerTube</h3>
+          <p class="dg-desc">Sdílení videí bez centrální platformy.</p>
+          <p class="dg-tag">zdarma v tarifu Komunita</p>
+        </div>
+      </li>
+      <li class="dg-card">
+        <div class="dg-old"><span class="dg-x" aria-hidden="true">×</span><span class="dg-sr">Místo </span><s>Instagram</s><span class="dg-sr"> použij:</span></div>
+        <div class="dg-new">
+          <h3>Pixelfed</h3>
+          <p class="dg-desc">Sdílení fotek ve fediverse.</p>
+          <p class="dg-tag">zdarma v tarifu Komunita</p>
+        </div>
+      </li>
+      <li class="dg-card">
+        <div class="dg-old"><span class="dg-x" aria-hidden="true">×</span><span class="dg-sr">Místo </span><s>X (Twitter)</s><span class="dg-sr"> použij:</span></div>
+        <div class="dg-new">
+          <h3>Mastodon</h3>
+          <p class="dg-desc">Decentralizovaná sociální síť.</p>
+          <p class="dg-tag">zdarma v tarifu Komunita</p>
+        </div>
+      </li>
+      <li class="dg-card">
+        <div class="dg-old"><span class="dg-x" aria-hidden="true">×</span><span class="dg-sr">Místo </span><s>GitHub</s><span class="dg-sr"> použij:</span></div>
+        <div class="dg-new">
+          <h3>Forgejo</h3>
+          <p class="dg-dom"><a href="https://git.oscloud.cz">git.oscloud.cz</a></p>
+          <p class="dg-desc">Vlastní Git hosting: repozitáře, issues, pull requesty. Přihlášení přes SSO.</p>
+          <p class="dg-tag">otevřená registrace</p>
+        </div>
+      </li>
+      <li class="dg-card">
+        <div class="dg-old"><span class="dg-x" aria-hidden="true">×</span><span class="dg-sr">Místo </span><s>Strava</s><span class="dg-sr"> použij:</span></div>
+        <div class="dg-new">
+          <h3>FitPub</h3>
+          <p class="dg-dom"><a href="https://makni.cz">makni.cz</a></p>
+          <p class="dg-desc">Sportovní aktivity ve fediverse.</p>
+          <p class="dg-tag">otevřená registrace</p>
+        </div>
+      </li>
+      <li class="dg-card">
+        <div class="dg-old"><span class="dg-x" aria-hidden="true">×</span><span class="dg-sr">Místo </span><s>Algoritmické feedy</s><span class="dg-sr"> použij:</span></div>
+        <div class="dg-new">
+          <h3>FreshRSS</h3>
+          <p class="dg-desc">Čtečka RSS kanálů místo algoritmem řazených zpráv.</p>
+          <p class="dg-tag">zdarma v tarifu Komunita</p>
+        </div>
+      </li>
+      <li class="dg-final">
+        <h2>Začni zdarma</h2>
+        <p>Vyzkoušej tarif Komunita: Mastodon, Pixelfed, PeerTube, SearXNG, CryptPad, PrivateBin (po registraci), FreshRSS, HedgeDoc, Vaultwarden a Nextcloud s 2 GB.</p>
+        <p class="dg-go"><a href="/#pripojit">oscloud.cz</a></p>
+      </li>
+    </ul>
+
+    <div class="dg-foot">
+      <div>Neziskový provoz, spolek OSCloud, z. s.</div><div>Server v Hetzneru (Německo), pravidelné zálohy</div><div>Podpora přes Matrix a helpdesk ve všech tarifech</div>
+    </div>
+  </div>
+</section>
+
+<section class="dg-dl" id="plakat">
+  <div class="container narrow">
+    <h2>Plakát ke stažení</h2>
+    <p>Stejný přehled jako plakát, který můžeš sdílet nebo vytisknout.</p>
+    <div class="dg-dl-row">
+      <a href="assets/plakat-degooglizace.png"><img src="assets/plakat-degooglizace-nahled.png" alt="Plakát Degooglizace: přeškrtnuté služby velkých firem a jejich alternativy od OSCloud" width="220" height="393" loading="lazy"></a>
+      <ul>
+        <li><a href="assets/plakat-degooglizace.png" download>Stáhnout PNG</a> (265&nbsp;kB)</li>
+        <li><a href="assets/plakat-degooglizace.pdf" download>Stáhnout PDF</a> (389&nbsp;kB)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Služby</h4>
+        <a href="nextcloud.html">Nextcloud</a>
+        <a href="https://cryptpad.arch-linux.cz/">CryptPad</a>
+        <a href="https://docs.oscloud.cz/apps/vaultwarden/">Vaultwarden</a>
+        <a href="https://docs.oscloud.cz/apps/searxng/">SearXNG</a>
+        <a href="https://oscloud.photos">Ente Photos</a>
+        <a href="https://docs.oscloud.cz/apps/freshrss/">FreshRSS</a>
+      </div>
+      <div class="footer-col">
+        <h4>Fediverse</h4>
+        <a href="https://mamutovo.cz/@oscloud">Mastodon</a>
+        <a href="https://vhsky.cz">PeerTube</a>
+        <a href="https://pixelfed.cz">Pixelfed</a>
+      </div>
+      <div class="footer-col">
+        <h4>Komunita</h4>
+        <a href="https://chat.mxchat.cz/">Matrix chat</a>
+        <a href="https://blog.oscloud.cz">Blog</a>
+        <a href="https://docs.oscloud.cz">Dokumentace</a>
+      </div>
+      <div class="footer-col">
+        <h4>Projekt</h4>
+        <a href="https://git.oscloud.cz/OSCloud">Git</a>
+        <a href="o-nas.html">O nás a kontakt</a>
+        <a href="https://helpdesk.oscloud.cz/help/3271740098">Helpdesk</a>
+        <a href="mailto:info@oscloud.cz">info@oscloud.cz</a>
+        <a href="ochrana-udaju.html">Ochrana osobních údajů</a>
+        <a href="podminky.html">Podmínky</a>
+        <a href="zpracovatelska-smlouva.html">Zpracovatelská smlouva</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2024–2026 OSCloud, z. s. · IČO 29991145 · DIČ CZ29991145 · Pionýrů 1332, 356 01 Sokolov<br>
+      Spolek zapsaný u Krajského soudu v Plzni, oddíl L, vložka 11449<br>
+      Komunita pro digitální svobodu · Provozováno na open source
+    </div>
+  </div>
+</footer>
+
+<script src="assets/nav.js" defer></script>
+
+</body>
+</html>

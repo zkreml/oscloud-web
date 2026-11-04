@@ -40,8 +40,10 @@ CS = {
 }
 P = json.loads((ROOT / "prices.json").read_text(encoding="utf-8"))
 
+SEP = " "
+
 def fmt(n):
-    return f"{n:,}".replace(",", " ")
+    return f"{n:,}".replace(",", SEP)
 
 def flat(prefix, d, out):
     for k, v in d.items():
@@ -119,6 +121,8 @@ def js_data():
             f'PLAN_EXTRA = {json.dumps(P["plan"])};')
 
 def process(text, L=CS):
+    global SEP
+    SEP = "," if L is EN else " "
     # inline značky
     text = re.sub(r'(<!--p "([^"]*)"-->)(.*?)(<!--/p-->)',
                   lambda m: m.group(1) + tpl(m.group(2)) + m.group(4), text, flags=re.S)

@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OSCloud — Community for Digital Freedom</title>
+  <meta name="description" content="A Czech community and non-profit association running open source services without ads or tracking: Nextcloud, Matrix, Mastodon, Ente Photos. Your data stays in the EU.">
+  <meta name="theme-color" content="#2563EB">
+  <link rel="canonical" href="https://oscloud.cz/en/">
+  <link rel="alternate" hreflang="cs" href="https://oscloud.cz/">
+  <link rel="alternate" hreflang="en" href="https://oscloud.cz/en/">
+  <link rel="alternate" hreflang="x-default" href="https://oscloud.cz/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OSCloud">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="https://oscloud.cz/en/">
+  <meta property="og:title" content="OSCloud — Community for Digital Freedom">
+  <meta property="og:description" content="Tvoje data. Tvoje pravidla. Open source služby bez reklam a sledování, provozované v EU.">
+  <meta property="og:image" content="https://oscloud.cz/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="OSCloud — Tvoje data. Tvoje pravidla.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OSCloud — Community for Digital Freedom">
+  <meta name="twitter:description" content="Tvoje data. Tvoje pravidla. Open source služby bez reklam a sledování, provozované v EU.">
+  <meta name="twitter:image" content="https://oscloud.cz/assets/og-image.png">
+  <meta name="twitter:image:alt" content="OSCloud — Tvoje data. Tvoje pravidla.">
+
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="preload" href="../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/space-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/nav.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "OSCloud, z. s.",
+    "alternateName": "OSCloud",
+    "url": "https://oscloud.cz/",
+    "logo": "https://oscloud.cz/assets/icon-512.png",
+    "email": "info@oscloud.cz",
+    "identifier": "29991145",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Pionýrů 1332",
+      "postalCode": "356 01",
+      "addressLocality": "Sokolov",
+      "addressCountry": "CZ"
+    },
+    "sameAs": ["https://mamutovo.cz/@oscloud", "https://git.oscloud.cz/OSCloud"]
+  }
+  </script>
+
+  <style>
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap;
+      src: url(../assets/fonts/inter-latin-ext-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap;
+      src: url(../assets/fonts/inter-latin-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+    @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap;
+      src: url(../assets/fonts/space-grotesk-latin-ext-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+    @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap;
+      src: url(../assets/fonts/space-grotesk-latin-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+    :root {
+      --primary: #2563EB;
+      --primary-hover: #1D4ED8;
+      --accent: #3B82F6;
+      --bg: #F0F4F8;
+      --dark: #0F172A;
+      --dark-light: #1E293B;
+      --text: #334155;
+      --text-light: #526074;
+      --white: #FFFFFF;
+      --border: #E2E8F0;
+      --radius: 12px;
+      --os-display: 'Space Grotesk', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 72px; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .skip-link { position: absolute; left: 8px; top: -48px; background: var(--dark); color: #fff; padding: 8px 14px; border-radius: 8px; z-index: 200; font-weight: 600; }
+    .skip-link:focus { top: 8px; color: #fff; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.2;
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { color: var(--primary-hover); }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 80px 16px 60px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--dark);
+      margin-bottom: 20px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 span { color: var(--primary); }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-light);
+      max-width: 560px;
+      margin: 0 auto 32px;
+    }
+    .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary { background: var(--primary); color: var(--white); }
+    .btn-primary:hover { background: var(--primary-hover); color: var(--white); }
+    .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: var(--white); }
+
+    /* SERVICES */
+    .services {
+      padding: 60px 16px 80px;
+    }
+    .services h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .services > .container > p {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 48px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px;
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+    }
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--bg);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+    .card h3 {
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+    .card-apps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .card-apps span {
+      background: var(--bg);
+      color: var(--text);
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    /* WHY SECTION */
+
+    .dg-teaser { background-color: #1e1e2e; background-image: radial-gradient(#313244 1.5px, transparent 1.5px); background-size: 28px 28px; color: #cdd6f4; padding: 48px 0; font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace; }
+    .dg-t-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; text-align: left; }
+    .dg-teaser .dg-t-prompt { color: #a6adc8; font-size: .95rem; margin: 0 0 8px; }
+    .dg-teaser h2 { font-family: inherit; font-size: clamp(1.9rem, 5vw, 2.6rem); font-weight: 800; color: #cdd6f4; margin: 0 0 8px; text-align: left; }
+    .dg-teaser p { color: #bac2de; margin: 0; max-width: 620px; line-height: 1.5; text-align: left; }
+    .dg-teaser .dg-t-link { display: inline-block; padding: 12px 22px; border: 1px solid #cba6f7; border-radius: 12px; background: #2a2540; color: #cba6f7; font-weight: 700; text-decoration: none; }
+    .dg-teaser .dg-t-link:hover, .dg-teaser .dg-t-link:focus-visible { background: #cba6f7; color: #1e1e2e; outline: none; }
+    .dg-teaser .dg-t-link:focus-visible { box-shadow: 0 0 0 3px #89b4fa; }
+    .why {
+      background: var(--dark);
+      padding: 80px 16px;
+      color: var(--white);
+    }
+    .why h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 48px;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 32px;
+    }
+    .why-item h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+    .why-item p {
+      font-size: 0.9rem;
+      color: #94A3B8;
+      line-height: 1.7;
+    }
+
+    /* COMMUNITY */
+    .community {
+      padding: 80px 16px;
+      text-align: center;
+    }
+    .community h2 {
+      font-size: 1.8rem;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .community > .container > p {
+      color: var(--text-light);
+      margin-bottom: 32px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .community-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .community-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--text);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .community-link:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* SUPPORT */
+    .support {
+      background: var(--white);
+      padding: 80px 16px;
+    }
+    .support h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .support > .container > p {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 40px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cost-box {
+      max-width: 560px;
+      margin: 0 auto;
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 28px;
+      text-align: center;
+    }
+    .cost-box h3 {
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .cost-box .price {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .cost-box .price-note {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+    .cost-box p {
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    /* PRICING */
+    .pricing {
+      padding: 80px 16px;
+    }
+    .pricing h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .pricing > .container > p {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 48px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    @media (min-width: 1140px) {
+      .pricing-grid { grid-template-columns: repeat(5, 1fr); gap: 16px; }
+      .pricing-grid .price-card { padding: 24px 20px; }
+      .pricing-grid .price-card .price-tag { font-size: 1.5rem; }
+      .pricing-grid .price-card .price-tag small { font-size: 0.75rem; }
+    }
+    .price-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+    .price-card, .pricing-extra { transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
+    .price-card:hover, .pricing-extra:hover {
+      border-color: var(--primary);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+      transform: translateY(-3px);
+    }
+    .price-card h3 {
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .price-card .price-tag {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .price-card .price-tag small {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--text-light);
+    }
+    .price-card .price-desc {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .price-card ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex: 1;
+    }
+    .price-card ul li {
+      font-size: 0.88rem;
+      color: var(--text);
+      padding: 5px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    .price-card ul li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .pricing-extras {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .pricing-extra {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px;
+      border: 1px solid var(--border);
+    }
+    .pricing-extra h3 {
+      font-size: 1rem;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .pricing-extra p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      margin-bottom: 0;
+    }
+
+    /* JOIN FORM */
+    .join {
+      padding: 80px 16px;
+    }
+    .join h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .join > .container > p {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 40px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .join-form {
+      max-width: 520px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px;
+      border: 1px solid var(--border);
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s;
+      background: var(--bg);
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .checkboxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .checkboxes label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--text);
+      cursor: pointer;
+    }
+    .checkboxes input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--primary);
+    }
+    .join-form .btn { width: 100%; text-align: center; }
+    .join-tabs { display: flex; gap: 8px; max-width: 520px; margin: 0 auto 16px; }
+    .join-tabs button { flex: 1; padding: 11px 12px; border: 1px solid var(--border); background: var(--white); color: var(--dark); border-radius: 10px; font: 600 0.9rem 'Inter', sans-serif; cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+    .join-tabs button:hover { border-color: var(--primary); }
+    .join-tabs button[aria-selected="true"] { background: var(--primary); border-color: var(--primary); color: var(--white); }
+    .join-form[hidden], .cond[hidden] { display: none; }
+    .form-group select { width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.9rem; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
+    .form-group select:focus { outline: none; border-color: var(--primary); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-hint { font-size: 0.82rem; color: var(--text-light); margin: 0 0 20px; background: var(--bg); border-radius: 8px; padding: 10px 14px; }
+    @media (max-width: 520px) { .form-row { grid-template-columns: 1fr; gap: 0; } }
+    .consent label { display: flex; align-items: flex-start; gap: 8px; font-size: 0.85rem; font-weight: 400; color: var(--text); cursor: pointer; }
+    .consent input[type="checkbox"] { width: 16px; height: 16px; margin-top: 3px; flex-shrink: 0; accent-color: var(--primary); }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: #94A3B8;
+      padding: 60px 16px 30px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+    .footer-col a {
+      display: block;
+      color: #94A3B8;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid var(--dark-light);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    /* PRICE TABLE */
+    .price-table-wrap {
+      margin-top: 32px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow-x: auto;
+    }
+    .price-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .price-table caption {
+      text-align: left;
+      font-family: var(--os-display);
+      font-weight: 600;
+      color: var(--dark);
+      padding: 20px 24px 12px;
+    }
+    .price-table th, .price-table td { padding: 12px 24px; text-align: right; border-top: 1px solid var(--border); }
+    .price-table thead th { font-size: 0.8rem; color: var(--text-light); font-weight: 600; }
+    .price-table th:first-child, .price-table td:first-child { text-align: left; }
+    .price-table tbody th { font-weight: 600; color: var(--dark); }
+    .price-table tbody td { font-variant-numeric: tabular-nums; }
+    .price-table tbody tr:hover { background: var(--bg); }
+    .order-link { position: relative; display: inline-block; color: var(--primary); font-weight: 600; text-decoration: none; padding: 2px 6px; margin: -2px -6px; border-radius: 6px; border-bottom: 1px dotted var(--primary); border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+    .order-link .o-cta { position: absolute; top: 0; bottom: 0; right: 0; min-width: 100%; width: max-content; display: flex; align-items: center; justify-content: center; padding: 0 10px; background: var(--primary); color: var(--white); border-radius: 6px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.15s; }
+    .order-link:hover, .order-link:focus-visible { color: var(--primary); }
+    .order-link:hover .o-cta, .order-link:focus-visible .o-cta { opacity: 1; }
+    .price-table .o-na { color: var(--text-light); }
+    .table-hint { font-size: 0.82rem; color: var(--text-light); margin: 8px 0 0; text-align: center; }
+    .price-footnote { text-align: center; font-size: 0.85rem; color: var(--text-light); margin-top: 14px; }
+    /* PODPORA */
+    .support-box { margin-top: 48px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; }
+    .support-box h3 { font-size: 1.2rem; color: var(--dark); margin-bottom: 8px; }
+    .support-box p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 12px; }
+    .support-accts { list-style: none; margin: 0; padding: 0; font-size: 0.92rem; }
+    .support-accts li { padding: 4px 0; }
+    .support-accts strong { color: var(--dark); font-variant-numeric: tabular-nums; }
+    .support-qr { text-align: center; font-size: 0.8rem; color: var(--text-light); }
+    .support-qr img { display: block; width: 168px; height: 168px; margin: 0 auto 6px; image-rendering: pixelated; border: 1px solid var(--border); border-radius: 8px; }
+    .ente-pricing { margin-top: 56px; }
+    .ente-pricing h3 { font-size: 1.3rem; color: var(--dark); text-align: center; margin-bottom: 8px; }
+    .ente-pricing .ente-lead { text-align: center; color: var(--text-light); max-width: 620px; margin: 0 auto; }
+    .ente-notes { list-style: none; max-width: 660px; margin: 20px auto 0; padding: 0; }
+    .ente-notes li { position: relative; padding: 5px 0 5px 22px; font-size: 0.9rem; color: var(--text); }
+    .ente-notes li::before { content: "✓"; position: absolute; left: 0; color: var(--primary); font-weight: 600; }
+    .pricing-extra.wide { grid-column: 1 / -1; }
+    .host-list { list-style: none; margin: 12px 0 0; padding: 0; font-size: 0.88rem; }
+    .host-list li { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; border-bottom: 1px solid var(--border); color: var(--text); }
+    .host-list li:last-child { border-bottom: 0; }
+    .host-list a { color: var(--primary); }
+    .host-list span { white-space: nowrap; color: var(--dark); font-weight: 600; }
+
+    /* FORM + misc additions */
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .form-note { font-size: 0.8rem; color: var(--text-light); margin: 0 0 16px; }
+    .form-status { font-size: 0.9rem; margin-top: 14px; min-height: 1.4em; text-align: center; }
+    .form-status.is-ok { color: #15803D; }
+    .form-status.is-err { color: #B91C1C; }
+    .join-form .btn:disabled { opacity: 0.6; cursor: wait; }
+    .tiers { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tiers li { font-size: 0.82rem; color: var(--text); }
+    .tiers li:not(:has(a)) { background: var(--bg); border-radius: 6px; padding: 4px 10px; }
+    .tiers a { display: block; color: inherit; text-decoration: none; background: var(--bg); border-radius: 6px; padding: 4px 10px; font-size: 0.82rem; border: 1px solid transparent; transition: border-color 0.2s, color 0.2s; }
+    .tiers a:hover, .tiers a:focus-visible { border-color: var(--primary); color: var(--primary); }
+    .footer-bottom { line-height: 1.8; }
+    .footer-bottom a { color: #CBD5E1; text-decoration: underline; }
+    .footer-bottom a:hover { color: var(--white); }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .hero { padding: 60px 16px 40px; }
+      .cards { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-extras { grid-template-columns: 1fr; }
+      .support-box { grid-template-columns: 1fr; padding: 22px 20px; text-align: center; }
+      .join-form { padding: 24px 20px; }
+      .cost-box .price { font-size: 1.6rem; }
+      .price-table caption { padding: 16px 14px 10px; }
+      .price-table th, .price-table td { padding: 10px 4px; font-size: 0.78rem; }
+      .price-table thead th { font-size: 0.7rem; }
+      .price-table .o-price, .price-table th:first-child { white-space: nowrap; }
+      .price-table th:first-child, .price-table td:first-child { padding-left: 10px; }
+      .price-table th:last-child, .price-table td:last-child { padding-right: 10px; }
+      .price-table thead th { font-size: 0.7rem; }
+      .join, .pricing, .community, .why, .support { padding-top: 56px; padding-bottom: 56px; }
+    }
+  </style>
+  <script defer src="https://analytics.oscloud.cz/script.js" data-website-id="92b865bd-f0d2-4d73-a974-14f428a1b7f5"></script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- NAV -->
+<header class="os-nav" data-os-nav>
+  <div class="os-nav__inner">
+    <a class="os-logo" href="/en/"><img src="../assets/logo-horizontal.png" alt="OSCloud" width="176" height="24"></a>
+    <button class="os-toggle" type="button" aria-expanded="false" aria-controls="os-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav class="os-links" id="os-links" aria-label="Main navigation">
+      <a href="#sluzby">Services</a>
+      <a href="#proc">Why OSCloud</a>
+      <a href="#cenik">Pricing</a>
+      <a href="#komunita">Community</a>
+      <a href="../o-nas.html">About us (CS)</a>
+      <a href="https://docs.oscloud.cz" target="_blank" rel="noopener">Documentation</a>
+      <a href="https://blog.oscloud.cz" target="_blank" rel="noopener">Blog</a>
+      <a href="https://my.oscloud.cz" target="_blank" rel="noopener">Log in</a>
+      <a href="/" hreflang="cs" lang="cs">CZ</a>
+      <a class="os-cta" href="#pripojit">Join us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <h1>Your data. <span>Your rules.</span></h1>
+    <p>OSCloud is a Czech community running open source services. No ads, no tracking, no vendor lock-in. Just tools that work.</p>
+    <div class="hero-buttons">
+      <a href="#pripojit" class="btn btn-primary">Join us</a>
+      <a href="#sluzby" class="btn btn-outline">What we offer</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="sluzby">
+  <div class="container">
+    <h2>What you will find here</h2>
+    <p>We do not tell you which software to use. We tell you which problem you can solve.</p>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-icon">💬</div>
+        <h3>Want to chat securely?</h3>
+        <p>Encrypted messages, groups, calls. No Meta, no data harvesting. You write, and you know only the other person reads it.</p>
+        <div class="card-apps">
+          <span><a href="../mxchat.html">Matrix / Element</a></span>
+          <span>MiroTalk</span>
+          <span>Ntfy</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>Want social networks without ads?</h3>
+        <p>The Fediverse: decentralised networks with no algorithm telling you what to read.</p>
+        <div class="card-apps">
+          <span><a href="https://mamutovo.cz" target="_blank" rel="noopener">Mastodon</a></span>
+          <span><a href="https://vhsky.cz" target="_blank" rel="noopener">PeerTube</a></span>
+          <span><a href="https://pixelfed.cz" target="_blank" rel="noopener">Pixelfed</a></span>
+          <span><a href="https://makni.cz" target="_blank" rel="noopener">FitPub</a></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">☁️</div>
+        <h3>Want your own cloud?</h3>
+        <p>Files, calendar, contacts and the Collabora online office in one place. Photos, encrypted, in Ente Photos. No Google Drive, no iCloud.</p>
+        <div class="card-apps">
+          <span><a href="../nextcloud.html">Nextcloud</a></span>
+          <span><a href="../ente.html">Ente Photos</a></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📝</div>
+        <h3>Want to collaborate?</h3>
+        <p>Shared documents, spreadsheets, presentations and code. In real time, without Google. Encrypted.</p>
+        <div class="card-apps">
+          <span><a href="https://cryptpad.arch-linux.cz/" target="_blank" rel="noopener">CryptPad</a></span>
+          <span><a href="https://docs.oscloud.cz/apps/hedgedoc/" target="_blank" rel="noopener">HedgeDoc</a></span>
+          <span><a href="https://docs.oscloud.cz/apps/triliumnext/" target="_blank" rel="noopener">Trilium</a></span>
+          <span><a href="../nextcloud.html#collabora">Collabora Online</a></span>
+          <span><a href="https://git.oscloud.cz" target="_blank" rel="noopener">Forgejo</a></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <h3>Want your passwords safe?</h3>
+        <p>A password manager, a private search engine, one-time text sharing. Security without compromise.</p>
+        <div class="card-apps">
+          <span><a href="https://docs.oscloud.cz/apps/vaultwarden/" target="_blank" rel="noopener">Vaultwarden</a></span>
+          <span><a href="https://docs.oscloud.cz/apps/searxng/" target="_blank" rel="noopener">SearXNG</a></span>
+          <span><a href="https://docs.oscloud.cz/apps/privatebin/" target="_blank" rel="noopener">PrivateBin</a> (after registration)</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📰</div>
+        <h3>Want to read without algorithms?</h3>
+        <p>RSS readers, bookmarks, offline reading. You choose what you read, not an algorithm.</p>
+        <div class="card-apps">
+          <span>FreshRSS</span>
+          <span>Miniflux</span>
+          <span><a href="https://docs.oscloud.cz/apps/wallabag/" target="_blank" rel="noopener">Wallabag</a></span>
+          <span><a href="https://docs.oscloud.cz/apps/linkwarden/" target="_blank" rel="noopener">Linkwarden</a></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="proc">
+  <div class="container">
+    <h2>Why OSCloud?</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <h3>No tracking</h3>
+        <p>We do not use cookies on oscloud.cz, so there is nothing to click away. We measure traffic anonymously with our own Umami instance on our own server. Our services only use technical cookies needed to log in, no advertising or tracking cookies. We send no data to Google, Amazon or other advertising and analytics services. There are no ads. Your privacy is the default, not a premium feature.</p>
+      </div>
+      <div class="why-item">
+        <h3>Open source</h3>
+        <p>Everything we run is open source. Anyone can check the code. No black boxes.</p>
+      </div>
+      <div class="why-item">
+        <h3>Data in the EU</h3>
+        <p>Our server runs in Germany at Hetzner. Your data does not leave Europe. GDPR is not a marketing trick, it is reality.</p>
+      </div>
+      <div class="why-item">
+        <h3>A community, not a company</h3>
+        <p>OSCloud is run as a non-profit association. No investors, no exit plan. We do it because we believe it matters.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEGOOGLIZACE -->
+<section class="dg-teaser" aria-labelledby="dg-t-h">
+  <div class="container">
+    <div class="dg-t-inner">
+      <div>
+        <p class="dg-t-prompt" aria-hidden="true">$ oscloud --degoogle --step-by-step</p>
+        <h2 id="dg-t-h">De-Googling</h2>
+        <p>What to replace with what: photos, files, e-mail, chat, passwords and social networks. Step by step, no stress, and there is a poster to download.</p>
+      </div>
+      <a class="dg-t-link" href="degooglizace.html">Take a look →</a>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="community" id="komunita">
+  <div class="container">
+    <h2>Community</h2>
+    <p>Meet people who care about the same things. Linux, self-hosting, privacy, the Fediverse. No gatekeeping.</p>
+    <div class="community-links">
+      <a href="https://chat.mxchat.cz/#/room/#oscloudcz:mxchat.cz" target="_blank" rel="noopener" class="community-link">💬 Matrix — mxchat.cz</a>
+      <a href="https://mamutovo.cz/@oscloud" target="_blank" rel="noopener" class="community-link">🐘 Mastodon</a>
+      <a href="https://git.oscloud.cz" target="_blank" rel="noopener" class="community-link">🔧 Forgejo</a>
+      <a href="https://blog.oscloud.cz" target="_blank" rel="noopener" class="community-link">📖 Blog</a>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section class="support">
+  <div class="container">
+    <h2>Transparent operation</h2>
+    <p>We will not pretend it is free. A server costs money. Here is how it works.</p>
+    <div class="cost-box">
+      <h3>Monthly server cost</h3>
+      <div class="price">~8,500 CZK/month</div>
+      <div class="price-note">Dedicated Hetzner server · Intel Core i9-13900 · 64 GB RAM · backups on separate storage</div>
+      <p>We pay for it ourselves. If you want to help, you can chip in, but it is not a condition. The services are for everyone.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="cenik">
+  <div class="container">
+    <h2>Pricing</h2>
+    <p>Basic services are free. You choose Nextcloud by storage size; associations and companies pay extra for invoicing with a company ID, support and more users. All prices are in Czech koruna (CZK).</p>
+
+    <div class="pricing-grid">
+
+      <div class="price-card">
+        <h3>Community</h3>
+        <div class="price-tag">Free</div>
+        <div class="price-desc">For anyone who wants to try open source</div>
+        <ul>
+          <li>Mastodon, Pixelfed, PeerTube</li>
+          <li>SearXNG, CryptPad, PrivateBin (after registration)</li>
+          <li>FreshRSS, HedgeDoc, Vaultwarden</li>
+          <li>Forgejo: Git hosting, private and public repositories</li>
+          <li>Nextcloud 2 GB</li>
+          <li>Support via Matrix</li>
+        </ul>
+      </div>
+
+      <div class="price-card">
+        <h3>Individual</h3>
+        <div class="price-tag"><!--p "from {nc.min} CZK <small>/month</small>"-->from 15 CZK <small>/month</small><!--/p--></div>
+        <div class="price-desc">Nextcloud, as much as you need</div>
+        <ul>
+          <li>Everything in the Community plan</li>
+          <li>Nextcloud 5 GB to 1 TB</li>
+          <li>Support via Matrix</li>
+          <li>Price as per the table below</li>
+        </ul>
+      </div>
+
+      <div class="price-card">
+        <h3>Family</h3>
+        <div class="price-tag"><!--p "from {family_base} CZK <small>/month</small>"-->from 50 CZK <small>/month</small><!--/p--></div>
+        <div class="price-desc">Includes a shared 50&nbsp;GB folder</div>
+        <ul>
+          <li>Everything in the Community plan</li>
+          <li>4 users, each with their own account and 2&nbsp;GB free</li>
+          <li>A shared folder for all members, a bigger one for a surcharge as per the table</li>
+          <li>Shared calendars and contacts</li>
+          <li>Support via Matrix</li>
+        </ul>
+      </div>
+
+      <div class="price-card">
+        <h3>For associations</h3>
+        <div class="price-tag"><!--p "+ {plan.spolek} CZK <small>/month</small>"-->+ 99 CZK <small>/month</small><!--/p--></div>
+        <div class="price-desc">On top of the selected storage</div>
+        <ul>
+          <li>Everything in the Community plan</li>
+          <li>5 Nextcloud users, shared storage</li>
+          <li>Invoicing with company ID</li>
+          <li>Support by e-mail + Matrix</li>
+          <li>The scope can be adjusted to your needs</li>
+        </ul>
+      </div>
+
+      <div class="price-card">
+        <h3>For companies</h3>
+        <div class="price-tag"><!--p "+ {plan.firma} CZK <small>/month</small>"-->+ 299 CZK <small>/month</small><!--/p--></div>
+        <div class="price-desc">On top of the selected storage</div>
+        <ul>
+          <li>Everything in the Community plan</li>
+          <li>10 Nextcloud users, shared storage</li>
+          <li>Invoicing with company ID</li>
+          <li>Support by e-mail + Matrix</li>
+          <li>SLA: response within 24 hours</li>
+          <li>The scope can be adjusted to your needs</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="price-table-wrap">
+      <table class="price-table">
+        <caption>Nextcloud price per month by storage</caption>
+        <thead>
+          <tr><th scope="col">Storage</th><th scope="col">Individual</th><th scope="col">Family</th><th scope="col">Association</th><th scope="col">Company</th></tr>
+        </thead>
+        <tbody>
+        <!--prices:rows-->
+          <tr><th scope="row">5 GB</th><td><a class="order-link" href="/en/?typ=jednotlivec&amp;gb=5#pripojit" aria-label="Order Nextcloud 5 GB, individual, price 15 CZK"><span class="o-price">15 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td class="o-na">–</td><td class="o-na">–</td><td class="o-na">–</td></tr>
+          <tr><th scope="row">10 GB</th><td><a class="order-link" href="/en/?typ=jednotlivec&amp;gb=10#pripojit" aria-label="Order Nextcloud 10 GB, individual, price 25 CZK"><span class="o-price">25 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td class="o-na">–</td><td class="o-na">–</td><td class="o-na">–</td></tr>
+          <tr><th scope="row">50 GB</th><td><a class="order-link" href="/en/?typ=jednotlivec&amp;gb=50#pripojit" aria-label="Order Nextcloud 50 GB, individual, price 49 CZK"><span class="o-price">49 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=rodina&amp;gb=50#pripojit" aria-label="Order Nextcloud 50 GB, Family plan, price 50 CZK"><span class="o-price">50 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=spolek&amp;gb=50#pripojit" aria-label="Order Nextcloud 50 GB, Association plan, price 148 CZK"><span class="o-price">148 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=firma&amp;gb=50#pripojit" aria-label="Order Nextcloud 50 GB, Company plan, price 348 CZK"><span class="o-price">348 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td></tr>
+          <tr><th scope="row">100 GB</th><td><a class="order-link" href="/en/?typ=jednotlivec&amp;gb=100#pripojit" aria-label="Order Nextcloud 100 GB, individual, price 69 CZK"><span class="o-price">69 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=rodina&amp;gb=100#pripojit" aria-label="Order Nextcloud 100 GB, Family plan, price 70 CZK"><span class="o-price">70 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=spolek&amp;gb=100#pripojit" aria-label="Order Nextcloud 100 GB, Association plan, price 168 CZK"><span class="o-price">168 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=firma&amp;gb=100#pripojit" aria-label="Order Nextcloud 100 GB, Company plan, price 368 CZK"><span class="o-price">368 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td></tr>
+          <tr><th scope="row">200 GB</th><td><a class="order-link" href="/en/?typ=jednotlivec&amp;gb=200#pripojit" aria-label="Order Nextcloud 200 GB, individual, price 99 CZK"><span class="o-price">99 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=rodina&amp;gb=200#pripojit" aria-label="Order Nextcloud 200 GB, Family plan, price 100 CZK"><span class="o-price">100 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=spolek&amp;gb=200#pripojit" aria-label="Order Nextcloud 200 GB, Association plan, price 198 CZK"><span class="o-price">198 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=firma&amp;gb=200#pripojit" aria-label="Order Nextcloud 200 GB, Company plan, price 398 CZK"><span class="o-price">398 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td></tr>
+          <tr><th scope="row">500 GB</th><td><a class="order-link" href="/en/?typ=jednotlivec&amp;gb=500#pripojit" aria-label="Order Nextcloud 500 GB, individual, price 169 CZK"><span class="o-price">169 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=rodina&amp;gb=500#pripojit" aria-label="Order Nextcloud 500 GB, Family plan, price 170 CZK"><span class="o-price">170 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=spolek&amp;gb=500#pripojit" aria-label="Order Nextcloud 500 GB, Association plan, price 268 CZK"><span class="o-price">268 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=firma&amp;gb=500#pripojit" aria-label="Order Nextcloud 500 GB, Company plan, price 468 CZK"><span class="o-price">468 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td></tr>
+          <tr><th scope="row">1 TB</th><td><a class="order-link" href="/en/?typ=jednotlivec&amp;gb=1000#pripojit" aria-label="Order Nextcloud 1 TB, individual, price 239 CZK"><span class="o-price">239 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=rodina&amp;gb=1000#pripojit" aria-label="Order Nextcloud 1 TB, Family plan, price 240 CZK"><span class="o-price">240 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=spolek&amp;gb=1000#pripojit" aria-label="Order Nextcloud 1 TB, Association plan, price 338 CZK"><span class="o-price">338 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=firma&amp;gb=1000#pripojit" aria-label="Order Nextcloud 1 TB, Company plan, price 538 CZK"><span class="o-price">538 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td></tr>
+        <!--/prices-->
+        </tbody>
+      </table>
+    </div>
+    <p class="table-hint">Click a price to pre-fill the request form.</p>
+    <p class="table-hint"><strong>Everything can be combined.</strong> The Family plan includes a shared folder of the chosen size, and each member also gets 2&nbsp;GB free. If that is not enough, you can add your own bigger storage at the price from the Individual column; the shared folder stays the same. Example: a shared 50&nbsp;GB folder (<!--p "{family_base}&nbsp;CZK"-->50&nbsp;CZK<!--/p-->) and one member with their own 100&nbsp;GB (<!--p "{nc.100}&nbsp;CZK"-->69&nbsp;CZK<!--/p-->), the others stay on 2&nbsp;GB free.</p>
+    <p class="price-footnote">OSCloud, z. s. is not a VAT payer, all prices are final. Prices are in CZK and you can pay by bank transfer from abroad using our IBAN (account details on the <a href="../o-nas.html#ucty">About us</a> page, in Czech). Your bank converts the amount at its own rate. More about <a href="../nextcloud.html">Nextcloud</a> (in Czech).<br>Storage larger than 1 TB is possible by arrangement as external storage. The number of users in the Association and Company plans is indicative. For a bigger team, get in touch at <a href="mailto:info@oscloud.cz">info@oscloud.cz</a> and we will work something out.<br>It is a good idea to back up important data outside OSCloud as well, for example to your own external drive.</p>
+
+    <div class="ente-pricing" id="ente">
+      <h3>📷 Ente Photos: encrypted photos</h3>
+      <p class="ente-lead">A separate product at <a href="https://oscloud.photos" target="_blank" rel="noopener">oscloud.photos</a>, an alternative to Google Photos. Photos are encrypted right on your device, so even we cannot see them. Every account gets 10&nbsp;GB free forever.</p>
+
+      <div class="price-table-wrap">
+        <table class="price-table">
+          <caption>Ente Photos price by storage</caption>
+          <thead>
+            <tr><th scope="col">Storage</th><th scope="col">Monthly</th><th scope="col">Yearly</th></tr>
+          </thead>
+          <tbody>
+          <tr><th scope="row">50 GB</th><td>49 CZK</td><td>490 CZK</td></tr>
+          <tr><th scope="row">200 GB</th><td>99 CZK</td><td>990 CZK</td></tr>
+          <tr><th scope="row">1 TB</th><td>239 CZK</td><td>2,629 CZK</td></tr>
+          <tr><th scope="row">2 TB</th><td>469 CZK</td><td>5,159 CZK</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ul class="ente-notes">
+        <li>With a yearly subscription you pay up to two months less.</li>
+        <li>You can share the storage with up to 5 family members at no extra cost, each with their own account and their own encryption.</li>
+        <li>The subscription is bought on oscloud.photos (also from a phone browser), not in the app. You pay by card via Stripe.</li>
+        <li>Registration and app setup step by step: <a href="../ente.html">more about Ente Photos</a> (in Czech) or the <a href="https://docs.oscloud.cz/apps/ente-photos/" target="_blank" rel="noopener">guide in the documentation</a>.</li>
+      </ul>
+    </div>
+
+
+    <div class="ente-pricing" id="trilium">
+      <h3>📝 Trilium Next: your own notes</h3>
+      <p class="ente-lead">Your own Trilium Next instance just for you: tree-structured notes, Markdown and access from anywhere. Includes 5&nbsp;GB of storage.</p>
+
+      <div class="price-table-wrap">
+        <table class="price-table">
+          <caption>Trilium Next price</caption>
+          <thead>
+            <tr><th scope="col">Plan</th><th scope="col">Price</th></tr>
+          </thead>
+          <tbody>
+          <tr><th scope="row">Basic</th><td><a class="order-link" href="/en/?typ=trilium&amp;period=monthly#pripojit" aria-label="Order Trilium Next, monthly"><span class="o-price"><!--p "{trilium.month}&nbsp;CZK / month"-->65&nbsp;CZK / month<!--/p--></span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
+          <tr><th scope="row">Yearly</th><td><a class="order-link" href="/en/?typ=trilium&amp;period=yearly#pripojit" aria-label="Order Trilium Next, yearly"><span class="o-price"><!--p "{trilium.year}&nbsp;CZK / year"-->600&nbsp;CZK / year<!--/p--></span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
+          <tr><th scope="row">Custom domain, more storage</th><td>on request</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ul class="ente-notes">
+        <li>Every customer gets their own separate instance and backups.</li>
+        <li>A custom domain (for example notes.yourdomain.com) on request.</li>
+        <li>Details: <a href="trilium.html">more about Trilium Next</a> or the <a href="https://docs.oscloud.cz/apps/triliumnext/" target="_blank" rel="noopener">guide in the documentation</a>.</li>
+      </ul>
+    </div>
+
+    <div class="pricing-extras">
+      <div class="pricing-extra">
+        <h3>🐘 Mastodon for small communities: <!--p "from {mastodon} CZK/mo"-->from 225 CZK/mo<!--/p--></h3>
+        <p>Your own Mastodon instance for a smaller association or community; expect dozens of active users, not hundreds. Administration, updates and backups are on us. A custom domain is possible. A larger instance on a separate server can be arranged individually.</p>
+      </div>
+      <div class="pricing-extra">
+        <h3>💬 Forum for communities: <!--p "from {forum} CZK/mo"-->from 199 CZK/mo<!--/p--></h3>
+        <p>Your own discussion forum (Discourse or NodeBB) for your association, project or community. Administration and backups are on us.</p>
+      </div>
+      <div class="pricing-extra">
+        <h3>📚 Wiki for communities: <!--p "from {wiki} CZK/mo"-->from 129 CZK/mo<!--/p--></h3>
+        <p>Your own wiki for an association, project or community. Choose from BookStack, DokuWiki, MediaWiki, Wiki.js or Docmost. Administration, updates and backups are on us.</p>
+      </div>
+      <div class="pricing-extra">
+        <h3>🌐 Web hosting and e-mail</h3>
+        <p>On your own domain, administration and backups are on us. A mailbox can only be ordered together with web hosting.</p>
+        <ul class="host-list">
+          <li><a href="https://docs.oscloud.cz/apps/surfer/" target="_blank" rel="noopener">Static website (Surfer), 1 GB</a><span><!--p "from {hosting.static} CZK/mo"-->from 49 CZK/mo<!--/p--></span></li>
+          <li><a href="https://docs.oscloud.cz/apps/lamp/" target="_blank" rel="noopener">LAMP (PHP + MySQL), 5 GB</a><span><!--p "from {hosting.lamp} CZK/mo"-->from 89 CZK/mo<!--/p--></span></li>
+          <li><a href="https://docs.oscloud.cz/apps/wordpress-managed/" target="_blank" rel="noopener">Managed WordPress, 5 GB</a><span><!--p "from {hosting.wordpress} CZK/mo"-->from 99 CZK/mo<!--/p--></span></li>
+          <li>Mailbox 1 GB / 5 GB / 10 GB<span><!--p "{mail.1} / {mail.5} / {mail.10} CZK/mo"-->19 / 39 / 59 CZK/mo<!--/p--></span></li>
+        </ul>
+      </div>
+      <div class="pricing-extra wide">
+        <h3>🧡 Charities and youth groups</h3>
+        <p>We support non-profits, charities, youth groups, scouts and similar communities. Terms are arranged individually; get in touch through the <a href="#pripojit">form</a> or the <a href="https://helpdesk.oscloud.cz/help/3271740098" target="_blank" rel="noopener">helpdesk</a>.</p>
+      </div>
+      <div class="pricing-extra wide">
+        <h3>🤝 Sponsoring</h3>
+        <p>Your logo on oscloud.cz. Details are arranged individually. Click a tier to open an e-mail, or write to us via the <a href="https://helpdesk.oscloud.cz/help/3271740098" target="_blank" rel="noopener">helpdesk</a>.</p>
+        <ul class="tiers">
+          <li><a href="mailto:info@oscloud.cz?subject=Sponsoring%20OSCloud%20-%20Bronze"><strong>Bronze</strong> <!--p "{sponsor.bronz} CZK/mo"-->500 CZK/mo<!--/p--></a></li>
+          <li><a href="mailto:info@oscloud.cz?subject=Sponsoring%20OSCloud%20-%20Silver"><strong>Silver</strong> <!--p "{sponsor.stribro} CZK/mo"-->1 000 CZK/mo<!--/p--></a></li>
+          <li><a href="mailto:info@oscloud.cz?subject=Sponsoring%20OSCloud%20-%20Gold"><strong>Gold</strong> <!--p "{sponsor.zlato} CZK/mo"-->2 500 CZK/mo<!--/p--></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="support-box" id="podpora">
+      <div>
+        <h3>💙 Just want to support OSCloud?</h3>
+        <p>You do not need the services, but you like what we do? You can send us any donation. It helps cover the server, backups and our work. We are non-profit, everything goes into running the services.</p>
+        <ul class="support-accts">
+          <li>Transparent account: <strong>284833433/0600</strong></li>
+          <li>Non-transparent account: <strong>284833660/0600</strong></li>
+        </ul>
+        <p style="margin:12px 0 0;font-size:0.85rem;">Write “donation” in the message. Account numbers and IBAN are on the <a href="../o-nas.html#ucty">About us</a> page (in Czech).</p>
+        <p style="margin:8px 0 0;font-size:0.85rem;">Need a receipt for your donation? Write to <a href="mailto:info@oscloud.cz?subject=Donation%20receipt">info@oscloud.cz</a> with your name, the amount and the payment date and we will issue a confirmation of receipt. It is a proof of payment and does not guarantee a tax deduction.</p>
+      </div>
+      <div class="support-qr">
+        <img src="../assets/qr-platba.png" width="168" height="168" alt="QR payment to the OSCloud transparent account" loading="lazy">
+        QR payment<br>transparent account
+      </div>
+    </div>
+
+    <p style="text-align:center; color: var(--text-light); font-size: 0.88rem; margin-top: 32px;">More services are in preparation. Ideas and interest are welcome through the <a href="#pripojit">form</a>.</p>
+
+  </div>
+</section>
+
+<!-- JOIN FORM -->
+<section class="join" id="pripojit">
+  <div class="container">
+    <h2>Join us</h2>
+    <p>A short form, the reply comes by e-mail. No 20 fields, no phone verification.</p>
+    <div class="join-tabs" role="tablist" aria-label="Request type">
+      <button type="button" role="tab" id="tab-form-jednotlivec" aria-controls="form-jednotlivec" aria-selected="true" data-form="form-jednotlivec">Individual</button>
+      <button type="button" role="tab" id="tab-form-org" aria-controls="form-org" aria-selected="false" data-form="form-org">Association or company</button>
+    </div>
+    <form class="join-form" id="form-jednotlivec" role="tabpanel" aria-labelledby="tab-form-jednotlivec" method="post" action="/submit.php">
+      <input type="hidden" name="type" value="individual">
+      <div class="form-group">
+        <label for="i-name">Name or nickname</label>
+        <input type="text" id="i-name" name="name" placeholder="The name we should call you" maxlength="80" autocomplete="nickname" required>
+      </div>
+      <div class="form-group">
+        <label for="i-email">E-mail</label>
+        <input type="email" id="i-email" name="email" placeholder="Our reply will be sent here" maxlength="120" autocomplete="email" required>
+      </div>
+      <div class="form-group">
+        <label for="i-service">Service</label>
+        <select id="i-service" name="service" required><option value="" selected disabled>– select –</option><option value="free">Free: community services and Nextcloud 2 GB</option><option value="nextcloud">Nextcloud, more storage (paid)</option><option value="family">Family: Nextcloud for 4 people, shared storage</option><option value="trilium">Trilium Next: your own notes (<!--p "{trilium.month}&nbsp;CZK/mo"-->65&nbsp;CZK/mo<!--/p-->)</option><option value="matrix">Matrix chat (mxchat.cz)</option><option value="other">Something else</option></select>
+      </div>
+      <div class="cond" data-show-if="service=trilium" hidden>
+      <div class="form-group">
+        <label for="i-period-t">Payment</label>
+        <select id="i-period-t" name="period" required><option value="" selected disabled>– select –</option><option value="monthly">Monthly (<!--p "{trilium.month}&nbsp;CZK"-->65&nbsp;CZK<!--/p-->)</option><option value="yearly">Yearly (<!--p "{trilium.year}&nbsp;CZK"-->600&nbsp;CZK<!--/p-->)</option></select>
+      </div>
+      </div>
+      <div class="cond" data-show-if="service=nextcloud" hidden>
+        <div class="form-row">
+      <div class="form-group">
+        <label for="i-storage">Storage</label>
+        <select id="i-storage" name="storage" required><option value="" selected disabled>– select –</option><!--prices:opt-ind--><option value="5">5 GB · 15 CZK/mo</option><option value="10">10 GB · 25 CZK/mo</option><option value="50">50 GB · 49 CZK/mo</option><option value="100">100 GB · 69 CZK/mo</option><option value="200">200 GB · 99 CZK/mo</option><option value="500">500 GB · 169 CZK/mo</option><option value="1000">1 TB · 239 CZK/mo</option><!--/prices--></select>
+      </div>
+      <div class="form-group">
+        <label for="i-period">Payment</label>
+        <select id="i-period" name="period" required><option value="" selected disabled>– select –</option><option value="monthly">Monthly</option><option value="yearly">Yearly</option></select>
+      </div>
+        </div>
+      </div>
+      <div class="cond" data-show-if="service=family" hidden>
+        <div class="form-row">
+      <div class="form-group">
+        <label for="i-storage-f">Shared storage for 4 people</label>
+        <select id="i-storage-f" name="storage" required><option value="" selected disabled>– select –</option><!--prices:opt-fam--><option value="50">50 GB · 50 CZK/mo</option><option value="100">100 GB · 70 CZK/mo</option><option value="200">200 GB · 100 CZK/mo</option><option value="500">500 GB · 170 CZK/mo</option><option value="1000">1 TB · 240 CZK/mo</option><!--/prices--></select>
+      </div>
+      <div class="form-group">
+        <label for="i-period-f">Payment</label>
+        <select id="i-period-f" name="period" required><option value="" selected disabled>– select –</option><option value="monthly">Monthly</option><option value="yearly">Yearly</option></select>
+      </div>
+        </div>
+      </div>
+      <div class="cond" data-show-if="service=nextcloud|family|trilium" hidden>
+      <div class="form-group">
+        <label for="i-bname">First and last name (for the invoice)</label>
+        <input type="text" id="i-bname" name="billing_name" maxlength="120" autocomplete="name" required>
+      </div>
+      <div class="form-group">
+        <label for="i-baddr">Address (street, city, postcode, country)</label>
+        <input type="text" id="i-baddr" name="billing_address" maxlength="200" autocomplete="street-address" required>
+        <p class="form-note">We issue invoices as an association with bookkeeping, so we need your name and address on the invoice. We use them for the invoice only.</p>
+      </div>
+      </div>
+      <div class="form-group">
+        <label for="i-message">Note (optional)</label>
+        <textarea id="i-message" name="message" placeholder="Anything worth knowing in advance" maxlength="2000"></textarea>
+      </div>
+      <div class="hp" aria-hidden="true">
+        <label>Website (leave empty)<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+      <input type="hidden" name="lang" value="en">
+      <input type="hidden" name="token" value="">
+      <div class="form-group consent">
+        <label><input type="checkbox" name="consent" value="1" required> <span>I have read the <a href="../podminky.html" target="_blank" rel="noopener">terms of use</a> and the <a href="../ochrana-udaju.html" target="_blank" rel="noopener">privacy policy</a> (both in Czech) and acknowledge them.</span></label>
+      </div>
+      <p class="form-note">Your data is used only to process the request.</p>
+      <button type="submit" class="btn btn-primary">Send request</button>
+      <div class="form-status" role="status" aria-live="polite"></div>
+      <noscript><p class="form-note" style="margin-top:14px">The form needs JavaScript. Contact: <a href="mailto:info@oscloud.cz">info@oscloud.cz</a>.</p></noscript>
+    </form>
+    <form class="join-form" id="form-org" role="tabpanel" aria-labelledby="tab-form-org" method="post" action="/submit.php" hidden>
+      <input type="hidden" name="type" value="org">
+      <div class="form-group">
+        <label for="o-org">Name of the association or company</label>
+        <input type="text" id="o-org" name="org_name" maxlength="120" autocomplete="organization" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="o-ico">Company ID (IČO)</label>
+          <input type="text" id="o-ico" name="ico" inputmode="numeric" pattern="[0-9 ]{8,10}" maxlength="10" required>
+        </div>
+        <div class="form-group">
+          <label for="o-users">Number of users (approximate)</label>
+          <input type="number" id="o-users" name="users" min="1" max="999" placeholder="e.g. 5">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="o-address">Billing address</label>
+        <input type="text" id="o-address" name="address" maxlength="200" autocomplete="street-address" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="o-name">Contact person</label>
+          <input type="text" id="o-name" name="name" maxlength="80" autocomplete="name" required>
+        </div>
+        <div class="form-group">
+          <label for="o-email">E-mail for contact and invoices</label>
+          <input type="email" id="o-email" name="email" maxlength="120" autocomplete="email" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="o-plan">Plan</label>
+        <select id="o-plan" name="plan" required><option value="" selected disabled>– select –</option><!--prices:opt-plan--><option value="spolek">Association (+99 CZK per month)</option><option value="firma">Company (+299 CZK per month)</option><!--/prices--></select>
+      </div>
+      <div class="form-row">
+      <div class="form-group">
+        <label for="o-storage">Storage</label>
+        <select id="o-storage" name="storage" required><option value="" selected disabled>– select –</option><!--prices:opt-org--><option value="50">50 GB · from 148 CZK/mo</option><option value="100">100 GB · from 168 CZK/mo</option><option value="200">200 GB · from 198 CZK/mo</option><option value="500">500 GB · from 268 CZK/mo</option><option value="1000">1 TB · from 338 CZK/mo</option><!--/prices--></select>
+      </div>
+      <div class="form-group">
+        <label for="o-period">Payment</label>
+        <select id="o-period" name="period" required><option value="" selected disabled>– select –</option><option value="monthly">Monthly</option><option value="yearly">Yearly</option></select>
+      </div>
+      </div>
+      <div class="form-group">
+        <label for="o-message">Note (optional)</label>
+        <textarea id="o-message" name="message" placeholder="Anything worth knowing in advance" maxlength="2000"></textarea>
+      </div>
+      <div class="hp" aria-hidden="true">
+        <label>Website (leave empty)<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+      <input type="hidden" name="lang" value="en">
+      <input type="hidden" name="token" value="">
+      <div class="form-group consent">
+        <label><input type="checkbox" name="consent" value="1" required> <span>I have read the <a href="../podminky.html" target="_blank" rel="noopener">terms of use</a> and the <a href="../ochrana-udaju.html" target="_blank" rel="noopener">privacy policy</a> (both in Czech) and acknowledge them.</span></label>
+      </div>
+      <p class="form-note">Your data is used only to process the request.</p>
+      <button type="submit" class="btn btn-primary">Send request</button>
+      <div class="form-status" role="status" aria-live="polite"></div>
+      <noscript><p class="form-note" style="margin-top:14px">The form needs JavaScript. Contact: <a href="mailto:info@oscloud.cz">info@oscloud.cz</a>.</p></noscript>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="../nextcloud.html">Nextcloud</a>
+        <a href="trilium.html">Trilium Next</a>
+        <a href="https://cryptpad.arch-linux.cz/">CryptPad</a>
+        <a href="https://docs.oscloud.cz/apps/vaultwarden/">Vaultwarden</a>
+        <a href="https://docs.oscloud.cz/apps/searxng/">SearXNG</a>
+        <a href="../ente.html">Ente Photos</a>
+        <a href="https://docs.oscloud.cz/apps/freshrss/">FreshRSS</a>
+      </div>
+      <div class="footer-col">
+        <h4>Fediverse</h4>
+        <a href="https://mamutovo.cz/@oscloud">Mastodon</a>
+        <a href="https://vhsky.cz">PeerTube</a>
+        <a href="https://pixelfed.cz">Pixelfed</a>
+        <a href="https://makni.cz">FitPub (makni.cz)</a>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <a href="../mxchat.html">Matrix chat</a>
+        <a href="https://blog.oscloud.cz">Blog</a>
+        <a href="https://docs.oscloud.cz">Documentation</a>
+        <a href="degooglizace.html">De-Googling</a>
+      </div>
+      <div class="footer-col">
+        <h4>Project</h4>
+        <a href="https://git.oscloud.cz">Forgejo (Git)</a>
+        <a href="../o-nas.html">About us and contact (CS)</a>
+        <a href="https://helpdesk.oscloud.cz/help/3271740098">Helpdesk</a>
+        <a href="mailto:info@oscloud.cz">info@oscloud.cz</a>
+        <a href="../ochrana-udaju.html">Privacy policy (CS)</a>
+        <a href="../podminky.html">Terms (CS)</a>
+        <a href="../zpracovatelska-smlouva.html">Data processing agreement (CS)</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2024–2026 OSCloud, z. s. · IČO 29991145 · DIČ CZ29991145 · Pionýrů 1332, 356 01 Sokolov<br>
+      Association registered at the Regional Court in Plzeň, section L, file 11449<br>
+      Community for digital freedom · Powered by open source
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/nav.js" defer></script>
+<script>
+(function () {
+  var forms = document.querySelectorAll('form.join-form');
+  var tabs = document.querySelectorAll('.join-tabs [role=tab]');
+  if (!forms.length) return;
+  var endpoint = '/submit.php';
+  var GB = ['5', '10', '50', '100', '200', '500', '1000'];
+
+  function say(form, msg, ok) {
+    var el = form.querySelector('.form-status');
+    el.textContent = msg;
+    el.className = 'form-status ' + (ok ? 'is-ok' : 'is-err');
+  }
+  function loadToken(form) {
+    return fetch(endpoint + '?token=1', { credentials: 'omit', cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(function (j) { form.elements.token.value = j.token || ''; });
+  }
+  /*prices:js*/ var NC_PRICES = {"5": 15, "10": 25, "50": 49, "100": 69, "200": 99, "500": 169, "1000": 239}, NC_LABELS = {"5": "5 GB", "10": "10 GB", "50": "50 GB", "100": "100 GB", "200": "200 GB", "500": "500 GB", "1000": "1 TB"}, PLAN_EXTRA = {"spolek": 99, "firma": 299}; /*/prices*/
+  function refreshOrgPrices(form) {
+    var plan = form.elements.plan && form.elements.plan.value;
+    var extra = plan && PLAN_EXTRA[plan] != null ? PLAN_EXTRA[plan] : Math.min(PLAN_EXTRA.spolek, PLAN_EXTRA.firma);
+    var prefix = plan ? '' : 'from ';
+    Array.prototype.forEach.call(form.elements.storage.options, function (o) {
+      if (NC_PRICES[o.value] == null) return;
+      o.textContent = NC_LABELS[o.value] + ' · ' + prefix + (NC_PRICES[o.value] + extra) + ' CZK/mo';
+    });
+  }
+  function updateCond(form) {
+    if (form.id === 'form-org') refreshOrgPrices(form);
+    form.querySelectorAll('[data-show-if]').forEach(function (el) {
+      var spec = el.getAttribute('data-show-if').split('=');
+      var f = form.elements[spec[0]];
+      var on = !!f && spec[1].split('|').indexOf(f.value) >= 0;
+      el.hidden = !on;
+      el.querySelectorAll('input,select,textarea').forEach(function (i) { i.disabled = !on; });
+    });
+  }
+  function showTab(id) {
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.dataset.form === id ? 'true' : 'false'); });
+    forms.forEach(function (f) {
+      f.hidden = f.id !== id;
+      if (f.id === id && !f.elements.token.value) loadToken(f).catch(function () {});
+    });
+  }
+  function applySelection(typ, gb, period) {
+    if (GB.indexOf(gb) < 0) gb = '';
+    var f;
+    if (typ === 'jednotlivec') {
+      f = document.getElementById('form-jednotlivec');
+      showTab(f.id);
+      f.elements.service.value = 'nextcloud';
+    } else if (typ === 'rodina') {
+      f = document.getElementById('form-jednotlivec');
+      showTab(f.id);
+      f.elements.service.value = 'family';
+    } else if (typ === 'trilium') {
+      f = document.getElementById('form-jednotlivec');
+      showTab(f.id);
+      f.elements.service.value = 'trilium';
+      updateCond(f);
+      if (period === 'monthly' || period === 'yearly') document.getElementById('i-period-t').value = period;
+      return true;
+    } else if (typ === 'spolek' || typ === 'firma') {
+      f = document.getElementById('form-org');
+      showTab(f.id);
+      f.elements.plan.value = typ;
+    } else {
+      return false;
+    }
+    if (gb) {
+      var sel = typ === 'rodina' ? document.getElementById('i-storage-f')
+              : typ === 'jednotlivec' ? document.getElementById('i-storage')
+              : f.elements.storage;
+      sel.value = gb;
+    }
+    updateCond(f);
+    return true;
+  }
+
+  forms.forEach(function (form) {
+    updateCond(form);
+    form.addEventListener('change', function () { updateCond(form); });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type=submit]');
+      btn.disabled = true;
+      say(form, 'Sending…', true);
+      var send = function () {
+        return fetch(endpoint, { method: 'POST', body: new FormData(form), credentials: 'omit' })
+          .then(function (r) { return r.json(); });
+      };
+      (form.elements.token.value ? Promise.resolve() : loadToken(form)).then(send).then(function (res) {
+        if (res && res.ok) {
+          form.reset();
+          updateCond(form);
+          say(form, res.message || 'Thank you! We will reply to the e-mail you entered.', true);
+          setTimeout(function () { btn.disabled = false; }, 8000);
+        } else {
+          say(form, (res && res.error) || 'Something went wrong. Please try sending it again.', false);
+          btn.disabled = false;
+        }
+        loadToken(form).catch(function () {});
+      }).catch(function () {
+        say(form, 'The connection failed. Contact: info@oscloud.cz.', false);
+        btn.disabled = false;
+      });
+    });
+  });
+
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () { showTab(t.dataset.form); });
+  });
+  showTab('form-jednotlivec');
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a.order-link');
+    if (!a) return;
+    var u = new URL(a.href, location.href);
+    if (!applySelection(u.searchParams.get('typ'), u.searchParams.get('gb'), u.searchParams.get('period'))) return;
+    e.preventDefault();
+    history.replaceState(null, '', '#pripojit');
+    document.getElementById('pripojit').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  var q = new URLSearchParams(location.search);
+  if (q.get('typ')) applySelection(q.get('typ'), q.get('gb'), q.get('period'));
+})();
+</script>
+
+</body>
+</html>

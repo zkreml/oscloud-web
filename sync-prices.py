@@ -18,7 +18,26 @@ V šabloně {nc.min} je nejnižší cena úložiště a {nc.SIZE} cena dané vel
 import json, re, sys, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent
-FILES = ["index.html", "nextcloud.html", "degooglizace.html", "trilium.html"]
+FILES = ["index.html", "nextcloud.html", "degooglizace.html", "trilium.html",
+         "en/index.html", "en/degooglizace.html", "en/trilium.html"]
+
+# Texty generovaných bloků v anglické verzi (soubory v en/)
+EN = {
+    "order": "Order", "from": "from", "mo": "CZK/mo", "none": "–",
+    "who": {"jednotlivec": "individual", "rodina": "Family plan", "spolek": "Association plan", "firma": "Company plan"},
+    "aria": "Order Nextcloud {label}, {who}, price {price} CZK",
+    "plan": "{label} (+{v} CZK per month)",
+    "plan_labels": {"spolek": "Association", "firma": "Company"},
+    "base": "/en/",
+}
+CS = {
+    "order": "Objednat", "from": "od", "mo": "Kč/měs", "none": "–",
+    "who": {"jednotlivec": "jednotlivec", "rodina": "tarif rodina", "spolek": "tarif spolek", "firma": "tarif firma"},
+    "aria": "Objednat Nextcloud {label}, {who}, cena {price} Kč",
+    "plan": "{label} (+{v} Kč měsíčně)",
+    "plan_labels": None,
+    "base": "/",
+}
 P = json.loads((ROOT / "prices.json").read_text(encoding="utf-8"))
 
 def fmt(n):
@@ -43,51 +62,55 @@ def tpl(s):
         return fmt(VALUES[key])
     return re.sub(r"\{([A-Za-z0-9_.]+)\}", r, s)
 
-def cell(typ, gb, label, who, price):
-    return (f'<td><a class="order-link" href="/?typ={typ}&amp;gb={gb}#pripojit" '
-            f'aria-label="Objednat Nextcloud {label}, {who}, cena {price} Kč">'
-            f'<span class="o-price">{price} Kč</span>'
-            f'<span class="o-cta" aria-hidden="true">Objednat →</span></a></td>')
+def cell(typ, gb, label, who, price, L=CS):
+    aria = L["aria"].format(label=label, who=who, price=price)
+    cur = "CZK" if L is EN else "Kč"
+    return (f'<td><a class="order-link" href="{L["base"]}?typ={typ}&amp;gb={gb}#pripojit" '
+            f'aria-label="{aria}">'
+            f'<span class="o-price">{price} {cur}</span>'
+            f'<span class="o-cta" aria-hidden="true">{L["order"]} →</span></a></td>')
 
-def rows(indent):
+def rows(indent, L=CS):
     omin = P.get("nc_org_min", 0)
     fmin = P.get("nc_family_min", 0)
     fam = P["family_base"] - P["nc"][str(fmin)]
     out = []
     for gb, base in P["nc"].items():
         label = P["nc_labels"][gb]
+        W = L["who"]
         r = (f'{indent}<tr><th scope="row">{label}</th>'
-             + cell("jednotlivec", gb, label, "jednotlivec", base))
+             + cell("jednotlivec", gb, label, W["jednotlivec"], base, L))
         if int(gb) >= fmin:
-            r += cell("rodina", gb, label, "tarif rodina", base + fam)
+            r += cell("rodina", gb, label, W["rodina"], base + fam, L)
         else:
             r += '<td class="o-na">–</td>'
         if int(gb) >= omin:
-            r += (cell("spolek", gb, label, "tarif spolek", base + P["plan"]["spolek"])
-                  + cell("firma", gb, label, "tarif firma", base + P["plan"]["firma"]))
+            r += (cell("spolek", gb, label, W["spolek"], base + P["plan"]["spolek"], L)
+                  + cell("firma", gb, label, W["firma"], base + P["plan"]["firma"], L))
         else:
             r += '<td class="o-na">–</td><td class="o-na">–</td>'
         out.append(r + "</tr>")
     return "\n".join(out)
 
-def opt_ind():
-    return "".join(f'<option value="{gb}">{P["nc_labels"][gb]} · {base} Kč/měs</option>'
+def opt_ind(L=CS):
+    return "".join(f'<option value="{gb}">{P["nc_labels"][gb]} · {base} {L["mo"]}</option>'
                    for gb, base in P["nc"].items())
 
-def opt_org():
+def opt_org(L=CS):
     extra = min(P["plan"].values())
     omin = P.get("nc_org_min", 0)
-    return "".join(f'<option value="{gb}">{P["nc_labels"][gb]} · od {base + extra} Kč/měs</option>'
+    return "".join(f'<option value="{gb}">{P["nc_labels"][gb]} · {L["from"]} {base + extra} {L["mo"]}</option>'
                    for gb, base in P["nc"].items() if int(gb) >= omin)
 
-def opt_fam():
+def opt_fam(L=CS):
     fmin = P.get("nc_family_min", 0)
     fam = P["family_base"] - P["nc"][str(fmin)]
-    return "".join(f'<option value="{gb}">{P["nc_labels"][gb]} · {base + fam} Kč/měs</option>'
+    return "".join(f'<option value="{gb}">{P["nc_labels"][gb]} · {base + fam} {L["mo"]}</option>'
                    for gb, base in P["nc"].items() if int(gb) >= fmin)
 
-def opt_plan():
-    return "".join(f'<option value="{k}">{P["plan_labels"][k]} (+{v} Kč měsíčně)</option>'
+def opt_plan(L=CS):
+    labels = L["plan_labels"] or P["plan_labels"]
+    return "".join(f'<option value="{k}">{L["plan"].format(label=labels[k], v=v)}</option>'
                    for k, v in P["plan"].items())
 
 def js_data():
@@ -95,7 +118,7 @@ def js_data():
     return (f'var NC_PRICES = {json.dumps(P["nc"])}, NC_LABELS = {labels}, '
             f'PLAN_EXTRA = {json.dumps(P["plan"])};')
 
-def process(text):
+def process(text, L=CS):
     # inline značky
     text = re.sub(r'(<!--p "([^"]*)"-->)(.*?)(<!--/p-->)',
                   lambda m: m.group(1) + tpl(m.group(2)) + m.group(4), text, flags=re.S)
@@ -107,15 +130,15 @@ def process(text):
             # odsazení podle prvního řádku v těle
             first = re.search(r"\n?([ \t]*)<tr", body)
             ind = first.group(1) if first else "          "
-            return m.group(1) + "\n" + rows(ind) + "\n" + ind[:-2] + m.group(4)
+            return m.group(1) + "\n" + rows(ind, L) + "\n" + ind[:-2] + m.group(4)
         if name == "opt-ind":
-            return m.group(1) + opt_ind() + m.group(4)
+            return m.group(1) + opt_ind(L) + m.group(4)
         if name == "opt-org":
-            return m.group(1) + opt_org() + m.group(4)
+            return m.group(1) + opt_org(L) + m.group(4)
         if name == "opt-fam":
-            return m.group(1) + opt_fam() + m.group(4)
+            return m.group(1) + opt_fam(L) + m.group(4)
         if name == "opt-plan":
-            return m.group(1) + opt_plan() + m.group(4)
+            return m.group(1) + opt_plan(L) + m.group(4)
         sys.exit(f"Neznámý blok: {name}")
     text = re.sub(r"(<!--prices:([\w-]+)-->)(.*?)(<!--/prices-->)", block, text, flags=re.S)
     text = re.sub(r"(/\*prices:js\*/)(.*?)(/\*/prices\*/)",
@@ -133,8 +156,10 @@ def main():
     changed = False
     for name in FILES:
         path = ROOT / name
+        if not path.exists():
+            continue
         old = path.read_text(encoding="utf-8")
-        new = process(old)
+        new = process(old, EN if name.startswith("en/") else CS)
         meta_warn(name, new)
         if new != old:
             changed = True

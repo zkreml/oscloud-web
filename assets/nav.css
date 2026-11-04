@@ -29,10 +29,10 @@
 }
 .os-nav--static .os-nav__inner { height: 52px; }
 
-.os-nav .os-logo { display: inline-flex; align-items: center; text-decoration: none; }
+.os-nav .os-logo { flex-shrink: 0; margin-right: 16px; display: inline-flex; align-items: center; text-decoration: none; }
 .os-nav .os-logo img { display: block; height: 24px; width: auto; max-width: none; margin: 0; }
 
-.os-nav .os-links { display: flex; gap: 24px; align-items: center; margin: 0; padding: 0; }
+.os-nav .os-links { display: flex; gap: 18px; align-items: center; margin: 0; padding: 0; }
 .os-nav .os-links a {
   color: #334155;
   font-size: 0.9rem;
@@ -42,14 +42,16 @@
   border: 0;
   background: none;
   padding: 0;
+  white-space: nowrap;
 }
+.os-nav .os-links a[hreflang] { font-size: 0.8rem; opacity: .75; }
 .os-nav .os-links a:hover,
 .os-nav .os-links a[aria-current] { color: #2563EB; }
 
 .os-nav .os-links a.os-cta {
   background: #2563EB;
   color: #fff;
-  padding: 8px 20px;
+  padding: 8px 16px;
   border-radius: 8px;
   font-weight: 600;
   font-size: 0.85rem;
@@ -79,7 +81,7 @@
 
 .os-nav a:focus-visible, .os-nav button:focus-visible { outline: 3px solid #3B82F6; outline-offset: 2px; }
 
-@media (max-width: 768px) {
+@media (max-width: 1020px) {
   .os-nav .os-links { display: none; }
   .os-nav .os-links.open {
     display: flex;

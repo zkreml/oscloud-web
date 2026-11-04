@@ -458,6 +458,18 @@ if ($type === 'individual') {
         }
         $fields['Platba'] = PERIODS[$period];
     }
+    if (in_array($service, ['nextcloud', 'family', 'trilium'], true)) {
+        $billingName = clean_line($post('billing_name'));
+        $billingAddress = clean_line($post('billing_address'));
+        if ($billingName === '' || mb_strlen($billingName) > 120) {
+            fail(422, 'Vyplň prosím jméno a příjmení pro fakturu.');
+        }
+        if ($billingAddress === '' || mb_strlen($billingAddress) > 200) {
+            fail(422, 'Vyplň prosím adresu pro fakturu.');
+        }
+        $fields['Fakturační jméno'] = $billingName;
+        $fields['Fakturační adresa'] = $billingAddress;
+    }
     $subject = 'Žádost (jednotlivec) — ' . $name;
 } else {
     $orgName = clean_line($post('org_name'));

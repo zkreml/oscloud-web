@@ -17,6 +17,7 @@ const SERVICES = [
     'free'      => 'Zdarma: komunitní služby a Nextcloud 2 GB',
     'nextcloud' => 'Nextcloud, větší úložiště (placené)',
     'family'    => 'Rodina: Nextcloud pro 4 lidi, sdílené úložiště',
+    'trilium'   => 'Trilium Next: vlastní poznámky',
     'matrix'    => 'Matrix chat (mxchat.cz)',
     'other'     => 'Něco jiného',
 ];
@@ -449,6 +450,13 @@ if ($type === 'individual') {
         if ($service === 'family') {
             $fields['Počet uživatelů'] = '4 (rodina)';
         }
+    }
+    if ($service === 'trilium') {
+        $period = $post('period');
+        if (!array_key_exists($period, PERIODS)) {
+            fail(422, 'Vyber prosím měsíční nebo roční platbu.');
+        }
+        $fields['Platba'] = PERIODS[$period];
     }
     $subject = 'Žádost (jednotlivec) — ' . $name;
 } else {

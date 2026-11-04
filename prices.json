@@ -12,5 +12,6 @@
   "wiki": 129,
   "hosting": { "static": 49, "lamp": 89, "wordpress": 99 },
   "mail": { "1": 19, "5": 39, "10": 59 },
-  "sponsor": { "bronz": 500, "stribro": 1000, "zlato": 2500 }
+  "sponsor": { "bronz": 500, "stribro": 1000, "zlato": 2500 },
+  "trilium": { "month": 65, "year": 600 }
 }

@@ -972,6 +972,32 @@
       </ul>
     </div>
 
+
+    <div class="ente-pricing" id="trilium">
+      <h3>📝 Trilium Next — vlastní poznámky</h3>
+      <p class="ente-lead">Vlastní instance Trilium Next jen pro tebe: stromové poznámky, Markdown a přístup odkudkoli. Včetně 5&nbsp;GB úložiště.</p>
+
+      <div class="price-table-wrap">
+        <table class="price-table">
+          <caption>Cena Trilium Next</caption>
+          <thead>
+            <tr><th scope="col">Plán</th><th scope="col">Cena</th></tr>
+          </thead>
+          <tbody>
+          <tr><th scope="row">Základní</th><td><a class="order-link" href="/?typ=trilium&amp;period=monthly#pripojit" aria-label="Objednat Trilium Next, měsíčně"><span class="o-price"><!--p "{trilium.month}&nbsp;Kč / měsíc"-->65&nbsp;Kč / měsíc<!--/p--></span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
+          <tr><th scope="row">Roční</th><td><a class="order-link" href="/?typ=trilium&amp;period=yearly#pripojit" aria-label="Objednat Trilium Next, ročně"><span class="o-price"><!--p "{trilium.year}&nbsp;Kč / rok"-->600&nbsp;Kč / rok<!--/p--></span><span class="o-cta" aria-hidden="true">Objednat →</span></a></td></tr>
+          <tr><th scope="row">Vlastní doména, větší úložiště</th><td>individuálně</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ul class="ente-notes">
+        <li>Každý zákazník má vlastní oddělenou instanci a zálohy.</li>
+        <li>Vlastní doména (například poznamky.mojedomena.cz) na vyžádání.</li>
+        <li>Návod a nastavení: <a href="https://docs.oscloud.cz/apps/triliumnext/" target="_blank" rel="noopener">dokumentace</a>.</li>
+      </ul>
+    </div>
+
     <div class="pricing-extras">
       <div class="pricing-extra">
         <h3>🐘 Mastodon pro malé komunity — <!--p "od {mastodon} Kč/měs"-->od 225 Kč/měs<!--/p--></h3>
@@ -1053,7 +1079,13 @@
       </div>
       <div class="form-group">
         <label for="i-service">Služba</label>
-        <select id="i-service" name="service" required><option value="" selected disabled>– vybrat –</option><option value="free">Zdarma: komunitní služby a Nextcloud 2 GB</option><option value="nextcloud">Nextcloud, větší úložiště (placené)</option><option value="family">Rodina: Nextcloud pro 4 lidi, sdílené úložiště</option><option value="matrix">Matrix chat (mxchat.cz)</option><option value="other">Něco jiného</option></select>
+        <select id="i-service" name="service" required><option value="" selected disabled>– vybrat –</option><option value="free">Zdarma: komunitní služby a Nextcloud 2 GB</option><option value="nextcloud">Nextcloud, větší úložiště (placené)</option><option value="family">Rodina: Nextcloud pro 4 lidi, sdílené úložiště</option><option value="trilium">Trilium Next: vlastní poznámky (<!--p "{trilium.month}&nbsp;Kč/měs"-->65&nbsp;Kč/měs<!--/p-->)</option><option value="matrix">Matrix chat (mxchat.cz)</option><option value="other">Něco jiného</option></select>
+      </div>
+      <div class="cond" data-show-if="service=trilium" hidden>
+      <div class="form-group">
+        <label for="i-period-t">Platba</label>
+        <select id="i-period-t" name="period" required><option value="" selected disabled>– vybrat –</option><option value="monthly">Měsíčně (<!--p "{trilium.month}&nbsp;Kč"-->65&nbsp;Kč<!--/p-->)</option><option value="yearly">Ročně (<!--p "{trilium.year}&nbsp;Kč"-->600&nbsp;Kč<!--/p-->)</option></select>
+      </div>
       </div>
       <div class="cond" data-show-if="service=nextcloud" hidden>
         <div class="form-row">
@@ -1252,7 +1284,7 @@
       if (f.id === id && !f.elements.token.value) loadToken(f).catch(function () {});
     });
   }
-  function applySelection(typ, gb) {
+  function applySelection(typ, gb, period) {
     if (GB.indexOf(gb) < 0) gb = '';
     var f;
     if (typ === 'jednotlivec') {
@@ -1263,6 +1295,13 @@
       f = document.getElementById('form-jednotlivec');
       showTab(f.id);
       f.elements.service.value = 'family';
+    } else if (typ === 'trilium') {
+      f = document.getElementById('form-jednotlivec');
+      showTab(f.id);
+      f.elements.service.value = 'trilium';
+      updateCond(f);
+      if (period === 'monthly' || period === 'yearly') document.getElementById('i-period-t').value = period;
+      return true;
     } else if (typ === 'spolek' || typ === 'firma') {
       f = document.getElementById('form-org');
       showTab(f.id);
@@ -1319,14 +1358,14 @@
     var a = e.target.closest && e.target.closest('a.order-link');
     if (!a) return;
     var u = new URL(a.href, location.href);
-    if (!applySelection(u.searchParams.get('typ'), u.searchParams.get('gb'))) return;
+    if (!applySelection(u.searchParams.get('typ'), u.searchParams.get('gb'), u.searchParams.get('period'))) return;
     e.preventDefault();
     history.replaceState(null, '', '#pripojit');
     document.getElementById('pripojit').scrollIntoView({ behavior: 'smooth' });
   });
 
   var q = new URLSearchParams(location.search);
-  if (q.get('typ')) applySelection(q.get('typ'), q.get('gb'));
+  if (q.get('typ')) applySelection(q.get('typ'), q.get('gb'), q.get('period'));
 })();
 </script>
 

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nextcloud — OSCloud</title>
+  <meta name="description" content="Nextcloud at OSCloud: files, calendar and contacts in the EU. 2 GB free, plans from 15 CZK per month, for families, associations and companies.">
+  <meta name="theme-color" content="#2563EB">
+  <link rel="canonical" href="https://oscloud.cz/en/nextcloud.html">
+  <link rel="alternate" hreflang="cs" href="https://oscloud.cz/nextcloud.html">
+  <link rel="alternate" hreflang="en" href="https://oscloud.cz/en/nextcloud.html">
+  <link rel="alternate" hreflang="x-default" href="https://oscloud.cz/nextcloud.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OSCloud">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="https://oscloud.cz/en/nextcloud.html">
+  <meta property="og:title" content="Nextcloud — OSCloud">
+  <meta property="og:description" content="Nextcloud at OSCloud: files, calendar and contacts in the EU. 2 GB free, plans from 15 CZK per month, for families, associations and companies.">
+  <meta property="og:image" content="https://oscloud.cz/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/space-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/nav.css">
+  <style>
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap;
+      src: url(../assets/fonts/inter-latin-ext-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap;
+      src: url(../assets/fonts/inter-latin-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+    @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap;
+      src: url(../assets/fonts/space-grotesk-latin-ext-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+    @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap;
+      src: url(../assets/fonts/space-grotesk-latin-wght-normal.woff2) format('woff2-variations');
+      unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+    :root {
+      --primary: #2563EB;
+      --primary-hover: #1D4ED8;
+      --accent: #3B82F6;
+      --bg: #F0F4F8;
+      --dark: #0F172A;
+      --dark-light: #1E293B;
+      --text: #334155;
+      --text-light: #526074;
+      --white: #FFFFFF;
+      --border: #E2E8F0;
+      --radius: 12px;
+      --os-display: 'Space Grotesk', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 72px; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .skip-link { position: absolute; left: 8px; top: -48px; background: var(--dark); color: #fff; padding: 8px 14px; border-radius: 8px; z-index: 200; font-weight: 600; }
+    .skip-link:focus { top: 8px; color: #fff; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.2;
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { color: var(--primary-hover); }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: #94A3B8;
+      padding: 60px 16px 30px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+    .footer-col a {
+      display: block;
+      color: #94A3B8;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid var(--dark-light);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    /* PAGE */
+    .page { padding: 64px 16px 88px; }
+    .narrow { max-width: 760px; }
+    .page h1 { font-size: clamp(2rem, 5vw, 2.6rem); color: var(--dark); margin-bottom: 20px; }
+    .page h2 { font-size: 1.4rem; color: var(--dark); margin: 48px 0 16px; }
+    .page p { margin-bottom: 16px; }
+    .page .lead { font-size: 1.15rem; color: var(--text-light); }
+    .facts { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 8px 24px; }
+    .facts > div { display: grid; grid-template-columns: 200px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--border); }
+    .facts > div:first-child { border-top: 0; }
+    .facts dt { font-weight: 600; color: var(--dark); }
+    .facts dd { margin: 0; overflow-wrap: anywhere; }
+    .facts .acct { font-weight: 600; color: var(--dark); font-variant-numeric: tabular-nums; }
+    .facts .sub { display: block; margin-top: 4px; font-size: 0.88rem; color: var(--text-light); }
+    @media (max-width: 768px) {
+      .page { padding: 48px 16px 64px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .facts { padding: 4px 18px; }
+      .facts > div { grid-template-columns: 1fr; gap: 2px; }
+    }
+    /* PRICE TABLE */
+    .price-table-wrap {
+      margin-top: 32px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow-x: auto;
+    }
+    .price-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .price-table caption {
+      text-align: left;
+      font-family: var(--os-display);
+      font-weight: 600;
+      color: var(--dark);
+      padding: 20px 24px 12px;
+    }
+    .price-table th, .price-table td { padding: 12px 24px; text-align: right; border-top: 1px solid var(--border); }
+    .price-table thead th { font-size: 0.8rem; color: var(--text-light); font-weight: 600; }
+    .price-table th:first-child, .price-table td:first-child { text-align: left; }
+    .price-table tbody th { font-weight: 600; color: var(--dark); }
+    .price-table tbody td { font-variant-numeric: tabular-nums; }
+    .price-table tbody tr:hover { background: var(--bg); }
+    .order-link { position: relative; display: inline-block; color: var(--primary); font-weight: 600; text-decoration: none; padding: 2px 6px; margin: -2px -6px; border-radius: 6px; border-bottom: 1px dotted var(--primary); border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+    .order-link .o-cta { position: absolute; top: 0; bottom: 0; right: 0; min-width: 100%; width: max-content; display: flex; align-items: center; justify-content: center; padding: 0 10px; background: var(--primary); color: var(--white); border-radius: 6px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.15s; }
+    .order-link:hover, .order-link:focus-visible { color: var(--primary); }
+    .order-link:hover .o-cta, .order-link:focus-visible .o-cta { opacity: 1; }
+    .table-hint { font-size: 0.82rem; color: var(--text-light); margin: 8px 0 0; text-align: center; }
+    .price-footnote { text-align: center; font-size: 0.85rem; color: var(--text-light); margin-top: 14px; }
+    /* BUTTONS */
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary { background: var(--primary); color: var(--white); }
+    .btn-primary:hover { background: var(--primary-hover); color: var(--white); }
+    .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: var(--white); }
+    /* SUBPAGE */
+    .page h3 { font-size: 1.1rem; color: var(--dark); margin: 28px 0 10px; }
+    .page ol, .page ul.plain { margin: 0 0 16px 22px; }
+    .page li { margin-bottom: 8px; }
+    .page code { background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 1px 7px; font-size: 0.92em; overflow-wrap: anywhere; }
+    .callout { background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 16px 20px; margin: 20px 0; }
+    .callout.warn { border-left-color: #d97706; }
+    .callout p { margin: 0; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
+    .page .price-table-wrap { margin: 16px 0 24px; }
+    .faq dt { font-weight: 600; color: var(--dark); margin-top: 18px; }
+    .faq dd { margin: 4px 0 0; }
+  </style>
+  <script defer src="https://analytics.oscloud.cz/script.js" data-website-id="92b865bd-f0d2-4d73-a974-14f428a1b7f5"></script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="os-nav" data-os-nav>
+  <div class="os-nav__inner">
+    <a class="os-logo" href="/en/"><img src="../assets/logo-horizontal.png" alt="OSCloud" width="176" height="24"></a>
+    <button class="os-toggle" type="button" aria-expanded="false" aria-controls="os-links" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav class="os-links" id="os-links" aria-label="Main navigation">
+      <a href="/en/#sluzby">Services</a>
+      <a href="/en/#proc">Why OSCloud</a>
+      <a href="/en/#cenik">Pricing</a>
+      <a href="/en/#komunita">Community</a>
+      <a href="o-nas.html">About us</a>
+      <a href="https://docs.oscloud.cz" target="_blank" rel="noopener">Documentation</a>
+      <a href="https://blog.oscloud.cz" target="_blank" rel="noopener">Blog</a>
+      <a href="https://my.oscloud.cz" target="_blank" rel="noopener">Log in</a>
+      <a href="/nextcloud.html" hreflang="cs" lang="cs">CZ</a>
+      <a class="os-cta" href="/en/#pripojit">Join us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="page">
+  <div class="container narrow">
+
+    <p><a href="/en/#cenik">&larr; Back to pricing</a></p>
+    <h1>Nextcloud</h1>
+    <p class="lead">Your files, calendar and contacts in one place, on servers in Germany. An open source alternative to Google Drive, iCloud or Dropbox, with no ads and no tracking.</p>
+
+    <div class="btn-row">
+      <a href="/#pripojit" class="btn btn-primary">Join us</a>
+      <a href="https://docs.oscloud.cz/apps/nextcloud/" target="_blank" rel="noopener" class="btn btn-outline">Guide in the documentation</a>
+    </div>
+
+    <ul class="plain">
+      <li>files available from the web, phone and computer, synchronised between your devices,</li>
+      <li>sharing files and folders by link, optionally with a password and an expiry date,</li>
+      <li>calendar and contacts that sync with your phone,</li>
+      <li id="collabora">documents, spreadsheets and presentations right in the browser with <strong>Collabora Online</strong>, even several people at once. Not every Nextcloud provider offers it, with us it is included,</li>
+      <li>your data stays in the EU, and we keep backups on separate storage.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>2&nbsp;GB free for everyone.</strong> You can try Nextcloud for free. When you need more space, add larger storage according to the price list below.</p>
+    </div>
+
+    <h2 id="cenik">Pricing</h2>
+    <p>Monthly price by storage size. Family starts at <!--p "{family_base}&nbsp;CZK"-->50&nbsp;CZK<!--/p--> including a shared 50&nbsp;GB folder (a larger folder costs more according to the table), associations <!--p "+{plan.spolek}&nbsp;CZK"-->+99&nbsp;CZK<!--/p-->, companies <!--p "+{plan.firma}&nbsp;CZK"-->+299&nbsp;CZK<!--/p-->.</p>
+    <div class="price-table-wrap">
+      <table class="price-table">
+        <caption>Nextcloud price per month by storage</caption>
+        <thead>
+          <tr><th scope="col">Storage</th><th scope="col">Individual</th><th scope="col">Family</th><th scope="col">Association</th><th scope="col">Company</th></tr>
+        </thead>
+        <tbody>
+        <!--prices:rows-->
+          <tr><th scope="row">5 GB</th><td><a class="order-link" href="/en/?typ=jednotlivec&amp;gb=5#pripojit" aria-label="Order Nextcloud 5 GB, individual, price 15 CZK"><span class="o-price">15 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td class="o-na">–</td><td class="o-na">–</td><td class="o-na">–</td></tr>
+          <tr><th scope="row">10 GB</th><td><a class="order-link" href="/en/?typ=jednotlivec&amp;gb=10#pripojit" aria-label="Order Nextcloud 10 GB, individual, price 25 CZK"><span class="o-price">25 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td class="o-na">–</td><td class="o-na">–</td><td class="o-na">–</td></tr>
+          <tr><th scope="row">50 GB</th><td><a class="order-link" href="/en/?typ=jednotlivec&amp;gb=50#pripojit" aria-label="Order Nextcloud 50 GB, individual, price 49 CZK"><span class="o-price">49 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=rodina&amp;gb=50#pripojit" aria-label="Order Nextcloud 50 GB, Family plan, price 50 CZK"><span class="o-price">50 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=spolek&amp;gb=50#pripojit" aria-label="Order Nextcloud 50 GB, Association plan, price 148 CZK"><span class="o-price">148 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=firma&amp;gb=50#pripojit" aria-label="Order Nextcloud 50 GB, Company plan, price 348 CZK"><span class="o-price">348 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td></tr>
+          <tr><th scope="row">100 GB</th><td><a class="order-link" href="/en/?typ=jednotlivec&amp;gb=100#pripojit" aria-label="Order Nextcloud 100 GB, individual, price 69 CZK"><span class="o-price">69 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=rodina&amp;gb=100#pripojit" aria-label="Order Nextcloud 100 GB, Family plan, price 70 CZK"><span class="o-price">70 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=spolek&amp;gb=100#pripojit" aria-label="Order Nextcloud 100 GB, Association plan, price 168 CZK"><span class="o-price">168 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=firma&amp;gb=100#pripojit" aria-label="Order Nextcloud 100 GB, Company plan, price 368 CZK"><span class="o-price">368 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td></tr>
+          <tr><th scope="row">200 GB</th><td><a class="order-link" href="/en/?typ=jednotlivec&amp;gb=200#pripojit" aria-label="Order Nextcloud 200 GB, individual, price 99 CZK"><span class="o-price">99 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=rodina&amp;gb=200#pripojit" aria-label="Order Nextcloud 200 GB, Family plan, price 100 CZK"><span class="o-price">100 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=spolek&amp;gb=200#pripojit" aria-label="Order Nextcloud 200 GB, Association plan, price 198 CZK"><span class="o-price">198 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=firma&amp;gb=200#pripojit" aria-label="Order Nextcloud 200 GB, Company plan, price 398 CZK"><span class="o-price">398 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td></tr>
+          <tr><th scope="row">500 GB</th><td><a class="order-link" href="/en/?typ=jednotlivec&amp;gb=500#pripojit" aria-label="Order Nextcloud 500 GB, individual, price 169 CZK"><span class="o-price">169 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=rodina&amp;gb=500#pripojit" aria-label="Order Nextcloud 500 GB, Family plan, price 170 CZK"><span class="o-price">170 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=spolek&amp;gb=500#pripojit" aria-label="Order Nextcloud 500 GB, Association plan, price 268 CZK"><span class="o-price">268 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=firma&amp;gb=500#pripojit" aria-label="Order Nextcloud 500 GB, Company plan, price 468 CZK"><span class="o-price">468 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td></tr>
+          <tr><th scope="row">1 TB</th><td><a class="order-link" href="/en/?typ=jednotlivec&amp;gb=1000#pripojit" aria-label="Order Nextcloud 1 TB, individual, price 239 CZK"><span class="o-price">239 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=rodina&amp;gb=1000#pripojit" aria-label="Order Nextcloud 1 TB, Family plan, price 240 CZK"><span class="o-price">240 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=spolek&amp;gb=1000#pripojit" aria-label="Order Nextcloud 1 TB, Association plan, price 338 CZK"><span class="o-price">338 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td><td><a class="order-link" href="/en/?typ=firma&amp;gb=1000#pripojit" aria-label="Order Nextcloud 1 TB, Company plan, price 538 CZK"><span class="o-price">538 CZK</span><span class="o-cta" aria-hidden="true">Order →</span></a></td></tr>
+        <!--/prices-->
+        </tbody>
+      </table>
+    </div>
+    <p class="table-hint">Click a price to pre-fill the request form.</p>
+    <p class="table-hint"><strong>Everything can be combined.</strong> The Family plan includes a shared folder of the chosen size, and every member also gets 2&nbsp;GB free. Anyone who needs more can buy their own larger storage at the price from the Individual column, and the shared folder stays the same. Example: a shared 50&nbsp;GB folder (<!--p "{family_base}&nbsp;CZK"-->50&nbsp;CZK<!--/p-->) and one member with their own 100&nbsp;GB (<!--p "{nc.100}&nbsp;CZK"-->69&nbsp;CZK<!--/p-->), everyone else stays on 2&nbsp;GB free.</p>
+    <ul class="plain">
+      <li><strong>Individual:</strong> one account, storage according to the table.</li>
+      <li><strong>Family (from <!--p "{family_base}&nbsp;CZK"-->50&nbsp;CZK<!--/p-->):</strong> 4 Nextcloud users, each with their own account and 2&nbsp;GB free, and a shared 50&nbsp;GB folder for everyone. A larger folder costs more according to the table. Shared calendars and contacts, support via Matrix. Anyone who needs more space for themselves can buy personal storage at the Individual plan price, and the shared folder stays the same.</li>
+      <li><strong>For associations (<!--p "+{plan.spolek}&nbsp;CZK"-->+99&nbsp;CZK<!--/p-->):</strong> 5 Nextcloud users with shared storage, invoicing with a company ID, support by e-mail and via Matrix.</li>
+      <li><strong>Company (<!--p "+{plan.firma}&nbsp;CZK"-->+299&nbsp;CZK<!--/p-->):</strong> 10 users with shared storage, invoicing with a company ID, support by e-mail and via Matrix, response within 24 hours.</li>
+    </ul>
+    <p>Storage larger than 1&nbsp;TB is possible by agreement as external storage.</p>
+    <p>The number of users in the association and company plans is approximate. If your team is larger, contact <a href="mailto:info@oscloud.cz">info@oscloud.cz</a> or the <a href="https://helpdesk.oscloud.cz/help/3271740098" target="_blank" rel="noopener">helpdesk</a> and we will work it out.</p>
+    <p>We are not a VAT payer, all prices are final. Prices are in Czech koruna (CZK).</p>
+
+    <h2 id="tym">Team for associations and companies</h2>
+    <p>With the association and company plans, only the <strong>team lead</strong> needs to sign up with OSCloud. They add the other members themselves, you do not have to write to us for each one.</p>
+    <ol>
+      <li>The team lead gets an OSCloud account (request it via the <a href="/en/#pripojit">form</a>).</li>
+      <li>They log in to Nextcloud.</li>
+      <li>We create a team for your company or association with the agreed storage and make them the team admin.</li>
+      <li>The team admin adds people to it themselves.</li>
+    </ol>
+    <p>The maximum is 5 users for an association and 10 for a company. If you need more, it is not a problem, just contact support.</p>
+
+    <h2 id="zacit">How to get started</h2>
+    <ol>
+      <li>Fill in the <a href="/en/#pripojit">Join us form</a> and tell us what you need (free, or larger storage).</li>
+      <li>We will e-mail you an invitation and login details.</li>
+      <li>Log in, set a strong password and turn on <strong>two-factor authentication</strong> (Settings &rarr; Security).</li>
+    </ol>
+
+    <h2 id="aplikace">Apps and sync</h2>
+    <p>For comfortable syncing, install the official Nextcloud app. When logging in, enter our server address and your account.</p>
+    <ul class="plain">
+      <li><strong>Computer (Linux, Windows, macOS):</strong> the <a href="https://nextcloud.com/install/#install-clients" target="_blank" rel="noopener">desktop client</a> syncs selected folders.</li>
+      <li><strong>Android and iOS:</strong> the Nextcloud app, optionally with automatic photo upload.</li>
+      <li><strong>Calendar and contacts:</strong> via CalDAV and CardDAV, on Android for example with DAVx5.</li>
+    </ul>
+    <p>Detailed steps and screenshots are in the <a href="https://docs.oscloud.cz/apps/nextcloud/" target="_blank" rel="noopener">documentation</a>.</p>
+
+    <div class="callout warn">
+      <p><strong>Sync is not a backup.</strong> If you delete a file on one device, it disappears everywhere else. Back up important things separately and outside OSCloud, for example to your own external drive.</p>
+    </div>
+
+    <h2 id="faq">FAQ</h2>
+    <dl class="faq">
+      <dt>How much is free?</dt>
+      <dd>Everyone gets 2&nbsp;GB. Larger storage is from <!--p "{nc.min}&nbsp;CZK"-->15&nbsp;CZK<!--/p--> per month, up to 1&nbsp;TB.</dd>
+      <dt>Can I use it for my family?</dt>
+      <dd>Yes. The Family plan is for four people in the same household. Everyone has their own account with 2&nbsp;GB free and all share a 50&nbsp;GB folder (larger for an extra fee). Plus shared calendars and contacts.</dd>
+      <dt>Can I combine plans?</dt>
+      <dd>Yes. Family has a shared folder (from 50&nbsp;GB) and every member gets 2&nbsp;GB free. Anyone who needs more space just for themselves can buy their own storage at the Individual plan price. The other members can stay on 2&nbsp;GB free and the shared folder stays the same.</dd>
+      <dt>How does Family differ from Individual?</dt>
+      <dd>Individual is one account. Family is four separate accounts linked by a shared group and folder. Nextcloud only allows sharing between users within a common group. Without Family you can still send files by link (optionally with a password and expiry), but you cannot share an editable calendar or a shared folder.</dd>
+      <dt>Can I use it for an association or a company?</dt>
+      <dd>Yes. The association and company plans include more users and an invoice with a company ID.</dd>
+      <dt>Where is my data?</dt>
+      <dd>On Hetzner servers in Germany, so in the EU.</dd>
+      <dt>Can I change my plan?</dt>
+      <dd>Write to us and we will adjust the storage.</dd>
+    </dl>
+
+    <h2 id="podpora">Support</h2>
+    <p>Write to <a href="mailto:info@oscloud.cz">info@oscloud.cz</a>, use the <a href="https://helpdesk.oscloud.cz/help/3271740098" target="_blank" rel="noopener">helpdesk</a> or find us on <a href="https://chat.mxchat.cz/" target="_blank" rel="noopener">Matrix</a>.</p>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="nextcloud.html">Nextcloud</a>
+        <a href="https://cryptpad.arch-linux.cz/">CryptPad</a>
+        <a href="https://docs.oscloud.cz/apps/vaultwarden/">Vaultwarden</a>
+        <a href="https://docs.oscloud.cz/apps/searxng/">SearXNG</a>
+        <a href="https://oscloud.photos">Ente Photos</a>
+        <a href="https://docs.oscloud.cz/apps/freshrss/">FreshRSS</a>
+      </div>
+      <div class="footer-col">
+        <h4>Fediverse</h4>
+        <a href="https://mamutovo.cz/@oscloud">Mastodon</a>
+        <a href="https://vhsky.cz">PeerTube</a>
+        <a href="https://pixelfed.cz">Pixelfed</a>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <a href="https://chat.mxchat.cz/">Matrix chat</a>
+        <a href="https://blog.oscloud.cz">Blog</a>
+        <a href="https://docs.oscloud.cz">Documentation</a>
+      </div>
+      <div class="footer-col">
+        <h4>Project</h4>
+        <a href="https://git.oscloud.cz/OSCloud">Git</a>
+        <a href="o-nas.html">About us and contact</a>
+        <a href="https://helpdesk.oscloud.cz/help/3271740098">Helpdesk</a>
+        <a href="mailto:info@oscloud.cz">info@oscloud.cz</a>
+        <a href="../ochrana-udaju.html">Privacy policy (CS)</a>
+        <a href="../podminky.html">Terms (CS)</a>
+        <a href="../zpracovatelska-smlouva.html">Data processing agreement (CS)</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2024–2026 OSCloud, z. s. · IČO 29991145 · DIČ CZ29991145 · Pionýrů 1332, 356 01 Sokolov<br>
+      Association registered at the Regional Court in Plzeň, section L, file 11449<br>
+      Community for digital freedom · Powered by open source
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/nav.js" defer></script>
+
+</body>
+</html>

@@ -19,7 +19,7 @@ import json, re, sys, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent
 FILES = ["index.html", "nextcloud.html", "degooglizace.html", "trilium.html",
-         "en/index.html", "en/degooglizace.html", "en/trilium.html"]
+         "en/index.html", "en/degooglizace.html", "en/trilium.html", "en/nextcloud.html"]
 
 # Texty generovaných bloků v anglické verzi (soubory v en/)
 EN = {

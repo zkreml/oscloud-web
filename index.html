@@ -1111,6 +1111,17 @@
       </div>
         </div>
       </div>
+      <div class="cond" data-show-if="service=nextcloud|family|trilium" hidden>
+      <div class="form-group">
+        <label for="i-bname">Jméno a příjmení (pro fakturu)</label>
+        <input type="text" id="i-bname" name="billing_name" maxlength="120" autocomplete="name" required>
+      </div>
+      <div class="form-group">
+        <label for="i-baddr">Adresa (ulice, město, PSČ)</label>
+        <input type="text" id="i-baddr" name="billing_address" maxlength="200" autocomplete="street-address" required>
+        <p class="form-note">Fakturu vystavujeme jako spolek s účetnictvím, proto na ní potřebujeme jméno a adresu. Použijeme je jen na fakturu.</p>
+      </div>
+      </div>
       <div class="form-group">
         <label for="i-message">Poznámka (nepovinné)</label>
         <textarea id="i-message" name="message" placeholder="Cokoli, co je dobré vědět předem" maxlength="2000"></textarea>
@@ -1273,7 +1284,7 @@
     form.querySelectorAll('[data-show-if]').forEach(function (el) {
       var spec = el.getAttribute('data-show-if').split('=');
       var f = form.elements[spec[0]];
-      var on = !!f && f.value === spec[1];
+      var on = !!f && spec[1].split('|').indexOf(f.value) >= 0;
       el.hidden = !on;
       el.querySelectorAll('input,select,textarea').forEach(function (i) { i.disabled = !on; });
     });

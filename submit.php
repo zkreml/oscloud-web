@@ -27,6 +27,46 @@ const FAMILY_MIN_GB = 50; // menší úložiště je jen pro jednotlivce
 const ORG_MIN_GB = 50;
 const PERIODS = ['monthly' => 'měsíčně', 'yearly' => 'ročně'];
 
+// Anglické verze chybových hlášek (klíč = český text, který vrací fail()/respond()).
+const EN_MSG = [
+    'Formulář není správně nastavený. Napiš nám prosím na info@oscloud.cz.' => 'The form is not configured correctly. Please write to us at info@oscloud.cz.',
+    'Nenalezeno.' => 'Not found.',
+    'Metoda není povolená.' => 'Method not allowed.',
+    'Nepovolený původ požadavku.' => 'Request origin not allowed.',
+    'Moc rychle — počkej pár vteřin a odešli to znovu.' => 'Too fast. Please wait a few seconds and send it again.',
+    'Platnost formuláře vypršela. Načti stránku znovu a zkus to ještě jednou.' => 'The form has expired. Please reload the page and try again.',
+    'Příliš mnoho pokusů. Zkus to prosím později.' => 'Too many attempts. Please try again later.',
+    'Neplatné znaky ve formuláři.' => 'The form contains invalid characters.',
+    'Vyplň prosím kontaktní osobu (max. 80 znaků).' => 'Please enter a contact person (max. 80 characters).',
+    'Vyplň prosím jméno nebo přezdívku (max. 80 znaků).' => 'Please enter your name or nickname (max. 80 characters).',
+    'Zkontroluj prosím e-mailovou adresu.' => 'Please check your e-mail address.',
+    'Vyber prosím službu.' => 'Please choose a service.',
+    'Vyber prosím velikost úložiště.' => 'Please choose the storage size.',
+    'Tarif Rodina začíná od ' . FAMILY_MIN_GB . ' GB.' => 'The Family plan starts at ' . FAMILY_MIN_GB . ' GB.',
+    'Vyber prosím měsíční nebo roční platbu.' => 'Please choose monthly or yearly payment.',
+    'Vyplň prosím jméno a příjmení pro fakturu.' => 'Please enter your first and last name for the invoice.',
+    'Vyplň prosím adresu pro fakturu.' => 'Please enter your address for the invoice.',
+    'Vyplň prosím název spolku nebo firmy (max. 120 znaků).' => 'Please enter the name of the association or company (max. 120 characters).',
+    'Zkontroluj prosím IČO (8 číslic).' => 'Please check the company ID (IČO, 8 digits).',
+    'Vyplň prosím fakturační adresu (max. 200 znaků).' => 'Please enter the billing address (max. 200 characters).',
+    'Počet uživatelů má být číslo.' => 'The number of users must be a number.',
+    'Vyber prosím tarif.' => 'Please choose a plan.',
+    'Vyber prosím velikost úložiště (od ' . ORG_MIN_GB . ' GB).' => 'Please choose the storage size (from ' . ORG_MIN_GB . ' GB).',
+    'Potvrď prosím, že sis přečetl/a podmínky a zásady ochrany osobních údajů.' => 'Please confirm that you have read the terms of use and the privacy policy.',
+    'Zpráva je moc dlouhá (max. 2000 znaků).' => 'The message is too long (max. 2000 characters).',
+    'Zpráva obsahuje příliš mnoho odkazů.' => 'The message contains too many links.',
+    'Dnes už od tebe (nebo z tvé sítě) přišlo hodně žádostí. Zkus to prosím později, nebo napiš na info@oscloud.cz.' => 'We have already received many requests from you (or your network) today. Please try again later or write to info@oscloud.cz.',
+    'Žádost z této e-mailové adresy už byla odeslána. Odpověď přijde e-mailem. Pokud ne, kontakt je info@oscloud.cz.' => 'A request from this e-mail address has already been sent. The reply will arrive by e-mail. If not, contact info@oscloud.cz.',
+    'Žádost se nepodařilo odeslat. Napiš nám prosím na info@oscloud.cz.' => 'We could not send your request. Please write to us at info@oscloud.cz.',
+    'Díky! Ozveme se ti na zadaný e-mail.' => 'Thanks! We will get back to you at the e-mail address you entered.',
+];
+
+/** Přeloží hlášku podle jazyka formuláře (cs = beze změny). */
+function tr(string $cs): string
+{
+    return (($GLOBALS['lang'] ?? 'cs') === 'en' && isset(EN_MSG[$cs])) ? EN_MSG[$cs] : $cs;
+}
+
 // ---------------------------------------------------------------- config
 
 function load_config(): array
@@ -34,6 +74,7 @@ function load_config(): array
     $cfg = [
         'secret'          => '',
         'mail_to'         => 'fediverse@oscloud.cz', // schránka, kterou čte FreeScout
+        'mail_to_en'      => '',   // anglická schránka ve FreeScoutu; prázdné = mail_to
         'mail_from'       => '',   // prázdné = CLOUDRON_MAIL_FROM, jinak noreply@oscloud.cz
         'allowed_origins' => ['https://oscloud.cz', 'https://www.oscloud.cz'],
         'trust_proxy'     => true, // za reverzní proxy (Cloudron) bereme poslední X-Forwarded-For
@@ -68,6 +109,9 @@ function load_config(): array
 
 function respond(int $status, array $body): never
 {
+    if (isset($body['message'])) {
+        $body['message'] = tr((string) $body['message']);
+    }
     http_response_code($status);
     header('Content-Type: application/json; charset=utf-8');
     header('Cache-Control: no-store');
@@ -78,7 +122,7 @@ function respond(int $status, array $body): never
 
 function fail(int $status, string $msg): never
 {
-    respond($status, ['ok' => false, 'error' => $msg]);
+    respond($status, ['ok' => false, 'error' => tr($msg)]);
 }
 
 function client_ip(array $cfg): string
@@ -346,6 +390,8 @@ function smtp_send(string $host, int $port, string $user, string $pass, string $
 // ---------------------------------------------------------------- main
 
 $cfg = load_config();
+// jazyk formuláře: jen whitelist, cokoli jiného = čeština
+$lang = (($_POST['lang'] ?? '') === 'en') ? 'en' : 'cs';
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 $originOk = $origin !== '' && in_array($origin, $cfg['allowed_origins'], true);
@@ -408,6 +454,11 @@ if (!rate_limit($dir, 'attempt:' . $ip . $cfg['secret'], $cfg['limit_attempts'])
 }
 
 // 5) validace
+foreach ($_POST as $v) {
+    if (is_string($v) && !mb_check_encoding($v, 'UTF-8')) {
+        fail(422, 'Neplatné znaky ve formuláři.');
+    }
+}
 $type = (($_POST['type'] ?? 'individual') === 'org') ? 'org' : 'individual';
 $name = clean_line((string) ($_POST['name'] ?? ''));
 $email = clean_line((string) ($_POST['email'] ?? ''));
@@ -419,7 +470,11 @@ if ($name === '' || mb_strlen($name) > 80) {
         ? 'Vyplň prosím kontaktní osobu (max. 80 znaků).'
         : 'Vyplň prosím jméno nebo přezdívku (max. 80 znaků).');
 }
-if ($email === '' || mb_strlen($email) > 120 || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+if (
+    $email === '' || mb_strlen($email) > 120
+    || !filter_var($email, FILTER_VALIDATE_EMAIL)
+    || !preg_match('/^[^\s"<>(),;:\\\\@]+@[^\s"<>(),;:\\\\@]+$/', $email)
+) {
     fail(422, 'Zkontroluj prosím e-mailovou adresu.');
 }
 
@@ -537,7 +592,14 @@ if (!rate_limit($dir, $emailKey, $cfg['limit_email'], false)) {
     fail(429, 'Žádost z této e-mailové adresy už byla odeslána. Odpověď přijde e-mailem. Pokud ne, kontakt je info@oscloud.cz.');
 }
 
-// 7) odeslání
+// 7) odeslání (anglické žádosti do anglické schránky, pokud je nastavená)
+if ($lang === 'en') {
+    $fields['Jazyk'] = 'English';
+    $subject = '[EN] ' . $subject;
+    if (trim((string) $cfg['mail_to_en']) !== '') {
+        $cfg['mail_to'] = trim((string) $cfg['mail_to_en']);
+    }
+}
 if (!send_mail($cfg, $subject, $name, $email, $fields, $message, $origin)) {
     error_log('oscloud-form: odeslání e-mailu selhalo');
     fail(500, 'Žádost se nepodařilo odeslat. Napiš nám prosím na info@oscloud.cz.');

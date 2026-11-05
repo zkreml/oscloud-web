@@ -99,3 +99,13 @@ location ~ \.php$ { include fastcgi_params; fastcgi_param SCRIPT_FILENAME $docum
 
 - obrázky jsou zatím jen emoji a kreslený obláček (`public/assets/img/hero-cloud.svg`) – až budou
   vlastní ilustrace OSCloudu, stačí je dát do `page-hero` (klíč `emoji` v `app/pages/*.php`)
+
+## Hlavní doména a aliasy
+
+V `config/config.php` nastav `'canonical_host' => 'oscloud.cz'`. Požadavky na jiné adresy téhož webu (www., oscloud.online) se pak přesměrují 301 na hlavní doménu a canonical, sitemap i náhledy míří vždy na ni. Na testovací instanci nech hodnotu prázdnou.
+
+### Dvě domény (česky a anglicky)
+
+Přidej `'canonical_host_en' => 'oscloud.online'`. Česky se pak zobrazuje na `canonical_host`, anglicky na této doméně a adresy nemají předponu `/en` (např. `oscloud.online/pricing`). Staré adresy `/en/…` se přesměrují na anglickou doménu, `www.` a neznámé domény na hlavní. Obě domény musí být v Cloudronu (Location a Aliases) u téže aplikace. Test: `tests/domains.sh`.
+
+Po změně configu nebo `git pull` počítej s tím, že PHP (OPcache) si může stará data podržet i několik minut; pomůže restart aplikace.

@@ -20,17 +20,17 @@ $navHref = fn (string $key) => match ($key) {
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <?php
     $route = $GLOBALS['oscloud_route'][0] ?? null;
-    $canonical = empty($page['noindex']) ? canonical_path() : null;
+    $canonical = empty($page['noindex']) ? canonical_abs() : null;
     $bothLangs = $route !== null && page_translated($route, 'cs') && page_translated($route, 'en');
     ?>
     <?php if (!empty($page['noindex'])): ?>
         <meta name="robots" content="noindex, nofollow">
     <?php elseif ($canonical !== null): ?>
-        <link rel="canonical" href="<?= e(absolute_url($canonical)) ?>">
+        <link rel="canonical" href="<?= e($canonical) ?>">
         <?php if ($bothLangs): // Vyhledávače se dozví o obou jazykových verzích (jen když existují obě) ?>
-            <link rel="alternate" hreflang="cs" href="<?= e(absolute_url(alternate_url('cs'))) ?>">
-            <link rel="alternate" hreflang="en" href="<?= e(absolute_url(alternate_url('en'))) ?>">
-            <link rel="alternate" hreflang="x-default" href="<?= e(absolute_url(alternate_url('cs'))) ?>">
+            <link rel="alternate" hreflang="cs" href="<?= e(alternate_abs('cs')) ?>">
+            <link rel="alternate" hreflang="en" href="<?= e(alternate_abs('en')) ?>">
+            <link rel="alternate" hreflang="x-default" href="<?= e(alternate_abs('cs')) ?>">
         <?php endif; ?>
         <?php $ogImage = absolute_url(asset('img/og-' . lang() . '.png')); ?>
         <meta property="og:type" content="website">
@@ -38,7 +38,7 @@ $navHref = fn (string $key) => match ($key) {
         <meta property="og:locale" content="<?= lang() === 'en' ? 'en_US' : 'cs_CZ' ?>">
         <meta property="og:title" content="<?= e($page['title']) ?>">
         <meta property="og:description" content="<?= e($page['description']) ?>">
-        <meta property="og:url" content="<?= e(absolute_url($canonical)) ?>">
+        <meta property="og:url" content="<?= e($canonical) ?>">
         <meta property="og:image" content="<?= e($ogImage) ?>">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
@@ -108,7 +108,7 @@ $navHref = fn (string $key) => match ($key) {
             <div class="main-nav__tools">
                 <a class="main-nav__login" href="<?= e(LINKS['login']) ?>" target="_blank" rel="noopener"><?= e(t('nav.login')) ?></a>
                 <?php if (empty($page['noindex'])): ?>
-                    <a class="lang-switch" href="<?= e(alternate_url($otherLang)) ?>" hreflang="<?= $otherLang ?>" lang="<?= $otherLang ?>" title="<?= e(t('lang.switch')) ?>">
+                    <a class="lang-switch" href="<?= e(switch_url($otherLang)) ?>" hreflang="<?= $otherLang ?>" lang="<?= $otherLang ?>" title="<?= e(t('lang.switch')) ?>">
                         <span class="lang-switch__short" aria-hidden="true"><?= e(t('lang.short')) ?></span><span class="lang-switch__long"><?= e(t('lang.switch')) ?></span>
                     </a>
                 <?php endif; ?>

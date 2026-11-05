@@ -67,7 +67,7 @@ function url(string $route, array $params = [], ?string $lang = null): string
     foreach ($params as $name => $value) {
         $path = str_replace('{' . $name . '}', rawurlencode((string) $value), $path);
     }
-    $prefix = $lang === 'en' ? '/en' : '';
+    $prefix = ($lang === 'en' && !split_mode()) ? '/en' : '';
     return ($prefix . '/' . $path === '/' ? '/' : rtrim($prefix . '/' . $path, '/'));
 }
 
@@ -76,10 +76,10 @@ function url(string $route, array $params = [], ?string $lang = null): string
  *
  * @return array{0: string, 1: ?string, 2: array} [jazyk, klíč stránky nebo null, parametry]
  */
-function resolve_route(string $path): array
+function resolve_route(string $path, ?string $hostLang = null): array
 {
-    $lang = 'cs';
-    if ($path === 'en' || str_starts_with($path, 'en/')) {
+    $lang = $hostLang ?? 'cs';
+    if ($hostLang === null && ($path === 'en' || str_starts_with($path, 'en/'))) {
         $lang = 'en';
         $path = ltrim(substr($path, 2), '/');
     }
@@ -92,11 +92,42 @@ function resolve_route(string $path): array
     return [$lang, null, []];
 }
 
+/** Běží web na dvou doménách – česky na canonical_host a anglicky na canonical_host_en? */
+function split_mode(): bool
+{
+    return (string) (CONFIG['canonical_host'] ?? '') !== '' && (string) (CONFIG['canonical_host_en'] ?? '') !== '';
+}
+
+/** Doména jazykové verze v režimu dvou domén. */
+function lang_host(string $lang): string
+{
+    return (string) (CONFIG[$lang === 'en' ? 'canonical_host_en' : 'canonical_host'] ?? '');
+}
+
 /** Adresa aktuální stránky v druhém jazyce (pro přepínač CZ/EN a hreflang). */
 function alternate_url(string $lang): string
 {
     $route = $GLOBALS['oscloud_route'] ?? null;
     return $route ? url($route[0], $route[1], $lang) : url('home', [], $lang);
+}
+
+/** Plná adresa aktuální stránky v daném jazyce (hreflang). */
+function alternate_abs(string $lang): string
+{
+    $route = $GLOBALS['oscloud_route'] ?? null;
+    return url_abs($route ? $route[0] : 'home', $route ? $route[1] : [], $lang);
+}
+
+/** Odkaz přepínače jazyků: v režimu dvou domén vede na druhou doménu, jinak na adresu pod /en. */
+function switch_url(string $lang): string
+{
+    return split_mode() ? alternate_abs($lang) : alternate_url($lang);
+}
+
+/** Plná adresa stránky v daném jazyce (se schématem a doménou). */
+function url_abs(string $route, array $params, string $lang): string
+{
+    return absolute_url(url($route, $params, $lang), $lang);
 }
 
 /** Má stránka vlastní překlad v daném jazyce? Bez překladu se v angličtině zobrazuje čeština (např. právní dokumenty). */
@@ -106,14 +137,14 @@ function page_translated(string $route, string $lang): bool
     return $lang === 'cs' || $file === null || is_file(ROOT . '/app/pages/en/' . $file . '.php');
 }
 
-/** Kanonická adresa aktuální stránky (cesta); nepřeložená anglická stránka ukazuje na českou verzi. */
-function canonical_path(): ?string
+/** Kanonická plná adresa aktuální stránky; nepřeložená anglická stránka ukazuje na českou verzi. */
+function canonical_abs(): ?string
 {
     $route = $GLOBALS['oscloud_route'] ?? null;
     if (!$route) {
         return null;
     }
-    return url($route[0], $route[1], page_translated($route[0], lang()) ? lang() : 'cs');
+    return url_abs($route[0], $route[1], page_translated($route[0], lang()) ? lang() : 'cs');
 }
 
 /** Obsah stránky z app/pages – česky přímo, anglicky z podsložky en/ (když chybí, použije se čeština). */
@@ -133,8 +164,13 @@ function money(int|float $amount): string
 }
 
 /** Plná adresa (se schématem a doménou) pro hreflang a odkazy v e-mailech. */
-function absolute_url(string $path): string
+function absolute_url(string $path, ?string $lang = null): string
 {
+    // V režimu dvou domén má každý jazyk svou; jinak má přednost hlavní doména z configu
+    $canonical = split_mode() ? lang_host($lang ?? lang()) : (string) (CONFIG['canonical_host'] ?? '');
+    if ($canonical !== '') {
+        return 'https://' . $canonical . $path;
+    }
     $https = is_https();
     // Host z hlavičky ověříme, aby se do odkazů nedostalo nic jiného než platné jméno hostitele
     $host = (string) ($_SERVER['HTTP_HOST'] ?? '');

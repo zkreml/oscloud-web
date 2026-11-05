@@ -10,6 +10,15 @@ return [
     // true jen při vývoji – zobrazuje chyby PHP přímo na stránce
     'debug' => false,
 
+    // Hlavní doména webu. Když je vyplněná, ostatní adresy (aliasy jako www.oscloud.cz nebo oscloud.online)
+    // se na ni přesměrují (301) a odkazy v canonical, sitemap a náhledech míří vždy na ni.
+    // Na testovací instanci nech prázdné.
+    'canonical_host' => '',
+
+    // Volitelně: samostatná doména pro anglickou verzi (např. oscloud.online). Když je vyplněná spolu s canonical_host,
+    // česky se zobrazuje na hlavní doméně a anglicky na této (adresy bez /en). Staré adresy /en/… se přesměrují.
+    'canonical_host_en' => '',
+
     // Umami (analytics.oscloud.cz) – ID webu; prázdné = měření vypnuté
     'umami_id' => '92b865bd-f0d2-4d73-a974-14f428a1b7f5',
 

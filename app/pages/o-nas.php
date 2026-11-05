@@ -2,7 +2,7 @@
 // Stránka O nás a kontakt (česky). Údaje spolku jsou v ORG v app/bootstrap.php.
 
 return [
-    'title'       => 'O nás a kontakt — OSCloud',
+    'title'       => 'O nás a kontakt — OSCloud, z. s.',
     'description' => 'OSCloud, z. s. je česká komunita, která provozuje open source služby bez reklam a sledování. Údaje o spolku, bankovní spojení a kontakt.',
     'nav'         => 'about',
 

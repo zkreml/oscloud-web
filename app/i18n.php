@@ -99,6 +99,23 @@ function alternate_url(string $lang): string
     return $route ? url($route[0], $route[1], $lang) : url('home', [], $lang);
 }
 
+/** Má stránka vlastní překlad v daném jazyce? Bez překladu se v angličtině zobrazuje čeština (např. právní dokumenty). */
+function page_translated(string $route, string $lang): bool
+{
+    $file = ROUTES[$route][2] ?? null;
+    return $lang === 'cs' || $file === null || is_file(ROOT . '/app/pages/en/' . $file . '.php');
+}
+
+/** Kanonická adresa aktuální stránky (cesta); nepřeložená anglická stránka ukazuje na českou verzi. */
+function canonical_path(): ?string
+{
+    $route = $GLOBALS['oscloud_route'] ?? null;
+    if (!$route) {
+        return null;
+    }
+    return url($route[0], $route[1], page_translated($route[0], lang()) ? lang() : 'cs');
+}
+
 /** Obsah stránky z app/pages – česky přímo, anglicky z podsložky en/ (když chybí, použije se čeština). */
 function page_content(string $file): array
 {

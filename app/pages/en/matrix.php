@@ -2,7 +2,7 @@
 // Matrix – mxchat.cz page (English).
 
 return [
-    'title'       => 'Matrix — mxchat.cz | OSCloud',
+    'title'       => 'Matrix — community chat mxchat.cz | OSCloud',
     'description' => 'Community chat on the open, decentralised Matrix protocol. No ads, no tracking, and you can talk to people on other Matrix servers too.',
     'nav'         => 'community',
 

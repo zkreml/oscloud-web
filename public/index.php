@@ -31,6 +31,14 @@ if (isset($legacy[$legacyPath = preg_replace('~^en/~', '', $path)])) {
     exit;
 }
 
+// Adresa s lomítkem na konci (/cenik/, /en/) je duplicita – přesměrujeme na jedinou kanonickou podobu
+if ($path !== '' && preg_match('#^[\w./%~-]+$#', $path) && !str_contains($path, '//') && str_ends_with((string) parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH), '/')
+    && in_array($_SERVER['REQUEST_METHOD'] ?? 'GET', ['GET', 'HEAD'], true)) {
+    $qs = (string) parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+    header('Location: /' . $path . ($qs !== '' ? '?' . $qs : ''), true, 301);
+    exit;
+}
+
 // sitemap.xml a robots.txt se skládají z tabulky ROUTES, takže vždy odpovídají aktuálním stránkám a doméně
 if ($path === 'sitemap.xml') {
     header('Content-Type: application/xml; charset=utf-8');
@@ -42,8 +50,14 @@ if ($path === 'sitemap.xml') {
             continue;
         }
         foreach (LANGS as $l) {
+            if (!page_translated($key, $l)) {
+                continue; // nepřeložené stránky (anglické právní dokumenty) do mapy nepatří
+            }
             $out .= "  <url>\n    <loc>" . htmlspecialchars(absolute_url(url($key, [], $l)), ENT_XML1) . "</loc>\n";
             foreach (LANGS as $alt) {
+                if (!page_translated($key, $alt)) {
+                    continue;
+                }
                 $out .= '    <xhtml:link rel="alternate" hreflang="' . $alt . '" href="' . htmlspecialchars(absolute_url(url($key, [], $alt)), ENT_XML1) . '"/>' . "\n";
             }
             $out .= "  </url>\n";

@@ -2,7 +2,7 @@
 // Stránka Degooglizace (česky) – co čím nahradit.
 
 return [
-    'title'       => 'Degooglizace — OSCloud',
+    'title'       => 'Degooglizace — čím nahradit služby Googlu | OSCloud',
     'description' => 'Co čím nahradit: fotky, soubory, e-mail, chat, hesla i sociální sítě. Postupně a bez stresu, s plakátem ke stažení.',
     'nav'         => 'degoogle',
 

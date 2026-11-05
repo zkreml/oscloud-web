@@ -2,7 +2,7 @@
 // About & contact page (English). Association details are in ORG in app/bootstrap.php.
 
 return [
-    'title'       => 'About & contact — OSCloud',
+    'title'       => 'About & contact — OSCloud, z. s.',
     'description' => 'OSCloud, z. s. is a Czech community running open source services without ads or tracking. Association details, bank details and contact.',
     'nav'         => 'about',
 

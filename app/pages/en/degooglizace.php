@@ -2,7 +2,7 @@
 // De-Googling page (English) – what to replace with what.
 
 return [
-    'title'       => 'De-Googling — OSCloud',
+    'title'       => 'De-Googling — what to replace Google services with | OSCloud',
     'description' => 'What to replace with what: photos, files, email, chat, passwords and social networks. Step by step and without stress, with a poster to download.',
     'nav'         => 'degoogle',
 

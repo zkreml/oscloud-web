@@ -2,7 +2,7 @@
 // Ente Photos page (English).
 
 return [
-    'title'       => 'Ente Photos — OSCloud',
+    'title'       => 'Ente Photos — private alternative to Google Photos | OSCloud',
     'description' => 'A private, end-to-end encrypted photo cloud at oscloud.photos. An alternative to Google Photos, 10 GB free forever, servers in Germany.',
     'nav'         => 'services',
 

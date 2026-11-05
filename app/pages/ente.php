@@ -2,7 +2,7 @@
 // Stránka Ente Photos (česky).
 
 return [
-    'title'       => 'Ente Photos — OSCloud',
+    'title'       => 'Ente Photos — alternativa ke Google Fotkám | OSCloud',
     'description' => 'Soukromý, end-to-end šifrovaný foto cloud na oscloud.photos. Alternativa ke Google Photos, 10 GB zdarma navždy, servery v Německu.',
     'nav'         => 'services',
 

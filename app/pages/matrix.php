@@ -2,7 +2,7 @@
 // Stránka Matrix – mxchat.cz (česky).
 
 return [
-    'title'       => 'Matrix — mxchat.cz | OSCloud',
+    'title'       => 'Matrix — komunitní chat mxchat.cz | OSCloud',
     'description' => 'Komunitní chat na otevřeném decentralizovaném protokolu Matrix. Bez reklam, bez sledování, a můžeš si povídat i s lidmi z jiných Matrix serverů.',
     'nav'         => 'community',
 

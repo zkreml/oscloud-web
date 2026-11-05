@@ -4,7 +4,7 @@
 $trilium = TRILIUM_PRICES;
 
 return [
-    'title'       => 'Ceník — OSCloud',
+    'title'       => 'Ceník — Nextcloud, Ente Photos, Trilium | OSCloud',
     'description' => 'Základní služby jsou zdarma. Nextcloud od 15 Kč měsíčně, Ente Photos, Trilium Next, komunitní Mastodon, fóra, wiki a webhosting. Bez DPH, ceny jsou konečné.',
     'nav'         => 'pricing',
 

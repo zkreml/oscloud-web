@@ -50,7 +50,7 @@ return [
     // Page titles
     'meta.home.title'             => 'OSCloud — A community for digital freedom',
     'meta.home.description'       => 'OSCloud is a Czech community running open source services. No ads, no tracking, data in the EU. Nextcloud, Ente Photos, Matrix, Mastodon and more.',
-    'meta.join.title'             => 'Join us — OSCloud',
+    'meta.join.title'             => 'Join OSCloud — request an account',
     'meta.join.description'       => 'A short form, the reply comes by email. No 20 fields, no phone verification.',
     'meta.join_done.title'        => 'Request sent — OSCloud',
     'meta.join_done.description'  => 'We have received your request.',

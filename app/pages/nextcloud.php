@@ -2,7 +2,7 @@
 // Stránka Nextcloud (česky). Ceny jsou v app/pricing.php.
 
 return [
-    'title'       => 'Nextcloud — OSCloud',
+    'title'       => 'Nextcloud — soubory, kalendář, kontakty v EU | OSCloud',
     'description' => 'Soubory, kalendář a kontakty na jednom místě, na serverech v Německu. 2 GB zdarma, větší úložiště od 15 Kč měsíčně. Včetně Collabora Online.',
     'nav'         => 'services',
 

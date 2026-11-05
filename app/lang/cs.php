@@ -50,7 +50,7 @@ return [
     // Titulky stránek
     'meta.home.title'             => 'OSCloud — Komunita pro digitální svobodu',
     'meta.home.description'       => 'OSCloud je česká komunita, která provozuje open source služby. Žádné reklamy, žádné sledování, data v EU. Nextcloud, Ente Photos, Matrix, Mastodon a další.',
-    'meta.join.title'             => 'Chci se připojit — OSCloud',
+    'meta.join.title'             => 'Chci se připojit — registrace do OSCloud',
     'meta.join.description'       => 'Krátký formulář, odpověď přijde e-mailem. Žádných 20 polí, žádné ověřování telefonem.',
     'meta.join_done.title'        => 'Žádost odeslána — OSCloud',
     'meta.join_done.description'  => 'Žádost jsme přijali.',

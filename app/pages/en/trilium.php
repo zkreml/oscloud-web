@@ -4,7 +4,7 @@
 $p = TRILIUM_PRICES;
 
 return [
-    'title'       => 'Trilium Next — OSCloud',
+    'title'       => 'Trilium Next — your own notes and Markdown | OSCloud',
     'description' => 'Your own notes in one place: tree structure, Markdown, access from anywhere. Your own separate instance from 65 CZK a month.',
     'nav'         => 'services',
 

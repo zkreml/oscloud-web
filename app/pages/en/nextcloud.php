@@ -2,7 +2,7 @@
 // Nextcloud page (English). Prices are in app/pricing.php.
 
 return [
-    'title'       => 'Nextcloud — OSCloud',
+    'title'       => 'Nextcloud — files, calendar, contacts in the EU | OSCloud',
     'description' => 'Files, calendar and contacts in one place, on servers in Germany. 2 GB free, more storage from 15 CZK a month. Collabora Online included.',
     'nav'         => 'services',
 

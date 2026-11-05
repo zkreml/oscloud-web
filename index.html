@@ -662,6 +662,7 @@
       .join, .pricing, .community, .why, .support { padding-top: 56px; padding-bottom: 56px; }
     }
   </style>
+  <link rel="stylesheet" href="/assets/theme.css">
   <script defer src="https://analytics.oscloud.cz/script.js" data-website-id="92b865bd-f0d2-4d73-a974-14f428a1b7f5"></script>
 </head>
 <body>
@@ -693,12 +694,16 @@
 <!-- HERO -->
 <section class="hero">
   <div class="container">
+    <div class="hero-text">
+      <p class="eyebrow">Komunita pro digitální svobodu</p>
     <h1>Tvoje data. <span>Tvoje pravidla.</span></h1>
     <p>OSCloud je česká komunita, která provozuje open source služby. Žádné reklamy, žádné sledování, žádný vendor lock-in. Jen nástroje, které fungují.</p>
     <div class="hero-buttons">
       <a href="#pripojit" class="btn btn-primary">Chci se připojit</a>
       <a href="#sluzby" class="btn btn-outline">Co nabízíme</a>
-    </div>
+    </div></div>
+    <figure class="hero-visual">
+      <ul class="hero-bubbles" aria-hidden="true"><li class="hero-bubble hb1">Nextcloud</li><li class="hero-bubble hb2">Matrix</li><li class="hero-bubble hb3">Mastodon</li><li class="hero-bubble hb4">Ente Photos</li><li class="hero-bubble hb5">Vaultwarden</li><li class="hero-bubble hb6">PeerTube</li></ul><img src="/assets/img/hero-cloud.svg" alt="Usměvavý obláček OSCloud" width="520" height="400"></figure>
   </div>
 </section>
 
@@ -816,8 +821,10 @@
         <p class="dg-t-prompt" aria-hidden="true">$ oscloud --degoogle --postupně</p>
         <h2 id="dg-t-h">Degooglizace</h2>
         <p>Co čím nahradit: fotky, soubory, e-mail, chat, hesla i sociální sítě. Postupně a bez stresu, a je tu i plakát ke stažení.</p>
+      
+        <a class="dg-t-link" href="degooglizace.html">Podívej se →</a>
       </div>
-      <a class="dg-t-link" href="degooglizace.html">Podívej se →</a>
+      <ul class="dg-swaps"><li><s>Google Photos</s> <span aria-hidden="true">→</span> <b>Ente Photos</b></li><li><s>Google Drive</s> <span aria-hidden="true">→</span> <b>Nextcloud</b></li><li><s>WhatsApp</s> <span aria-hidden="true">→</span> <b>Matrix</b></li><li><s>YouTube</s> <span aria-hidden="true">→</span> <b>PeerTube</b></li><li><s>X (Twitter)</s> <span aria-hidden="true">→</span> <b>Mastodon</b></li></ul>
     </div>
   </div>
 </section>

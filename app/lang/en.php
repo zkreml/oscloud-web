@@ -15,6 +15,8 @@ return [
     'nav.degoogle'        => 'De-Google',
     'nav.community'       => 'Community',
     'nav.about'           => 'About',
+    'nav.docs'            => 'Documentation',
+    'nav.blog'            => 'Blog',
     'nav.login'           => 'Log in',
     'nav.cta'             => 'Join us',
     'lang.switch'         => 'Česká verze',

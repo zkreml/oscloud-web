@@ -68,7 +68,10 @@ const ORG = [
 ];
 
 // Hlavní menu – [klíč popisku nav.*, odkaz]; odkazy na sekce homepage vznikají v hlavičce
-const MAIN_NAV = ['services', 'pricing', 'degoogle', 'community', 'about'];
+const MAIN_NAV = ['services', 'pricing', 'degoogle', 'community', 'about', 'docs', 'blog'];
+
+// Položky hlavního menu, které vedou mimo web (do dokumentace a na blog) – otevírají se v novém okně
+const NAV_EXTERNAL = ['docs' => 'docs', 'blog' => 'blog'];
 
 // Odkazy na služby a projekty OSCloudu
 const LINKS = [
@@ -86,7 +89,7 @@ const LINKS = [
     'pixelfed'  => 'https://pixelfed.cz',
     'fitpub'    => 'https://makni.cz',
     'photos'    => 'https://oscloud.photos',
-    'cryptpad'  => 'https://cryptpad.arch-linux.cz/',
+    'cryptpad'  => 'https://office.oscloud.cz/',
     'searxng'   => 'https://searxng.cz',
     'pass'      => 'https://pass.oscloud.cz',
 ];

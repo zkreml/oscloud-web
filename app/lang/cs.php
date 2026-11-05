@@ -15,6 +15,8 @@ return [
     'nav.degoogle'        => 'Degooglizace',
     'nav.community'       => 'Komunita',
     'nav.about'           => 'O nás',
+    'nav.docs'            => 'Dokumentace',
+    'nav.blog'            => 'Blog',
     'nav.login'           => 'Přihlášení',
     'nav.cta'             => 'Chci se připojit',
     'lang.switch'         => 'English version',

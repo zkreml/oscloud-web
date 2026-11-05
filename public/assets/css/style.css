@@ -289,7 +289,7 @@ a { color: var(--os-blue); }
     overflow: hidden; clip: rect(0 0 0 0);
     white-space: nowrap;
 }
-@media (max-width: 960px) {
+@media (max-width: 1200px) {
     .lang-switch { height: 48px; font-size: 1rem; letter-spacing: 0; }
     .lang-switch__short { display: none; }
     .lang-switch__long { position: static; width: auto; height: auto; clip: auto; }
@@ -329,7 +329,7 @@ a { color: var(--os-blue); }
 .nav-toggle[aria-expanded="true"] .nav-toggle__bars::before { transform: translateY(6px) rotate(45deg); }
 .nav-toggle[aria-expanded="true"] .nav-toggle__bars::after { transform: translateY(-6px) rotate(-45deg); }
 
-@media (max-width: 960px) {
+@media (max-width: 1200px) {
     :root { --header-h: 72px; }
 
     .nav-toggle { display: inline-flex; }
@@ -1905,7 +1905,7 @@ a { color: var(--os-blue); }
 .next-steps li { margin-bottom: 6px; }
 .next-steps li::marker { font-family: var(--font-display); color: var(--os-navy); }
 
-@media (max-width: 960px) {
+@media (max-width: 1200px) {
     .order { grid-template-columns: 1fr; }
     .order__summary { position: static; grid-row: 1; }
     .summary-card { display: grid; grid-template-columns: 120px 1fr; gap: 0 20px; align-items: center; }
@@ -2160,13 +2160,13 @@ a { color: var(--os-blue); }
 .main-nav { gap: 18px; }
 .main-nav ul a { padding: 10px 12px; }
 
-@media (max-width: 1180px) and (min-width: 961px) {
+@media (max-width: 1340px) and (min-width: 1201px) {
     .main-nav ul a { padding: 8px 9px; font-size: .94rem; }
     .main-nav__login { padding: 8px 9px; font-size: .94rem; }
     .main-nav { gap: 12px; }
     .main-nav__cta { padding-inline: 18px; }
 }
-@media (max-width: 960px) {
+@media (max-width: 1200px) {
     .main-nav__tools { justify-content: space-between; }
     .main-nav__login { padding: 12px 18px; border: 2px solid var(--os-border); font-size: 1.05rem; }
 }
@@ -2837,7 +2837,7 @@ a { color: var(--os-blue); }
 .join-card__steps li::marker { font-family: var(--font-display); color: var(--os-navy); }
 .join-card__help { margin: 0; font-size: .92em; }
 
-@media (max-width: 960px) {
+@media (max-width: 1200px) {
     .join { grid-template-columns: 1fr; }
     .join__side { position: static; grid-row: 1; }
     .join-card__steps { display: none; }
@@ -2881,3 +2881,4 @@ a { color: var(--os-blue); }
     .price-box .compare--prices .price-link { padding: 4px 2px; gap: 0; }
     .price-box .compare--prices .price-link span { display: none; }
 }
+.main-nav ul a, .main-nav__login { white-space: nowrap; }

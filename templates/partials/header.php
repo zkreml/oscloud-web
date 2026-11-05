@@ -51,7 +51,11 @@ $navHref = fn (string $key) => match ($key) {
         <nav class="main-nav" id="hlavni-menu" aria-label="<?= e(t('nav.main')) ?>">
             <ul>
                 <?php foreach (MAIN_NAV as $key): ?>
-                    <li><a href="<?= e($navHref($key)) ?>"<?= $page['nav'] === $key ? ' aria-current="page"' : '' ?>><?= e(t('nav.' . $key)) ?></a></li>
+                    <?php if (isset(NAV_EXTERNAL[$key])): ?>
+                        <li><a href="<?= e(LINKS[NAV_EXTERNAL[$key]]) ?>" target="_blank" rel="noopener"><?= e(t('nav.' . $key)) ?></a></li>
+                    <?php else: ?>
+                        <li><a href="<?= e($navHref($key)) ?>"<?= $page['nav'] === $key ? ' aria-current="page"' : '' ?>><?= e(t('nav.' . $key)) ?></a></li>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
             <div class="main-nav__tools">

@@ -140,8 +140,17 @@ return [
                 ['emoji' => '🧡', 'title' => 'Dobročinné spolky a dětské oddíly',
                     'text' => 'Podporujeme neziskové a dobročinné spolky, dětské oddíly, skauty a podobné komunity. Podmínky domluvíme individuálně.',
                     'link' => ['Ozvi se přes helpdesk', LINKS['helpdesk']]],
-                ['emoji' => '🤝', 'title' => 'Sponzoring',
-                    'text' => 'Logo na webu oscloud.cz. Podrobnosti domluvíme individuálně. Klikni na úroveň, otevře se e-mail.',
+            ],
+        ],
+        [
+            'type'    => 'offers',
+            'id'      => 'sponzoring',
+            'title'   => 'Sponzoring',
+            'text'    => 'Podporuješ OSCloud pravidelně? Dáme tvoje logo na web oscloud.cz.',
+            'columns' => 1,
+            'items'   => [
+                ['emoji' => '🤝', 'title' => 'Úrovně sponzoringu',
+                    'text' => 'Podrobnosti domluvíme individuálně. Klikni na úroveň, otevře se e-mail.',
                     'list' => [
                         ['**Bronz** ' . money(PRICES['sponsor']['bronz']) . '/měs', 'mailto:info@oscloud.cz?subject=Sponzoring%20OSCloud%20-%20Bronz'],
                         ['**Stříbro** ' . money(PRICES['sponsor']['stribro']) . '/měs', 'mailto:info@oscloud.cz?subject=Sponzoring%20OSCloud%20-%20Stribro'],

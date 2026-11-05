@@ -13,7 +13,7 @@ return [
         'eyebrow'    => 'Free or for a few crowns',
         'title'      => 'Pricing',
         'lead'       => 'Basic services are **free**. You choose Nextcloud by storage size.',
-        'paragraphs' => ['Associations and companies pay extra for invoices with a company ID, support and more users. All prices are in Czech crowns (CZK) and final, we are not a VAT payer.', 'You can pay by bank transfer from abroad using our IBAN (account details on the [About us](/en/about#ucty) page). Your bank converts the amount at its own rate.'],
+        'paragraphs' => ['Associations and companies pay extra for invoices with a company ID, support and more users. All prices are in Czech crowns (CZK) and final, we are not a VAT payer.', 'You can pay by bank transfer from abroad using our IBAN (account details on the [About us](' . url('about') . '#ucty) page). Your bank converts the amount at its own rate.'],
         'buttons'    => [['Join us', url('join')], ['Price table', '#nextcloud-cenik']],
         'emoji'      => '🧾',
         'chips'      => ['Free', 'from 15 CZK', 'no VAT', 'no ads'],
@@ -139,8 +139,17 @@ return [
                 ['emoji' => '🧡', 'title' => 'Charities and youth groups',
                     'text' => 'We support non-profit and charitable associations, youth groups, scouts and similar communities. We agree on the terms individually.',
                     'link' => ['Get in touch via helpdesk', LINKS['helpdesk']]],
-                ['emoji' => '🤝', 'title' => 'Sponsoring',
-                    'text' => 'Your logo on oscloud.cz. Details by agreement. Click a level to open an email.',
+            ],
+        ],
+        [
+            'type'    => 'offers',
+            'id'      => 'sponzoring',
+            'title'   => 'Sponsoring',
+            'text'    => 'Support OSCloud regularly? We will put your logo on oscloud.cz.',
+            'columns' => 1,
+            'items'   => [
+                ['emoji' => '🤝', 'title' => 'Sponsorship levels',
+                    'text' => 'Details by agreement. Click a level to open an email.',
                     'list' => [
                         ['**Bronze** ' . money(PRICES['sponsor']['bronz']) . '/mo', 'mailto:info@oscloud.cz?subject=Sponzoring%20OSCloud%20-%20Bronz'],
                         ['**Silver** ' . money(PRICES['sponsor']['stribro']) . '/mo', 'mailto:info@oscloud.cz?subject=Sponzoring%20OSCloud%20-%20Stribro'],
@@ -157,7 +166,7 @@ return [
             ],
             'accounts'   => ['Transparent account', 'Private account'],
             'after'      => [
-                'Write “dar” (donation) in the payment message. IBANs are on the [About page](/en/about#ucty).',
+                'Write “dar” (donation) in the payment message. IBANs are on the [About page](' . url('about') . '#ucty).',
                 'Need a receipt? Email [info@oscloud.cz](mailto:info@oscloud.cz) your name, the amount and the date of payment and we will issue a donation receipt. It confirms the payment; we cannot guarantee a tax deduction.',
             ],
             'qr_alt'     => 'QR code for a payment to the OSCloud transparent account',

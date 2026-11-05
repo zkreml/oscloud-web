@@ -2608,6 +2608,8 @@ a { color: var(--os-blue); }
 
 .offers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .offers--3 { grid-template-columns: repeat(3, 1fr); }
+.offers--1 { grid-template-columns: minmax(0, 640px); justify-content: center; }
+.offers--1 .offer { background: var(--os-cloud); border-color: var(--os-border); }
 .offer {
     display: flex;
     flex-direction: column;
@@ -2638,7 +2640,7 @@ a { color: var(--os-blue); }
 .offer__list li::marker { color: var(--os-navy); }
 .offer__list strong { color: var(--os-navy); }
 .offer__link { margin-top: auto; align-self: flex-start; }
-@media (max-width: 900px) { .offers, .offers--3 { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .offers, .offers--3, .offers--1 { grid-template-columns: 1fr; } }
 
 /* --- Časté dotazy ---------------------------------------------------------- */
 

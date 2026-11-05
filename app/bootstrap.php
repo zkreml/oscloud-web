@@ -17,6 +17,7 @@ ini_set('display_errors', CONFIG['debug'] ? '1' : '0');
 ini_set('log_errors', '1');
 ini_set('error_log', STORAGE . '/php-error.log');
 ini_set('expose_php', '0');
+date_default_timezone_set('Europe/Prague'); // časy v e-mailech a logu podle českého času, ne UTC
 send_security_headers();
 
 /** HTTPS i za reverzní proxy (Cloudron předává schéma v X-Forwarded-Proto). */

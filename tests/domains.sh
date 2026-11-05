@@ -2,6 +2,8 @@
 # Test režimu dvou domén. V config/config.php nastav canonical_host=oscloud.cz a canonical_host_en=oscloud.online,
 # spusť  php -S 127.0.0.1:8095 -t public public/index.php  a pak  tests/domains.sh
 B=${1:-http://127.0.0.1:8095}; bad=0
+# Neznámé domény a aliasy bez záznamu v Cloudronu se k aplikaci vůbec nedostanou, jejich přesměrování jde ověřit jen lokálně.
+case "$B" in http://127.0.0.1*|http://localhost*) LOCAL=1;; *) LOCAL=0;; esac
 chk(){ # host cesta očekávaný_kód očekávaná_Location(volitelně)
   out=$(curl -s -o /dev/null -w "%{http_code} %{redirect_url}" -H "Host: $1" "$B$2")
   code=${out%% *}; loc=${out#* }
@@ -11,8 +13,7 @@ chk(){ # host cesta očekávaný_kód očekávaná_Location(volitelně)
 chk oscloud.cz / 200;           chk oscloud.cz /cenik 200
 chk oscloud.online / 200;       chk oscloud.online /pricing 200;  chk oscloud.online /join 200
 chk www.oscloud.cz /cenik 301 https://oscloud.cz/cenik
-chk www.oscloud.online /pricing 301 https://oscloud.online/pricing
-chk neznama.example / 301 https://oscloud.cz/
+[ $LOCAL = 1 ] && { chk www.oscloud.online /pricing 301 https://oscloud.online/pricing; chk neznama.example / 301 https://oscloud.cz/; }
 chk oscloud.cz /en 301 https://oscloud.online/
 chk oscloud.cz /en/pricing 301 https://oscloud.online/pricing
 chk oscloud.online /en/pricing 301 https://oscloud.online/pricing

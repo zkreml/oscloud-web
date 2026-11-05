@@ -151,7 +151,7 @@ function handle_join(): array
 
     // Limity odeslaných žádostí: na IP, celkem a na e-mailovou adresu (zapisují se až po úspěšném odeslání)
     $limits = [
-        'ip:' . ($_SERVER['REMOTE_ADDR'] ?? '')    => [3600 => 3, 86400 => 10],
+        'ip:' . client_ip()    => [3600 => 3, 86400 => 10],
         'global'                                  => [86400 => 60],
         'email:' . mb_strtolower($old['email'])   => [3600 => 1, 86400 => 3],
     ];

@@ -60,7 +60,7 @@ return [
     // Ochrana formulářů
     'form.expired'        => 'Platnost formuláře vypršela. Zkontroluj prosím údaje a odešli ho znovu.',
     'form.retry'          => 'Formulář se nepodařilo odeslat. Zkus to prosím za chvilku znovu.',
-    'form.rate'           => 'Z tvé adresy jsme během poslední hodiny přijali už hodně žádostí. Zkus to prosím později nebo napiš přímo na {email}.',
+    'form.rate'           => 'Z tohoto připojení nebo na tento e-mail jsme během poslední hodiny přijali už hodně žádostí. Zkus to prosím později nebo napiš přímo na {email}.',
     'form.fix'            => 'Ve formuláři je potřeba ještě něco opravit:',
     'form.honeypot'       => 'Nevyplňovat',
     'form.choose'         => '– vybrat –',

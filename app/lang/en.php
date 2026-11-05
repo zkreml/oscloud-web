@@ -60,7 +60,7 @@ return [
     // Form protection
     'form.expired'        => 'This form has expired. Please check your details and send it again.',
     'form.retry'          => 'The form could not be sent. Please try again in a moment.',
-    'form.rate'           => 'We have already received a lot of requests from your address in the last hour. Please try again later or email us at {email}.',
+    'form.rate'           => 'We have already received a lot of requests from this connection or for this e-mail address in the last hour. Please try again later or email us at {email}.',
     'form.fix'            => 'A few things in the form still need fixing:',
     'form.honeypot'       => 'Leave this empty',
     'form.choose'         => '– choose –',

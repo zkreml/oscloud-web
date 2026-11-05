@@ -22,6 +22,27 @@ function start_session(): void
     session_start();
 }
 
+/**
+ * IP adresa návštěvníka. Za reverzní proxy (Cloudron) je REMOTE_ADDR interní adresa, takže jen
+ * v tom případě věříme X-Forwarded-For – a to nejpravější veřejné adrese, kterou přidala naše proxy.
+ * Hodnotu zleva si může vymyslet klient, proto se nepoužívá.
+ */
+function client_ip(): string
+{
+    $addr = (string) ($_SERVER['REMOTE_ADDR'] ?? '');
+    $public = fn (string $ip): bool => filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) !== false;
+    if ($addr === '' || $public($addr)) {
+        return $addr;
+    }
+    $parts = array_reverse(array_map('trim', explode(',', (string) ($_SERVER['HTTP_X_FORWARDED_FOR'] ?? ''))));
+    foreach ($parts as $ip) {
+        if ($public($ip)) {
+            return $ip;
+        }
+    }
+    return $addr;
+}
+
 function is_post(): bool
 {
     return ($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST';
@@ -104,7 +125,7 @@ function form_check(string $form, int $maxPerHour): ?string
     }
 
     rate_limit_gc();
-    if (!rate_limit('attempt:' . ($_SERVER['REMOTE_ADDR'] ?? '') . ':' . $form, [3600 => max(30, $maxPerHour * 6)])) {
+    if (!rate_limit('attempt:' . client_ip() . ':' . $form, [3600 => max(30, $maxPerHour * 6)])) {
         return t('form.rate', ['email' => CONFIG['mail']['to']]);
     }
 

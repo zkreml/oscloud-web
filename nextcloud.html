@@ -247,7 +247,7 @@
     </div>
 
     <h2 id="cenik">Ceník</h2>
-    <p>Cena za měsíc podle velikosti úložiště. Rodina je od <!--p "{family_base}&nbsp;Kč"-->50&nbsp;Kč<!--/p--> včetně společné složky 50&nbsp;GB (větší složka stojí víc podle tabulky), spolky <!--p "+{plan.spolek}&nbsp;Kč"-->+99&nbsp;Kč<!--/p-->, firmy <!--p "+{plan.firma}&nbsp;Kč"-->+299&nbsp;Kč<!--/p-->.</p>
+    <p>Cena za měsíc podle velikosti úložiště. Rodina je od <!--p "{family_base}&nbsp;Kč"-->50&nbsp;Kč<!--/p--> včetně společné složky 50&nbsp;GB (větší složka stojí víc podle tabulky), spolky od <!--p "{spolek_from}&nbsp;Kč"-->148&nbsp;Kč<!--/p--> a firmy od <!--p "{firma_from}&nbsp;Kč"-->348&nbsp;Kč<!--/p--> (cena úložiště + příplatek <!--p "{plan.spolek}&nbsp;Kč"-->99&nbsp;Kč<!--/p--> a <!--p "{plan.firma}&nbsp;Kč"-->299&nbsp;Kč<!--/p-->).</p>
     <div class="price-table-wrap">
       <table class="price-table">
         <caption>Cena Nextcloudu za měsíc podle úložiště</caption>
@@ -268,12 +268,13 @@
       </table>
     </div>
     <p class="table-hint">Kliknutím na cenu se předvyplní formulář žádosti.</p>
+    <p class="table-hint">Ceny ve sloupcích Spolek a Firma jsou <strong>celkové</strong>: cena úložiště + příplatek za tarif.</p>
     <p class="table-hint"><strong>Vše jde kombinovat.</strong> V tarifu Rodina je v ceně společná složka vybrané velikosti a každý člen má navíc 2&nbsp;GB zdarma. Komu to nestačí, může si přikoupit vlastní větší úložiště za cenu ze sloupce Jednotlivec, společná složka se tím nemění. Příklad: společná složka 50&nbsp;GB (<!--p "{family_base}&nbsp;Kč"-->50&nbsp;Kč<!--/p-->) a jeden člen s vlastními 100&nbsp;GB (<!--p "{nc.100}&nbsp;Kč"-->69&nbsp;Kč<!--/p-->), ostatní zůstanou na 2&nbsp;GB zdarma.</p>
     <ul class="plain">
       <li><strong>Jednotlivec:</strong> jeden účet, úložiště podle tabulky.</li>
       <li><strong>Rodina (od <!--p "{family_base}&nbsp;Kč"-->50&nbsp;Kč<!--/p-->):</strong> 4 uživatelé Nextcloudu, každý s vlastním účtem a 2&nbsp;GB zdarma, a společná složka 50&nbsp;GB pro všechny. Větší složka stojí víc podle tabulky. Sdílené kalendáře a kontakty, podpora přes Matrix. Kdo potřebuje víc místa pro sebe, může si osobní úložiště přikoupit za cenu tarifu Jednotlivec, společná složka se tím nemění.</li>
-      <li><strong>Pro spolky (<!--p "+{plan.spolek}&nbsp;Kč"-->+99&nbsp;Kč<!--/p-->):</strong> 5 uživatelů Nextcloudu se společným úložištěm, fakturace s IČO, podpora e-mailem a přes Matrix.</li>
-      <li><strong>Firemní (<!--p "+{plan.firma}&nbsp;Kč"-->+299&nbsp;Kč<!--/p-->):</strong> 10 uživatelů se společným úložištěm, fakturace s IČO, podpora e-mailem a přes Matrix, reakce do 24 hodin.</li>
+      <li><strong>Pro spolky (od <!--p "{spolek_from}&nbsp;Kč"-->148&nbsp;Kč<!--/p-->):</strong> 5 uživatelů Nextcloudu se společným úložištěm, sdílené kalendáře a kontakty, fakturace s IČO, podpora e-mailem a přes Matrix.</li>
+      <li><strong>Firemní (od <!--p "{firma_from}&nbsp;Kč"-->348&nbsp;Kč<!--/p-->):</strong> 10 uživatelů se společným úložištěm, sdílené kalendáře a kontakty, fakturace s IČO, podpora e-mailem a přes Matrix, reakce do 24 hodin.</li>
     </ul>
     <p>Větší úložiště než 1&nbsp;TB je možné po domluvě jako externí úložiště.</p>
     <p>Počet uživatelů v tarifu spolek a firma je orientační. Při větším počtu členů týmu se ozvi na <a href="mailto:info@oscloud.cz">info@oscloud.cz</a> nebo přes <a href="https://helpdesk.oscloud.cz/help/3271740098" target="_blank" rel="noopener">helpdesk</a> a domluvíme se.</p>

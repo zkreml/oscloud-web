@@ -55,6 +55,10 @@ def flat(prefix, d, out):
 VALUES = {}
 flat("", {k: v for k, v in P.items() if not k.endswith("_labels") and not k.startswith("_")}, VALUES)
 VALUES["nc.min"] = min(P["nc"].values())
+# "od" cena spolku/firmy = nejlevnější povolené úložiště + příplatek tarifu
+_org_base = min(v for gb, v in P["nc"].items() if int(gb) >= P.get("nc_org_min", 0))
+VALUES["spolek_from"] = _org_base + P["plan"]["spolek"]
+VALUES["firma_from"] = _org_base + P["plan"]["firma"]
 
 def tpl(s):
     def r(m):

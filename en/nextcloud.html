@@ -247,7 +247,7 @@
     </div>
 
     <h2 id="cenik">Pricing</h2>
-    <p>Monthly price by storage size. Family starts at <!--p "{family_base}&nbsp;CZK"-->50&nbsp;CZK<!--/p--> including a shared 50&nbsp;GB folder (a larger folder costs more according to the table), associations <!--p "+{plan.spolek}&nbsp;CZK"-->+99&nbsp;CZK<!--/p-->, companies <!--p "+{plan.firma}&nbsp;CZK"-->+299&nbsp;CZK<!--/p-->.</p>
+    <p>Monthly price by storage size. Family starts at <!--p "{family_base}&nbsp;CZK"-->50&nbsp;CZK<!--/p--> including a shared 50&nbsp;GB folder (a larger folder costs more according to the table), associations from <!--p "{spolek_from}&nbsp;CZK"-->148&nbsp;CZK<!--/p--> and companies from <!--p "{firma_from}&nbsp;CZK"-->348&nbsp;CZK<!--/p--> (storage price + a surcharge of <!--p "{plan.spolek}&nbsp;CZK"-->99&nbsp;CZK<!--/p--> and <!--p "{plan.firma}&nbsp;CZK"-->299&nbsp;CZK<!--/p-->).</p>
     <div class="price-table-wrap">
       <table class="price-table">
         <caption>Nextcloud price per month by storage</caption>
@@ -268,12 +268,13 @@
       </table>
     </div>
     <p class="table-hint">Click a price to pre-fill the request form.</p>
+    <p class="table-hint">Prices in the Association and Company columns are <strong>totals</strong>: the storage price plus the plan surcharge.</p>
     <p class="table-hint"><strong>Everything can be combined.</strong> The Family plan includes a shared folder of the chosen size, and every member also gets 2&nbsp;GB free. Anyone who needs more can buy their own larger storage at the price from the Individual column, and the shared folder stays the same. Example: a shared 50&nbsp;GB folder (<!--p "{family_base}&nbsp;CZK"-->50&nbsp;CZK<!--/p-->) and one member with their own 100&nbsp;GB (<!--p "{nc.100}&nbsp;CZK"-->69&nbsp;CZK<!--/p-->), everyone else stays on 2&nbsp;GB free.</p>
     <ul class="plain">
       <li><strong>Individual:</strong> one account, storage according to the table.</li>
       <li><strong>Family (from <!--p "{family_base}&nbsp;CZK"-->50&nbsp;CZK<!--/p-->):</strong> 4 Nextcloud users, each with their own account and 2&nbsp;GB free, and a shared 50&nbsp;GB folder for everyone. A larger folder costs more according to the table. Shared calendars and contacts, support via Matrix. Anyone who needs more space for themselves can buy personal storage at the Individual plan price, and the shared folder stays the same.</li>
-      <li><strong>For associations (<!--p "+{plan.spolek}&nbsp;CZK"-->+99&nbsp;CZK<!--/p-->):</strong> 5 Nextcloud users with shared storage, invoicing with a company ID, support by e-mail and via Matrix.</li>
-      <li><strong>Company (<!--p "+{plan.firma}&nbsp;CZK"-->+299&nbsp;CZK<!--/p-->):</strong> 10 users with shared storage, invoicing with a company ID, support by e-mail and via Matrix, response within 24 hours.</li>
+      <li><strong>For associations (from <!--p "{spolek_from}&nbsp;CZK"-->148&nbsp;CZK<!--/p-->):</strong> 5 Nextcloud users with shared storage, shared calendars and contacts, invoicing with a company ID, support by e-mail and via Matrix.</li>
+      <li><strong>Company (from <!--p "{firma_from}&nbsp;CZK"-->348&nbsp;CZK<!--/p-->):</strong> 10 users with shared storage, shared calendars and contacts, invoicing with a company ID, support by e-mail and via Matrix, response within 24 hours.</li>
     </ul>
     <p>Storage larger than 1&nbsp;TB is possible by agreement as external storage.</p>
     <p>The number of users in the association and company plans is approximate. If your team is larger, contact <a href="mailto:info@oscloud.cz">info@oscloud.cz</a> or the <a href="https://helpdesk.oscloud.cz/help/3271740098" target="_blank" rel="noopener">helpdesk</a> and we will work it out.</p>

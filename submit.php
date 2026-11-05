@@ -595,7 +595,8 @@ if (!rate_limit($dir, $emailKey, $cfg['limit_email'], false)) {
 // 7) odeslání (anglické žádosti do anglické schránky, pokud je nastavená)
 if ($lang === 'en') {
     $fields['Jazyk'] = 'English';
-    $subject = '[EN] ' . $subject;
+    // předmět vidí zákazník (FreeScout ho převezme do auto-reply jako „Re: …“), proto anglicky a bez značek
+    $subject = strtr($subject, ['Žádost (jednotlivec)' => 'Request (individual)', 'Žádost (spolek/firma)' => 'Request (association/company)']);
     if (trim((string) $cfg['mail_to_en']) !== '') {
         $cfg['mail_to'] = trim((string) $cfg['mail_to_en']);
     }

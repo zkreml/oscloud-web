@@ -178,7 +178,7 @@ function handle_join(): array
     $to = ($en && trim((string) (CONFIG['mail']['to_en'] ?? '')) !== '') ? trim(CONFIG['mail']['to_en']) : CONFIG['mail']['to'];
 
     try {
-        mailer()->send($to, $kind . ' — ' . $who, $body, $old['email']);
+        mailer()->send($to, $kind . ' — ' . $who, $body, $old['email'], null, [], $who);
     } catch (Throwable $e) {
         log_mail_error($e);
         return [['_form' => t('join.err.send', ['email' => $to])], $old];

@@ -49,6 +49,7 @@ switch ($route) {
 
     case 'join':
         header('Cache-Control: no-store');
+        start_session(); // před jakýmkoli výstupem, aby nezáviselo na output_buffering
         [$errors, $old] = is_post() ? handle_join() : [[], join_defaults()];
         render('join', $meta('join', 'join'), ['errors' => $errors, 'old' => $old]);
         break;

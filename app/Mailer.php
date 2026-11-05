@@ -20,7 +20,7 @@ final class Mailer
      * @param string[]    $bcc   skryté kopie
      * @throws RuntimeException když se e-mail nepodaří odeslat
      */
-    public function send(string $to, string $subject, string $body, ?string $replyTo = null, ?string $html = null, array $bcc = []): void
+    public function send(string $to, string $subject, string $body, ?string $replyTo = null, ?string $html = null, array $bcc = [], ?string $replyToName = null): void
     {
         foreach (array_merge([$to, $replyTo], $bcc) as $address) {
             if ($address !== null && !self::isValidAddress($address)) {
@@ -28,7 +28,7 @@ final class Mailer
             }
         }
 
-        $message = $this->buildMessage($to, $subject, $body, $replyTo, $html);
+        $message = $this->buildMessage($to, $subject, $body, $replyTo, $html, $replyToName);
 
         if (($this->cfg['driver'] ?? 'smtp') === 'log') {
             $this->writeLog(($bcc ? 'Bcc: ' . implode(', ', $bcc) . "\r\n" : '') . $message);
@@ -52,7 +52,7 @@ final class Mailer
             && preg_match('/^[^\s"<>(),;:\\\\@]+@[^\s"<>(),;:\\\\@]+$/', $address) === 1;
     }
 
-    private function buildMessage(string $to, string $subject, string $body, ?string $replyTo, ?string $html): string
+    private function buildMessage(string $to, string $subject, string $body, ?string $replyTo, ?string $html, ?string $replyToName = null): string
     {
         $from = $this->cfg['from'];
         $domain = substr(strrchr($from, '@'), 1);
@@ -66,7 +66,9 @@ final class Mailer
             'MIME-Version: 1.0',
         ];
         if ($replyTo !== null) {
-            $headers[] = 'Reply-To: <' . $replyTo . '>';
+            // jméno žadatele (FreeScout z něj udělá jméno zákazníka); odstraníme znaky, které mají v hlavičce speciální význam
+            $name = trim(preg_replace('/[\x00-\x1F\x7F"<>(),;:\\\\@\[\]]+/u', ' ', (string) $replyToName));
+            $headers[] = 'Reply-To: ' . ($name !== '' ? self::encodeHeader(mb_substr($name, 0, 80)) . ' ' : '') . '<' . $replyTo . '>';
         }
 
         if ($html === null) {

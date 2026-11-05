@@ -119,7 +119,11 @@ function money(int|float $amount): string
 function absolute_url(string $path): string
 {
     $https = is_https();
-    $host = $_SERVER['HTTP_HOST'] ?? 'oscloud.cz';
+    // Host z hlavičky ověříme, aby se do odkazů nedostalo nic jiného než platné jméno hostitele
+    $host = (string) ($_SERVER['HTTP_HOST'] ?? '');
+    if (!preg_match('/^[a-z0-9]([a-z0-9.-]{0,251}[a-z0-9])?(:\d{1,5})?$/i', $host)) {
+        $host = 'oscloud.cz';
+    }
     return ($https ? 'https://' : 'http://') . $host . $path;
 }
 

@@ -31,6 +31,33 @@ if (isset($legacy[$legacyPath = preg_replace('~^en/~', '', $path)])) {
     exit;
 }
 
+// sitemap.xml a robots.txt se skládají z tabulky ROUTES, takže vždy odpovídají aktuálním stránkám a doméně
+if ($path === 'sitemap.xml') {
+    header('Content-Type: application/xml; charset=utf-8');
+    $skip = ['join_done'];
+    $out = '<?xml version="1.0" encoding="UTF-8"?>' . "\n"
+        . '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">' . "\n";
+    foreach (array_keys(ROUTES) as $key) {
+        if (in_array($key, $skip, true)) {
+            continue;
+        }
+        foreach (LANGS as $l) {
+            $out .= "  <url>\n    <loc>" . htmlspecialchars(absolute_url(url($key, [], $l)), ENT_XML1) . "</loc>\n";
+            foreach (LANGS as $alt) {
+                $out .= '    <xhtml:link rel="alternate" hreflang="' . $alt . '" href="' . htmlspecialchars(absolute_url(url($key, [], $alt)), ENT_XML1) . '"/>' . "\n";
+            }
+            $out .= "  </url>\n";
+        }
+    }
+    echo $out . "</urlset>\n";
+    exit;
+}
+if ($path === 'robots.txt') {
+    header('Content-Type: text/plain; charset=utf-8');
+    echo "User-agent: *\nDisallow: " . url('join_done', [], 'cs') . "\nDisallow: " . url('join_done', [], 'en') . "\n\nSitemap: " . absolute_url('/sitemap.xml') . "\n";
+    exit;
+}
+
 // --- Web (česky, anglicky pod /en) ---------------------------------------------
 [$lang, $route, $params] = resolve_route($path);
 set_lang($lang);

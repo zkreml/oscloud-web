@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /pripojit/odeslano
+Disallow: /en/join/thank-you

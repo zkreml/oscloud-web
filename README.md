@@ -1,45 +1,101 @@
-# Oscloud Web
+# OSCloud – web
 
-Oscloud je váš bezpečný cloud. Naším cílem je ukázat lidem výhody bezpečného internetu a Open Source technologií. Tento repozitář obsahuje zdrojový kód hlavního webu projektu Oscloud (oscloud.cz).
+Web komunity OSCloud v čistém PHP 8 (bez frameworku). Technologií, strukturou i vzhledem vychází
+z webu Pibbo (pibbo.pro), místo oranžové používá inkoustově tmavou modrou `#1B1F6B`.
+Obsah je převzatý z původního oscloud.cz (stažená kopie je v `podklady/oscloud.cz-stazeno/`).
 
-## Obsah
+## Spuštění lokálně
 
-- `index.html` - jednostránkový web (služby, proč Oscloud, komunita, ceník, formulář „Chci se připojit“).
-- `submit.php` - zpracování formuláře: validace, honeypot, CSRF token, rate limit, odeslání e-mailu na `fediverse@oscloud.cz` (schránka FreeScoutu).
-- `config.sample.php` - vzor konfigurace. Skutečný `config.php` s tajným klíčem je v `.gitignore` a nikdy se necommituje.
-- `assets/` - logo, OG obrázek, fonty (hostované u nás, licence OFL), sdílená navigace `nav.js` a `nav.css`.
-- `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png` - ikony webu.
-- `robots.txt`, `sitemap.xml`, `.htaccess`.
-- `DEPLOY.md` - postup nasazení.
+```bash
+php -S localhost:8091 -t public public/index.php
+```
 
-## Sdílená navigace
+Pak otevřít http://localhost:8091
 
-Stejná lišta je na oscloud.cz, blog.oscloud.cz a docs.oscloud.cz. Na blogu a v dokumentaci stačí do `<head>` vložit `<script src="https://oscloud.cz/assets/nav.js" defer></script>`, skript si lištu vloží sám a dotáhne `nav.css`.
+## Struktura
 
-## Lokální vývoj
+- `public/` – kořen webu (document root): `index.php` (router), `assets/` (CSS, JS, fonty, obrázky,
+  plakát Degooglizace v `assets/files/`), favicony
+- `templates/` – šablony: `home.php` (úvod), `page.php` (obsahové stránky z bloků), `join.php`
+  (formulář Chci se připojit), `legal.php` (právní texty), `partials/` hlavička, patička a úvod podstránky
+- `templates/blocks/` – bloky obsahových stránek: `tiers` (tarify), `nextcloud-prices` (ceník Nextcloudu),
+  `table`, `text`, `columns`, `cards`, `offers`, `faq`, `donate`, `swaps` (degooglizace), `downloads`,
+  `facts`, `stories`, `intro`, `closing`
+- `app/pages/*.php` – texty a skladba stránek (česky), `app/pages/en/*.php` anglicky
+- `app/prices.json` – **zdroj všech cen** (Nextcloud, Ente Photos, Trilium, příplatky spolek/firma, Mastodon, fórum, wiki,
+  hosting, e-mail, sponzoring). Cenu stačí změnit tady; `app/pricing.php` z něj počítá tabulky (Rodina = cena jednotlivce +
+  rozdíl `family_base`, Spolek/Firma = cena + příplatek), „od“ ceny na kartách i volby ve formuláři
+- `app/bootstrap.php` – údaje spolku (`ORG`), hlavní menu (`MAIN_NAV`), odkazy na služby (`LINKS`),
+  pomocné funkce
+- `app/i18n.php` – adresy stránek v obou jazycích (`ROUTES`), `app/lang/cs.php` a `en.php` texty rozhraní
+- `app/join.php` – zpracování formuláře Chci se připojit
+- barvy jsou CSS proměnné v `:root` v `public/assets/css/style.css` (`--os-navy` je hlavní tmavě modrá)
 
-V kořeni repozitáře spusťte `php -S 127.0.0.1:8080` a otevřete http://127.0.0.1:8080.
+V textech stránek funguje `**tučně**` a odkazy `[popisek](adresa)`.
 
-Aby fungoval formulář, zkopírujte `config.sample.php` na `config.php` a nastavte `secret` (min. 32 znaků), `allowed_origins` na `http://127.0.0.1:8080` a `dry_run_dir` na libovolnou složku. E-maily se pak jen ukládají do souborů a neodesílají se.
+## Stránky
 
-## Nasazení
+| Česky | Anglicky |
+|---|---|
+| `/` | `/en` |
+| `/cenik` | `/en/pricing` |
+| `/degooglizace` | `/en/degoogle` |
+| `/nextcloud`, `/ente-photos`, `/trilium`, `/matrix` | `/en/nextcloud`, `/en/ente-photos`, `/en/trilium`, `/en/matrix` |
+| `/o-nas` | `/en/about` |
+| `/pripojit` | `/en/join` |
+| `/podminky`, `/ochrana-osobnich-udaju`, `/zpracovatelska-smlouva` | `/en/terms`, `/en/privacy`, `/en/data-processing` (česky s poznámkou) |
 
-Web je určený pro aplikaci Cloudron LAMP na oscloud.cz. Postup je v `DEPLOY.md`.
+Staré adresy původního webu (`/nextcloud.html`, `/en/ente.html`, `/o-nas.html`…) se trvale
+přesměrují (301) na nové.
 
-## Jak přispět
+## Formulář Chci se připojit
 
-Pokud máte zájem přispět k našemu projektu, rádi vás přivítáme. Hledáme vývojáře, dokumentaristy, a každého, kdo má zájem o bezpečný a otevřený internet.
+- `/pripojit` – jednotlivec (zdarma, Nextcloud, Rodina, Trilium, Matrix, jiné) nebo spolek/firma
+- ceny v ceníku jsou odkazy, které formulář předvyplní: `/pripojit?typ=jednotlivec|rodina|spolek|firma&gb=…`,
+  `?typ=trilium&period=monthly|yearly`, `?sluzba=matrix|free`
+- žádost jde e-mailem do FreeScoutu: česká na `registrace@oscloud.cz`, anglická (`/en/join`) na `en@oscloud.cz`
+  (`config.php` → `mail.to`, `mail.to_en`); `Reply-To` je žadatel. Potvrzení žadateli posílá automatická odpověď
+  FreeScoutu, web ho neposílá podruhé. Předmět: `Žádost (jednotlivec) — jméno`, `Žádost (spolek/firma) — název`,
+  anglicky `Request (individual) — …`
+- ochrana: CSRF token v session, skryté pole pro roboty, min. 3 s na vyplnění, hrubý limit pokusů, limity odeslaných
+  žádostí (3/h a 10/den z jedné IP, 60/den celkem, 1/h a 3/den na e-mailovou adresu), kontrola UTF-8, odstranění
+  řídicích znaků a zalomení z jednořádkových polí (hlavičky e-mailu nejdou podvrhnout), přísná validace e-mailu
+- cena a velikost úložiště se na serveru znovu ověřují proti `prices.json`, hodnoty z formuláře se nevěří
+- do e-mailu se neukládá IP adresa žadatele
+- chyby odesílání se zapisují do `storage/mail-error.log`
 
-1. Forkněte tento repozitář.
-2. Vytvořte novou větev (`git checkout -b feature/nova-funkce`).
-3. Commitněte své změny (`git commit -am 'Přidání nové funkce'`).
-4. Pushněte větev (`git push origin feature/nova-funkce`).
-5. Otevřete Pull Request.
+## Bezpečnost
 
-## Licence
+- hlavičky z PHP (`app/bootstrap.php`): přísná CSP (jen vlastní zdroje + `analytics.oscloud.cz`), `X-Frame-Options`,
+  `nosniff`, `Referrer-Policy`, `Permissions-Policy`, HSTS (při HTTPS, i za proxy přes `X-Forwarded-Proto`)
+- šablony vše escapují (`e()`, `rich()` povolí jen odkazy `http(s):`, `mailto:`, `/`, `#`), žádné inline skripty ani styly
+- `.htaccess` v kořeni i složkách `app/`, `templates/`, `config/`, `storage/` brání přímému přístupu
+- heslo k poště v souborech není: driver `cloudron` bere přihlášení z proměnných prostředí `CLOUDRON_MAIL_*`
+- databázi ani přihlašování web nemá
 
-Tento projekt je licencován pod licencí MIT - podrobnosti naleznete v souboru [LICENSE](LICENSE).
+## Nasazení na server
 
-## Kontakt
+1. Nahrát obsah ZIPu do kořene webu (document root buď `public/`, nebo kořen s `.htaccess`,
+   který vše přesměruje do `public/`).
+2. Na serveru zkopírovat `config/config.example.php` jako `config/config.php`. Na Cloudron LAMP stačí ponechat
+   `'driver' => 'cloudron'` (SMTP údaje dodá platforma, nic se nevyplňuje). `config/config.php` v repozitáři není
+   (`.gitignore`), takže se při aktualizaci nepřepíše.
+3. Složka `storage/` musí být zapisovatelná pro PHP (logy a ochrana formulářů proti spamu).
 
-Pro více informací nás můžete kontaktovat na [info@oscloud.cz](mailto:info@oscloud.cz).
+Lokálně má `config/config.php` driver `log` – e-maily se neodesílají, jen zapisují do `storage/mail.log`.
+
+### Nginx (pokud server neběží na Apache)
+
+Současný oscloud.cz běží na nginx, který `.htaccess` nečte. Document root nastavit na `public/` a:
+
+```nginx
+root /cesta/k/webu/public;
+index index.php;
+location / { try_files $uri /index.php$is_args$args; }
+location ~ \.php$ { include fastcgi_params; fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; fastcgi_pass unix:/run/php/php8.3-fpm.sock; }
+```
+
+## Zbývá
+
+- obrázky jsou zatím jen emoji a kreslený obláček (`public/assets/img/hero-cloud.svg`) – až budou
+  vlastní ilustrace OSCloudu, stačí je dát do `page-hero` (klíč `emoji` v `app/pages/*.php`)

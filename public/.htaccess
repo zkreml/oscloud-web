@@ -1,0 +1,17 @@
+Options -Indexes
+RewriteEngine On
+
+# Skryté soubory (.git, .env, .htaccess …) nikdy nevydáváme
+RewriteRule (^|/)\.(?!well-known/) - [F,L]
+
+# Cokoli, co není soubor, obslouží router (index.php)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L,QSA]
+
+<IfModule mod_headers.c>
+    # Statické soubory (CSS, JS, fonty, obrázky) – stejné základní hlavičky jako stránky z PHP
+    Header always set X-Content-Type-Options "nosniff"
+    <FilesMatch "\.(css|js|woff2|svg|png|ico|pdf)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+</IfModule>

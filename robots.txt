@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /submit.php
-
-Sitemap: https://oscloud.cz/sitemap.xml

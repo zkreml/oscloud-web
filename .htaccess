@@ -1,4 +1,6 @@
+# Pro hostingy, kde nejde nastavit document root na složku public/ (např. Cloudron LAMP):
+# všechny požadavky přesměruje do public/, složky app/, templates/, config/ a storage/ tak nejsou zvenku dostupné.
 Options -Indexes
-<FilesMatch "^(config(\.sample)?\.php|DEPLOY\.md|prices\.json|sync-prices\.py)$">
-  Require all denied
-</FilesMatch>
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ public/$1 [L]

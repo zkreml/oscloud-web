@@ -10,6 +10,7 @@ return [
     'heading'   => 'Obchodní a provozní podmínky',
     'lead'      => 'Podmínky platí pro všechny služby OSCloud, z. s. Platné znění je vždy na této stránce.',
     'effective' => '18. října 2026',
+    'pdf'       => 'oscloud-podminky.pdf',
 
     'sections' => [
         [

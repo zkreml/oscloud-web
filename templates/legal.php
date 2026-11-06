@@ -7,6 +7,11 @@
         </nav>
         <h1><?= e($content['heading']) ?></h1>
         <p class="page-hero__lead"><?= e($content['lead']) ?></p>
+        <p class="print-only legal__print-head"><?= e(ORG['name']) ?> · <?= e(ORG['street']) ?>, <?= e(ORG['city']) ?></p>
+        <?php $pdf = $content['pdf'] ?? null; $pdfFile = $pdf ? ROOT . '/public/assets/files/' . $pdf : null; ?>
+        <?php if ($pdf && is_file($pdfFile)): ?>
+            <p class="legal__pdf"><a class="btn btn--ghost" href="<?= asset('files/' . $pdf) ?>" download><span aria-hidden="true">⬇</span> <?= e(t('legal.pdf')) ?> <small>(PDF, <?= e(number_format(filesize($pdfFile) / 1000, 0, ',', ' ')) ?> kB)</small></a></p>
+        <?php endif; ?>
         <?php if (t('legal.cz_only') !== ''): ?>
             <?php $r = $GLOBALS['oscloud_route'] ?? null; ?>
             <p class="lang-note"><?= e(t('legal.cz_only')) ?>

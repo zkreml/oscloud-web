@@ -177,6 +177,7 @@ return [
     'legal.effective'     => 'Platné od {date}.',
     'legal.cz_only'       => '',
     'legal.original'      => '',
+    'legal.pdf'           => 'Stáhnout PDF',
     '404.title'           => 'Tady nic není.',
     '404.text'            => 'Tuhle stránku jsme nenašli. Možná se přestěhovala, nebo se v adrese schovala malá chybička.',
     '404.home'            => 'Zpět na úvod',

@@ -11,6 +11,7 @@ return [
     'heading'   => 'Data Processing Agreement',
     'lead'      => 'An agreement under Art. 28 GDPR between the customer (controller) and OSCloud, z. s. (processor). It is concluded together with the order for a paid service if the customer stores personal data of third parties.',
     'effective' => '18 October 2026',
+    'pdf'       => 'oscloud-data-processing-agreement-en.pdf',
 
     'sections' => [
         [

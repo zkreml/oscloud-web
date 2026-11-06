@@ -109,3 +109,13 @@ V `config/config.php` nastav `'canonical_host' => 'oscloud.cz'`. Požadavky na j
 Přidej `'canonical_host_en' => 'oscloud.online'`. Česky se pak zobrazuje na `canonical_host`, anglicky na této doméně a adresy nemají předponu `/en` (např. `oscloud.online/pricing`). Staré adresy `/en/…` se přesměrují na anglickou doménu, `www.` a neznámé domény na hlavní. Obě domény musí být v Cloudronu (Location a Aliases) u téže aplikace. Test: `tests/domains.sh`.
 
 Po změně configu nebo `git pull` počítej s tím, že PHP (OPcache) si může stará data podržet i několik minut; pomůže restart aplikace.
+
+## PDF právních dokumentů
+
+Podmínky a zpracovatelská smlouva (CS i EN) mají tlačítko „Stáhnout PDF“. Soubory jsou v `public/assets/files/oscloud-*.pdf` a jsou součástí repozitáře. Po každé změně textu těchto stránek je znovu vygenerujte a commitněte:
+
+```bash
+tools/build-pdfs.sh      # potřebuje php a Chromium/Chrome (nebo proměnnou CHROME)
+```
+
+Tlačítko se zobrazí jen tehdy, když soubor existuje. Stránka pro tisk (`@media print` ve `style.css`) skryje menu, patičku a obsah.

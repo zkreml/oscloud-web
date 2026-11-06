@@ -177,6 +177,7 @@ return [
     'legal.effective'     => 'Effective from {date}.',
     'legal.cz_only'       => 'Courtesy translation. If the English and Czech versions differ, the Czech version is binding.',
     'legal.original'      => 'Czech original →',
+    'legal.pdf'           => 'Download PDF',
     '404.title'           => 'Nothing to see here.',
     '404.text'            => 'We could not find this page. Perhaps it has moved, or a little typo has crept into the address.',
     '404.home'            => 'Back to home',

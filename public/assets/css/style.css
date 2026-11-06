@@ -2055,6 +2055,36 @@ a { color: var(--os-blue); }
     .legal__toc { position: static; }
 }
 
+/* PDF tlačítko a tisk právních stránek --------------------------------------------- */
+.legal__pdf { margin: 18px 0 0; }
+.legal__pdf small { opacity: .75; }
+.print-only { display: none; }
+
+@page { size: A4; margin: 18mm 16mm; }
+@media print {
+    html, body { background: #fff !important; }
+    body { color: #000; font-size: 10.5pt; line-height: 1.45; }
+    .skip-link, .site-header, .site-footer, .wave, .breadcrumb, .legal__toc, .legal__pdf, .lang-note, .nav-toggle { display: none !important; }
+    .print-only { display: block; margin: 0 0 6pt; font-size: 9pt; color: #444; }
+    .page-hero, .page-hero--compact { background: none !important; padding: 0 !important; }
+    .page-hero h1 { font-size: 20pt; margin: 0 0 6pt; color: #000; }
+    .page-hero__lead { font-size: 10.5pt; color: #222; margin: 0 0 10pt; }
+    .section { padding: 0 !important; }
+    .container { max-width: none !important; padding: 0 !important; }
+    .legal { display: block; max-width: none; }
+    .legal__body { max-width: none; }
+    .legal__section { padding-bottom: 4pt; }
+    .legal__section h2 { font-size: 12.5pt; margin: 12pt 0 4pt; break-after: avoid; }
+    .legal__section p, .legal__section li { color: #000; }
+    .legal__section li { margin-bottom: 3pt; break-inside: avoid; }
+    .legal__section--highlight { background: none; border-left: 2pt solid #000; margin: 8pt 0; }
+    .legal__table-wrap { overflow: visible !important; }
+    .legal__table { font-size: 9pt; }
+    .legal__table tr { break-inside: avoid; }
+    a { color: #000; text-decoration: underline; }
+    .legal__effective { margin-top: 14pt; padding-top: 8pt; }
+}
+
 /* --- Neveřejná správa ------------------------------------------------------- */
 
 .admin-login {

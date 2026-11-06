@@ -12,6 +12,7 @@ return [
     'heading'   => 'Terms and Conditions',
     'lead'      => 'These terms apply to all services of OSCloud, z. s. The current version is always the one on this page.',
     'effective' => '18 October 2026',
+    'pdf'       => 'oscloud-terms-en.pdf',
 
     'sections' => [
         [

@@ -10,6 +10,7 @@ return [
     'heading'   => 'Zpracovatelská smlouva',
     'lead'      => 'Smlouva podle čl. 28 GDPR mezi zákazníkem (správcem) a OSCloud, z. s. (zpracovatelem). Uzavírá se spolu s objednávkou placené služby, pokud zákazník ukládá osobní údaje třetích osob.',
     'effective' => '18. října 2026',
+    'pdf'       => 'oscloud-zpracovatelska-smlouva.pdf',
 
     'sections' => [
         [

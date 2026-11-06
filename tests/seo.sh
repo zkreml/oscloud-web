@@ -15,10 +15,10 @@ done
 c=$(curl -s -o /dev/null -w "%{http_code}" "$B/cenik/"); [ "$c" = 301 ] || { echo "CHYBA /cenik/ má vracet 301, vrací $c"; bad=1; }
 if [ -n "$EN" ]; then
   n=$(curl -s "$B/sitemap.xml" | grep -c '<loc>');  [ "$n" = 12 ] || { echo "CHYBA sitemap $B má 12 adres, má $n"; bad=1; }
-  n=$(curl -s "$EN/sitemap.xml" | grep -c '<loc>'); [ "$n" = 9 ]  || { echo "CHYBA sitemap $EN má 9 adres, má $n"; bad=1; }
+  n=$(curl -s "$EN/sitemap.xml" | grep -c '<loc>'); [ "$n" = 12 ]  || { echo "CHYBA sitemap $EN má 12 adres, má $n"; bad=1; }
   curl -s "$EN/robots.txt" | grep -q "^Sitemap: https://.*/sitemap.xml" || { echo "CHYBA robots.txt na $EN bez Sitemap"; bad=1; }
 else
-  n=$(curl -s "$B/sitemap.xml" | grep -c '<loc>');  [ "$n" = 21 ] || { echo "CHYBA sitemap má 21 adres, má $n"; bad=1; }
+  n=$(curl -s "$B/sitemap.xml" | grep -c '<loc>');  [ "$n" = 24 ] || { echo "CHYBA sitemap má 24 adres, má $n"; bad=1; }
 fi
 curl -s "$B/robots.txt" | grep -q '^Sitemap: ' || { echo "CHYBA robots.txt bez Sitemap"; bad=1; }
 [ $bad = 0 ] && echo "OK"; exit $bad

@@ -35,7 +35,7 @@ return [
         [
             'title' => 'Služby',
             'body'  => [
-                'Poskytovatel provozuje zejména tyto služby: Nextcloud, Ente Photos, chat Matrix (mxchat.cz), služby fediverse (Mastodon, PeerTube, Pixelfed, FitPub), komunitní nástroje (CryptPad, HedgeDoc, Trilium, Vaultwarden, SearXNG, PrivateBin, FreshRSS, Miniflux, Wallabag, Linkwarden, MiroTalk, ntfy), diskuzní fórum, wiki pro komunity, webhosting (statické stránky, LAMP, spravovaný WordPress) a e-mailovou schránku jako doplněk k webhostingu. Aktuální přehled a ceny jsou na [úvodní stránce](/#sluzby) a v [ceníku](/#cenik).',
+                'Poskytovatel provozuje zejména tyto služby: Nextcloud, Ente Photos, chat Matrix (mxchat.cz), služby fediverse (Mastodon, PeerTube, Pixelfed, FitPub), komunitní nástroje (CryptPad, HedgeDoc, Trilium, Vaultwarden, SearXNG, PrivateBin, FreshRSS, Miniflux, Wallabag, Linkwarden, MiroTalk, ntfy), diskuzní fórum, wiki pro komunity, webhosting (statické stránky, LAMP, spravovaný WordPress) a e-mailovou schránku jako doplněk k webhostingu. Aktuální přehled a ceny jsou na [úvodní stránce](/#sluzby) a v [ceníku](/cenik).',
                 'Některé služby jsou dostupné jen po registraci v OSCloud (například PrivateBin). Bezplatné služby se poskytují bez nároku na jejich trvání a bez záruky dostupnosti. Poskytovatel je může změnit nebo ukončit, přičemž to předem oznámí způsobem uvedeným v článku 15.',
             ],
         ],
@@ -193,7 +193,7 @@ return [
                 ['list' => [
                     '**Šifrování:** soubory se šifrují přímo v zařízení uživatele ještě před nahráním na server. Poskytovatel k obsahu nemá přístup a nedokáže jej dešifrovat. Vidí pouze množství využitého úložiště a šifrovaná metadata nezbytná pro provoz.',
                     '**Heslo a obnovovací klíč** jsou jediným způsobem přístupu k datům. Při jejich ztrátě nelze data obnovit, ani poskytovatelem. Uživatel odpovídá za jejich uschování a je vhodné mít důležitá data zálohovaná i mimo službu.',
-                    '**Předplatné** se kupuje pouze na webu oscloud.photos (v mobilní aplikaci to technicky nejde), platí se kartou přes Stripe. Předplatné se automaticky obnovuje (měsíčně nebo ročně), dokud ho uživatel nezruší. Ceny jsou v [ceníku](/#ente).',
+                    '**Předplatné** se kupuje pouze na webu oscloud.photos (v mobilní aplikaci to technicky nejde), platí se kartou přes Stripe. Předplatné se automaticky obnovuje (měsíčně nebo ročně), dokud ho uživatel nezruší. Ceny jsou v [ceníku](/ente-photos).',
                     '**Zrušení předplatného:** data se nemažou a zůstávají v rámci bezplatného limitu (10 GB). Pokud je limit překročen, nelze nahrávat nové soubory, dokud se data nesníží nebo se předplatné neobnoví.',
                     '**Umístění dat:** servery Hetzner Online GmbH v Německu, v rámci EU.',
                     'Stripe zpracovává platební údaje samostatně. Poskytovatel čísla karet nevidí ani neukládá, obdrží jen informaci o stavu platby.',

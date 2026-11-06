@@ -8,7 +8,9 @@
         <h1><?= e($content['heading']) ?></h1>
         <p class="page-hero__lead"><?= e($content['lead']) ?></p>
         <?php if (t('legal.cz_only') !== ''): ?>
-            <p class="lang-note" lang="en"><?= e(t('legal.cz_only')) ?></p>
+            <?php $r = $GLOBALS['oscloud_route'] ?? null; ?>
+            <p class="lang-note"><?= e(t('legal.cz_only')) ?>
+                <?php if ($r): ?><a href="<?= e(url_abs($r[0], $r[1], 'cs')) ?>" hreflang="cs" lang="cs"><?= e(t('legal.original')) ?></a><?php endif; ?></p>
         <?php endif; ?>
     </div>
     <?= wave('bottom') ?>
@@ -16,7 +18,7 @@
 
 <section class="section">
     <div class="container">
-        <article class="legal" lang="cs">
+        <article class="legal" lang="<?= page_translated($GLOBALS['oscloud_route'][0] ?? '', lang()) ? lang() : 'cs' ?>">
             <nav class="legal__toc" aria-label="<?= e(t('legal.toc')) ?>">
                 <p class="legal__toc-title"><?= e(t('legal.toc')) ?></p>
                 <ol>

@@ -175,7 +175,8 @@ return [
     // Legal pages, 404
     'legal.toc'           => 'Contents',
     'legal.effective'     => 'Effective from {date}.',
-    'legal.cz_only'       => 'Our legal documents are only available in Czech. The Czech version is binding.',
+    'legal.cz_only'       => 'Courtesy translation. If the English and Czech versions differ, the Czech version is binding.',
+    'legal.original'      => 'Czech original →',
     '404.title'           => 'Nothing to see here.',
     '404.text'            => 'We could not find this page. Perhaps it has moved, or a little typo has crept into the address.',
     '404.home'            => 'Back to home',

@@ -24,7 +24,10 @@ echo "$h" | grep -q 'rel="canonical" href="https://oscloud.online/pricing"' || {
 echo "$h" | grep -q 'hreflang="cs" href="https://oscloud.cz/cenik"' || { echo "CHYBA hreflang cs"; bad=1; }
 h=$(curl -s -H "Host: oscloud.cz" "$B/cenik")
 echo "$h" | grep -q 'class="lang-switch" href="https://oscloud.online/pricing"' || { echo "CHYBA přepínač jazyka"; bad=1; }
-echo "$(curl -s -H "Host: oscloud.online" "$B/terms")" | grep -q 'rel="canonical" href="https://oscloud.cz/podminky"' || { echo "CHYBA canonical nepřeložené stránky"; bad=1; }
+h=$(curl -s -H "Host: oscloud.online" "$B/terms")
+echo "$h" | grep -q 'rel="canonical" href="https://oscloud.online/terms"' || { echo "CHYBA canonical přeložených právních stránek"; bad=1; }
+echo "$h" | grep -q 'hreflang="cs" href="https://oscloud.cz/podminky"' || { echo "CHYBA hreflang právních stránek"; bad=1; }
+echo "$h" | grep -q '<article class="legal" lang="en"' || { echo "CHYBA právní stránka nemá lang=en"; bad=1; }
 n=$(curl -s -H "Host: oscloud.cz" "$B/sitemap.xml" | grep -c '<loc>');     [ "$n" = 12 ] || { echo "CHYBA sitemap cs má 12, má $n"; bad=1; }
-n=$(curl -s -H "Host: oscloud.online" "$B/sitemap.xml" | grep -c '<loc>'); [ "$n" = 9 ]  || { echo "CHYBA sitemap en má 9, má $n"; bad=1; }
+n=$(curl -s -H "Host: oscloud.online" "$B/sitemap.xml" | grep -c '<loc>'); [ "$n" = 12 ]  || { echo "CHYBA sitemap en má 12, má $n"; bad=1; }
 [ $bad = 0 ] && echo "OK"; exit $bad

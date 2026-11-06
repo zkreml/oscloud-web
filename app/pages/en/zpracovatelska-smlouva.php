@@ -55,6 +55,11 @@ return [
             'title' => 'Other processors',
             'body'  => [
                 'The controller gives general authorisation for the engagement of other processors. As of the date of this agreement, these are:',
+                ['list' => [
+                    '**Hetzner Online GmbH**, Industriestr. 25, 91710 Gunzenhausen, Germany: hosting of servers and backups (servers in Germany). Hetzner’s other processors are listed in appendix 3 of its data processing agreement.',
+                    '**Contabo GmbH**, Welfenstraße 22, 81541 Munich, Germany: hosting of the server with Matrix chat (mxchat.cz), server in Munich. Its other processor is Contabo France SAS, 2 rue Taunus, 67630 Lauterbourg, France (data center operation).',
+                    '**netcup GmbH**, Emmy-Noether-Str. 10, 76131 Karlsruhe, Germany: hosting of the FitPub service (makni.cz), data center in Nuremberg. Its other processors are Anexia Holding GmbH and Anexia Cloud Solutions GmbH (Klagenfurt, Austria; Karlsruhe, Germany).',
+                ]],
                 'The processor informs the controller of a change to the list by e-mail at least 30 days in advance. The controller may object to the change and, if the parties do not agree, may terminate the service contract.',
             ],
         ],

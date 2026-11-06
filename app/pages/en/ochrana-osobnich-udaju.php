@@ -45,17 +45,19 @@ return [
             'body'  => [
                 ['list' => [
                     '**Hetzner Online GmbH** (Germany): hosting of servers and backups, processor.',
+                    '**Contabo GmbH** (Germany): hosting of the server with Matrix chat (mxchat.cz), processor. The server is in Munich.',
+                    '**netcup GmbH** (Germany): hosting of the FitPub service (makni.cz), processor. The data center is in Nuremberg.',
                     '**Stripe** (Stripe Payments Europe, Ltd., Ireland): processing of card payments for Ente Photos. The provider neither sees nor stores card numbers. Stripe may transfer data to the USA, for which it relies on certification under the EU-U.S. Data Privacy Framework and standard contractual clauses. More information: [Stripe privacy policy](https://stripe.com/privacy).',
                     '**Bank**: payments by bank transfer. The association keeps its accounts itself, without an external processor.',
                     'Public authorities, where required by law.',
                 ]],
-                'The provider runs the helpdesk, e-mail and other tools on its own server. Data is not passed to other companies for marketing.',
+                'The provider runs the helpdesk, e-mail and other tools on its own servers. Data is not passed to other companies for marketing. The other processors of the providers named above are listed in the [data processing agreement](' . url('dpa') . ').',
             ],
         ],
         [
             'title' => 'Transfers outside the EU',
             'body'  => [
-                'The servers are located in Germany. Personal data is not transferred to third countries, except for the processing of payments by the intermediary named in article 3.',
+                'The servers are located in Germany (Hetzner, Contabo, netcup). Personal data is not transferred to third countries, except for the processing of payments by the intermediary named in article 3.',
             ],
         ],
         [

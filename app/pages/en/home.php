@@ -40,7 +40,7 @@ return [
         'items' => [
             ['eye-off', 'No tracking', 'We do not use cookies on oscloud.cz, so there is nothing to click away. We measure traffic anonymously with our own Umami instance on our own server. Our services only use technical cookies needed to log in, no advertising or tracking cookies. We send no data to Google, Amazon or other advertising and analytics services. **There are no ads.** Your privacy is the default, not a premium feature.'],
             ['code', 'Open source', 'Everything we run is open source. Anyone can check the code. **No black boxes.**'],
-            ['globe', 'Data in the EU', 'Our server runs in Germany at Hetzner. Your data does not leave Europe. **GDPR is not a marketing trick, it is reality.**'],
+            ['globe', 'Data in the EU', 'Our servers run in Germany (Hetzner, Contabo, netcup). Your data does not leave Europe. **GDPR is not a marketing trick, it is reality.**'],
             ['people', 'A community, not a company', 'OSCloud is a non-profit association. No investors, no exit plan. **We do it because we believe it matters.**'],
         ],
     ],

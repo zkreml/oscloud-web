@@ -12,7 +12,7 @@ return [
         'title'      => 'About us',
         'lead'       => 'OSCloud is a Czech community running open source services **without ads or tracking**.',
         'paragraphs' => [
-            'Our servers run in Germany at Hetzner, so your data does not leave Europe.',
+            'Our servers run in Germany (Hetzner, Contabo, netcup), so your data does not leave Europe.',
             'Since September 2026 we are a registered association. No investors, no exit plan. We do this because we believe privacy and open source matter.',
         ],
         'buttons'    => [['Join us', url('join')], ['Send an email', 'mailto:' . ORG['email']]],

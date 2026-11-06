@@ -54,6 +54,11 @@ return [
             'title' => 'Další zpracovatelé',
             'body'  => [
                 'Správce uděluje obecný souhlas se zapojením dalších zpracovatelů. K datu této smlouvy je to:',
+                ['list' => [
+                    '**Hetzner Online GmbH**, Industriestr. 25, 91710 Gunzenhausen, Německo: hosting serverů a záloh (servery v Německu). Další zpracovatelé Hetzneru jsou uvedeni v příloze 3 jeho zpracovatelské smlouvy.',
+                    '**Contabo GmbH**, Welfenstraße 22, 81541 München, Německo: hosting serveru s chatem Matrix (mxchat.cz), server v Mnichově. Její další zpracovatel je Contabo France SAS, 2 rue Taunus, 67630 Lauterbourg, Francie (provoz datacentra).',
+                    '**netcup GmbH**, Emmy-Noether-Str. 10, 76131 Karlsruhe, Německo: hosting služby FitPub (makni.cz), datacentrum v Norimberku. Její další zpracovatelé jsou Anexia Holding GmbH a Anexia Cloud Solutions GmbH (Klagenfurt, Rakousko; Karlsruhe, Německo).',
+                ]],
                 'O změně seznamu zpracovatel informuje správce e-mailem nejméně 30 dnů předem. Správce může proti změně vznést námitku, a pokud se nedohodnou, může smlouvu o službě vypovědět.',
             ],
         ],

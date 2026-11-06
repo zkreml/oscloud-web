@@ -44,17 +44,19 @@ return [
             'body'  => [
                 ['list' => [
                     '**Hetzner Online GmbH** (Německo): hosting serverů a záloh, zpracovatel.',
+                    '**Contabo GmbH** (Německo): hosting serveru s chatem Matrix (mxchat.cz), zpracovatel. Server je v Mnichově.',
+                    '**netcup GmbH** (Německo): hosting služby FitPub (makni.cz), zpracovatel. Datacentrum je v Norimberku.',
                     '**Stripe** (Stripe Payments Europe, Ltd., Irsko): zpracování plateb kartou u Ente Photos. Poskytovatel čísla karet nevidí ani neukládá. Stripe může údaje předávat do USA, k čemuž využívá certifikaci v rámci EU-U.S. Data Privacy Framework a standardní smluvní doložky. Další informace: [zásady ochrany osobních údajů Stripe](https://stripe.com/privacy).',
                     '**Banka**: platby převodem. Účetnictví vede spolek sám, bez externího zpracovatele.',
                     'Orgány veřejné moci, pokud to ukládá zákon.',
                 ]],
-                'Poskytovatel provozuje helpdesk, e-mail a další nástroje na vlastním serveru. Údaje se nepředávají dalším společnostem pro marketing.',
+                'Poskytovatel provozuje helpdesk, e-mail a další nástroje na vlastních serverech. Údaje se nepředávají dalším společnostem pro marketing. Další zpracovatele uvedených poskytovatelů najdeš v [zpracovatelské smlouvě](/zpracovatelska-smlouva).',
             ],
         ],
         [
             'title' => 'Předávání mimo EU',
             'body'  => [
-                'Servery se nacházejí v Německu. Osobní údaje se do třetích zemí nepředávají, s výhradou zpracování plateb zprostředkovatelem uvedeným v článku 3.',
+                'Servery se nacházejí v Německu (Hetzner, Contabo, netcup). Osobní údaje se do třetích zemí nepředávají, s výhradou zpracování plateb zprostředkovatelem uvedeným v článku 3.',
             ],
         ],
         [

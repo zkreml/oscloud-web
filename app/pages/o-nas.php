@@ -12,7 +12,7 @@ return [
         'title'      => 'O nás',
         'lead'       => 'OSCloud je česká komunita, která provozuje open source služby **bez reklam a sledování**.',
         'paragraphs' => [
-            'Servery běží v Německu na Hetzneru, takže data neopouští Evropu.',
+            'Servery běží v Německu (Hetzner, Contabo, netcup), takže data neopouští Evropu.',
             'Od září 2026 jsme registrovaný spolek. Žádní investoři, žádný exit plan. Děláme to, protože věříme, že soukromí a open source mají smysl.',
         ],
         'buttons'    => [['Chci se připojit', url('join')], ['Napsat e-mail', 'mailto:' . ORG['email']]],

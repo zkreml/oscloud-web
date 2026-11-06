@@ -41,7 +41,7 @@ return [
         'items' => [
             ['eye-off', 'Žádné sledování', 'Na oscloud.cz nepoužíváme cookies, takže nemusíš nic odklikávat. Návštěvnost měříme jen anonymně, vlastním nástrojem Umami na našem serveru. Naše služby používají jen technické cookies nutné k přihlášení, žádné reklamní ani sledovací. Neposíláme data Googlu, Amazonu ani jiným reklamním a analytickým službám. **Není tu reklama.** Tvoje soukromí je výchozí stav, ne prémiová funkce.'],
             ['code', 'Open source', 'Všechno, co provozujeme, je open source. Kdokoliv může zkontrolovat kód. **Žádné černé skříňky.**'],
-            ['globe', 'Data v EU', 'Server běží v Německu na Hetzneru. Tvoje data neopouští Evropu. **GDPR není marketingový trik, je to realita.**'],
+            ['globe', 'Data v EU', 'Servery běží v Německu (Hetzner, Contabo, netcup). Tvoje data neopouští Evropu. **GDPR není marketingový trik, je to realita.**'],
             ['people', 'Komunita, ne firma', 'OSCloud je spolek. Žádní investoři, žádný exit plan. **Děláme to, protože věříme, že to má smysl.**'],
         ],
     ],

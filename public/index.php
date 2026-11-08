@@ -108,8 +108,16 @@ if ($path === 'robots.txt') {
     foreach ($hostLang !== null ? [$hostLang] : LANGS as $l) {
         $disallow .= 'Disallow: ' . url('join_done', [], $l) . "\n";
     }
+    if ($hostLang !== 'en') {
+        $disallow .= "Disallow: /newsletter\n";
+    }
     echo "User-agent: *\n" . $disallow . "\nSitemap: " . absolute_url('/sitemap.xml') . "\n";
     exit;
+}
+
+// Přihlášení k newsletteru (jen česky; formulář je v patičce)
+if ($path === 'newsletter' && $hostLang !== 'en') {
+    handle_newsletter();
 }
 
 // --- Web (česky, anglicky pod /en) ---------------------------------------------

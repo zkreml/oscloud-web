@@ -119,3 +119,13 @@ tools/build-pdfs.sh      # potřebuje php a Chromium/Chrome (nebo proměnnou CHR
 ```
 
 Tlačítko se zobrazí jen tehdy, když soubor existuje. Stránka pro tisk (`@media print` ve `style.css`) skryje menu, patičku a obsah.
+
+## Newsletter (Listmonk)
+
+Formulář v patičce českých stránek posílá e-mail na `/newsletter`, server ho předá veřejnému API Listmonku (`/api/public/subscription`) a Listmonk pošle potvrzovací e-mail (double opt-in). Zapíná se v `config/config.php`:
+
+```php
+'newsletter' => ['url' => 'https://…', 'list_uuid' => '…'],
+```
+
+Bez obou hodnot se formulář nezobrazí. V Listmonku musí být zapnuté Settings → General → Enable public subscription page a seznam musí být Public. Ochrana: honeypot, podepsané časové razítko (minimálně 3 s), limity na IP (5/h, 20/den) a na e-mail (1/h, 3/den). Test: `tests/newsletter.sh` (běží proti falešnému Listmonku, nic neodesílá). Anglická verze formulář zatím nemá.

@@ -22,6 +22,14 @@ return [
     // Umami (analytics.oscloud.cz) – ID webu; prázdné = měření vypnuté
     'umami_id' => '92b865bd-f0d2-4d73-a974-14f428a1b7f5',
 
+    // Newsletter (Listmonk). Formulář v patičce českých stránek se zobrazí, jen když jsou vyplněné obě hodnoty.
+    // url = adresa Listmonku (bez lomítka na konci), list_uuid = UUID veřejného seznamu (Lists → seznam → UUID).
+    // V Listmonku musí být zapnuté Settings → General → Enable public subscription page.
+    'newsletter' => [
+        'url'       => '',
+        'list_uuid' => '',
+    ],
+
     'mail' => [
         // cloudron = odesílání přes poštu Cloudronu (údaje z proměnných prostředí CLOUDRON_MAIL_*, žádné heslo v souboru)
         // smtp     = vlastní SMTP server (doplň host, port, username, password níže)

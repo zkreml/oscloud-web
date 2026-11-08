@@ -52,6 +52,7 @@ require ROOT . '/app/Mailer.php';
 require ROOT . '/app/forms.php';
 require ROOT . '/app/pricing.php';
 require ROOT . '/app/join.php';
+require ROOT . '/app/newsletter.php';
 
 // Údaje spolku – zobrazují se v patičce a na stránce O nás
 const ORG = [

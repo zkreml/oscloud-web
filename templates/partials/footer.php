@@ -3,6 +3,32 @@
 <footer class="site-footer">
     <?= wave('top') ?>
     <div class="site-footer__body">
+        <?php if (newsletter_enabled()): ?>
+            <?php
+            $nlCode = is_string($_GET['newsletter'] ?? null) && in_array($_GET['newsletter'], ['ok', 'email', 'limit', 'chyba', 'znovu'], true) ? $_GET['newsletter'] : '';
+            $nlBack = (string) parse_url((string) ($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH);
+            ?>
+            <div class="container">
+                <section class="newsletter" id="newsletter" aria-labelledby="newsletter-title">
+                    <div class="newsletter__text">
+                        <h2 class="site-footer__title" id="newsletter-title"><?= e(t('newsletter.title')) ?></h2>
+                        <p><?= e(t('newsletter.text')) ?></p>
+                    </div>
+                    <form class="newsletter__form" method="post" action="/newsletter">
+                        <label class="visually-hidden" for="nl-email"><?= e(t('newsletter.label')) ?></label>
+                        <input id="nl-email" type="email" name="email" required maxlength="190" autocomplete="email" placeholder="<?= e(t('newsletter.label')) ?>">
+                        <input type="hidden" name="t" value="<?= e(newsletter_token()) ?>">
+                        <input type="hidden" name="back" value="<?= e($nlBack) ?>">
+                        <div class="hp" aria-hidden="true"><label><?= e(t('form.honeypot')) ?> <input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
+                        <button class="btn btn--primary" type="submit"><?= e(t('newsletter.button')) ?></button>
+                    </form>
+                    <?php if ($nlCode !== ''): ?>
+                        <p class="newsletter__msg newsletter__msg--<?= $nlCode === 'ok' ? 'ok' : 'err' ?>" role="status"><?= e(t('newsletter.' . $nlCode)) ?></p>
+                    <?php endif; ?>
+                    <p class="newsletter__note"><?= e(t('newsletter.consent')) ?> <a href="<?= url('privacy') ?>"><?= e(t('newsletter.privacy')) ?></a></p>
+                </section>
+            </div>
+        <?php endif; ?>
         <div class="container site-footer__grid">
             <div class="site-footer__brand">
                 <img src="<?= asset('img/logo-horizontal.png') ?>" alt="OSCloud" width="794" height="108">

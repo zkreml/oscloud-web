@@ -32,6 +32,7 @@ return [
                         ['Poskytování služeb (účet, e-mail, obsah uložený uživatelem)', 'přihlašovací a kontaktní údaje, obsah, který uživatel do služby vloží', 'plnění smlouvy (čl. 6 odst. 1 písm. b)', 'po dobu trvání smlouvy; po jejím skončení podle článku 5 podmínek'],
                         ['Fakturace a účetnictví', 'jméno a příjmení nebo název, adresa, IČO (u spolků a firem), údaje o platbách; jako účastník účetního případu musí být odběratel na faktuře označen', 'zákonná povinnost (čl. 6 odst. 1 písm. c)', 'po dobu stanovenou právními předpisy (zpravidla několik let)'],
                         ['Podpora a komunikace', 'zprávy, e-maily a tikety v helpdesku', 'plnění smlouvy, oprávněný zájem na řádné podpoře a obhajobě nároků (čl. 6 odst. 1 písm. b, f)', 'po dobu smlouvy a nejdéle 3 roky po jejím skončení (promlčecí doba)'],
+                        ['Zasílání newsletteru', 'e-mailová adresa, potvrzení přihlášení (double opt-in)', 'souhlas (čl. 6 odst. 1 písm. a)', 'do odvolání souhlasu (odhlášení z newsletteru)'],
                         ['Bezpečnost a provoz', 'IP adresa, typ prohlížeče a zařízení, čas přístupu (serverové logy)', 'oprávněný zájem na bezpečnosti a stabilitě (čl. 6 odst. 1 písm. f)', 'nejdéle 14 dnů, poté se automaticky mažou'],
                         ['Statistika návštěvnosti webu', 'anonymní počty návštěv bez cookies a bez osobních identifikátorů (vlastní instance Umami na našem serveru)', 'oprávněný zájem na zlepšování webu (čl. 6 odst. 1 písm. f)', 'nejdéle 12 měsíců'],
                     ],

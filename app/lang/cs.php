@@ -63,6 +63,18 @@ return [
     'form.rate'           => 'Z tohoto připojení nebo na tento e-mail jsme během poslední hodiny přijali už hodně žádostí. Zkus to prosím později nebo napiš přímo na {email}.',
     'form.fix'            => 'Ve formuláři je potřeba ještě něco opravit:',
     'form.honeypot'       => 'Nevyplňovat',
+
+    'newsletter.title'    => 'Newsletter',
+    'newsletter.text'     => 'Občas pošleme novinky o OSCloudu a nových službách. Žádný spam, odhlásit se můžeš kdykoli.',
+    'newsletter.label'    => 'Tvůj e-mail',
+    'newsletter.button'   => 'Přihlásit',
+    'newsletter.consent'  => 'Odesláním souhlasíš se zasíláním newsletteru. Pošleme ti potvrzovací e-mail, bez kliknutí na odkaz v něm se nepřihlásíš.',
+    'newsletter.privacy'  => 'Ochrana osobních údajů',
+    'newsletter.ok'       => 'Skoro hotovo! Poslali jsme ti e-mail s potvrzením. Klikni na odkaz v něm a odběr se aktivuje.',
+    'newsletter.email'    => 'Zkontroluj prosím e-mailovou adresu.',
+    'newsletter.limit'    => 'Z tohoto připojení nebo na tuto adresu jsme přijali už hodně přihlášek. Zkus to prosím později.',
+    'newsletter.chyba'    => 'Přihlášení se nepovedlo. Zkus to prosím později, nebo napiš na info@oscloud.cz.',
+    'newsletter.znovu'    => 'Formulář se nepodařilo odeslat. Zkus to prosím za chvilku znovu.',
     'form.choose'         => '– vybrat –',
 
     // Formulář Chci se připojit

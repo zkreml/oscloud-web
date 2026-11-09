@@ -61,7 +61,7 @@ return [
             'notes'  => [
                 'Prices in the Association and Company columns are **totals**: the storage price plus the plan surcharge.',
                 '**How team plans work.** Family, Association and Company plans have one shared storage of the chosen size (see the table). The team administrator adds members and divides the space among them as needed, or leaves usage open. The team as a whole never exceeds the package size. The 10 GB team folder is part of the package; by agreement it can be larger, but always within the chosen plan.',
-                'Storage larger than 1 TB is possible by arrangement as external storage. The number of users in the Association and Company plans is approximate. For a bigger team, write to [info@oscloud.cz](mailto:info@oscloud.cz).',
+                'We set up storage of 1 TB and above by arrangement as external storage. The number of users in the Association and Company plans is approximate. For a bigger team, write to [info@oscloud.cz](mailto:info@oscloud.cz).',
                 'It is a good idea to back up important data outside OSCloud as well, for example on your own external drive.',
             ],
         ],

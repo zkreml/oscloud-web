@@ -61,7 +61,7 @@ return [
             'notes'  => [
                 'Ceny ve sloupcích Spolek a Firma jsou **celkové**: cena úložiště + příplatek za tarif.',
                 '**Jak fungují týmové tarify.** Rodina, Spolek i Firma mají jedno společné úložiště vybrané velikosti (viz tabulka). Správce týmu přidává členy a rozděluje mezi ně místo podle potřeby, nebo jim nechá volné čerpání. Celý tým dohromady nepřekročí velikost balíku. Týmová složka 10 GB je součástí balíku, na domluvu může být větší, ale vždy v rozsahu zvoleného tarifu.',
-                'Větší úložiště než 1 TB je možné po domluvě jako externí úložiště. Počet uživatelů v tarifu spolek a firma je orientační. Při větším týmu se ozvi na [info@oscloud.cz](mailto:info@oscloud.cz) a domluvíme se.',
+                'Úložiště 1 TB a větší zřizujeme po domluvě jako externí úložiště. Počet uživatelů v tarifu spolek a firma je orientační. Při větším týmu se ozvi na [info@oscloud.cz](mailto:info@oscloud.cz) a domluvíme se.',
                 'Důležitá data je vhodné zálohovat i mimo OSCloud, například na vlastní externí disk.',
             ],
         ],

@@ -42,7 +42,7 @@ return [
             'notes' => [
                 'Prices in the Association and Company columns are **totals**: the storage price plus the plan surcharge.',
                 '**One shared package.** Family, Association and Company plans have one storage of the chosen size. The team administrator divides the space among members and the team as a whole never exceeds the package. The 10 GB team folder is included, larger by agreement (always within the package).',
-                'Storage over 1 TB is possible by arrangement as external storage. We are not a VAT payer, all prices are final.',
+                'We set up storage of 1 TB and above by arrangement as external storage. We are not a VAT payer, all prices are final.',
             ],
         ],
         [
@@ -66,7 +66,7 @@ return [
                 '**The team folder is part of the package.** The shared folder for all members counts toward the package size, it is not extra. Default size 10 GB, a different split by arrangement. Example: a 50 GB package = 40 GB for members + 10 GB shared folder.',
                 '**Team administrator.** The team leader adds members and sets their space themselves, you do not need to write to us for each one.',
                 '**What you pay for.** Price = storage (package) + management. The surcharge for associations and companies covers invoicing with a company ID and the data processing agreement, plus a 24-hour response for companies. The surcharge is for administration, not for gigabytes.',
-                '**Large storage (1 TB and above).** Arranged individually by agreement. Write to us with what you need.',
+                '**Large storage (1 TB and above).** Arranged individually by agreement as external storage. Write to us with what you need.',
             ],
         ],
         [

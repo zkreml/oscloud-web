@@ -42,7 +42,7 @@ return [
             'notes' => [
                 'Ceny ve sloupcích Spolek a Firma jsou **celkové**: cena úložiště + příplatek za tarif.',
                 '**Společný balík.** Rodina, Spolek i Firma mají jedno úložiště vybrané velikosti. Správce týmu rozděluje místo mezi členy a tým dohromady balík nepřekročí. Týmová složka 10 GB je v ceně, na domluvu větší (vždy v rozsahu balíku).',
-                'Větší úložiště než 1 TB je možné po domluvě jako externí úložiště. Nejsme plátci DPH, všechny ceny jsou konečné.',
+                'Úložiště 1 TB a větší zřizujeme po domluvě jako externí úložiště. Nejsme plátci DPH, všechny ceny jsou konečné.',
             ],
         ],
         [
@@ -66,7 +66,7 @@ return [
                 '**Týmová složka je součástí balíku.** Sdílená složka pro všechny členy se počítá do velikosti balíku, není navíc. Výchozí velikost 10 GB, po domluvě jiný poměr. Příklad: balík 50 GB = 40 GB pro členy + 10 GB sdílená složka.',
                 '**Správce týmu.** Členy přidává a jejich místo nastavuje sám vedoucí týmu, nemusíš nám psát za každého zvlášť.',
                 '**Za co platíš.** Cena = úložiště (balík) + správa. U spolku a firmy je v příplatku fakturace s IČO a zpracovatelská smlouva, u firmy navíc reakce do 24 hodin. Příplatek je za administrativu, ne za gigabajty.',
-                '**Velká úložiště (1 TB a výš).** Řešíme individuálně po domluvě. Napiš nám, co potřebuješ.',
+                '**Velká úložiště (1 TB a výš).** Řešíme individuálně po domluvě jako externí úložiště. Napiš nám, co potřebuješ.',
             ],
         ],
         [

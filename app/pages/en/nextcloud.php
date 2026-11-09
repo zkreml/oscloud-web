@@ -38,10 +38,10 @@ return [
             'bg'    => 'ice',
             'id'    => 'cenik',
             'title' => 'Pricing',
-            'text'  => 'Price per month by storage size. Family from ' . money(PRICES['family_base']) . ' including a shared ' . PRICES['nc_family_min'] . ' GB folder (larger folders cost more, see the table), associations from ' . money(plan_from('spolek')) . ' and companies from ' . money(plan_from('firma')) . ' (storage price + a surcharge of ' . money(ORG_SURCHARGE['spolek']) . ' and ' . money(ORG_SURCHARGE['firma']) . ').',
+            'text'  => 'Price per month by storage size. Family from ' . money(PRICES['family_base']) . ' with ' . PRICES['nc_family_min'] . ' GB shared storage (larger as per the table), associations from ' . money(plan_from('spolek')) . ' and companies from ' . money(plan_from('firma')) . ' (storage price + a surcharge of ' . money(ORG_SURCHARGE['spolek']) . ' and ' . money(ORG_SURCHARGE['firma']) . ').',
             'notes' => [
                 'Prices in the Association and Company columns are **totals**: the storage price plus the plan surcharge.',
-                '**Everything can be combined.** The Family plan includes a shared folder of the chosen size and each member gets 2 GB free. Anyone who needs more space for themselves can buy their own storage at the Individual price; the shared folder stays the same.',
+                '**One shared package.** Family, Association and Company plans have one storage of the chosen size. The team administrator divides the space among members and the team as a whole never exceeds the package. The 10 GB team folder is included, larger by agreement (always within the package).',
                 'Storage over 1 TB is possible by arrangement as external storage. We are not a VAT payer, all prices are final.',
             ],
         ],
@@ -50,12 +50,23 @@ return [
             'title' => 'Plans in detail',
             'items' => [
                 ['highlight' => ['1 account', 'storage as per table'], 'title' => 'Individual', 'paragraphs' => ['One account, storage from 5 GB to 1 TB as per the table.']],
-                ['highlight' => ['4 people', 'from ' . money(PRICES['family_base']) . ' / month'], 'title' => 'Family', 'paragraphs' => [
-                    '4 Nextcloud users, each with their own account and 2 GB free, plus a **shared 50 GB folder** for everyone. A larger folder costs more as per the table. Shared calendars and contacts, support via Matrix.',
-                    'Anyone who needs more space for themselves can buy personal storage at the Individual price; the shared folder stays the same.',
+                ['highlight' => ['up to 6 people', 'from ' . money(PRICES['family_base']) . ' / month'], 'title' => 'Family', 'paragraphs' => [
+                    'Up to 6 Nextcloud users, each with their own account, and **shared storage from 5 GB** (size as per the table). The team administrator divides the space among members as needed; the total never exceeds the package. A **10 GB team folder** is included. Shared calendars and contacts, support via Matrix.',
                 ]],
-                ['highlight' => ['5 people', 'from ' . money(plan_from('spolek')) . ' / month'], 'title' => 'Associations', 'paragraphs' => ['5 Nextcloud users with shared storage, shared calendars and contacts, invoices with company ID, support by email and via Matrix.']],
-                ['highlight' => ['10 people', 'from ' . money(plan_from('firma')) . ' / month'], 'title' => 'Companies', 'paragraphs' => ['10 users with shared storage, shared calendars and contacts, invoices with company ID, support by email and via Matrix, **response within 24 hours**.', 'The number of users is approximate. For a bigger team write to [info@oscloud.cz](mailto:info@oscloud.cz) or use the [helpdesk](' . LINKS['helpdesk'] . ').']],
+                ['highlight' => ['up to 10 people', 'from ' . money(plan_from('spolek')) . ' / month'], 'title' => 'Associations', 'paragraphs' => ['Up to 10 Nextcloud users with shared storage, 10 GB team folder, shared calendars and contacts, invoices with company ID, support by email and via Matrix.']],
+                ['highlight' => ['up to 10 people', 'from ' . money(plan_from('firma')) . ' / month'], 'title' => 'Companies', 'paragraphs' => ['Up to 10 users with shared storage, 10 GB team folder, shared calendars and contacts, invoices with company ID, support by email and via Matrix, **response within 24 hours**.', 'The number of users is approximate. For a bigger team write to [info@oscloud.cz](mailto:info@oscloud.cz) or use the [helpdesk](' . LINKS['helpdesk'] . ').']],
+            ],
+        ],
+        [
+            'type'       => 'text',
+            'heading'    => 'How team plans work',
+            'paragraphs' => ['Family, Association and Company plans work as **one shared storage package** that the whole team divides. You pay for the package size; users within it are free.'],
+            'list'       => [
+                '**Shared cap.** The team has one limit based on the chosen package. The administrator divides the space among members (say 35 GB for one, 5 GB for another), or leaves usage open. The team as a whole never exceeds the package.',
+                '**The team folder is part of the package.** The shared folder for all members counts toward the package size, it is not extra. Default size 10 GB, a different split by arrangement. Example: a 50 GB package = 40 GB for members + 10 GB shared folder.',
+                '**Team administrator.** The team leader adds members and sets their space themselves, you do not need to write to us for each one.',
+                '**What you pay for.** Price = storage (package) + management. The surcharge for associations and companies covers invoicing with a company ID and the data processing agreement, plus a 24-hour response for companies. The surcharge is for administration, not for gigabytes.',
+                '**Large storage (1 TB and above).** Arranged individually by agreement. Write to us with what you need.',
             ],
         ],
         [
@@ -71,7 +82,7 @@ return [
                         'We create a team for your company or association with the agreed storage and make them the team admin.',
                         'The team admin adds people themselves.',
                     ],
-                    'after'      => ['The maximum is 5 users for associations and 10 for companies. Need more? No problem, just contact support.'],
+                    'after'      => ['The maximum is 6 users for families and 10 for associations and companies. Need more? No problem, just contact support.'],
                 ],
                 [
                     'heading' => 'How to start',
@@ -102,9 +113,9 @@ return [
             'title' => 'FAQ',
             'items' => [
                 ['How much is free?', 'Everyone gets 2 GB. More storage starts at 15 CZK a month, up to 1 TB.'],
-                ['Can I use it for my family?', 'Yes. The Family plan is for four people in the same household. Everyone has their own account with 2 GB free and you all share a 50 GB folder (larger for extra). Plus shared calendars and contacts.'],
-                ['Can it be combined?', 'Yes. Family has a shared folder (from 50 GB) and each member 2 GB free. Anyone who needs more space just for themselves buys their own storage at the Individual price. The others can stay on 2 GB free and the shared folder does not change.'],
-                ['How is Family different from Individual?', 'Individual is one account. Family is four separate accounts linked by a shared group and folder. Nextcloud only allows sharing between users in a shared group. Without Family you can still send files by link (optionally with a password and expiry), but you will not share an editable calendar or a common folder.'],
+                ['Can I use it for my family?', 'Yes. The Family plan is for a household, up to 6 people. Everyone has their own account and you all share one storage (from 5 GB) that the administrator divides. Plus a 10 GB team folder and shared calendars and contacts.'],
+                ['How is space divided in a team?', 'A team plan is one shared storage. The administrator divides the space among members (say 35 GB for one, 5 GB for another) and together they never use more than the package size. If you need more, choose a larger package.'],
+                ['How is Family different from Individual?', 'Individual is one account. Family is up to six separate accounts linked by a shared group and folder. Nextcloud only allows sharing between users in a shared group. Without Family you can still send files by link (optionally with a password and expiry), but you will not share an editable calendar or a common folder.'],
                 ['Can I use it for an association or company?', 'Yes. The association and company plans include more users and invoices with a company ID.'],
                 ['Where is the data?', 'On Hetzner servers in Germany, i.e. in the EU.'],
                 ['Can I change my plan?', 'Write to us and we will adjust your storage.'],

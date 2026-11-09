@@ -129,8 +129,9 @@ return [
             'title' => 'Týmy a více uživatelů',
             'body'  => [
                 ['list' => [
-                    'Tarify pro spolky a firmy zahrnují orientační počet uživatelů a společné úložiště. Při větším počtu členů týmu je třeba kontaktovat podporu.',
-                    'Tarif Rodina je určen pro domácnost a zahrnuje čtyři uživatele Nextcloudu se společným úložištěm. Úložiště se mezi uživatele dělí a tarif není určen k provozování služeb pro třetí osoby.',
+                    'Týmové tarify (Rodina, Spolek, Firma) mají jedno společné úložiště o velikosti zvoleného balíku. Správce týmu mezi členy místo rozděluje, nebo jim nechá volné čerpání. Celkové využití týmu nepřekročí velikost balíku.',
+                    'Tarif Rodina je určen pro domácnost a zahrnuje až šest uživatelů Nextcloudu, tarify Spolek a Firma až deset uživatelů. Počet uživatelů je orientační, při větším týmu je třeba kontaktovat podporu. Tarify nejsou určeny k provozování služeb pro třetí osoby.',
+                    'Součástí balíku je týmová složka o velikosti 10 GB. Po dohodě může být větší, vždy však v rozsahu zvoleného balíku.',
                     'Za tým odpovídá jeho vedoucí (správce), který si členy přidává sám. Zákazník odpovídá za to, že členové dodržují tyto podmínky.',
                     'Každý člen týmu potřebuje vlastní e-mailovou adresu. Účet v Nextcloudu vzniká při prvním přihlášení člena.',
                 ]],

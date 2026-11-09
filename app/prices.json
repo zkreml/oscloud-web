@@ -17,17 +17,17 @@
     "500": "500 GB",
     "1000": "1 TB"
   },
-  "nc_org_min": 50,
-  "nc_family_min": 50,
+  "nc_org_min": 10,
+  "nc_family_min": 5,
   "plan": {
-    "spolek": 99,
-    "firma": 299
+    "spolek": 49,
+    "firma": 99
   },
   "plan_labels": {
     "spolek": "Spolek",
     "firma": "Firma"
   },
-  "family_base": 50,
+  "family_base": 16,
   "mastodon": 225,
   "forum": 199,
   "wiki": 129,

@@ -36,18 +36,18 @@ return [
                     'button' => ['Vybrat úložiště', '#nextcloud-cenik'],
                 ],
                 [
-                    'name' => 'Rodina', 'price' => ['od', money(PRICES['family_base']), '/ měsíc'], 'sub' => 'Včetně společné složky ' . PRICES['nc_family_min'] . ' GB',
-                    'features' => ['Všechno z tarifu Komunita', '**4 uživatelé**, každý s vlastním účtem a 2 GB zdarma', 'Společná složka pro všechny členy, větší za příplatek', 'Sdílené kalendáře a kontakty', 'Podpora přes Matrix'],
+                    'name' => 'Rodina', 'price' => ['od', money(PRICES['family_base']), '/ měsíc'], 'sub' => 'Společné úložiště ' . PRICES['nc_family_min'] . ' GB, větší podle tabulky',
+                    'features' => ['Všechno z tarifu Komunita', '**Až 6 uživatelů**, každý s vlastním účtem', 'Úložiště si mezi sebou rozdělíte podle potřeby', 'Týmová složka 10 GB v ceně', 'Sdílené kalendáře a kontakty', 'Podpora přes Matrix'],
                     'button' => ['Objednat Rodinu', url('join') . '?typ=rodina&gb=50'],
                 ],
                 [
                     'name' => 'Pro spolky', 'price' => ['od', money(plan_from('spolek')), '/ měsíc'], 'sub' => 'Včetně společného úložiště ' . PRICES['nc_org_min'] . ' GB, větší podle tabulky',
-                    'features' => ['Všechno z tarifu Komunita', '**5 uživatelů** Nextcloudu, úložiště společně', 'Sdílené kalendáře a kontakty', 'Fakturace s IČO', 'Podpora e-mail + Matrix', 'Rozsah lze upravit podle potřeb'],
+                    'features' => ['Všechno z tarifu Komunita', '**Až 10 uživatelů** Nextcloudu, úložiště společně', 'Týmová složka 10 GB v ceně', 'Sdílené kalendáře a kontakty', 'Fakturace s IČO', 'Podpora e-mail + Matrix', 'Rozsah lze upravit podle potřeb'],
                     'button' => ['Objednat pro spolek', url('join') . '?typ=spolek&gb=50'],
                 ],
                 [
                     'name' => 'Firemní', 'price' => ['od', money(plan_from('firma')), '/ měsíc'], 'sub' => 'Včetně společného úložiště ' . PRICES['nc_org_min'] . ' GB, větší podle tabulky',
-                    'features' => ['Všechno z tarifu Komunita', '**10 uživatelů** Nextcloudu, úložiště společně', 'Sdílené kalendáře a kontakty', 'Fakturace s IČO', 'Podpora e-mail + Matrix', 'SLA – reakce do 24 hodin', 'Rozsah lze upravit podle potřeb'],
+                    'features' => ['Všechno z tarifu Komunita', '**Až 10 uživatelů** Nextcloudu, úložiště společně', 'Týmová složka 10 GB v ceně', 'Sdílené kalendáře a kontakty', 'Fakturace s IČO', 'Podpora e-mail + Matrix', 'SLA – reakce do 24 hodin', 'Rozsah lze upravit podle potřeb'],
                     'button' => ['Objednat pro firmu', url('join') . '?typ=firma&gb=50'],
                 ],
             ],
@@ -60,7 +60,7 @@ return [
             'text'   => 'Klikni na cenu a formulář žádosti se předvyplní. Podrobně o Nextcloudu najdeš na [samostatné stránce]('.url('nextcloud').').',
             'notes'  => [
                 'Ceny ve sloupcích Spolek a Firma jsou **celkové**: cena úložiště + příplatek za tarif.',
-                '**Vše jde kombinovat.** V tarifu Rodina je v ceně společná složka vybrané velikosti a každý člen má navíc 2 GB zdarma. Komu to nestačí, může si přikoupit vlastní větší úložiště za cenu ze sloupce Jednotlivec, společná složka se tím nemění. Příklad: společná složka 50 GB (50 Kč) a jeden člen s vlastními 100 GB (69 Kč), ostatní zůstanou na 2 GB zdarma.',
+                '**Jak fungují týmové tarify.** Rodina, Spolek i Firma mají jedno společné úložiště vybrané velikosti (viz tabulka). Správce týmu přidává členy a rozděluje mezi ně místo podle potřeby, nebo jim nechá volné čerpání. Celý tým dohromady nepřekročí velikost balíku. Týmová složka 10 GB je součástí balíku, na domluvu může být větší, ale vždy v rozsahu zvoleného tarifu.',
                 'Větší úložiště než 1 TB je možné po domluvě jako externí úložiště. Počet uživatelů v tarifu spolek a firma je orientační. Při větším týmu se ozvi na [info@oscloud.cz](mailto:info@oscloud.cz) a domluvíme se.',
                 'Důležitá data je vhodné zálohovat i mimo OSCloud, například na vlastní externí disk.',
             ],

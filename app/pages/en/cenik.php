@@ -36,18 +36,18 @@ return [
                     'button' => ['Choose storage', '#nextcloud-cenik'],
                 ],
                 [
-                    'name' => 'Family', 'price' => ['from', money(PRICES['family_base']), '/ month'], 'sub' => 'Includes a shared ' . PRICES['nc_family_min'] . ' GB folder',
-                    'features' => ['Everything in Community', '**4 users**, each with their own account and 2 GB free', 'A shared folder for all members, larger ones cost extra', 'Shared calendars and contacts', 'Support via Matrix'],
+                    'name' => 'Family', 'price' => ['from', money(PRICES['family_base']), '/ month'], 'sub' => 'Shared storage ' . PRICES['nc_family_min'] . ' GB, larger as per the table',
+                    'features' => ['Everything in Community', '**Up to 6 users**, each with their own account', 'You divide the storage among yourselves as needed', '10 GB team folder included', 'Shared calendars and contacts', 'Support via Matrix'],
                     'button' => ['Order Family', url('join') . '?typ=rodina&gb=50'],
                 ],
                 [
                     'name' => 'Associations', 'price' => ['from', money(plan_from('spolek')), '/ month'], 'sub' => 'Includes ' . PRICES['nc_org_min'] . ' GB shared storage, larger as per the table',
-                    'features' => ['Everything in Community', '**5 Nextcloud users**, shared storage', 'Shared calendars and contacts', 'Invoices with company ID', 'Support by email + Matrix', 'The scope can be adjusted'],
+                    'features' => ['Everything in Community', '**Up to 10 Nextcloud users**, shared storage', '10 GB team folder included', 'Shared calendars and contacts', 'Invoices with company ID', 'Support by email + Matrix', 'The scope can be adjusted'],
                     'button' => ['Order for an association', url('join') . '?typ=spolek&gb=50'],
                 ],
                 [
                     'name' => 'Companies', 'price' => ['from', money(plan_from('firma')), '/ month'], 'sub' => 'Includes ' . PRICES['nc_org_min'] . ' GB shared storage, larger as per the table',
-                    'features' => ['Everything in Community', '**10 Nextcloud users**, shared storage', 'Shared calendars and contacts', 'Invoices with company ID', 'Support by email + Matrix', 'SLA: response within 24 hours', 'The scope can be adjusted'],
+                    'features' => ['Everything in Community', '**Up to 10 Nextcloud users**, shared storage', '10 GB team folder included', 'Shared calendars and contacts', 'Invoices with company ID', 'Support by email + Matrix', 'SLA: response within 24 hours', 'The scope can be adjusted'],
                     'button' => ['Order for a company', url('join') . '?typ=firma&gb=50'],
                 ],
             ],
@@ -60,7 +60,7 @@ return [
             'text'   => 'Click a price and the request form is pre-filled. More about Nextcloud on [its own page](' . url('nextcloud') . ').',
             'notes'  => [
                 'Prices in the Association and Company columns are **totals**: the storage price plus the plan surcharge.',
-                '**Everything can be combined.** The Family plan includes a shared folder of the chosen size, and each member also gets 2 GB free. If that is not enough, you can add your own bigger storage at the price from the Individual column; the shared folder stays the same. Example: a shared 50 GB folder (50 CZK) and one member with their own 100 GB (69 CZK), the others stay on 2 GB free.',
+                '**How team plans work.** Family, Association and Company plans have one shared storage of the chosen size (see the table). The team administrator adds members and divides the space among them as needed, or leaves usage open. The team as a whole never exceeds the package size. The 10 GB team folder is part of the package; by agreement it can be larger, but always within the chosen plan.',
                 'Storage larger than 1 TB is possible by arrangement as external storage. The number of users in the Association and Company plans is approximate. For a bigger team, write to [info@oscloud.cz](mailto:info@oscloud.cz).',
                 'It is a good idea to back up important data outside OSCloud as well, for example on your own external drive.',
             ],

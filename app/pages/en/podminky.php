@@ -131,8 +131,9 @@ return [
             'title' => 'Teams and multiple users',
             'body'  => [
                 ['list' => [
-                    'Plans for associations and companies include an indicative number of users and shared storage. For a larger number of team members, contact support.',
-                    'The Family plan is intended for a household and includes four Nextcloud users with shared storage. The storage is divided among the users and the plan is not intended for operating services for third parties.',
+                    'Team plans (Family, Association, Company) have one shared storage of the size of the chosen package. The team administrator divides the space among members, or leaves usage open. The total usage of the team does not exceed the package size.',
+                    'The Family plan is intended for a household and includes up to six Nextcloud users; the Association and Company plans include up to ten users. The number of users is indicative; for a larger team, contact support. The plans are not intended for operating services for third parties.',
+                    'The package includes a team folder of 10 GB. By agreement it can be larger, but always within the chosen package.',
                     'The team is the responsibility of its leader (administrator), who adds members themselves. The customer is responsible for members complying with these conditions.',
                     'Every team member needs their own e-mail address. The Nextcloud account is created when the member first logs in.',
                 ]],

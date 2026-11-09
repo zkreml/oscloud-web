@@ -38,10 +38,10 @@ return [
             'bg'    => 'ice',
             'id'    => 'cenik',
             'title' => 'Ceník',
-            'text'  => 'Cena za měsíc podle velikosti úložiště. Rodina je od ' . money(PRICES['family_base']) . ' včetně společné složky ' . PRICES['nc_family_min'] . ' GB (větší složka stojí víc podle tabulky), spolky od ' . money(plan_from('spolek')) . ' a firmy od ' . money(plan_from('firma')) . ' (cena úložiště + příplatek ' . money(ORG_SURCHARGE['spolek']) . ' a ' . money(ORG_SURCHARGE['firma']) . ').',
+            'text'  => 'Cena za měsíc podle velikosti úložiště. Rodina je od ' . money(PRICES['family_base']) . ' se společným úložištěm ' . PRICES['nc_family_min'] . ' GB (větší podle tabulky), spolky od ' . money(plan_from('spolek')) . ' a firmy od ' . money(plan_from('firma')) . ' (cena úložiště + příplatek ' . money(ORG_SURCHARGE['spolek']) . ' a ' . money(ORG_SURCHARGE['firma']) . ').',
             'notes' => [
                 'Ceny ve sloupcích Spolek a Firma jsou **celkové**: cena úložiště + příplatek za tarif.',
-                '**Vše jde kombinovat.** V tarifu Rodina je v ceně společná složka vybrané velikosti a každý člen má navíc 2 GB zdarma. Kdo potřebuje víc místa pro sebe, přikoupí si vlastní úložiště za cenu tarifu Jednotlivec, společná složka se tím nemění.',
+                '**Společný balík.** Rodina, Spolek i Firma mají jedno úložiště vybrané velikosti. Správce týmu rozděluje místo mezi členy a tým dohromady balík nepřekročí. Týmová složka 10 GB je v ceně, na domluvu větší (vždy v rozsahu balíku).',
                 'Větší úložiště než 1 TB je možné po domluvě jako externí úložiště. Nejsme plátci DPH, všechny ceny jsou konečné.',
             ],
         ],
@@ -50,12 +50,23 @@ return [
             'title' => 'Tarify podrobně',
             'items' => [
                 ['highlight' => ['1 účet', 'úložiště podle tabulky'], 'title' => 'Jednotlivec', 'paragraphs' => ['Jeden účet, úložiště od 5 GB do 1 TB podle tabulky.']],
-                ['highlight' => ['4 lidé', 'od ' . money(PRICES['family_base']) . ' / měsíc'], 'title' => 'Rodina', 'paragraphs' => [
-                    '4 uživatelé Nextcloudu, každý s vlastním účtem a 2 GB zdarma, a **společná složka 50 GB** pro všechny. Větší složka stojí víc podle tabulky. Sdílené kalendáře a kontakty, podpora přes Matrix.',
-                    'Kdo potřebuje víc místa pro sebe, může si osobní úložiště přikoupit za cenu tarifu Jednotlivec, společná složka se tím nemění.',
+                ['highlight' => ['až 6 lidí', 'od ' . money(PRICES['family_base']) . ' / měsíc'], 'title' => 'Rodina', 'paragraphs' => [
+                    'Až 6 uživatelů Nextcloudu, každý s vlastním účtem, a **společné úložiště od 5 GB** (velikost podle tabulky). Správce týmu rozdělí místo mezi členy podle potřeby, celek balík nepřekročí. **Týmová složka 10 GB** je v ceně. Sdílené kalendáře a kontakty, podpora přes Matrix.',
                 ]],
-                ['highlight' => ['5 lidí', 'od ' . money(plan_from('spolek')) . ' / měsíc'], 'title' => 'Pro spolky', 'paragraphs' => ['5 uživatelů Nextcloudu se společným úložištěm, sdílené kalendáře a kontakty, fakturace s IČO, podpora e-mailem a přes Matrix.']],
-                ['highlight' => ['10 lidí', 'od ' . money(plan_from('firma')) . ' / měsíc'], 'title' => 'Firemní', 'paragraphs' => ['10 uživatelů se společným úložištěm, sdílené kalendáře a kontakty, fakturace s IČO, podpora e-mailem a přes Matrix, **reakce do 24 hodin**.', 'Počet uživatelů je orientační. Při větším týmu se ozvi na [info@oscloud.cz](mailto:info@oscloud.cz) nebo přes [helpdesk](' . LINKS['helpdesk'] . ') a domluvíme se.']],
+                ['highlight' => ['až 10 lidí', 'od ' . money(plan_from('spolek')) . ' / měsíc'], 'title' => 'Pro spolky', 'paragraphs' => ['Až 10 uživatelů Nextcloudu se společným úložištěm, týmová složka 10 GB, sdílené kalendáře a kontakty, fakturace s IČO, podpora e-mailem a přes Matrix.']],
+                ['highlight' => ['až 10 lidí', 'od ' . money(plan_from('firma')) . ' / měsíc'], 'title' => 'Firemní', 'paragraphs' => ['Až 10 uživatelů se společným úložištěm, týmová složka 10 GB, sdílené kalendáře a kontakty, fakturace s IČO, podpora e-mailem a přes Matrix, **reakce do 24 hodin**.', 'Počet uživatelů je orientační. Při větším týmu se ozvi na [info@oscloud.cz](mailto:info@oscloud.cz) nebo přes [helpdesk](' . LINKS['helpdesk'] . ') a domluvíme se.']],
+            ],
+        ],
+        [
+            'type'       => 'text',
+            'heading'    => 'Jak fungují týmové tarify',
+            'paragraphs' => ['Rodina, Spolek i Firma fungují jako **jeden společný balík úložiště**, o který se dělí celý tým. Platíš za velikost balíku, uživatelé v něm jsou zdarma.'],
+            'list'       => [
+                '**Společný strop.** Tým má jeden limit podle zvoleného balíku. Správce rozdělí místo mezi členy (třeba jednomu 35 GB, jinému 5 GB), nebo nechá čerpání volné. Dohromady tým balík nepřekročí.',
+                '**Týmová složka je součástí balíku.** Sdílená složka pro všechny členy se počítá do velikosti balíku, není navíc. Výchozí velikost 10 GB, po domluvě jiný poměr. Příklad: balík 50 GB = 40 GB pro členy + 10 GB sdílená složka.',
+                '**Správce týmu.** Členy přidává a jejich místo nastavuje sám vedoucí týmu, nemusíš nám psát za každého zvlášť.',
+                '**Za co platíš.** Cena = úložiště (balík) + správa. U spolku a firmy je v příplatku fakturace s IČO a zpracovatelská smlouva, u firmy navíc reakce do 24 hodin. Příplatek je za administrativu, ne za gigabajty.',
+                '**Velká úložiště (1 TB a výš).** Řešíme individuálně po domluvě. Napiš nám, co potřebuješ.',
             ],
         ],
         [
@@ -71,7 +82,7 @@ return [
                         'My mu vytvoříme tým vaší firmy nebo spolku s dohodnutým úložištěm a uděláme ho správcem týmu.',
                         'Správce týmu si do něj sám přidává lidi.',
                     ],
-                    'after'      => ['Maximum je 5 uživatelů u spolku a 10 u firmy. Pokud potřebujete víc, není to problém, jen se ozvěte na podporu.'],
+                    'after'      => ['Maximum je 6 uživatelů u rodiny a 10 u spolku a firmy. Pokud potřebujete víc, není to problém, jen se ozvěte na podporu.'],
                 ],
                 [
                     'heading' => 'Jak začít',
@@ -102,9 +113,9 @@ return [
             'title' => 'Časté dotazy',
             'items' => [
                 ['Kolik je zdarma?', 'Každý má 2 GB. Větší úložiště je od 15 Kč měsíčně, až do 1 TB.'],
-                ['Můžu to použít pro rodinu?', 'Ano. Tarif Rodina je pro čtyři lidi ve stejné domácnosti. Každý má vlastní účet s 2 GB zdarma a všichni mají společnou složku 50 GB (větší za příplatek). K tomu sdílené kalendáře a kontakty.'],
-                ['Dá se to kombinovat?', 'Ano. Rodina má společnou složku (od 50 GB) a každý člen 2 GB zdarma. Kdo potřebuje víc místa jen pro sebe, přikoupí si vlastní úložiště za cenu tarifu Jednotlivec. Ostatní členové mohou zůstat na 2 GB zdarma a společná složka se nemění.'],
-                ['Čím se liší Rodina od Jednotlivce?', 'Jednotlivec je jeden účet. Rodina jsou čtyři oddělené účty propojené společnou skupinou a složkou. Nextcloud totiž povolí sdílení mezi uživateli jen ve společné skupině. Bez Rodiny můžete soubory dál posílat odkazem (volitelně s heslem a platností), ale nesdílíte kalendář s úpravami ani společnou složku.'],
+                ['Můžu to použít pro rodinu?', 'Ano. Tarif Rodina je pro domácnost, až 6 lidí. Každý má vlastní účet a všichni sdílíte jedno úložiště (od 5 GB), které rozděluje správce. K tomu týmová složka 10 GB a sdílené kalendáře a kontakty.'],
+                ['Jak se dělí místo v týmu?', 'Týmový tarif je jedno společné úložiště. Správce rozdělí místo mezi členy (třeba jednomu 35 GB, jinému 5 GB) a víc než velikost balíku se dohromady nevyužije. Potřebuješ-li víc, vybereš větší balík.'],
+                ['Čím se liší Rodina od Jednotlivce?', 'Jednotlivec je jeden účet. Rodina je až šest oddělených účtů propojené společnou skupinou a složkou. Nextcloud totiž povolí sdílení mezi uživateli jen ve společné skupině. Bez Rodiny můžete soubory dál posílat odkazem (volitelně s heslem a platností), ale nesdílíte kalendář s úpravami ani společnou složku.'],
                 ['Můžu to použít pro spolek nebo firmu?', 'Ano. Spolkový a firemní tarif zahrnuje více uživatelů a fakturu s IČO.'],
                 ['Kde jsou data?', 'Na serverech Hetzner v Německu, tedy v EU.'],
                 ['Můžu tarif změnit?', 'Napiš nám a úložiště upravíme.'],

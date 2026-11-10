@@ -43,6 +43,7 @@ return [
                     ['Git', 'git.oscloud.cz/OSCloud', LINKS['git_org']],
                     ['Blog', 'blog.oscloud.cz', LINKS['blog']],
                     ['Documentation', 'docs.oscloud.cz', LINKS['docs']],
+                    ['PGP key', 'keyoxide.org', LINKS['keyoxide']],
                 ]],
             ],
         ],

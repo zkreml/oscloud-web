@@ -115,6 +115,19 @@ if ($path === 'robots.txt') {
     exit;
 }
 
+// security.txt (RFC 9116) – kontakt pro hlášení bezpečnostních chyb a odkaz na PGP klíč
+if ($path === '.well-known/security.txt') {
+    header('Content-Type: text/plain; charset=utf-8');
+    echo "Contact: mailto:" . ORG['email'] . "\n"
+        . "Contact: " . LINKS['helpdesk'] . "\n"
+        . "Encryption: " . LINKS['keyoxide'] . "\n"
+        . "Encryption: https://keys.openpgp.org/vks/v1/by-fingerprint/6305D75BFFC4ED23F3EC407370B32BB2BEAF41C9\n"
+        . "Preferred-Languages: cs, en\n"
+        . "Canonical: " . absolute_url('/.well-known/security.txt') . "\n"
+        . "Expires: 2027-11-10T00:00:00Z\n";
+    exit;
+}
+
 // Přihlášení k newsletteru (jen česky; formulář je v patičce)
 if ($path === 'newsletter' && $hostLang !== 'en') {
     handle_newsletter();

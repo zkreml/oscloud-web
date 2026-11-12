@@ -78,6 +78,7 @@ const NAV_EXTERNAL = ['docs' => 'docs', 'blog' => 'blog'];
 // Odkazy na služby a projekty OSCloudu
 const LINKS = [
     'login'     => 'https://my.oscloud.cz',
+    'darujme'   => 'https://www.darujme.cz/komunitni-internet-bez-reklam',
     'keyoxide'  => 'https://keyoxide.org/hkp/6305D75BFFC4ED23F3EC407370B32BB2BEAF41C9',
     'docs'      => 'https://docs.oscloud.cz',
     'blog'      => 'https://blog.oscloud.cz',

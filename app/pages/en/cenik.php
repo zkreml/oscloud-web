@@ -163,7 +163,9 @@ return [
             'heading'    => '💙 Just want to support OSCloud?',
             'paragraphs' => [
                 'You do not need the services but like what we do? You can send us **any donation**. It helps cover the server, backups and our work. We are non-profit, everything goes into running the services.',
+                'We have launched a **long-term campaign on Darujme.cz** to cover a year of operation in advance. A regular monthly donation helps us most, because it lets us plan ahead.',
             ],
+            'cta'        => ['Support on Darujme.cz', LINKS['darujme']],
             'accounts'   => ['Transparent account', 'Private account'],
             'after'      => [
                 'Write “dar” (donation) in the payment message. IBANs are on the [About page](' . url('about') . '#ucty).',

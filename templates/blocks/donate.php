@@ -5,6 +5,11 @@
         <?php foreach ($block['paragraphs'] as $para): ?>
             <p><?= rich($para) ?></p>
         <?php endforeach; ?>
+        <?php if (!empty($block['cta'])): ?>
+            <div class="btn-row">
+                <a class="btn btn--primary" href="<?= e($block['cta'][1]) ?>" rel="noopener"><?= e($block['cta'][0]) ?> <span aria-hidden="true">💙</span></a>
+            </div>
+        <?php endif; ?>
         <dl class="donate__accounts">
             <div>
                 <dt><?= e($block['accounts'][0]) ?></dt>

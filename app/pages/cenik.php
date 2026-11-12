@@ -164,7 +164,9 @@ return [
             'heading'    => '💙 Chceš jen podpořit OSCloud?',
             'paragraphs' => [
                 'Služby nepotřebuješ, ale líbí se ti, co děláme? Můžeš nám poslat **libovolný dar**. Pomůže pokrýt server, zálohy a naši práci. Nejsme ziskoví, všechno jde do provozu.',
+                'Spustili jsme **dlouhodobou kampaň na Darujme.cz**, která má pokrýt provoz na rok dopředu. Nejvíc nám pomůže pravidelný měsíční dar, protože umožňuje plánovat.',
             ],
+            'cta'        => ['Podpořit na Darujme.cz', LINKS['darujme']],
             'accounts'   => ['Transparentní účet', 'Netransparentní účet'],
             'after'      => [
                 'Do zprávy napiš „dar“. IBAN najdeš na stránce [O nás](/o-nas#ucty).',

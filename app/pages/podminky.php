@@ -9,7 +9,7 @@ return [
 
     'heading'   => 'Obchodní a provozní podmínky',
     'lead'      => 'Podmínky platí pro všechny služby OSCloud, z. s. Platné znění je vždy na této stránce.',
-    'effective' => '18. října 2026',
+    'effective' => '13. listopadu 2026',
     'pdf'       => 'oscloud-podminky.pdf',
 
     'sections' => [
@@ -129,9 +129,9 @@ return [
             'title' => 'Týmy a více uživatelů',
             'body'  => [
                 ['list' => [
-                    'Týmové tarify (Rodina, Spolek, Firma) mají jedno společné úložiště o velikosti zvoleného balíku. Správce týmu mezi členy místo rozděluje, nebo jim nechá volné čerpání. Celkové využití týmu nepřekročí velikost balíku.',
+                    'Týmové tarify (Rodina, Spolek, Firma) mají jedno společné úložiště o velikosti zvoleného balíku. Správce týmu mezi členy místo rozděluje, nebo jim nechá volné čerpání. Celkové využití týmu (včetně sdílené složky) nepřekročí velikost balíku.',
                     'Tarif Rodina je určen pro domácnost a zahrnuje až šest uživatelů Nextcloudu, tarify Spolek a Firma až deset uživatelů. Počet uživatelů je orientační, při větším týmu je třeba kontaktovat podporu. Tarify nejsou určeny k provozování služeb pro třetí osoby.',
-                    'Součástí balíku je týmová složka o velikosti 10 GB. Po dohodě může být větší, vždy však v rozsahu zvoleného balíku.',
+                    'Součástí tarifu je sdílená týmová složka, která se počítá do velikosti balíku. Její velikost si tým určí podle potřeby a lze ji později upravit.',
                     'Za tým odpovídá jeho vedoucí (správce), který si členy přidává sám. Zákazník odpovídá za to, že členové dodržují tyto podmínky.',
                     'Každý člen týmu potřebuje vlastní e-mailovou adresu. Účet v Nextcloudu vzniká při prvním přihlášení člena.',
                 ]],
@@ -186,7 +186,7 @@ return [
         [
             'title' => 'Závěrečná ustanovení',
             'body'  => [
-                'Smlouvy a podmínky se řídí právem České republiky. Kontakt: [info@oscloud.cz](mailto:info@oscloud.cz). Podmínky nabývají účinnosti dnem 18. října 2026.',
+                'Smlouvy a podmínky se řídí právem České republiky. Kontakt: [info@oscloud.cz](mailto:info@oscloud.cz). Podmínky nabývají účinnosti dnem 13. listopadu 2026.',
             ],
         ],
         [

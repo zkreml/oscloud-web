@@ -37,17 +37,17 @@ return [
                 ],
                 [
                     'name' => 'Family', 'price' => ['from', money(PRICES['family_base']), '/ month'], 'sub' => 'Shared storage ' . PRICES['nc_family_min'] . ' GB, larger as per the table',
-                    'features' => ['Everything in Community', '**Up to 6 users**, each with their own account', 'You divide the storage among yourselves as needed', '10 GB team folder included', 'Shared calendars and contacts', 'Support via Matrix'],
+                    'features' => ['Everything in Community', '**Up to 6 users**, each with their own account', 'You divide the storage among yourselves as needed', 'Shared team folder, size is up to you', 'Shared calendars and contacts', 'Support via Matrix'],
                     'button' => ['Order Family', url('join') . '?typ=rodina&gb=50'],
                 ],
                 [
                     'name' => 'Associations', 'price' => ['from', money(plan_from('spolek')), '/ month'], 'sub' => 'Includes ' . PRICES['nc_org_min'] . ' GB shared storage, larger as per the table',
-                    'features' => ['Everything in Community', '**Up to 10 Nextcloud users**, shared storage', '10 GB team folder included', 'Shared calendars and contacts', 'Invoices with company ID', 'Support by email + Matrix', 'The scope can be adjusted'],
+                    'features' => ['Everything in Community', '**Up to 10 Nextcloud users**, shared storage', 'Shared team folder, size is up to you', 'Shared calendars and contacts', 'Invoices with company ID', 'Support by email + Matrix', 'The scope can be adjusted'],
                     'button' => ['Order for an association', url('join') . '?typ=spolek&gb=50'],
                 ],
                 [
                     'name' => 'Companies', 'price' => ['from', money(plan_from('firma')), '/ month'], 'sub' => 'Includes ' . PRICES['nc_org_min'] . ' GB shared storage, larger as per the table',
-                    'features' => ['Everything in Community', '**Up to 10 Nextcloud users**, shared storage', '10 GB team folder included', 'Shared calendars and contacts', 'Invoices with company ID', 'Support by email + Matrix', 'SLA: response within 24 hours', 'The scope can be adjusted'],
+                    'features' => ['Everything in Community', '**Up to 10 Nextcloud users**, shared storage', 'Shared team folder, size is up to you', 'Shared calendars and contacts', 'Invoices with company ID', 'Support by email + Matrix', 'SLA: response within 24 hours', 'The scope can be adjusted'],
                     'button' => ['Order for a company', url('join') . '?typ=firma&gb=50'],
                 ],
             ],
@@ -60,7 +60,7 @@ return [
             'text'   => 'Click a price and the request form is pre-filled. More about Nextcloud on [its own page](' . url('nextcloud') . ').',
             'notes'  => [
                 'Prices in the Association and Company columns are **totals**: the storage price plus the plan surcharge.',
-                '**How team plans work.** Family, Association and Company plans have one shared storage of the chosen size (see the table). The team administrator adds members and divides the space among them as needed, or leaves usage open. The team as a whole never exceeds the package size. The 10 GB team folder is part of the package; by agreement it can be larger, but always within the chosen plan.',
+                '**How team plans work.** Family, Association and Company plans have one shared storage of the chosen size (see the table). The team administrator adds members and divides the space among them as needed, or leaves usage open. The team as a whole never exceeds the package size. The shared team folder counts toward the package; the team decides its size according to its needs and can adjust it later. Ordinary folders can also be shared among members.',
                 'We set up storage of 1 TB and above by arrangement as external storage. The number of users in the Association and Company plans is approximate. For a bigger team, write to [info@oscloud.cz](mailto:info@oscloud.cz).',
                 'It is a good idea to back up important data outside OSCloud as well, for example on your own external drive.',
             ],

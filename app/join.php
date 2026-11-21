@@ -49,9 +49,11 @@ function join_defaults(): array
 function join_storage_options(string $plan): array
 {
     $options = [];
+    // Spolek a firma: v seznamu je cena samotného úložiště, příplatek za tarif je u výběru tarifu (celkem = úložiště + příplatek).
+    $priceFrom = in_array($plan, ['spolek', 'firma'], true) ? 'jednotlivec' : $plan;
     foreach (nextcloud_sizes($plan) as $gb) {
-        $price = money(nextcloud_price($plan, $gb));
-        $options[(string) $gb] = storage_label($gb) . ' · ' . t(in_array($plan, ['spolek', 'firma'], true) ? 'join.from_month' : 'join.per_month', ['price' => $price]);
+        $price = money(nextcloud_price($priceFrom, $gb));
+        $options[(string) $gb] = storage_label($gb) . ' · ' . t('join.per_month', ['price' => $price]);
     }
     return $options;
 }

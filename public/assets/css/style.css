@@ -1779,6 +1779,7 @@ a { color: var(--os-blue); }
     font-size: .88em;
 }
 .field__hint { margin: 0; font-size: .85em; color: var(--text-muted); }
+.org-total { margin: .25rem 0 1rem; padding: .7rem 1rem; border-radius: 12px; border: 1px solid rgba(0, 0, 0, .08); background: rgba(255, 255, 255, .7); font-weight: 600; }
 .field__error {
     margin: 0;
     font-family: var(--font-ui);

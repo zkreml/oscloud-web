@@ -128,6 +128,8 @@ return [
     'join.side.help'      => 'Nevíš si rady? Napiš na {email} nebo na Matrix.',
     'join.per_month'      => '{price}/měs',
     'join.from_month'     => '{price}/měs celkem',
+    'join.org_total_hint' => 'Celková cena = cena úložiště + příplatek za tarif.',
+    'join.org_total'      => 'Úložiště {storage} + tarif {plan} {fee} = {total}/měs celkem',
 
     'join.err.name'       => 'Napiš prosím jméno nebo přezdívku.',
     'join.err.email'      => 'Zkontroluj prosím e-mail, něco v něm nesedí.',

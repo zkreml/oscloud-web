@@ -55,6 +55,30 @@ document.addEventListener('DOMContentLoaded', () => {
     update();
 });
 
+// Formulář: u spolku a firmy ukáže součet „úložiště + příplatek tarifu = celkem“ (ceny jsou v data-atributech řádku)
+document.addEventListener('DOMContentLoaded', () => {
+    const box = document.getElementById('org-total');
+    const plan = document.getElementById('j-plan');
+    const storage = document.getElementById('j-storage-org');
+    if (!box || !plan || !storage) return;
+    let base, fee;
+    try { base = JSON.parse(box.dataset.base); fee = JSON.parse(box.dataset.fee); } catch (e) { return; }
+    const fallback = box.textContent;
+    const money = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00A0') + '\u00A0' + box.dataset.cur;
+    const update = () => {
+        const s = base[storage.value];
+        const f = fee[plan.value];
+        if (s === undefined || f === undefined) { box.textContent = fallback; return; }
+        const planName = plan.options[plan.selectedIndex].text.split(' (')[0];
+        box.textContent = box.dataset.tpl
+            .replace('{storage}', money(s)).replace('{plan}', planName)
+            .replace('{fee}', money(f)).replace('{total}', money(s + f));
+    };
+    plan.addEventListener('change', update);
+    storage.addEventListener('change', update);
+    update();
+});
+
 // Tlačítka a odkazy zatím nikam nevedou – zabráníme skoku na začátek stránky
 document.addEventListener('click', (e) => {
     const link = e.target.closest('a[href="#"]');

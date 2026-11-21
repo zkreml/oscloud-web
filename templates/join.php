@@ -150,6 +150,18 @@ $consent = t('join.consent', [
                         <?= field_error($errors, 'period_org') ?>
                     </div>
                 </div>
+                <?php
+                // Součet pro spolek/firmu: cena úložiště (sloupec Jednotlivec) + příplatek tarifu = celkem. Počítá JS, bez něj zůstane obecná věta.
+                $orgBase = [];
+                foreach (nextcloud_sizes('spolek') as $gb) {
+                    $orgBase[$gb] = nextcloud_price('jednotlivec', $gb);
+                }
+                ?>
+                <p class="org-total" id="org-total"
+                   data-base="<?= e(json_encode($orgBase)) ?>"
+                   data-fee="<?= e(json_encode(ORG_SURCHARGE)) ?>"
+                   data-tpl="<?= e(t('join.org_total')) ?>"
+                   data-cur="<?= e(lang() === 'en' ? 'CZK' : 'Kč') ?>"><?= e(t('join.org_total_hint')) ?></p>
                 <div class="form__row">
                     <div class="field" id="pole-users">
                         <label for="j-users"><?= e(t('join.users')) ?> <span class="optional"><?= e(t('optional')) ?></span></label>

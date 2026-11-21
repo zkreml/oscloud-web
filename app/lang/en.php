@@ -116,6 +116,8 @@ return [
     'join.side.help'      => 'Not sure? Write to {email} or on Matrix.',
     'join.per_month'      => '{price}/month',
     'join.from_month'     => '{price}/month in total',
+    'join.org_total_hint' => 'Total price = storage price + plan surcharge.',
+    'join.org_total'      => 'Storage {storage} + plan {plan} {fee} = {total}/month in total',
 
     'join.err.name'       => 'Please enter your name or nickname.',
     'join.err.email'      => 'Please check your email address, something is not right.',

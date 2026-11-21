@@ -34,6 +34,7 @@ function join_defaults(): array
             $old['typ'] = 'org';
             $old['plan'] = $get('typ');
             $old['storage_org'] = nextcloud_price($get('typ'), $gb) ? (string) $gb : '';
+            $old['tarif_org'] = $old['storage_org'] !== '' ? $get('typ') . ':' . $gb : '';
             break;
         case 'trilium':
             $old['service'] = 'trilium';
@@ -49,13 +50,23 @@ function join_defaults(): array
 function join_storage_options(string $plan): array
 {
     $options = [];
-    // Spolek a firma: v seznamu je cena samotného úložiště, příplatek za tarif je u výběru tarifu (celkem = úložiště + příplatek).
-    $priceFrom = in_array($plan, ['spolek', 'firma'], true) ? 'jednotlivec' : $plan;
     foreach (nextcloud_sizes($plan) as $gb) {
-        $price = money(nextcloud_price($priceFrom, $gb));
+        $price = money(nextcloud_price($plan, $gb));
         $options[(string) $gb] = storage_label($gb) . ' · ' . t('join.per_month', ['price' => $price]);
     }
     return $options;
+}
+
+/** Spolek a firma: jeden výběr „tarif + úložiště“ s konečnými cenami jako v ceníku: [skupina => [„tarif:GB“ => popisek]]. */
+function join_org_options(): array
+{
+    $groups = [];
+    foreach (['spolek' => t('join.plan.club'), 'firma' => t('join.plan.company')] as $plan => $name) {
+        foreach (nextcloud_sizes($plan) as $gb) {
+            $groups[$name][$plan . ':' . $gb] = $name . ' · ' . storage_label($gb) . ' · ' . t('join.per_month', ['price' => money(nextcloud_price($plan, $gb))]);
+        }
+    }
+    return $groups;
 }
 
 function handle_join(): array
@@ -75,8 +86,9 @@ function handle_join(): array
         'users'           => preg_replace('/\D+/', '', input('users', 6)) ?? '',
         'org_address'     => input('org_address', 300),
         'contact'         => input('contact', 150),
-        'plan'            => input('plan', 10),
-        'storage_org'     => input('storage_org', 10),
+        'tarif_org'       => input('tarif_org', 20),
+        'plan'            => '',
+        'storage_org'     => '',
         'period_org'      => input('period_org', 10),
         'org_email'       => input('org_email', 190),
         'note'            => input('note', 2000, true),
@@ -131,10 +143,13 @@ function handle_join(): array
         if (!Mailer::isValidAddress($old['org_email'])) {
             $errors['org_email'] = t('join.err.email');
         }
-        if (!isset(ORG_SURCHARGE[$old['plan']])) {
-            $errors['plan'] = t('join.err.plan');
-        } elseif (!nextcloud_price($old['plan'], (int) $old['storage_org'])) {
-            $errors['storage_org'] = t('join.err.storage');
+        // „tarif:GB“ -> tarif a velikost úložiště; neplatná kombinace se odmítne
+        [$plan, $gbRaw] = array_pad(explode(':', $old['tarif_org'], 2), 2, '');
+        if (isset(ORG_SURCHARGE[$plan]) && ctype_digit($gbRaw) && nextcloud_price($plan, (int) $gbRaw)) {
+            $old['plan'] = $plan;
+            $old['storage_org'] = $gbRaw;
+        } else {
+            $errors['tarif_org'] = t('join.err.tarif');
         }
         if (!in_array($old['period_org'], JOIN_PERIODS, true)) {
             $errors['period_org'] = t('join.err.period');

@@ -131,18 +131,19 @@ $consent = t('join.consent', [
                     </div>
                 </div>
                 <div class="form__row">
-                    <div class="field" id="pole-plan">
-                        <label for="j-plan"><?= e(t('join.plan')) ?></label>
-                        <?= $select('plan', 'j-plan', [
-                            'spolek' => t('join.plan.club', ['price' => money(ORG_SURCHARGE['spolek'])]),
-                            'firma'  => t('join.plan.company', ['price' => money(ORG_SURCHARGE['firma'])]),
-                        ]) ?>
-                        <?= field_error($errors, 'plan') ?>
-                    </div>
-                    <div class="field" id="pole-storage_org">
-                        <label for="j-storage-org"><?= e(t('join.storage')) ?></label>
-                        <?= $select('storage_org', 'j-storage-org', join_storage_options('spolek')) ?>
-                        <?= field_error($errors, 'storage_org') ?>
+                    <div class="field" id="pole-tarif_org">
+                        <label for="j-tarif-org"><?= e(t('join.tarif')) ?></label>
+                        <select id="j-tarif-org" name="tarif_org"<?= field_attrs($errors, 'tarif_org') ?>>
+                            <option value=""><?= e(t('form.choose')) ?></option>
+                            <?php foreach (join_org_options() as $group => $items): ?>
+                                <optgroup label="<?= e($group) ?>">
+                                    <?php foreach ($items as $value => $label): ?>
+                                        <option value="<?= e($value) ?>"<?= $sel('tarif_org', $value) ?>><?= e($label) ?></option>
+                                    <?php endforeach; ?>
+                                </optgroup>
+                            <?php endforeach; ?>
+                        </select>
+                        <?= field_error($errors, 'tarif_org') ?>
                     </div>
                     <div class="field" id="pole-period_org">
                         <label for="j-period-org"><?= e(t('join.period')) ?></label>
@@ -150,18 +151,6 @@ $consent = t('join.consent', [
                         <?= field_error($errors, 'period_org') ?>
                     </div>
                 </div>
-                <?php
-                // Součet pro spolek/firmu: cena úložiště (sloupec Jednotlivec) + příplatek tarifu = celkem. Počítá JS, bez něj zůstane obecná věta.
-                $orgBase = [];
-                foreach (nextcloud_sizes('spolek') as $gb) {
-                    $orgBase[$gb] = nextcloud_price('jednotlivec', $gb);
-                }
-                ?>
-                <p class="org-total" id="org-total"
-                   data-base="<?= e(json_encode($orgBase)) ?>"
-                   data-fee="<?= e(json_encode(ORG_SURCHARGE)) ?>"
-                   data-tpl="<?= e(t('join.org_total')) ?>"
-                   data-cur="<?= e(lang() === 'en' ? 'CZK' : 'Kč') ?>"><?= e(t('join.org_total_hint')) ?></p>
                 <div class="form__row">
                     <div class="field" id="pole-users">
                         <label for="j-users"><?= e(t('join.users')) ?> <span class="optional"><?= e(t('optional')) ?></span></label>
